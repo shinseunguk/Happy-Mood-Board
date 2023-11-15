@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BBF2B049FB90081BF32 /* AppDelegate.swift */; };
+		AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BC12B049FB90081BF32 /* SceneDelegate.swift */; };
+		AC3A3BC42B049FB90081BF32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BC32B049FB90081BF32 /* ViewController.swift */; };
+		AC3A3BC72B049FB90081BF32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3A3BC52B049FB90081BF32 /* Main.storyboard */; };
+		AC3A3BC92B049FBA0081BF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC3A3BC82B049FBA0081BF32 /* Assets.xcassets */; };
+		AC3A3BCC2B049FBA0081BF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3A3BCA2B049FBA0081BF32 /* LaunchScreen.storyboard */; };
+		AC3A3BD72B049FBA0081BF32 /* HappyMoodBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BD62B049FBA0081BF32 /* HappyMoodBoardTests.swift */; };
+		AC3A3BE12B049FBA0081BF32 /* HappyMoodBoardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BE02B049FBA0081BF32 /* HappyMoodBoardUITests.swift */; };
+		AC3A3BE32B049FBA0081BF32 /* HappyMoodBoardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BE22B049FBA0081BF32 /* HappyMoodBoardUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC3A3BD32B049FBA0081BF32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC3A3BB42B049FB90081BF32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC3A3BBB2B049FB90081BF32;
+			remoteInfo = HappyMoodBoard;
+		};
+		AC3A3BDD2B049FBA0081BF32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC3A3BB42B049FB90081BF32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC3A3BBB2B049FB90081BF32;
+			remoteInfo = HappyMoodBoard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AC3A3BBC2B049FB90081BF32 /* HappyMoodBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyMoodBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3A3BBF2B049FB90081BF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AC3A3BC12B049FB90081BF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		AC3A3BC32B049FB90081BF32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AC3A3BC62B049FB90081BF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC3A3BC82B049FBA0081BF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC3A3BCB2B049FBA0081BF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC3A3BCD2B049FBA0081BF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC3A3BD22B049FBA0081BF32 /* HappyMoodBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyMoodBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3A3BD62B049FBA0081BF32 /* HappyMoodBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyMoodBoardTests.swift; sourceTree = "<group>"; };
+		AC3A3BDC2B049FBA0081BF32 /* HappyMoodBoardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyMoodBoardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3A3BE02B049FBA0081BF32 /* HappyMoodBoardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyMoodBoardUITests.swift; sourceTree = "<group>"; };
+		AC3A3BE22B049FBA0081BF32 /* HappyMoodBoardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyMoodBoardUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC3A3BB92B049FB90081BF32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3A3BCF2B049FBA0081BF32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3A3BD92B049FBA0081BF32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC3A3BB32B049FB90081BF32 = {
+			isa = PBXGroup;
+			children = (
+				AC3A3BBE2B049FB90081BF32 /* HappyMoodBoard */,
+				AC3A3BD52B049FBA0081BF32 /* HappyMoodBoardTests */,
+				AC3A3BDF2B049FBA0081BF32 /* HappyMoodBoardUITests */,
+				AC3A3BBD2B049FB90081BF32 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AC3A3BBD2B049FB90081BF32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC3A3BBC2B049FB90081BF32 /* HappyMoodBoard.app */,
+				AC3A3BD22B049FBA0081BF32 /* HappyMoodBoardTests.xctest */,
+				AC3A3BDC2B049FBA0081BF32 /* HappyMoodBoardUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC3A3BBE2B049FB90081BF32 /* HappyMoodBoard */ = {
+			isa = PBXGroup;
+			children = (
+				AC3A3BBF2B049FB90081BF32 /* AppDelegate.swift */,
+				AC3A3BC12B049FB90081BF32 /* SceneDelegate.swift */,
+				AC3A3BC32B049FB90081BF32 /* ViewController.swift */,
+				AC3A3BC52B049FB90081BF32 /* Main.storyboard */,
+				AC3A3BC82B049FBA0081BF32 /* Assets.xcassets */,
+				AC3A3BCA2B049FBA0081BF32 /* LaunchScreen.storyboard */,
+				AC3A3BCD2B049FBA0081BF32 /* Info.plist */,
+			);
+			path = HappyMoodBoard;
+			sourceTree = "<group>";
+		};
+		AC3A3BD52B049FBA0081BF32 /* HappyMoodBoardTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC3A3BD62B049FBA0081BF32 /* HappyMoodBoardTests.swift */,
+			);
+			path = HappyMoodBoardTests;
+			sourceTree = "<group>";
+		};
+		AC3A3BDF2B049FBA0081BF32 /* HappyMoodBoardUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AC3A3BE02B049FBA0081BF32 /* HappyMoodBoardUITests.swift */,
+				AC3A3BE22B049FBA0081BF32 /* HappyMoodBoardUITestsLaunchTests.swift */,
+			);
+			path = HappyMoodBoardUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC3A3BBB2B049FB90081BF32 /* HappyMoodBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC3A3BE62B049FBA0081BF32 /* Build configuration list for PBXNativeTarget "HappyMoodBoard" */;
+			buildPhases = (
+				AC3A3BB82B049FB90081BF32 /* Sources */,
+				AC3A3BB92B049FB90081BF32 /* Frameworks */,
+				AC3A3BBA2B049FB90081BF32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HappyMoodBoard;
+			productName = HappyMoodBoard;
+			productReference = AC3A3BBC2B049FB90081BF32 /* HappyMoodBoard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC3A3BD12B049FBA0081BF32 /* HappyMoodBoardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC3A3BE92B049FBA0081BF32 /* Build configuration list for PBXNativeTarget "HappyMoodBoardTests" */;
+			buildPhases = (
+				AC3A3BCE2B049FBA0081BF32 /* Sources */,
+				AC3A3BCF2B049FBA0081BF32 /* Frameworks */,
+				AC3A3BD02B049FBA0081BF32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC3A3BD42B049FBA0081BF32 /* PBXTargetDependency */,
+			);
+			name = HappyMoodBoardTests;
+			productName = HappyMoodBoardTests;
+			productReference = AC3A3BD22B049FBA0081BF32 /* HappyMoodBoardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AC3A3BDB2B049FBA0081BF32 /* HappyMoodBoardUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC3A3BEC2B049FBA0081BF32 /* Build configuration list for PBXNativeTarget "HappyMoodBoardUITests" */;
+			buildPhases = (
+				AC3A3BD82B049FBA0081BF32 /* Sources */,
+				AC3A3BD92B049FBA0081BF32 /* Frameworks */,
+				AC3A3BDA2B049FBA0081BF32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC3A3BDE2B049FBA0081BF32 /* PBXTargetDependency */,
+			);
+			name = HappyMoodBoardUITests;
+			productName = HappyMoodBoardUITests;
+			productReference = AC3A3BDC2B049FBA0081BF32 /* HappyMoodBoardUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC3A3BB42B049FB90081BF32 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AC3A3BBB2B049FB90081BF32 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					AC3A3BD12B049FBA0081BF32 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = AC3A3BBB2B049FB90081BF32;
+					};
+					AC3A3BDB2B049FBA0081BF32 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = AC3A3BBB2B049FB90081BF32;
+					};
+				};
+			};
+			buildConfigurationList = AC3A3BB72B049FB90081BF32 /* Build configuration list for PBXProject "HappyMoodBoard" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC3A3BB32B049FB90081BF32;
+			productRefGroup = AC3A3BBD2B049FB90081BF32 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC3A3BBB2B049FB90081BF32 /* HappyMoodBoard */,
+				AC3A3BD12B049FBA0081BF32 /* HappyMoodBoardTests */,
+				AC3A3BDB2B049FBA0081BF32 /* HappyMoodBoardUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC3A3BBA2B049FB90081BF32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC3A3BCC2B049FBA0081BF32 /* LaunchScreen.storyboard in Resources */,
+				AC3A3BC92B049FBA0081BF32 /* Assets.xcassets in Resources */,
+				AC3A3BC72B049FB90081BF32 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3A3BD02B049FBA0081BF32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3A3BDA2B049FBA0081BF32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC3A3BB82B049FB90081BF32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC3A3BC42B049FB90081BF32 /* ViewController.swift in Sources */,
+				AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */,
+				AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3A3BCE2B049FBA0081BF32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC3A3BD72B049FBA0081BF32 /* HappyMoodBoardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3A3BD82B049FBA0081BF32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC3A3BE12B049FBA0081BF32 /* HappyMoodBoardUITests.swift in Sources */,
+				AC3A3BE32B049FBA0081BF32 /* HappyMoodBoardUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC3A3BD42B049FBA0081BF32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC3A3BBB2B049FB90081BF32 /* HappyMoodBoard */;
+			targetProxy = AC3A3BD32B049FBA0081BF32 /* PBXContainerItemProxy */;
+		};
+		AC3A3BDE2B049FBA0081BF32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC3A3BBB2B049FB90081BF32 /* HappyMoodBoard */;
+			targetProxy = AC3A3BDD2B049FBA0081BF32 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AC3A3BC52B049FB90081BF32 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC3A3BC62B049FB90081BF32 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AC3A3BCA2B049FBA0081BF32 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC3A3BCB2B049FBA0081BF32 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC3A3BE42B049FBA0081BF32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AC3A3BE52B049FBA0081BF32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC3A3BE72B049FBA0081BF32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S3JUP5Z7K9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HappyMoodBoard/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beside.HappyMoodBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AC3A3BE82B049FBA0081BF32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S3JUP5Z7K9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HappyMoodBoard/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beside.HappyMoodBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AC3A3BEA2B049FBA0081BF32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S3JUP5Z7K9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beside.HappyMoodBoardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HappyMoodBoard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HappyMoodBoard";
+			};
+			name = Debug;
+		};
+		AC3A3BEB2B049FBA0081BF32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S3JUP5Z7K9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beside.HappyMoodBoardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HappyMoodBoard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HappyMoodBoard";
+			};
+			name = Release;
+		};
+		AC3A3BED2B049FBA0081BF32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S3JUP5Z7K9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beside.HappyMoodBoardUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HappyMoodBoard;
+			};
+			name = Debug;
+		};
+		AC3A3BEE2B049FBA0081BF32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S3JUP5Z7K9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beside.HappyMoodBoardUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HappyMoodBoard;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC3A3BB72B049FB90081BF32 /* Build configuration list for PBXProject "HappyMoodBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3A3BE42B049FBA0081BF32 /* Debug */,
+				AC3A3BE52B049FBA0081BF32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC3A3BE62B049FBA0081BF32 /* Build configuration list for PBXNativeTarget "HappyMoodBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3A3BE72B049FBA0081BF32 /* Debug */,
+				AC3A3BE82B049FBA0081BF32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC3A3BE92B049FBA0081BF32 /* Build configuration list for PBXNativeTarget "HappyMoodBoardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3A3BEA2B049FBA0081BF32 /* Debug */,
+				AC3A3BEB2B049FBA0081BF32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC3A3BEC2B049FBA0081BF32 /* Build configuration list for PBXNativeTarget "HappyMoodBoardUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3A3BED2B049FBA0081BF32 /* Debug */,
+				AC3A3BEE2B049FBA0081BF32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC3A3BB42B049FB90081BF32 /* Project object */;
+}
