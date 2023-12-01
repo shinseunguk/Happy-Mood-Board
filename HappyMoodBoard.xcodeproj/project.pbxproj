@@ -93,6 +93,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D54D3E72B19B0C20008A5D7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5D54D3E82B19B0C90008A5D7 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		5D54D3EF2B19CCC60008A5D7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				5D54D3EF2B19CCC60008A5D7 /* Common */,
+				5D54D3E72B19B0C20008A5D7 /* Login */,
+				5D54D3E82B19B0C90008A5D7 /* Onboarding */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -460,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */,
+				5D54D3F12B19CCD40008A5D7 /* ViewAttributes.swift in Sources */,
 				AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */,
 				AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */,
 			);
