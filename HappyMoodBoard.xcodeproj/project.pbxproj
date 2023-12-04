@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		54425D4B796EBA4291131BD8 /* Pods_HappyMoodBoardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7E7028B519838157110D33 /* Pods_HappyMoodBoardTests.framework */; };
+		5D54D3F12B19CCD40008A5D7 /* ViewAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D54D3F02B19CCD40008A5D7 /* ViewAttributes.swift */; };
+		5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D54D3F22B19CD4F0008A5D7 /* ViewModel.swift */; };
 		A2F0FA3F2B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
 		A2F0FA402B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
 		A2F0FA412B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
 		AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BBF2B049FB90081BF32 /* AppDelegate.swift */; };
 		AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BC12B049FB90081BF32 /* SceneDelegate.swift */; };
-		AC3A3BC42B049FB90081BF32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BC32B049FB90081BF32 /* ViewController.swift */; };
 		AC3A3BC92B049FBA0081BF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC3A3BC82B049FBA0081BF32 /* Assets.xcassets */; };
 		AC3A3BD72B049FBA0081BF32 /* HappyMoodBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BD62B049FBA0081BF32 /* HappyMoodBoardTests.swift */; };
 		AC3A3BE12B049FBA0081BF32 /* HappyMoodBoardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BE02B049FBA0081BF32 /* HappyMoodBoardUITests.swift */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		186BF015464321EBD2F53053 /* Pods-HappyMoodBoardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.release.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.release.xcconfig"; sourceTree = "<group>"; };
 		4BA4A6BD2A08666D1E7F0BA9 /* Pods-HappyMoodBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5D54D3F02B19CCD40008A5D7 /* ViewAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAttributes.swift; sourceTree = "<group>"; };
+		5D54D3F22B19CD4F0008A5D7 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		770EB42EEC0C5E26690C4DBA /* Pods-HappyMoodBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard/Pods-HappyMoodBoard.debug.xcconfig"; sourceTree = "<group>"; };
 		7DB0036E0DF4880FF188512F /* Pods-HappyMoodBoard-HappyMoodBoardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard-HappyMoodBoardUITests.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard-HappyMoodBoardUITests/Pods-HappyMoodBoard-HappyMoodBoardUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		856C8EB45D34A77850140391 /* Pods_HappyMoodBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,7 +54,6 @@
 		AC3A3BBC2B049FB90081BF32 /* HappyMoodBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyMoodBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3A3BBF2B049FB90081BF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC3A3BC12B049FB90081BF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AC3A3BC32B049FB90081BF32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC3A3BC82B049FBA0081BF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC3A3BCD2B049FBA0081BF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC3A3BD22B049FBA0081BF32 /* HappyMoodBoardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyMoodBoardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +94,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D54D3E72B19B0C20008A5D7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5D54D3E82B19B0C90008A5D7 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		5D54D3EF2B19CCC60008A5D7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5D54D3F02B19CCD40008A5D7 /* ViewAttributes.swift */,
+				5D54D3F22B19CD4F0008A5D7 /* ViewModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		7AD8AC484AFEE6DFF9A6945A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +147,9 @@
 		A24CDD242B064F9100A699E8 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				AC3A3BC32B049FB90081BF32 /* ViewController.swift */,
+				5D54D3EF2B19CCC60008A5D7 /* Common */,
+				5D54D3E72B19B0C20008A5D7 /* Login */,
+				5D54D3E82B19B0C90008A5D7 /* Onboarding */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -156,8 +183,8 @@
 				A2A3D01D2B0BA0960041DCDE /* HappyMoodBoardDebug.entitlements */,
 				AC3A3BCD2B049FBA0081BF32 /* Info.plist */,
 				A24CDD232B064F3D00A699E8 /* AppDelegate */,
-				A24CDD222B064F2F00A699E8 /* Resources */,
 				A24CDD242B064F9100A699E8 /* Presentation */,
+				A24CDD222B064F2F00A699E8 /* Resources */,
 			);
 			path = HappyMoodBoard;
 			sourceTree = "<group>";
@@ -450,7 +477,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC3A3BC42B049FB90081BF32 /* ViewController.swift in Sources */,
+				5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */,
+				5D54D3F12B19CCD40008A5D7 /* ViewAttributes.swift in Sources */,
 				AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */,
 				AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */,
 			);
