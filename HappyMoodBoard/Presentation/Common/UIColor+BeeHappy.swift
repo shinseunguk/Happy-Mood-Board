@@ -42,39 +42,36 @@ public extension UIColor {
 
 public extension UIColor {
     
-    static let Main100: UIColor? = .init(hexString: "#9DC4FF")
-    static let Main200: UIColor? = .init(hexString: "#7BB0FF")
-    static let Main300: UIColor? = .init(hexString: "#599BFF")
-    static let Main400: UIColor? = .init(hexString: "#428DFF")
-    static let Main500: UIColor? = .init(hexString: "#247BFF")
-    static let Main600: UIColor? = .init(hexString: "#0065FF")
-    static let Main700: UIColor? = .init(hexString: "#0057DB")
-    static let Main800: UIColor? = .init(hexString: "#0048B7")
-    static let Main900: UIColor? = .init(hexString: "#003F9F")
-    static let Main950: UIColor? = .init(hexString: "#003079")
+    // MARK: Primary Color
     
-    static let TitleFont100: UIColor? = .init(hexString: "#525252")
-    static let TitleFont200: UIColor? = .init(hexString: "#454545")
-    static let TitleFont300: UIColor? = .init(hexString: "#383838")
-    static let TitleFont400: UIColor? = .init(hexString: "#2B2B2B")
-    static let TitleFont500: UIColor? = .init(hexString: "#1F1F1F")
-    static let TitleFont600: UIColor? = .init(hexString: "#111111")
-    static let TitleFont700: UIColor? = .init(hexString: "#000000")
+    static let primary100: UIColor? = .init(hexString: "#FCF6E4")
+    static let primary200: UIColor? = .init(hexString: "#FCE9BF")
+    static let primary300: UIColor? = .init(hexString: "#FDDF9F")
+    static let primary400: UIColor? = .init(hexString: "#FED47C")
+    static let primary500: UIColor? = .init(hexString: "#FFCE53")
+    static let primary600: UIColor? = .init(hexString: "#F4C362")
+    static let primary700: UIColor? = .init(hexString: "#EABF6E")
+    static let primary800: UIColor? = .init(hexString: "#DFBC79")
+    static let primary900: UIColor? = .init(hexString: "#D9BF8E")
     
-    static let BodyFont1: UIColor? = .init(hexString: "#616161")
-    static let BodyFont2: UIColor? = .init(hexString: "#9A9A9A")
-    static let BodyFont3: UIColor? = .init(hexString: "#B5B5B5")
+    // MARK: Gray Scale
     
-    static let Line1: UIColor? = .init(hexString: "#AEB4A4")
-    static let Line2: UIColor? = .init(hexString: "#BFC3B8")
-    static let Line3: UIColor? = .init(hexString: "#DADDD6")
+    static let gray100: UIColor? = .init(hexString: "#F9F8F5")
+    static let gray200: UIColor? = .init(hexString: "#E8E6E1")
+    static let gray300: UIColor? = .init(hexString: "#D3D0CA")
+    static let gray400: UIColor? = .init(hexString: "#BEBCB9")
+    static let gray500: UIColor? = .init(hexString: "#8B8B8B")
+    static let gray600: UIColor? = .init(hexString: "#6F6F6F")
+    static let gray700: UIColor? = .init(hexString: "#555555")
+    static let gray800: UIColor? = .init(hexString: "#3D3D3D")
+    static let gray900: UIColor? = .init(hexString: "#242424")
     
-    static let BG1: UIColor? = .init(hexString: "#EEF1EA")
-    static let BG2: UIColor? = .init(hexString: "#F4F6F1")
-    static let BG3: UIColor? = .init(hexString: "#F8F9F5")
-    static let BG4: UIColor? = .init(hexString: "#FBFDFA")
-    static let Disabled: UIColor? = .init(hexString: "#DEE3D7")
- 
-    static let background: UIColor? = .init(hexString: "#FCF6E4")
+    // MARK: Accent Color
+    
+    static let accent100: UIColor? = .init(hexString: "#FF5D5D")
+    static let accent200: UIColor? = .init(hexString: "#A9CEEF")
+    static let accent300: UIColor? = .init(hexString: "#FFC895")
+    static let accent400: UIColor? = .init(hexString: "#BBDE98")
+    static let accent500: UIColor? = .init(hexString: "#E9CAE6")
     
 }

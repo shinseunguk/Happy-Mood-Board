@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		54425D4B796EBA4291131BD8 /* Pods_HappyMoodBoardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D7E7028B519838157110D33 /* Pods_HappyMoodBoardTests.framework */; };
 		5D4977B32B327E4D00059120 /* UIViewController+backgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */; };
+		5D4978812B32F26700059120 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4978802B32F26600059120 /* TabBarController.swift */; };
+		5D4978832B32F27300059120 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4978822B32F27300059120 /* HomeViewController.swift */; };
+		5D4978852B32F36500059120 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4978842B32F36500059120 /* RegisterViewController.swift */; };
+		5D4978872B32F36D00059120 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4978862B32F36D00059120 /* ListViewController.swift */; };
 		5D54D3F12B19CCD40008A5D7 /* ViewAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D54D3F02B19CCD40008A5D7 /* ViewAttributes.swift */; };
 		5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D54D3F22B19CD4F0008A5D7 /* ViewModel.swift */; };
 		5D7252762B21ADD100CF6688 /* AgreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7252752B21ADD100CF6688 /* AgreeViewModel.swift */; };
@@ -25,6 +29,7 @@
 		5D72528A2B231CE300CF6688 /* UIColor+BeeHappy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7252892B231CE300CF6688 /* UIColor+BeeHappy.swift */; };
 		5DB28DEC2B2AD0CD00C4E594 /* EnterNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB28DEB2B2AD0CD00C4E594 /* EnterNicknameViewController.swift */; };
 		5DB28DF02B2AF9DD00C4E594 /* EnterNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB28DEF2B2AF9DD00C4E594 /* EnterNicknameViewModel.swift */; };
+		5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF686022B35151700479D54 /* HomeViewModel.swift */; };
 		A2F0FA3F2B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
 		A2F0FA402B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
 		A2F0FA412B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
@@ -59,6 +64,10 @@
 		186BF015464321EBD2F53053 /* Pods-HappyMoodBoardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.release.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.release.xcconfig"; sourceTree = "<group>"; };
 		4BA4A6BD2A08666D1E7F0BA9 /* Pods-HappyMoodBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+backgroundColor.swift"; sourceTree = "<group>"; };
+		5D4978802B32F26600059120 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5D4978822B32F27300059120 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5D4978842B32F36500059120 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		5D4978862B32F36D00059120 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5D54D3F02B19CCD40008A5D7 /* ViewAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAttributes.swift; sourceTree = "<group>"; };
 		5D54D3F22B19CD4F0008A5D7 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		5D7252752B21ADD100CF6688 /* AgreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeViewModel.swift; sourceTree = "<group>"; };
@@ -71,6 +80,7 @@
 		5D7252892B231CE300CF6688 /* UIColor+BeeHappy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+BeeHappy.swift"; sourceTree = "<group>"; };
 		5DB28DEB2B2AD0CD00C4E594 /* EnterNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNicknameViewController.swift; sourceTree = "<group>"; };
 		5DB28DEF2B2AF9DD00C4E594 /* EnterNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNicknameViewModel.swift; sourceTree = "<group>"; };
+		5DF686022B35151700479D54 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		770EB42EEC0C5E26690C4DBA /* Pods-HappyMoodBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard/Pods-HappyMoodBoard.debug.xcconfig"; sourceTree = "<group>"; };
 		7DB0036E0DF4880FF188512F /* Pods-HappyMoodBoard-HappyMoodBoardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard-HappyMoodBoardUITests.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard-HappyMoodBoardUITests/Pods-HappyMoodBoard-HappyMoodBoardUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		856C8EB45D34A77850140391 /* Pods_HappyMoodBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +129,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D49787F2B32F23300059120 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				5D4978802B32F26600059120 /* TabBarController.swift */,
+				5D4978822B32F27300059120 /* HomeViewController.swift */,
+				5DF686022B35151700479D54 /* HomeViewModel.swift */,
+				5D4978842B32F36500059120 /* RegisterViewController.swift */,
+				5D4978862B32F36D00059120 /* ListViewController.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		5D54D3E72B19B0C20008A5D7 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +216,7 @@
 				5D54D3EF2B19CCC60008A5D7 /* Common */,
 				5D54D3E72B19B0C20008A5D7 /* Login */,
 				5D54D3E82B19B0C90008A5D7 /* Onboarding */,
+				5D49787F2B32F23300059120 /* Tab */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -526,10 +549,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */,
 				5DB28DEC2B2AD0CD00C4E594 /* EnterNicknameViewController.swift in Sources */,
+				5D4978812B32F26700059120 /* TabBarController.swift in Sources */,
 				5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */,
 				5D7252782B21ADE000CF6688 /* AgreeViewController.swift in Sources */,
 				5D7252872B21BEC100CF6688 /* CheckboxButton.swift in Sources */,
+				5D4978832B32F27300059120 /* HomeViewController.swift in Sources */,
+				5D4978852B32F36500059120 /* RegisterViewController.swift in Sources */,
 				5D4977B32B327E4D00059120 /* UIViewController+backgroundColor.swift in Sources */,
 				5DB28DF02B2AF9DD00C4E594 /* EnterNicknameViewModel.swift in Sources */,
 				5D7252762B21ADD100CF6688 /* AgreeViewModel.swift in Sources */,
@@ -537,6 +564,7 @@
 				AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */,
 				5D72528A2B231CE300CF6688 /* UIColor+BeeHappy.swift in Sources */,
 				AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */,
+				5D4978872B32F36D00059120 /* ListViewController.swift in Sources */,
 				5D7252842B21BE8300CF6688 /* AgreeType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

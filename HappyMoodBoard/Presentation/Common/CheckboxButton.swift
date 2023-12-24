@@ -15,7 +15,7 @@ final class CheckboxButton: UIButton {
     init() {
         super.init(frame: .zero)
         var configuration = UIButton.Configuration.gray()
-        configuration.baseForegroundColor = .label
+        configuration.baseForegroundColor = .gray900
         configuration.baseBackgroundColor = .clear
         self.configuration = configuration
         self.setImage(UIImage(named: "circle"), for: .init())
@@ -53,9 +53,9 @@ final class AgreeCheckboxButton: UIView {
     
     private let optionLabel = UILabel().then {
         $0.font = UIFont(name: "Pretendard-Regular", size: 14)
-        $0.textColor = .init(hexString: "#FF5D5D")
+        $0.textColor = .accent100
         $0.textAlignment = .center
-        $0.backgroundColor = .init(hexString: "#FFDF7C")
+        $0.backgroundColor = .primary300
         $0.layer.cornerRadius = 4
         $0.layer.masksToBounds = true
         $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -64,7 +64,7 @@ final class AgreeCheckboxButton: UIView {
 
     private let titleLabel = UILabel().then {
         $0.font = UIFont(name: "Pretendard-Regular", size: 16)
-        $0.textColor = .init(hexString: "#242424")
+        $0.textColor = .gray900
         $0.textAlignment = .left
         $0.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }

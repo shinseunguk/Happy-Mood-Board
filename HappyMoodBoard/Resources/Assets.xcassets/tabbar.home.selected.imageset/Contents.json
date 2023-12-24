@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "checkmark.circle.png",
+      "filename" : "tabbar.home.selected.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "checkmark.circle@2x.png",
+      "filename" : "tabbar.home.selected@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "checkmark.circle@3x.png",
+      "filename" : "tabbar.home.selected@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

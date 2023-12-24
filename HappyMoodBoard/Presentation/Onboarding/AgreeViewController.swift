@@ -17,23 +17,23 @@ final class AgreeViewController: UIViewController {
 
     private let pageOneLabel = UILabel().then {
         $0.text = "1"
-        $0.textColor = .init(hexString: "#242424")
+        $0.textColor = .gray900
         $0.textAlignment = .center
         $0.font = UIFont(name: "Pretendard-Medium", size: 12)
         $0.layer.cornerRadius = 10
-        $0.layer.backgroundColor = UIColor(hexString: "#FFDF7C")?.cgColor
+        $0.layer.backgroundColor = UIColor.primary400?.cgColor
     }
 
     private let pageTwoLabel = UILabel().then {
         $0.text = "2"
-        $0.textColor = .init(hexString: "#AEAEAE")
+        $0.textColor = .gray400
         $0.textAlignment = .center
         $0.font = UIFont(name: "Pretendard-Medium", size: 12)
         $0.layer.cornerRadius = 10
     }
     
     private let titleLabel = UILabel().then {
-        $0.textColor = .label
+        $0.textColor = .gray900
         $0.font = UIFont(name: "Pretendard-Bold", size: 24)
         $0.numberOfLines = 0
         $0.text = "회원가입을 위해\n약관에 동의해 주세요."
@@ -49,7 +49,7 @@ final class AgreeViewController: UIViewController {
     private let allOptionsButton = AgreeCheckboxButton(type: .all)
     
     private let dividerView = UIView().then {
-        $0.backgroundColor = .init(hexString: "#DFDFDF")
+        $0.backgroundColor = .gray200
     }
     
     private let ageButton = AgreeCheckboxButton(type: .ageRequirements)
@@ -61,10 +61,10 @@ final class AgreeViewController: UIViewController {
         $0.configurationUpdateHandler = { button in
             var container = AttributeContainer()
             container.font = UIFont(name: "Pretendard-Bold", size: 16)
-            container.foregroundColor = button.isEnabled ? .init(hexString: "#555555") : .init(hexString: "#888888")
+            container.foregroundColor = button.isEnabled ? .gray900 : .gray400
             var configuration = UIButton.Configuration.filled()
             configuration.cornerStyle = .capsule
-            configuration.background.backgroundColor = button.isEnabled ? .init(hexString: "#FFCE53") : .init(hexString: "#DFDFDF")
+            configuration.background.backgroundColor = button.isEnabled ? .primary500 : .gray200
             configuration.attributedTitle = AttributedString("다음", attributes: container)
             button.configuration = configuration
         }
@@ -142,7 +142,7 @@ extension AgreeViewController: ViewAttributes {
         
         nextButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalToSuperview().offset(-60)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-26)
             make.height.equalTo(52)
         }
     }

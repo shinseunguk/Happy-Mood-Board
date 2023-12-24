@@ -10,7 +10,7 @@ import UIKit
 extension UIViewController {
     
     func setCommonBackgroundColor() {
-        view.backgroundColor = .background
+        view.backgroundColor = .primary100
     }
     
 }
