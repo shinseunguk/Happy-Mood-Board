@@ -66,6 +66,9 @@ public extension UIColor {
     static let gray800: UIColor? = .init(hexString: "#3D3D3D")
     static let gray900: UIColor? = .init(hexString: "#242424")
     
+    // MARK: Yellow Color
+    static let yellow100: UIColor? = .init(hexString: "#FAE100")
+    
     // MARK: Accent Color
     
     static let accent100: UIColor? = .init(hexString: "#FF5D5D")

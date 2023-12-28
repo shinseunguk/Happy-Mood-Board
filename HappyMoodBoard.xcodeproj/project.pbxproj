@@ -28,7 +28,20 @@
 		5D72528A2B231CE300CF6688 /* UIColor+BeeHappy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7252892B231CE300CF6688 /* UIColor+BeeHappy.swift */; };
 		5DB28DEC2B2AD0CD00C4E594 /* EnterNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB28DEB2B2AD0CD00C4E594 /* EnterNicknameViewController.swift */; };
 		5DB28DF02B2AF9DD00C4E594 /* EnterNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB28DEF2B2AF9DD00C4E594 /* EnterNicknameViewModel.swift */; };
+		5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF686022B35151700479D54 /* HomeViewModel.swift */; };
 		676E999C798E7795F8DED6EC /* Pods_HappyMoodBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E437ECCF20FBB94EF85D6F /* Pods_HappyMoodBoard.framework */; };
+		A2D4CBBA2B3D8C730066E89D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */; };
+		A2D4CBBB2B3D8C730066E89D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */; };
+		A2D4CBBC2B3D8C730066E89D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */; };
+		A2D4CBBE2B3D8E0D0066E89D /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */; };
+		A2D4CBBF2B3D8E0D0066E89D /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */; };
+		A2D4CBC02B3D8E0D0066E89D /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */; };
+		A2D4CBC22B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
+		A2D4CBC32B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
+		A2D4CBC42B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
+		A2D4CBC62B3D9A200066E89D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */; };
+		A2D4CBC72B3D9A200066E89D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */; };
+		A2D4CBC82B3D9A200066E89D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */; };
 		A2DFB7DA2B37C37C008B95AC /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB7D92B37C37C008B95AC /* SettingType.swift */; };
 		A2DFB7DB2B37C37C008B95AC /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB7D92B37C37C008B95AC /* SettingType.swift */; };
 		A2DFB7DC2B37C37C008B95AC /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB7D92B37C37C008B95AC /* SettingType.swift */; };
@@ -57,7 +70,6 @@
 		A2DFB8052B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB8042B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift */; };
 		A2DFB8062B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB8042B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift */; };
 		A2DFB8072B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB8042B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift */; };
-		5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF686022B35151700479D54 /* HomeViewModel.swift */; };
 		A2F0FA3F2B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
 		A2F0FA402B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
 		A2F0FA412B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
@@ -119,9 +131,15 @@
 		5D7252892B231CE300CF6688 /* UIColor+BeeHappy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+BeeHappy.swift"; sourceTree = "<group>"; };
 		5DB28DEB2B2AD0CD00C4E594 /* EnterNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNicknameViewController.swift; sourceTree = "<group>"; };
 		5DB28DEF2B2AF9DD00C4E594 /* EnterNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNicknameViewModel.swift; sourceTree = "<group>"; };
+		5DF686022B35151700479D54 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6575D7DDF37C8F4547644BF0 /* Pods-HappyMoodBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7AD9B74EF4837EEE55C75F63 /* Pods_HappyMoodBoardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		928F15A5095CBB78C4957AD4 /* Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard-HappyMoodBoardUITests/Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A2A3D01D2B0BA0960041DCDE /* HappyMoodBoardDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HappyMoodBoardDebug.entitlements; sourceTree = "<group>"; };
+		A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = HappyMoodBoard/Presentation/Setting/SettingOpenSourceLicense/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginType.swift; path = HappyMoodBoard/Presentation/Setting/SettingOpenSourceLicense/LoginType.swift; sourceTree = SOURCE_ROOT; };
+		A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
+		A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = HappyMoodBoard/Presentation/Common/UI/UIButton/LoginViewModel.swift; sourceTree = SOURCE_ROOT; };
 		A2DFB7D92B37C37C008B95AC /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		A2DFB7DE2B383150008B95AC /* SettingIndexButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIndexButton.swift; sourceTree = "<group>"; };
 		A2DFB7E32B392A71008B95AC /* VersionInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoButton.swift; sourceTree = "<group>"; };
@@ -132,12 +150,6 @@
 		A2DFB7FB2B39B4F7008B95AC /* SettingWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWebViewController.swift; sourceTree = "<group>"; };
 		A2DFB7FF2B39C4C1008B95AC /* UIViewController+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		A2DFB8042B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOpenSourceLicenseViewController.swift; sourceTree = "<group>"; };
-		5DF686022B35151700479D54 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		770EB42EEC0C5E26690C4DBA /* Pods-HappyMoodBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard/Pods-HappyMoodBoard.debug.xcconfig"; sourceTree = "<group>"; };
-		7DB0036E0DF4880FF188512F /* Pods-HappyMoodBoard-HappyMoodBoardUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard-HappyMoodBoardUITests.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard-HappyMoodBoardUITests/Pods-HappyMoodBoard-HappyMoodBoardUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		856C8EB45D34A77850140391 /* Pods_HappyMoodBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D7E7028B519838157110D33 /* Pods_HappyMoodBoardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2A3D01D2B0BA0960041DCDE /* HappyMoodBoardDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HappyMoodBoardDebug.entitlements; sourceTree = "<group>"; };
 		A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A6E437ECCF20FBB94EF85D6F /* Pods_HappyMoodBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3A3BBC2B049FB90081BF32 /* HappyMoodBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyMoodBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +211,9 @@
 		5D54D3E72B19B0C20008A5D7 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */,
+				A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */,
+				A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -386,6 +401,7 @@
 				5D7252862B21BEC100CF6688 /* CheckboxButton.swift */,
 				A2DFB7DE2B383150008B95AC /* SettingIndexButton.swift */,
 				A2DFB7E32B392A71008B95AC /* VersionInfoButton.swift */,
+				A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */,
 			);
 			path = UIButton;
 			sourceTree = "<group>";
@@ -727,15 +743,19 @@
 				5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */,
 				5DB28DEC2B2AD0CD00C4E594 /* EnterNicknameViewController.swift in Sources */,
 				5D4978812B32F26700059120 /* TabBarController.swift in Sources */,
+				A2D4CBBE2B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */,
 				A2DFB7DF2B383150008B95AC /* SettingIndexButton.swift in Sources */,
 				5D7252782B21ADE000CF6688 /* AgreeViewController.swift in Sources */,
 				AC9E33BF2B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */,
+				A2D4CBC62B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				5D7252872B21BEC100CF6688 /* CheckboxButton.swift in Sources */,
 				A2DFB8002B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
 				A2DFB8052B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
 				A2DFB7E42B392A71008B95AC /* VersionInfoButton.swift in Sources */,
+				A2D4CBBA2B3D8C730066E89D /* LoginViewController.swift in Sources */,
 				5D4978832B32F27300059120 /* HomeViewController.swift in Sources */,
+				A2D4CBC22B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */,
 				5D4978852B32F36500059120 /* RegisterViewController.swift in Sources */,
 				5D4977B32B327E4D00059120 /* UIViewController+backgroundColor.swift in Sources */,
 				5DB28DF02B2AF9DD00C4E594 /* EnterNicknameViewModel.swift in Sources */,
@@ -759,7 +779,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2D4CBBB2B3D8C730066E89D /* LoginViewController.swift in Sources */,
 				AC3A3BD72B049FBA0081BF32 /* HappyMoodBoardTests.swift in Sources */,
+				A2D4CBC32B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */,
 				A2DFB7DB2B37C37C008B95AC /* SettingType.swift in Sources */,
 				A2DFB7E52B392A71008B95AC /* VersionInfoButton.swift in Sources */,
 				A2DFB7EE2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
@@ -767,7 +789,9 @@
 				A2DFB7EA2B392E4B008B95AC /* Version.swift in Sources */,
 				A2DFB7F82B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
 				A2DFB7F32B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
+				A2D4CBC72B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				A2DFB8012B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
+				A2D4CBBF2B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				A2DFB8062B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
 				A2DFB7FD2B39B4F7008B95AC /* SettingWebViewController.swift in Sources */,
 				AC9E33D22B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */,
@@ -780,6 +804,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2DFB7E62B392A71008B95AC /* VersionInfoButton.swift in Sources */,
+				A2D4CBC02B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				A2DFB7EB2B392E4B008B95AC /* Version.swift in Sources */,
 				A2DFB7DC2B37C37C008B95AC /* SettingType.swift in Sources */,
 				5D7252852B21BE8300CF6688 /* AgreeType.swift in Sources */,
@@ -791,8 +816,11 @@
 				A2DFB8072B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
 				AC3A3BE12B049FBA0081BF32 /* HappyMoodBoardUITests.swift in Sources */,
 				AC3A3BE32B049FBA0081BF32 /* HappyMoodBoardUITestsLaunchTests.swift in Sources */,
+				A2D4CBBC2B3D8C730066E89D /* LoginViewController.swift in Sources */,
 				AC9E33D32B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */,
 				A2DFB7F92B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
+				A2D4CBC42B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */,
+				A2D4CBC82B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				AC9E33C12B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
