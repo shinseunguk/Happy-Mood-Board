@@ -8,8 +8,8 @@
 import Foundation
 
 public protocol ViewModel {
-    typealias Input
-    typealias Output
+    associatedtype Input
+    associatedtype Output
     
     func transform(input: Input) -> Output
 }
