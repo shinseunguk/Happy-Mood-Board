@@ -12,6 +12,8 @@ target 'HappyMoodBoard' do
   pod 'SwiftLint'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxGesture'
+  pod 'RxViewController'
   pod 'RxKeyboard'
 
   target 'HappyMoodBoardTests' do

@@ -13,6 +13,8 @@ import RxCocoa
 final class SettingIndexViewModel: ViewModel {
     
     struct Input {
+        let checkNotification: Observable<Void>
+        let navigationBack: ControlEvent<Void>
         let mySettings: Observable<Void>
         let notificationSettings: Observable<Void>
         let termsOfService: Observable<Void>
@@ -25,6 +27,8 @@ final class SettingIndexViewModel: ViewModel {
     }
     
     struct Output {
+        let checkNotification: Observable<Bool>
+        let navigationBack: Observable<Void>
         let mySettings: Observable<Void>
         let notificationSettings: Observable<Void>
         let termsOfService: Observable<Void>
@@ -36,9 +40,19 @@ final class SettingIndexViewModel: ViewModel {
         let withdrawMembership: Observable<Void>
     }
     
+    let disposeBag: DisposeBag = .init()
+    
     func transform(input: Input) -> Output {
         
+        let pushNotification = input.checkNotification
+            .flatMap { _ in
+                return self.isSystemNotificationEnabled()
+            }
+        
+        
         return Output(
+            checkNotification: pushNotification,
+            navigationBack: input.navigationBack.asObservable(),
             mySettings: input.mySettings,
             notificationSettings: input.notificationSettings,
             termsOfService: input.termsOfService,
@@ -49,5 +63,23 @@ final class SettingIndexViewModel: ViewModel {
             logout: input.logout,
             withdrawMembership: input.withdrawMembership
         )
+    }
+    
+    func isSystemNotificationEnabled() -> Observable<Bool> {
+        return Observable.create { observer in
+            let center = NotificationCenter.default
+            let notificationObserver = center.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: nil) { _ in
+                let isEnabled = UIApplication.shared.currentUserNotificationSettings?.types != []
+                observer.onNext(isEnabled)
+            }
+
+            // Initial check for notification status
+            let isEnabled = UIApplication.shared.currentUserNotificationSettings?.types != []
+            observer.onNext(isEnabled)
+
+            return Disposables.create {
+                center.removeObserver(notificationObserver)
+            }
+        }
     }
 }

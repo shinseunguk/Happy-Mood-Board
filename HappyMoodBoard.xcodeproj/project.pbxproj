@@ -52,6 +52,45 @@
 		5DB686702B4E68EA0027ABAB /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB6866F2B4E68EA0027ABAB /* UIViewController+Rx.swift */; };
 		5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF686022B35151700479D54 /* HomeViewModel.swift */; };
 		676E999C798E7795F8DED6EC /* Pods_HappyMoodBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E437ECCF20FBB94EF85D6F /* Pods_HappyMoodBoard.framework */; };
+		A28402D22B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
+		A28402D32B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
+		A28402D42B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
+		A28402D62B458AB3007C0A0D /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D52B458AB3007C0A0D /* AccountView.swift */; };
+		A28402D72B458AB3007C0A0D /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D52B458AB3007C0A0D /* AccountView.swift */; };
+		A28402D82B458AB3007C0A0D /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D52B458AB3007C0A0D /* AccountView.swift */; };
+		A28402DB2B45952F007C0A0D /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402DA2B45952F007C0A0D /* CustomLabel.swift */; };
+		A28402DC2B45952F007C0A0D /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402DA2B45952F007C0A0D /* CustomLabel.swift */; };
+		A28402DD2B45952F007C0A0D /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402DA2B45952F007C0A0D /* CustomLabel.swift */; };
+		A28402DF2B459DBE007C0A0D /* SettingMyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402DE2B459DBE007C0A0D /* SettingMyAccountViewModel.swift */; };
+		A28402E02B459DBE007C0A0D /* SettingMyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402DE2B459DBE007C0A0D /* SettingMyAccountViewModel.swift */; };
+		A28402E12B459DBE007C0A0D /* SettingMyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402DE2B459DBE007C0A0D /* SettingMyAccountViewModel.swift */; };
+		A28402E42B45A4A0007C0A0D /* ModifyNickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402E32B45A4A0007C0A0D /* ModifyNickNameViewController.swift */; };
+		A28402E52B45A4A0007C0A0D /* ModifyNickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402E32B45A4A0007C0A0D /* ModifyNickNameViewController.swift */; };
+		A28402E62B45A4A0007C0A0D /* ModifyNickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402E32B45A4A0007C0A0D /* ModifyNickNameViewController.swift */; };
+		A28402E82B45A79F007C0A0D /* ModifyNickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402E72B45A79F007C0A0D /* ModifyNickNameViewModel.swift */; };
+		A28402E92B45A79F007C0A0D /* ModifyNickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402E72B45A79F007C0A0D /* ModifyNickNameViewModel.swift */; };
+		A28402EA2B45A79F007C0A0D /* ModifyNickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402E72B45A79F007C0A0D /* ModifyNickNameViewModel.swift */; };
+		A2C8867A2B496ED1008E5437 /* TitleToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886792B496ED1008E5437 /* TitleToggleView.swift */; };
+		A2C8867B2B496ED1008E5437 /* TitleToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886792B496ED1008E5437 /* TitleToggleView.swift */; };
+		A2C8867C2B496ED1008E5437 /* TitleToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886792B496ED1008E5437 /* TitleToggleView.swift */; };
+		A2C8867E2B49700F008E5437 /* SettingNotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8867D2B49700F008E5437 /* SettingNotificationType.swift */; };
+		A2C8867F2B49700F008E5437 /* SettingNotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8867D2B49700F008E5437 /* SettingNotificationType.swift */; };
+		A2C886802B49700F008E5437 /* SettingNotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8867D2B49700F008E5437 /* SettingNotificationType.swift */; };
+		A2C886822B4977E1008E5437 /* TitleTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886812B4977E1008E5437 /* TitleTimeView.swift */; };
+		A2C886832B4977E1008E5437 /* TitleTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886812B4977E1008E5437 /* TitleTimeView.swift */; };
+		A2C886842B4977E1008E5437 /* TitleTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886812B4977E1008E5437 /* TitleTimeView.swift */; };
+		A2C886862B497C70008E5437 /* TitleDayOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886852B497C70008E5437 /* TitleDayOfWeekView.swift */; };
+		A2C886872B497C70008E5437 /* TitleDayOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886852B497C70008E5437 /* TitleDayOfWeekView.swift */; };
+		A2C886882B497C70008E5437 /* TitleDayOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886852B497C70008E5437 /* TitleDayOfWeekView.swift */; };
+		A2C8868A2B497D14008E5437 /* PushNotificationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886892B497D14008E5437 /* PushNotificationButton.swift */; };
+		A2C8868B2B497D14008E5437 /* PushNotificationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886892B497D14008E5437 /* PushNotificationButton.swift */; };
+		A2C8868C2B497D14008E5437 /* PushNotificationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886892B497D14008E5437 /* PushNotificationButton.swift */; };
+		A2C8868E2B497D93008E5437 /* DayOfTheWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8868D2B497D93008E5437 /* DayOfTheWeek.swift */; };
+		A2C8868F2B497D93008E5437 /* DayOfTheWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8868D2B497D93008E5437 /* DayOfTheWeek.swift */; };
+		A2C886902B497D93008E5437 /* DayOfTheWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8868D2B497D93008E5437 /* DayOfTheWeek.swift */; };
+		A2D0F9232B500B8C003BE282 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D0F9222B500B8C003BE282 /* PopUpViewController.swift */; };
+		A2D0F9242B500B8C003BE282 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D0F9222B500B8C003BE282 /* PopUpViewController.swift */; };
+		A2D0F9252B500B8C003BE282 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D0F9222B500B8C003BE282 /* PopUpViewController.swift */; };
 		A2D4CBC22B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
 		A2D4CBC32B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
 		A2D4CBC42B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
@@ -100,6 +139,18 @@
 		A2F0FA3F2B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
 		A2F0FA402B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
 		A2F0FA412B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
+		AC185D002B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
+		AC185D012B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
+		AC185D022B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
+		AC185D042B479581007304CE /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D032B479581007304CE /* HalfModalPresentationController.swift */; };
+		AC185D052B479581007304CE /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D032B479581007304CE /* HalfModalPresentationController.swift */; };
+		AC185D062B479581007304CE /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D032B479581007304CE /* HalfModalPresentationController.swift */; };
+		AC185D082B4795E3007304CE /* NotificationModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D072B4795E3007304CE /* NotificationModalViewController.swift */; };
+		AC185D092B4795E3007304CE /* NotificationModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D072B4795E3007304CE /* NotificationModalViewController.swift */; };
+		AC185D0A2B4795E3007304CE /* NotificationModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D072B4795E3007304CE /* NotificationModalViewController.swift */; };
+		AC185D0E2B47AD58007304CE /* NotificationModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D0D2B47AD58007304CE /* NotificationModalViewModel.swift */; };
+		AC185D0F2B47AD58007304CE /* NotificationModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D0D2B47AD58007304CE /* NotificationModalViewModel.swift */; };
+		AC185D102B47AD58007304CE /* NotificationModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D0D2B47AD58007304CE /* NotificationModalViewModel.swift */; };
 		AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BBF2B049FB90081BF32 /* AppDelegate.swift */; };
 		AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BC12B049FB90081BF32 /* SceneDelegate.swift */; };
 		AC3A3BC92B049FBA0081BF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC3A3BC82B049FBA0081BF32 /* Assets.xcassets */; };
@@ -184,6 +235,20 @@
 		6575D7DDF37C8F4547644BF0 /* Pods-HappyMoodBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7AD9B74EF4837EEE55C75F63 /* Pods_HappyMoodBoardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		928F15A5095CBB78C4957AD4 /* Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard-HappyMoodBoardUITests/Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A28402D12B4589B0007C0A0D /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
+		A28402D52B458AB3007C0A0D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		A28402DA2B45952F007C0A0D /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		A28402DE2B459DBE007C0A0D /* SettingMyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMyAccountViewModel.swift; sourceTree = "<group>"; };
+		A28402E32B45A4A0007C0A0D /* ModifyNickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNickNameViewController.swift; sourceTree = "<group>"; };
+		A28402E72B45A79F007C0A0D /* ModifyNickNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNickNameViewModel.swift; sourceTree = "<group>"; };
+		A2A3D01D2B0BA0960041DCDE /* HappyMoodBoardDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HappyMoodBoardDebug.entitlements; sourceTree = "<group>"; };
+		A2C886792B496ED1008E5437 /* TitleToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleToggleView.swift; sourceTree = "<group>"; };
+		A2C8867D2B49700F008E5437 /* SettingNotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationType.swift; sourceTree = "<group>"; };
+		A2C886812B4977E1008E5437 /* TitleTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTimeView.swift; sourceTree = "<group>"; };
+		A2C886852B497C70008E5437 /* TitleDayOfWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDayOfWeekView.swift; sourceTree = "<group>"; };
+		A2C886892B497D14008E5437 /* PushNotificationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationButton.swift; sourceTree = "<group>"; };
+		A2C8868D2B497D93008E5437 /* DayOfTheWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfTheWeek.swift; sourceTree = "<group>"; };
+		A2D0F9222B500B8C003BE282 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
 		A2A3D01D2B0BA0960041DCDE /* HappyMoodBoardDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HappyMoodBoardDebug.entitlements; sourceTree = "<group>"; };
 		A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = HappyMoodBoard/Presentation/Setting/SettingOpenSourceLicense/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -202,6 +267,10 @@
 		A2DFB8042B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOpenSourceLicenseViewController.swift; sourceTree = "<group>"; };
 		A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A6E437ECCF20FBB94EF85D6F /* Pods_HappyMoodBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationViewModel.swift; sourceTree = "<group>"; };
+		AC185D032B479581007304CE /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
+		AC185D072B4795E3007304CE /* NotificationModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModalViewController.swift; sourceTree = "<group>"; };
+		AC185D0D2B47AD58007304CE /* NotificationModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModalViewModel.swift; sourceTree = "<group>"; };
 		AC3A3BBC2B049FB90081BF32 /* HappyMoodBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyMoodBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3A3BBF2B049FB90081BF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC3A3BC12B049FB90081BF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -407,10 +476,36 @@
 			children = (
 				5D54D3EF2B19CCC60008A5D7 /* Common */,
 				5D54D3E82B19B0C90008A5D7 /* Onboarding */,
+				5D54D3E72B19B0C20008A5D7 /* Login */,
 				AC9E33BD2B35483700B0D9AE /* Setting */,
 				5D49787F2B32F23300059120 /* Tab */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A28402D92B459526007C0A0D /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				A28402DA2B45952F007C0A0D /* CustomLabel.swift */,
+			);
+			path = UILabel;
+			sourceTree = "<group>";
+		};
+		A28402E22B45A48C007C0A0D /* ModifyNickName */ = {
+			isa = PBXGroup;
+			children = (
+				A28402E32B45A4A0007C0A0D /* ModifyNickNameViewController.swift */,
+				A28402E72B45A79F007C0A0D /* ModifyNickNameViewModel.swift */,
+			);
+			path = ModifyNickName;
+			sourceTree = "<group>";
+		};
+		A2D0F9212B500B7F003BE282 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A2D0F9222B500B8C003BE282 /* PopUpViewController.swift */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 		A2DFB7E22B3926F9008B95AC /* SettingIndex */ = {
@@ -434,6 +529,9 @@
 		A2DFB7F02B3935C8008B95AC /* SettingMyAccount */ = {
 			isa = PBXGroup;
 			children = (
+				A28402D12B4589B0007C0A0D /* MyAccount.swift */,
+				A2DFB7F12B3935E1008B95AC /* SettingMyAccountViewController.swift */,
+				A28402DE2B459DBE007C0A0D /* SettingMyAccountViewModel.swift */,
 				A2DFB7F12B3935E1008B95AC /* SettingMyAccountViewController.swift */,
 			);
 			path = SettingMyAccount;
@@ -442,6 +540,11 @@
 		A2DFB7F52B39380B008B95AC /* SettingNotification */ = {
 			isa = PBXGroup;
 			children = (
+				AC185D0B2B47AD1D007304CE /* Modal */,
+				A2C8868D2B497D93008E5437 /* DayOfTheWeek.swift */,
+				A2C8867D2B49700F008E5437 /* SettingNotificationType.swift */,
+				A2DFB7F62B393873008B95AC /* SettingNotificationViewController.swift */,
+				AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */,
 				A2DFB7F62B393873008B95AC /* SettingNotificationViewController.swift */,
 			);
 			path = SettingNotification;
@@ -461,6 +564,23 @@
 				A2DFB8042B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift */,
 			);
 			path = SettingOpenSourceLicense;
+			sourceTree = "<group>";
+		};
+		AC185D0B2B47AD1D007304CE /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				AC185D072B4795E3007304CE /* NotificationModalViewController.swift */,
+				AC185D0D2B47AD58007304CE /* NotificationModalViewModel.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		AC185D0C2B47AD2E007304CE /* UIPresentationController */ = {
+			isa = PBXGroup;
+			children = (
+				AC185D032B479581007304CE /* HalfModalPresentationController.swift */,
+			);
+			path = UIPresentationController;
 			sourceTree = "<group>";
 		};
 		AC3A3BB32B049FB90081BF32 = {
@@ -519,6 +639,7 @@
 		AC9E33BD2B35483700B0D9AE /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				A28402E22B45A48C007C0A0D /* ModifyNickName */,
 				A2DFB7E22B3926F9008B95AC /* SettingIndex */,
 				A2DFB7F02B3935C8008B95AC /* SettingMyAccount */,
 				A2DFB7F52B39380B008B95AC /* SettingNotification */,
@@ -535,6 +656,7 @@
 				A2DFB7DE2B383150008B95AC /* SettingIndexButton.swift */,
 				A2DFB7E32B392A71008B95AC /* VersionInfoButton.swift */,
 				A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */,
+				A2C886892B497D14008E5437 /* PushNotificationButton.swift */,
 			);
 			path = UIButton;
 			sourceTree = "<group>";
@@ -552,6 +674,8 @@
 			isa = PBXGroup;
 			children = (
 				5D7252892B231CE300CF6688 /* UIColor+BeeHappy.swift */,
+				5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */,
+				A2DFB7FF2B39C4C1008B95AC /* UIViewController+alert.swift */,
 				5D8F09D62B43A97600B7BE3E /* UIImagePickerController+Rx.swift */,
 				A2DFB7FF2B39C4C1008B95AC /* UIViewController+alert.swift */,
 				5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */,
@@ -563,6 +687,9 @@
 		AC9E33C92B3558A100B0D9AE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A2D0F9212B500B7F003BE282 /* UIViewController */,
+				AC185D0C2B47AD2E007304CE /* UIPresentationController */,
+				A28402D92B459526007C0A0D /* UILabel */,
 				AC9E33CF2B35642200B0D9AE /* UIBarButtonItem */,
 				AC9E33CA2B35613200B0D9AE /* UIView */,
 				AC9E33C62B35553C00B0D9AE /* UIButton */,
@@ -574,6 +701,10 @@
 			isa = PBXGroup;
 			children = (
 				AC9E33CB2B35614000B0D9AE /* NavigationTitle.swift */,
+				A28402D52B458AB3007C0A0D /* AccountView.swift */,
+				A2C886792B496ED1008E5437 /* TitleToggleView.swift */,
+				A2C886812B4977E1008E5437 /* TitleTimeView.swift */,
+				A2C886852B497C70008E5437 /* TitleDayOfWeekView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -873,6 +1004,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A28402DB2B45952F007C0A0D /* CustomLabel.swift in Sources */,
 				AC9E33CC2B35614000B0D9AE /* NavigationTitle.swift in Sources */,
 				AC9E33D12B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */,
 				5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */,
@@ -881,6 +1013,25 @@
 				5DB28DEC2B2AD0CD00C4E594 /* EnterNicknameViewController.swift in Sources */,
 				5DB686702B4E68EA0027ABAB /* UIViewController+Rx.swift in Sources */,
 				5D4978812B32F26700059120 /* TabBarController.swift in Sources */,
+				AC185D0E2B47AD58007304CE /* NotificationModalViewModel.swift in Sources */,
+				A2D4CBBE2B3D8E0D0066E89D /* LoginType.swift in Sources */,
+				5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */,
+				A2DFB7DF2B383150008B95AC /* SettingIndexButton.swift in Sources */,
+				A2D0F9232B500B8C003BE282 /* PopUpViewController.swift in Sources */,
+				5D7252782B21ADE000CF6688 /* AgreeViewController.swift in Sources */,
+				A28402D22B4589B0007C0A0D /* MyAccount.swift in Sources */,
+				AC9E33BF2B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */,
+				A2D4CBC62B3D9A200066E89D /* LoginViewModel.swift in Sources */,
+				A28402E42B45A4A0007C0A0D /* ModifyNickNameViewController.swift in Sources */,
+				A2C886862B497C70008E5437 /* TitleDayOfWeekView.swift in Sources */,
+				5D7252872B21BEC100CF6688 /* CheckboxButton.swift in Sources */,
+				A2DFB8002B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
+				A2DFB8052B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
+				A2DFB7E42B392A71008B95AC /* VersionInfoButton.swift in Sources */,
+				A28402E82B45A79F007C0A0D /* ModifyNickNameViewModel.swift in Sources */,
+				A28402DF2B459DBE007C0A0D /* SettingMyAccountViewModel.swift in Sources */,
+				AC185D042B479581007304CE /* HalfModalPresentationController.swift in Sources */,
+				A2C886822B4977E1008E5437 /* TitleTimeView.swift in Sources */,
 				5D751F8C2B4D21A6003BAC2C /* UpdateNickname.swift in Sources */,
 				5DB6866A2B4E2C2B0027ABAB /* SocialLogin.swift in Sources */,
 				A2D4CBBE2B3D8E0D0066E89D /* LoginType.swift in Sources */,
@@ -912,6 +1063,19 @@
 				5D8F09D72B43A97600B7BE3E /* UIImagePickerController+Rx.swift in Sources */,
 				5D751F7B2B4CD772003BAC2C /* TargetType.swift in Sources */,
 				5D54D3F12B19CCD40008A5D7 /* ViewAttributes.swift in Sources */,
+				A28402D62B458AB3007C0A0D /* AccountView.swift in Sources */,
+				A2DFB7E92B392E4B008B95AC /* Version.swift in Sources */,
+				A2C8867E2B49700F008E5437 /* SettingNotificationType.swift in Sources */,
+				A2C8868A2B497D14008E5437 /* PushNotificationButton.swift in Sources */,
+				A2DFB7F72B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
+				AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */,
+				A2C8867A2B496ED1008E5437 /* TitleToggleView.swift in Sources */,
+				A2DFB7F22B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
+				A2DFB7FC2B39B4F7008B95AC /* SettingWebViewController.swift in Sources */,
+				A2C8868E2B497D93008E5437 /* DayOfTheWeek.swift in Sources */,
+				A2DFB7ED2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
+				A2DFB7DA2B37C37C008B95AC /* SettingType.swift in Sources */,
+				AC185D002B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */,
 				A2DFB7E92B392E4B008B95AC /* Version.swift in Sources */,
 				A2DFB7F72B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
 				AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */,
@@ -929,6 +1093,7 @@
 				AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */,
 				5D4978872B32F36D00059120 /* ListViewController.swift in Sources */,
 				5D7252842B21BE8300CF6688 /* AgreeType.swift in Sources */,
+				AC185D082B4795E3007304CE /* NotificationModalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -945,6 +1110,30 @@
 				AC9E33C02B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */,
 				A2DFB7EA2B392E4B008B95AC /* Version.swift in Sources */,
 				A2DFB7F82B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
+				A28402D32B4589B0007C0A0D /* MyAccount.swift in Sources */,
+				A2C886832B4977E1008E5437 /* TitleTimeView.swift in Sources */,
+				A2DFB7F32B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
+				A28402DC2B45952F007C0A0D /* CustomLabel.swift in Sources */,
+				A2C8867F2B49700F008E5437 /* SettingNotificationType.swift in Sources */,
+				AC185D052B479581007304CE /* HalfModalPresentationController.swift in Sources */,
+				A2D4CBC72B3D9A200066E89D /* LoginViewModel.swift in Sources */,
+				AC185D092B4795E3007304CE /* NotificationModalViewController.swift in Sources */,
+				A2C8867B2B496ED1008E5437 /* TitleToggleView.swift in Sources */,
+				A2DFB8012B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
+				A28402E52B45A4A0007C0A0D /* ModifyNickNameViewController.swift in Sources */,
+				A28402D72B458AB3007C0A0D /* AccountView.swift in Sources */,
+				A2D4CBBF2B3D8E0D0066E89D /* LoginType.swift in Sources */,
+				A28402E02B459DBE007C0A0D /* SettingMyAccountViewModel.swift in Sources */,
+				A2DFB8062B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
+				A28402E92B45A79F007C0A0D /* ModifyNickNameViewModel.swift in Sources */,
+				A2DFB7FD2B39B4F7008B95AC /* SettingWebViewController.swift in Sources */,
+				A2C8868B2B497D14008E5437 /* PushNotificationButton.swift in Sources */,
+				A2D0F9242B500B8C003BE282 /* PopUpViewController.swift in Sources */,
+				AC9E33D22B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */,
+				A2C8868F2B497D93008E5437 /* DayOfTheWeek.swift in Sources */,
+				AC185D0F2B47AD58007304CE /* NotificationModalViewModel.swift in Sources */,
+				A2C886872B497C70008E5437 /* TitleDayOfWeekView.swift in Sources */,
+				AC185D012B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */,
 				A2DFB7F32B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
 				A2D4CBC72B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				A2DFB8012B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
@@ -964,6 +1153,21 @@
 				A2D4CBC02B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				A2DFB7EB2B392E4B008B95AC /* Version.swift in Sources */,
 				A2DFB7DC2B37C37C008B95AC /* SettingType.swift in Sources */,
+				A2C8868C2B497D14008E5437 /* PushNotificationButton.swift in Sources */,
+				5D7252852B21BE8300CF6688 /* AgreeType.swift in Sources */,
+				A28402E12B459DBE007C0A0D /* SettingMyAccountViewModel.swift in Sources */,
+				A2D0F9252B500B8C003BE282 /* PopUpViewController.swift in Sources */,
+				A2DFB8022B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
+				A2C886802B49700F008E5437 /* SettingNotificationType.swift in Sources */,
+				AC9E33CE2B35614000B0D9AE /* NavigationTitle.swift in Sources */,
+				AC185D0A2B4795E3007304CE /* NotificationModalViewController.swift in Sources */,
+				A2DFB7F42B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
+				A2DFB7FE2B39B4F7008B95AC /* SettingWebViewController.swift in Sources */,
+				A28402E62B45A4A0007C0A0D /* ModifyNickNameViewController.swift in Sources */,
+				A28402D42B4589B0007C0A0D /* MyAccount.swift in Sources */,
+				A2DFB7EF2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
+				A2DFB8072B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
+				AC185D062B479581007304CE /* HalfModalPresentationController.swift in Sources */,
 				5D7252852B21BE8300CF6688 /* AgreeType.swift in Sources */,
 				A2DFB8022B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
 				AC9E33CE2B35614000B0D9AE /* NavigationTitle.swift in Sources */,
@@ -972,7 +1176,21 @@
 				A2DFB7EF2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
 				A2DFB8072B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
 				AC3A3BE12B049FBA0081BF32 /* HappyMoodBoardUITests.swift in Sources */,
+				A28402DD2B45952F007C0A0D /* CustomLabel.swift in Sources */,
 				AC3A3BE32B049FBA0081BF32 /* HappyMoodBoardUITestsLaunchTests.swift in Sources */,
+				A2C8867C2B496ED1008E5437 /* TitleToggleView.swift in Sources */,
+				A2D4CBBC2B3D8C730066E89D /* LoginViewController.swift in Sources */,
+				A28402EA2B45A79F007C0A0D /* ModifyNickNameViewModel.swift in Sources */,
+				AC9E33D32B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */,
+				A2DFB7F92B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
+				A2D4CBC42B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */,
+				A2C886842B4977E1008E5437 /* TitleTimeView.swift in Sources */,
+				AC185D102B47AD58007304CE /* NotificationModalViewModel.swift in Sources */,
+				A28402D82B458AB3007C0A0D /* AccountView.swift in Sources */,
+				A2D4CBC82B3D9A200066E89D /* LoginViewModel.swift in Sources */,
+				A2C886902B497D93008E5437 /* DayOfTheWeek.swift in Sources */,
+				A2C886882B497C70008E5437 /* TitleDayOfWeekView.swift in Sources */,
+				AC185D022B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */,
 				A2D4CBBC2B3D8C730066E89D /* LoginViewController.swift in Sources */,
 				AC9E33D32B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */,
 				A2DFB7F92B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
@@ -1126,6 +1344,7 @@
 				CODE_SIGN_ENTITLEMENTS = HappyMoodBoard/HappyMoodBoardDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				DEVELOPMENT_TEAM = XQ24HP64B3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1142,6 +1361,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bside.BeeHappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1175,6 +1395,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bside.BeeHappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
