@@ -11,6 +11,10 @@ import RxSwift
 
 final class EnterNicknameViewModel: ViewModel {
     
+    enum Constants {
+        static let maxLength = 10
+    }
+    
     struct Input {
         let nickname: Observable<String>
         let navigateToHome: Observable<Void>
@@ -18,37 +22,42 @@ final class EnterNicknameViewModel: ViewModel {
     
     struct Output {
         let nickname: Observable<String>
-        let isValid: Observable<Bool>
+        let nextButtonEnabled: Observable<Bool>
         let navigateTohome: Observable<Void>
     }
-
+    
     private let disposeBag: DisposeBag = .init()
     
     func transform(input: Input) -> Output {
-        let isValid = BehaviorSubject(value: false)
-
-        let maxCount = 10
         let nickname = input.nickname
-            .scan("") { previous, new -> String in
-                // TODO: 앞뒤 공백 제거
-                if new.count >= maxCount {
-                    return previous
-                } else {
-                    return new
-                }
+            .scan(String()) { previous, new -> String in
+                // 최대 글자수 초과시 초과된 부분은 입력되지 않음
+                guard new.count <= Constants.maxLength else { return previous }
+                return new
             }
-
-        nickname
-            .map { $0.count <= maxCount && $0.count > 0 }
-            .subscribe(onNext: {
-                isValid.onNext($0)
-            })
-            .disposed(by: disposeBag)
-
+        
+        // 앞뒤 공백을 절삭한 후 글자수 길이가 충족하면 완료 버튼 활성화
+        let isNicknameValid = nickname
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .map { $0.count <= Constants.maxLength && $0.count > 0 }
+        
+        // 앞뒤 공백을 절삭하여 서버에 요청
+        let navigateToHome = input.navigateToHome
+            .withLatestFrom(
+                nickname
+                    .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            )
+            .map { MemberTarget.nickname(.init(nickname: $0)) }
+            .debug("닉네임설정")
+            .flatMapLatest {
+                ApiService().request(type: Empty.self, target: $0)
+            }
+            .map { _ in }
+        
         return Output(
             nickname: nickname,
-            isValid: isValid,
-            navigateTohome: input.navigateToHome
+            nextButtonEnabled: isNicknameValid,
+            navigateTohome: navigateToHome
         )
     }
     

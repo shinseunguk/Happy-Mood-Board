@@ -26,8 +26,35 @@
 		5D7252852B21BE8300CF6688 /* AgreeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7252832B21BE8300CF6688 /* AgreeType.swift */; };
 		5D7252872B21BEC100CF6688 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7252862B21BEC100CF6688 /* CheckboxButton.swift */; };
 		5D72528A2B231CE300CF6688 /* UIColor+BeeHappy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7252892B231CE300CF6688 /* UIColor+BeeHappy.swift */; };
+		5D751F682B4CC8B4003BAC2C /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F672B4CC8B4003BAC2C /* ApiService.swift */; };
+		5D751F6D2B4CC93D003BAC2C /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F6C2B4CC93D003BAC2C /* Logout.swift */; };
+		5D751F6F2B4CC975003BAC2C /* ReissueAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F6E2B4CC975003BAC2C /* ReissueAccessToken.swift */; };
+		5D751F752B4CD689003BAC2C /* ProvderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F742B4CD689003BAC2C /* ProvderType.swift */; };
+		5D751F772B4CD717003BAC2C /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F762B4CD717003BAC2C /* DeviceType.swift */; };
+		5D751F792B4CD757003BAC2C /* AuthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F782B4CD756003BAC2C /* AuthInterceptor.swift */; };
+		5D751F7B2B4CD772003BAC2C /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F7A2B4CD772003BAC2C /* TargetType.swift */; };
+		5D751F7D2B4CDFD2003BAC2C /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F7C2B4CDFD2003BAC2C /* ErrorResponse.swift */; };
+		5D751F812B4CE05E003BAC2C /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F802B4CE05E003BAC2C /* APIEnvironment.swift */; };
+		5D751F832B4CE48B003BAC2C /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F822B4CE48B003BAC2C /* BaseResponse.swift */; };
+		5D751F852B4D0A43003BAC2C /* AuthTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F842B4D0A43003BAC2C /* AuthTarget.swift */; };
+		5D751F882B4D207D003BAC2C /* Consent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F872B4D207D003BAC2C /* Consent.swift */; };
+		5D751F8A2B4D211B003BAC2C /* MemberTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F892B4D211B003BAC2C /* MemberTarget.swift */; };
+		5D751F8C2B4D21A6003BAC2C /* UpdateNickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D751F8B2B4D21A6003BAC2C /* UpdateNickname.swift */; };
+		5D8F09CE2B3C242100B7BE3E /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F09CD2B3C242100B7BE3E /* RegisterViewModel.swift */; };
+		5D8F09D02B3E81AF00B7BE3E /* PhotoLibraryAuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F09CF2B3E81AF00B7BE3E /* PhotoLibraryAuthorizationViewController.swift */; };
+		5D8F09D52B3E8BFB00B7BE3E /* PhotoLibraryAuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F09D42B3E8BFB00B7BE3E /* PhotoLibraryAuthorizationViewModel.swift */; };
+		5D8F09D72B43A97600B7BE3E /* UIImagePickerController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F09D62B43A97600B7BE3E /* UIImagePickerController+Rx.swift */; };
+		5D8F09D92B43F3E100B7BE3E /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F09D82B43F3E100B7BE3E /* Tag.swift */; };
 		5DB28DEC2B2AD0CD00C4E594 /* EnterNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB28DEB2B2AD0CD00C4E594 /* EnterNicknameViewController.swift */; };
 		5DB28DF02B2AF9DD00C4E594 /* EnterNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB28DEF2B2AF9DD00C4E594 /* EnterNicknameViewModel.swift */; };
+		5DB6866A2B4E2C2B0027ABAB /* SocialLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB686692B4E2C2B0027ABAB /* SocialLogin.swift */; };
+		5DB6866E2B4E62C00027ABAB /* MyInformationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB6866D2B4E62C00027ABAB /* MyInformationResponse.swift */; };
+		5DB686702B4E68EA0027ABAB /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB6866F2B4E68EA0027ABAB /* UIViewController+Rx.swift */; };
+		5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF686022B35151700479D54 /* HomeViewModel.swift */; };
+		676E999C798E7795F8DED6EC /* Pods_HappyMoodBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E437ECCF20FBB94EF85D6F /* Pods_HappyMoodBoard.framework */; };
+		A2D4CBC22B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
+		A2D4CBC32B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
+		A2D4CBC42B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
 		5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF686022B35151700479D54 /* HomeViewModel.swift */; };
 		676E999C798E7795F8DED6EC /* Pods_HappyMoodBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E437ECCF20FBB94EF85D6F /* Pods_HappyMoodBoard.framework */; };
 		A2D4CBBA2B3D8C730066E89D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */; };
@@ -129,12 +156,35 @@
 		5D7252832B21BE8300CF6688 /* AgreeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeType.swift; sourceTree = "<group>"; };
 		5D7252862B21BEC100CF6688 /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		5D7252892B231CE300CF6688 /* UIColor+BeeHappy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+BeeHappy.swift"; sourceTree = "<group>"; };
+		5D751F672B4CC8B4003BAC2C /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		5D751F6C2B4CC93D003BAC2C /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
+		5D751F6E2B4CC975003BAC2C /* ReissueAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReissueAccessToken.swift; sourceTree = "<group>"; };
+		5D751F742B4CD689003BAC2C /* ProvderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvderType.swift; sourceTree = "<group>"; };
+		5D751F762B4CD717003BAC2C /* DeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
+		5D751F782B4CD756003BAC2C /* AuthInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInterceptor.swift; sourceTree = "<group>"; };
+		5D751F7A2B4CD772003BAC2C /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		5D751F7C2B4CDFD2003BAC2C /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		5D751F802B4CE05E003BAC2C /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
+		5D751F822B4CE48B003BAC2C /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		5D751F842B4D0A43003BAC2C /* AuthTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTarget.swift; sourceTree = "<group>"; };
+		5D751F872B4D207D003BAC2C /* Consent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consent.swift; sourceTree = "<group>"; };
+		5D751F892B4D211B003BAC2C /* MemberTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTarget.swift; sourceTree = "<group>"; };
+		5D751F8B2B4D21A6003BAC2C /* UpdateNickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNickname.swift; sourceTree = "<group>"; };
+		5D8F09CD2B3C242100B7BE3E /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		5D8F09CF2B3E81AF00B7BE3E /* PhotoLibraryAuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryAuthorizationViewController.swift; sourceTree = "<group>"; };
+		5D8F09D42B3E8BFB00B7BE3E /* PhotoLibraryAuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryAuthorizationViewModel.swift; sourceTree = "<group>"; };
+		5D8F09D62B43A97600B7BE3E /* UIImagePickerController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+Rx.swift"; sourceTree = "<group>"; };
+		5D8F09D82B43F3E100B7BE3E /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		5DB28DEB2B2AD0CD00C4E594 /* EnterNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNicknameViewController.swift; sourceTree = "<group>"; };
 		5DB28DEF2B2AF9DD00C4E594 /* EnterNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNicknameViewModel.swift; sourceTree = "<group>"; };
+		5DB686692B4E2C2B0027ABAB /* SocialLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLogin.swift; sourceTree = "<group>"; };
+		5DB6866D2B4E62C00027ABAB /* MyInformationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInformationResponse.swift; sourceTree = "<group>"; };
+		5DB6866F2B4E68EA0027ABAB /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		5DF686022B35151700479D54 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6575D7DDF37C8F4547644BF0 /* Pods-HappyMoodBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7AD9B74EF4837EEE55C75F63 /* Pods_HappyMoodBoardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		928F15A5095CBB78C4957AD4 /* Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard-HappyMoodBoardUITests/Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
 		A2A3D01D2B0BA0960041DCDE /* HappyMoodBoardDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HappyMoodBoardDebug.entitlements; sourceTree = "<group>"; };
 		A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = HappyMoodBoard/Presentation/Setting/SettingOpenSourceLicense/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginType.swift; path = HappyMoodBoard/Presentation/Setting/SettingOpenSourceLicense/LoginType.swift; sourceTree = SOURCE_ROOT; };
@@ -200,10 +250,9 @@
 			isa = PBXGroup;
 			children = (
 				5D4978802B32F26600059120 /* TabBarController.swift */,
-				5D4978822B32F27300059120 /* HomeViewController.swift */,
-				5DF686022B35151700479D54 /* HomeViewModel.swift */,
-				5D4978842B32F36500059120 /* RegisterViewController.swift */,
-				5D4978862B32F36D00059120 /* ListViewController.swift */,
+				5D8F09D12B3E872E00B7BE3E /* Home */,
+				5D8F09D22B3E873500B7BE3E /* Register */,
+				5D8F09D32B3E873A00B7BE3E /* List */,
 			);
 			path = Tab;
 			sourceTree = "<group>";
@@ -251,6 +300,90 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		5D751F662B4CC87B003BAC2C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5D751F862B4D205B003BAC2C /* Member */,
+				5D751F7F2B4CE02A003BAC2C /* Common */,
+				5D751F692B4CC8FA003BAC2C /* Auth */,
+				5D751F672B4CC8B4003BAC2C /* ApiService.swift */,
+				5D751F782B4CD756003BAC2C /* AuthInterceptor.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5D751F692B4CC8FA003BAC2C /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				5D751F842B4D0A43003BAC2C /* AuthTarget.swift */,
+				5D751F6C2B4CC93D003BAC2C /* Logout.swift */,
+				5D751F6E2B4CC975003BAC2C /* ReissueAccessToken.swift */,
+				5DB686692B4E2C2B0027ABAB /* SocialLogin.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		5D751F7E2B4CE01B003BAC2C /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5D751F7A2B4CD772003BAC2C /* TargetType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		5D751F7F2B4CE02A003BAC2C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5D751F742B4CD689003BAC2C /* ProvderType.swift */,
+				5D751F762B4CD717003BAC2C /* DeviceType.swift */,
+				5D751F802B4CE05E003BAC2C /* APIEnvironment.swift */,
+				5D751F7C2B4CDFD2003BAC2C /* ErrorResponse.swift */,
+				5D751F822B4CE48B003BAC2C /* BaseResponse.swift */,
+				5D751F7E2B4CE01B003BAC2C /* Protocol */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5D751F862B4D205B003BAC2C /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				5D751F872B4D207D003BAC2C /* Consent.swift */,
+				5D751F8B2B4D21A6003BAC2C /* UpdateNickname.swift */,
+				5D751F892B4D211B003BAC2C /* MemberTarget.swift */,
+				5DB6866D2B4E62C00027ABAB /* MyInformationResponse.swift */,
+			);
+			path = Member;
+			sourceTree = "<group>";
+		};
+		5D8F09D12B3E872E00B7BE3E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5D4978822B32F27300059120 /* HomeViewController.swift */,
+				5DF686022B35151700479D54 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5D8F09D22B3E873500B7BE3E /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				5D4978842B32F36500059120 /* RegisterViewController.swift */,
+				5D8F09CD2B3C242100B7BE3E /* RegisterViewModel.swift */,
+				5D8F09CF2B3E81AF00B7BE3E /* PhotoLibraryAuthorizationViewController.swift */,
+				5D8F09D42B3E8BFB00B7BE3E /* PhotoLibraryAuthorizationViewModel.swift */,
+				5D8F09D82B43F3E100B7BE3E /* Tag.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		5D8F09D32B3E873A00B7BE3E /* List */ = {
+			isa = PBXGroup;
+			children = (
+				5D4978862B32F36D00059120 /* ListViewController.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		A24CDD222B064F2F00A699E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,7 +407,6 @@
 			children = (
 				5D54D3EF2B19CCC60008A5D7 /* Common */,
 				5D54D3E82B19B0C90008A5D7 /* Onboarding */,
-				5D54D3E72B19B0C20008A5D7 /* Login */,
 				AC9E33BD2B35483700B0D9AE /* Setting */,
 				5D49787F2B32F23300059120 /* Tab */,
 			);
@@ -362,6 +494,7 @@
 				A24CDD232B064F3D00A699E8 /* AppDelegate */,
 				A24CDD242B064F9100A699E8 /* Presentation */,
 				A24CDD222B064F2F00A699E8 /* Resources */,
+				5D751F662B4CC87B003BAC2C /* Service */,
 			);
 			path = HappyMoodBoard;
 			sourceTree = "<group>";
@@ -419,8 +552,10 @@
 			isa = PBXGroup;
 			children = (
 				5D7252892B231CE300CF6688 /* UIColor+BeeHappy.swift */,
-				5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */,
+				5D8F09D62B43A97600B7BE3E /* UIImagePickerController+Rx.swift */,
 				A2DFB7FF2B39C4C1008B95AC /* UIViewController+alert.swift */,
+				5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */,
+				5DB6866F2B4E68EA0027ABAB /* UIViewController+Rx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -741,33 +876,55 @@
 				AC9E33CC2B35614000B0D9AE /* NavigationTitle.swift in Sources */,
 				AC9E33D12B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */,
 				5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */,
+				5D751F772B4CD717003BAC2C /* DeviceType.swift in Sources */,
+				5D8F09D52B3E8BFB00B7BE3E /* PhotoLibraryAuthorizationViewModel.swift in Sources */,
 				5DB28DEC2B2AD0CD00C4E594 /* EnterNicknameViewController.swift in Sources */,
+				5DB686702B4E68EA0027ABAB /* UIViewController+Rx.swift in Sources */,
 				5D4978812B32F26700059120 /* TabBarController.swift in Sources */,
+				5D751F8C2B4D21A6003BAC2C /* UpdateNickname.swift in Sources */,
+				5DB6866A2B4E2C2B0027ABAB /* SocialLogin.swift in Sources */,
 				A2D4CBBE2B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */,
 				A2DFB7DF2B383150008B95AC /* SettingIndexButton.swift in Sources */,
+				5D751F832B4CE48B003BAC2C /* BaseResponse.swift in Sources */,
+				5D751F752B4CD689003BAC2C /* ProvderType.swift in Sources */,
 				5D7252782B21ADE000CF6688 /* AgreeViewController.swift in Sources */,
 				AC9E33BF2B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */,
 				A2D4CBC62B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				5D7252872B21BEC100CF6688 /* CheckboxButton.swift in Sources */,
 				A2DFB8002B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
+				5D751F7D2B4CDFD2003BAC2C /* ErrorResponse.swift in Sources */,
 				A2DFB8052B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
+				5D751F882B4D207D003BAC2C /* Consent.swift in Sources */,
 				A2DFB7E42B392A71008B95AC /* VersionInfoButton.swift in Sources */,
+				5D751F792B4CD757003BAC2C /* AuthInterceptor.swift in Sources */,
 				A2D4CBBA2B3D8C730066E89D /* LoginViewController.swift in Sources */,
 				5D4978832B32F27300059120 /* HomeViewController.swift in Sources */,
 				A2D4CBC22B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */,
 				5D4978852B32F36500059120 /* RegisterViewController.swift in Sources */,
 				5D4977B32B327E4D00059120 /* UIViewController+backgroundColor.swift in Sources */,
+				5D8F09D92B43F3E100B7BE3E /* Tag.swift in Sources */,
 				5DB28DF02B2AF9DD00C4E594 /* EnterNicknameViewModel.swift in Sources */,
+				5D751F812B4CE05E003BAC2C /* APIEnvironment.swift in Sources */,
 				5D7252762B21ADD100CF6688 /* AgreeViewModel.swift in Sources */,
+				5D8F09CE2B3C242100B7BE3E /* RegisterViewModel.swift in Sources */,
+				5DB6866E2B4E62C00027ABAB /* MyInformationResponse.swift in Sources */,
+				5D8F09D72B43A97600B7BE3E /* UIImagePickerController+Rx.swift in Sources */,
+				5D751F7B2B4CD772003BAC2C /* TargetType.swift in Sources */,
 				5D54D3F12B19CCD40008A5D7 /* ViewAttributes.swift in Sources */,
 				A2DFB7E92B392E4B008B95AC /* Version.swift in Sources */,
 				A2DFB7F72B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
 				AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */,
+				5D751F6F2B4CC975003BAC2C /* ReissueAccessToken.swift in Sources */,
+				5D751F852B4D0A43003BAC2C /* AuthTarget.swift in Sources */,
+				5D8F09D02B3E81AF00B7BE3E /* PhotoLibraryAuthorizationViewController.swift in Sources */,
 				A2DFB7F22B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
+				5D751F6D2B4CC93D003BAC2C /* Logout.swift in Sources */,
 				A2DFB7FC2B39B4F7008B95AC /* SettingWebViewController.swift in Sources */,
+				5D751F682B4CC8B4003BAC2C /* ApiService.swift in Sources */,
 				A2DFB7ED2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
 				A2DFB7DA2B37C37C008B95AC /* SettingType.swift in Sources */,
+				5D751F8A2B4D211B003BAC2C /* MemberTarget.swift in Sources */,
 				5D72528A2B231CE300CF6688 /* UIColor+BeeHappy.swift in Sources */,
 				AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */,
 				5D4978872B32F36D00059120 /* ListViewController.swift in Sources */,
@@ -973,6 +1130,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HappyMoodBoard/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app will use camera\n";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "You can select photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1004,6 +1163,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HappyMoodBoard/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app will use camera\n";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "You can select photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

@@ -57,7 +57,7 @@ final class EnterNicknameViewController: UIViewController, ViewAttributes {
     private let infoLabel = UILabel().then {
         $0.textColor = .gray400
         $0.font = UIFont(name: "Pretendard-Regular", size: 14)
-        $0.text = "* 특수문자는 쓸 수 없어요"
+        $0.text = "닉네임은 나중에도 변경 가능해요."
     }
     
     private let nextButton = UIButton(type: .system).then {
@@ -146,16 +146,16 @@ final class EnterNicknameViewController: UIViewController, ViewAttributes {
         )
         let output = viewModel.transform(input: input)
         
-        output.nickname
-            .bind(to: nicknameTextField.rx.text)
+        output.nickname.asDriver(onErrorRecover: { _ in .empty() })
+            .drive(nicknameTextField.rx.text)
             .disposed(by: disposeBag)
         
-        output.isValid
-            .bind(to: nextButton.rx.isEnabled)
+        output.nextButtonEnabled.asDriver(onErrorJustReturn: false)
+            .drive(nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        output.navigateTohome
-            .bind { [weak self] in
+        output.navigateTohome.asDriver(onErrorRecover: { _ in .empty() })
+            .drive(with: self) { owner, _ in
                 let imageInsets: UIEdgeInsets = .init(top: 13, left: 0, bottom: 0, right: 0)
                 
                 // home
@@ -166,7 +166,7 @@ final class EnterNicknameViewController: UIViewController, ViewAttributes {
                 let homeNavigationController = UINavigationController(rootViewController: homeViewController)
                 
                 // register
-                let registerViewController = RegisterViewController()
+                let registerViewController = UIViewController()
                 registerViewController.tabBarItem.image = .init(named: "tabbar.register")
                 registerViewController.tabBarItem.imageInsets = imageInsets
                 
@@ -175,15 +175,16 @@ final class EnterNicknameViewController: UIViewController, ViewAttributes {
                 listViewController.tabBarItem.image = .init(named: "tabbar.list")
                 listViewController.tabBarItem.selectedImage = .init(named: "tabbar.list.selected")
                 listViewController.tabBarItem.imageInsets = imageInsets
+                let listNavigationController = UINavigationController(rootViewController: listViewController)
                 
                 // tab
                 let tabBarController = TabBarController()
                 tabBarController.viewControllers = [
                     homeNavigationController,
                     registerViewController,
-                    listViewController
+                    listNavigationController
                 ]
-                self?.show(tabBarController, sender: nil)
+                owner.show(tabBarController, sender: nil)
             }
             .disposed(by: disposeBag)
     }

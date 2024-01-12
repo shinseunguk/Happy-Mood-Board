@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Vector 282 (Stroke).png",
+      "filename" : "toolbar.camera.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Vector 282 (Stroke)@2x.png",
+      "filename" : "toolbar.camera@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Vector 282 (Stroke)@3x.png",
+      "filename" : "toolbar.camera@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

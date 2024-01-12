@@ -64,6 +64,7 @@ final class AgreeViewModel: ViewModel {
             input.agreeToMarketingEmail
                 .map { Action.toggleMarketingEmail }
         )
+        
         let state = action.scan(into: State()) { current, action in
             switch action {
             case .toggleAllOptions:
@@ -85,14 +86,31 @@ final class AgreeViewModel: ViewModel {
             && current.terms // 필수
             // && current.marketingEmail // 선택
         }
+            .share()
+        
+        let navigateToNextStep = input.navigateToNextStep.withLatestFrom(state)
+            .map { MemberTarget.consent(
+                    .init(
+                        upperFourteen: $0.age,
+                        serviceTerms: $0.terms,
+                        privacyPolicy: $0.privacyPolicy,
+                        marketingTerms: $0.marketingEmail
+                    )
+                )
+            }
+            .debug("약관동의")
+            .flatMapLatest {
+                ApiService().request(type: Empty.self, target: $0)
+            }
+            .map { _ in }
 
         return Output(
-            agreeToAllOptions: state.map { $0.allOptions },
+            agreeToAllOptions: state.map { $0.allOptions }, // canNext
             agreeToAge: state.map { $0.age },
             agreeToPrivacyPolicy: state.map { $0.privacyPolicy },
             agreeToTerms: state.map { $0.terms },
             agreeToMarketingEmail: state.map { $0.marketingEmail },
-            navigateToNextStep: input.navigateToNextStep
+            navigateToNextStep: navigateToNextStep
         )
     }
     

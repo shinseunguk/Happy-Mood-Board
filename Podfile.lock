@@ -1,8 +1,16 @@
 PODS:
   - Alamofire (5.8.1)
+  - RxAlamofire (6.1.1):
+    - RxAlamofire/Core (= 6.1.1)
+  - RxAlamofire/Core (6.1.1):
+    - Alamofire (~> 5.4)
+    - RxSwift (~> 6.0)
   - RxCocoa (6.6.0):
     - RxRelay (= 6.6.0)
     - RxSwift (= 6.6.0)
+  - RxKeyboard (2.0.0):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxRelay (6.6.0):
     - RxSwift (= 6.6.0)
   - RxSwift (6.6.0)
@@ -11,8 +19,9 @@ PODS:
   - Then (3.0.0)
 
 DEPENDENCIES:
-  - Alamofire
+  - RxAlamofire
   - RxCocoa
+  - RxKeyboard
   - RxSwift
   - SnapKit
   - SwiftLint
@@ -21,7 +30,9 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - RxAlamofire
     - RxCocoa
+    - RxKeyboard
     - RxRelay
     - RxSwift
     - SnapKit
@@ -30,13 +41,15 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
   RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
+  RxKeyboard: 4f5863f43b4ff0cbb2a20b94688d6b80c8a43c14
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: c1de071d9d08c8aba837545f6254315bc900e211
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: c0bf08c614994c9dd8cd814baec91ac293b63dd9
+PODFILE CHECKSUM: c0cc31b31b79a90c21e77a979d7ac55f27a55cfa
 
 COCOAPODS: 1.12.0

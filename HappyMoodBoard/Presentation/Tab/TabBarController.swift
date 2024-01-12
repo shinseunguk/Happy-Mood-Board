@@ -9,6 +9,12 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        delegate = self
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -22,10 +28,28 @@ final class TabBarController: UITabBarController {
             return .zero
         }
         if #available(iOS 11.0, *),
-            UIWindow.instancesRespond(to: #selector(getter: window.safeAreaInsets)) {
+           UIWindow.instancesRespond(to: #selector(getter: window.safeAreaInsets)) {
             return window.safeAreaInsets
         }
         return .zero
     }
+    
+}
 
+extension TabBarController: UITabBarControllerDelegate {
+    
+    func tabBarController(
+        _ tabBarController: UITabBarController,
+        shouldSelect viewController: UIViewController
+    ) -> Bool {
+        guard let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController),
+              selectedIndex == 1 else {
+            return true
+        }
+        let registerViewController = RegisterViewController()
+        registerViewController.modalTransitionStyle = .coverVertical
+        registerViewController.modalPresentationStyle = .fullScreen
+        tabBarController.selectedViewController?.show(registerViewController, sender: nil)
+        return false
+    }
 }

@@ -14,7 +14,7 @@ import RxSwift
 import RxCocoa
 
 final class AgreeViewController: UIViewController {
-
+    
     private let pageOneLabel = UILabel().then {
         $0.text = "1"
         $0.textColor = .gray900
@@ -23,7 +23,7 @@ final class AgreeViewController: UIViewController {
         $0.layer.cornerRadius = 10
         $0.layer.backgroundColor = UIColor.primary400?.cgColor
     }
-
+    
     private let pageTwoLabel = UILabel().then {
         $0.text = "2"
         $0.textColor = .gray400
@@ -118,13 +118,13 @@ extension AgreeViewController: ViewAttributes {
             make.leading.equalToSuperview().inset(24)
             make.width.height.equalTo(20)
         }
-
+        
         pageTwoLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
             make.leading.equalTo(pageOneLabel.snp.trailing).offset(4)
             make.width.height.equalTo(20)
         }
-
+        
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(pageOneLabel.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(24)
@@ -159,7 +159,7 @@ extension AgreeViewController: ViewAttributes {
             navigateToMarketingEmail: marketingEmailButton.disclosureButton.rx.tap.asObservable(),
             navigateToNextStep: nextButton.rx.tap.asObservable()
         )
-
+        
         let output = viewModel.transform(input: input)
         output.agreeToAllOptions.asDriver(onErrorJustReturn: false)
             .drive(allOptionsButton.checkboxButton.rx.isSelected)
@@ -168,15 +168,15 @@ extension AgreeViewController: ViewAttributes {
         output.agreeToAge.asDriver(onErrorJustReturn: false)
             .drive(ageButton.checkboxButton.rx.isSelected)
             .disposed(by: disposeBag)
-            
+        
         output.agreeToPrivacyPolicy.asDriver(onErrorJustReturn: false)
             .drive(privacyPolicyButton.checkboxButton.rx.isSelected)
             .disposed(by: disposeBag)
-            
+        
         output.agreeToTerms.asDriver(onErrorJustReturn: false)
             .drive(termsButton.checkboxButton.rx.isSelected)
             .disposed(by: disposeBag)
-            
+        
         output.agreeToMarketingEmail.asDriver(onErrorJustReturn: false)
             .drive(marketingEmailButton.checkboxButton.rx.isSelected)
             .disposed(by: disposeBag)
@@ -184,7 +184,7 @@ extension AgreeViewController: ViewAttributes {
         output.agreeToAllOptions.asDriver(onErrorJustReturn: false)
             .drive(nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
-
+        
         output.navigateToNextStep
             .bind { [weak self] in
                 let viewController = EnterNicknameViewController()

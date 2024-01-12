@@ -12,6 +12,7 @@ import RxSwift
 final class HomeViewModel: ViewModel {
     
     struct Input {
+        let viewWillAppear: Observable<Void>
         let navigateToSetting: Observable<Void>
     }
     
@@ -21,8 +22,12 @@ final class HomeViewModel: ViewModel {
     }
     
     func transform(input: Input) -> Output {
-        // TODO: UserDefaults 또는 API 호출
-        let username = Observable.just("행복호소인")
+        let username = input.viewWillAppear
+            .flatMapLatest {
+                ApiService()
+                    .request(type: MyInformationResponse.self, target: MemberTarget.me)
+                    .map { $0?.nickname ?? "" }
+            }
         
         return Output(
             username: username,
