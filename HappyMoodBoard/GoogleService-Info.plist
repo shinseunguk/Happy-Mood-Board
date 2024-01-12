@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyA0OslRsw_-Wlr19TKUC2-vKd86KREEum4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1001491695132</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bside.BeeHappy</string>
+	<key>PROJECT_ID</key>
+	<string>beehappy-86cbb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>beehappy-86cbb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1001491695132:ios:e36fc212961b20d3b7c1d9</string>
+</dict>
+</plist>
