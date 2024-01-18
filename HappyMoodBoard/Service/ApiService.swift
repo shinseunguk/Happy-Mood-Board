@@ -32,31 +32,46 @@ final class ApiService {
                             response.statusCode,
                             String(data: data, encoding: .utf8) ?? ""
                         )
-                        return nil
+                        throw ApiError.decodingError
                     }
+                // TODO: case 400
+                // TODO: default 케이스 ApiError에 추가
                 default:
                     do {
                         let apiError = try JSONDecoder().decode(ErrorResponse.self, from: data)
-                        // TODO: 실패시 에러 처리 (ex: Alert)
+                        throw ApiError.failed(apiError)
+                    } catch let decodingError as DecodingError {
                         print(
                             target.path,
                             "💥💥💥",
-                            response.statusCode,
-                            apiError
-                        )
-                        return nil
-                    } catch {
-                        // TODO: 실패시 디코딩 에러 처리
-                        print(
-                            target.path,
-                            "💥💥💥",
-                            error.localizedDescription,
+                            decodingError.localizedDescription,
                             response.statusCode,
                             String(data: data, encoding: .utf8) ?? ""
                         )
-                        return nil
+                        throw decodingError
+                    } catch {
+                        throw error
                     }
                 }
             }
+    }
+}
+
+enum ApiError: LocalizedError {
+    case decodingError
+    case failed(ErrorResponse)
+    case unknown
+}
+
+extension ApiError {
+    var errorDescription: String? {
+        switch self {
+        case .decodingError:
+            return "Failed to decode the object from the service"
+        case .failed(let response):
+            return response.message
+        case .unknown:
+            return "The error is unknown"
+        }
     }
 }

@@ -88,7 +88,7 @@ final class AgreeViewModel: ViewModel {
         }
             .share()
         
-        let navigateToNextStep = input.navigateToNextStep.withLatestFrom(state)
+        let result = input.navigateToNextStep.withLatestFrom(state)
             .map { MemberTarget.consent(
                     .init(
                         upperFourteen: $0.age,
@@ -101,16 +101,24 @@ final class AgreeViewModel: ViewModel {
             .debug("약관동의")
             .flatMapLatest {
                 ApiService().request(type: Empty.self, target: $0)
+                    .materialize()
             }
-            .map { _ in }
+            .share()
+        
+        let success = result
+//            .elements()
+            .map { _ in Void() }
 
+        // TODO: 에러 응답 처리
+        // (약관동의 한번 더 하는 경우) 발생하는 케이스가 있는지 확인 후, 사용자 편의성을 위해 그냥 다음 화면으로 이동할지 or 경고창 띄울지
+        
         return Output(
             agreeToAllOptions: state.map { $0.allOptions }, // canNext
             agreeToAge: state.map { $0.age },
             agreeToPrivacyPolicy: state.map { $0.privacyPolicy },
             agreeToTerms: state.map { $0.terms },
             agreeToMarketingEmail: state.map { $0.marketingEmail },
-            navigateToNextStep: navigateToNextStep
+            navigateToNextStep: success
         )
     }
     

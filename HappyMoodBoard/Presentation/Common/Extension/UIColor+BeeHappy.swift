@@ -72,8 +72,30 @@ public extension UIColor {
     
     static let accent100: UIColor? = .init(hexString: "#FF5D5D")
     static let accent200: UIColor? = .init(hexString: "#A9CEEF")
-    static let accent300: UIColor? = .init(hexString: "#FFC895")
+    static let accent300: UIColor? = .init(hexString: "#FFC590")
     static let accent400: UIColor? = .init(hexString: "#BBDE98")
     static let accent500: UIColor? = .init(hexString: "#E9CAE6")
+    static let accent600: UIColor? = .init(hexString: "#F9A6A6")
+    static let accent700: UIColor? = .init(hexString: "#D6EC4E")
+    static let accent800: UIColor? = .init(hexString: "#8FB3D4")
+ 
+    // MARK: Tag Color
+    
+    static let tagColors: [UIColor?] = [
+        .white,
+        .accent600,
+        .primary300,
+        .accent300,
+        .accent400,
+        .accent700,
+        .accent200,
+        .accent800,
+        .accent500,
+        .gray300
+    ]
+    
+    static func tagColor(for id: Int) -> UIColor? {
+        return tagColors.indices.contains(id) ? tagColors[id] : nil
+    }
     
 }

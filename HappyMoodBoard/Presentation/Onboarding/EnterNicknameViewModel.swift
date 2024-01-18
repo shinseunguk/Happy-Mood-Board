@@ -42,22 +42,28 @@ final class EnterNicknameViewModel: ViewModel {
             .map { $0.count <= Constants.maxLength && $0.count > 0 }
         
         // 앞뒤 공백을 절삭하여 서버에 요청
-        let navigateToHome = input.navigateToHome
+        let result = input.navigateToHome
             .withLatestFrom(
                 nickname
                     .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             )
             .map { MemberTarget.nickname(.init(nickname: $0)) }
-            .debug("닉네임설정")
             .flatMapLatest {
                 ApiService().request(type: Empty.self, target: $0)
+                    .materialize()
             }
+            .share()
+        
+        let success = result
+            .elements()
             .map { _ in }
+        
+        // TODO: 응답 에러 처리
         
         return Output(
             nickname: nickname,
             nextButtonEnabled: isNicknameValid,
-            navigateTohome: navigateToHome
+            navigateTohome: success
         )
     }
     

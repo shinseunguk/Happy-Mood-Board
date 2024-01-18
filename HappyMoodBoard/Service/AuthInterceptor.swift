@@ -16,7 +16,7 @@ class AuthInterceptor: RequestInterceptor {
     
     // TODO: UserDefaults에 저장된 값으로 accessToken 설정
     var accessToken: String {
-        "eyJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MiwiaWF0IjoxNzA1MDE5NTg0LCJleHAiOjE3MDUxMDU5ODR9.vFszu24KBkcS7u53mIPJkh_7a2_zwJp0AqQLj05mFyc"
+        "eyJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MzEsImlhdCI6MTcwNTUzOTIyMCwiZXhwIjoxNzA1NjI1NjIwfQ.Ror6n_lX6-MqmEk7Ie-Fw7Rwq6DJjf-E0iMnFM9GO9A"
     }
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {

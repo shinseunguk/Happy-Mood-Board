@@ -50,6 +50,21 @@
 		5DB6866A2B4E2C2B0027ABAB /* SocialLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB686692B4E2C2B0027ABAB /* SocialLogin.swift */; };
 		5DB6866E2B4E62C00027ABAB /* MyInformationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB6866D2B4E62C00027ABAB /* MyInformationResponse.swift */; };
 		5DB686702B4E68EA0027ABAB /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB6866F2B4E68EA0027ABAB /* UIViewController+Rx.swift */; };
+		5DB686B42B50F8040027ABAB /* TagListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB686B32B50F8040027ABAB /* TagListViewController.swift */; };
+		5DB687232B51333B0027ABAB /* TagListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB687222B51333B0027ABAB /* TagListViewModel.swift */; };
+		5DB687282B54BF3F0027ABAB /* TagTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB687272B54BF3F0027ABAB /* TagTarget.swift */; };
+		5DB6872A2B54C38F0027ABAB /* UpdatePostTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB687292B54C38F0027ABAB /* UpdatePostTag.swift */; };
+		5DB6872C2B54EA810027ABAB /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB6872B2B54EA810027ABAB /* TagCollectionViewCell.swift */; };
+		5DD1B6C82B59033400DEBD07 /* PostTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6C72B59033400DEBD07 /* PostTarget.swift */; };
+		5DD1B6CA2B59036B00DEBD07 /* UpdatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6C92B59036B00DEBD07 /* UpdatePost.swift */; };
+		5DD1B6CC2B59048F00DEBD07 /* FetchPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6CB2B59048F00DEBD07 /* FetchPost.swift */; };
+		5DD1B6CE2B5909BF00DEBD07 /* Constnats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6CD2B5909BF00DEBD07 /* Constnats.swift */; };
+		5DD1B6D02B590B5300DEBD07 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6CF2B590B5300DEBD07 /* PostService.swift */; };
+		5DD1B6D22B5912C200DEBD07 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6D12B5912C200DEBD07 /* PostDetailViewController.swift */; };
+		5DF0A1512B56797800D4C15C /* AddTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1502B56797800D4C15C /* AddTagViewController.swift */; };
+		5DF0A1532B56798400D4C15C /* AddTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1522B56798400D4C15C /* AddTagViewModel.swift */; };
+		5DF0A1552B57C56E00D4C15C /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1542B57C56E00D4C15C /* UIImage+Utils.swift */; };
+		5DF0A1572B58A9B200D4C15C /* materialized+elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1562B58A9B200D4C15C /* materialized+elements.swift */; };
 		5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF686022B35151700479D54 /* HomeViewModel.swift */; };
 		676E999C798E7795F8DED6EC /* Pods_HappyMoodBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E437ECCF20FBB94EF85D6F /* Pods_HappyMoodBoard.framework */; };
 		A28402D22B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
@@ -231,6 +246,21 @@
 		5DB686692B4E2C2B0027ABAB /* SocialLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLogin.swift; sourceTree = "<group>"; };
 		5DB6866D2B4E62C00027ABAB /* MyInformationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInformationResponse.swift; sourceTree = "<group>"; };
 		5DB6866F2B4E68EA0027ABAB /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		5DB686B32B50F8040027ABAB /* TagListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListViewController.swift; sourceTree = "<group>"; };
+		5DB687222B51333B0027ABAB /* TagListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListViewModel.swift; sourceTree = "<group>"; };
+		5DB687272B54BF3F0027ABAB /* TagTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTarget.swift; sourceTree = "<group>"; };
+		5DB687292B54C38F0027ABAB /* UpdatePostTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePostTag.swift; sourceTree = "<group>"; };
+		5DB6872B2B54EA810027ABAB /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		5DD1B6C72B59033400DEBD07 /* PostTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTarget.swift; sourceTree = "<group>"; };
+		5DD1B6C92B59036B00DEBD07 /* UpdatePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePost.swift; sourceTree = "<group>"; };
+		5DD1B6CB2B59048F00DEBD07 /* FetchPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPost.swift; sourceTree = "<group>"; };
+		5DD1B6CD2B5909BF00DEBD07 /* Constnats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constnats.swift; sourceTree = "<group>"; };
+		5DD1B6CF2B590B5300DEBD07 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		5DD1B6D12B5912C200DEBD07 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		5DF0A1502B56797800D4C15C /* AddTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagViewController.swift; sourceTree = "<group>"; };
+		5DF0A1522B56798400D4C15C /* AddTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagViewModel.swift; sourceTree = "<group>"; };
+		5DF0A1542B57C56E00D4C15C /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
+		5DF0A1562B58A9B200D4C15C /* materialized+elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "materialized+elements.swift"; sourceTree = "<group>"; };
 		5DF686022B35151700479D54 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6575D7DDF37C8F4547644BF0 /* Pods-HappyMoodBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7AD9B74EF4837EEE55C75F63 /* Pods_HappyMoodBoardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,22 +348,13 @@
 		5D49787F2B32F23300059120 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
+				5DD1B6D32B5912C700DEBD07 /* Post */,
 				5D4978802B32F26600059120 /* TabBarController.swift */,
 				5D8F09D12B3E872E00B7BE3E /* Home */,
 				5D8F09D22B3E873500B7BE3E /* Register */,
 				5D8F09D32B3E873A00B7BE3E /* List */,
 			);
 			path = Tab;
-			sourceTree = "<group>";
-		};
-		5D54D3E72B19B0C20008A5D7 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */,
-				A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */,
-				A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		5D54D3E82B19B0C90008A5D7 /* Onboarding */ = {
@@ -355,6 +376,7 @@
 				AC9E33C82B35555600B0D9AE /* Extension */,
 				AC9E33C72B35554B00B0D9AE /* Protocol */,
 				AC9E33C92B3558A100B0D9AE /* UI */,
+				5DD1B6CD2B5909BF00DEBD07 /* Constnats.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -372,6 +394,8 @@
 		5D751F662B4CC87B003BAC2C /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5DD1B6C62B59030B00DEBD07 /* Post */,
+				5DB687242B54BE520027ABAB /* Tag */,
 				5D751F862B4D205B003BAC2C /* Member */,
 				5D751F7F2B4CE02A003BAC2C /* Common */,
 				5D751F692B4CC8FA003BAC2C /* Auth */,
@@ -440,7 +464,12 @@
 				5D8F09CD2B3C242100B7BE3E /* RegisterViewModel.swift */,
 				5D8F09CF2B3E81AF00B7BE3E /* PhotoLibraryAuthorizationViewController.swift */,
 				5D8F09D42B3E8BFB00B7BE3E /* PhotoLibraryAuthorizationViewModel.swift */,
-				5D8F09D82B43F3E100B7BE3E /* Tag.swift */,
+				5DB686B32B50F8040027ABAB /* TagListViewController.swift */,
+				5DB687222B51333B0027ABAB /* TagListViewModel.swift */,
+				5DB6872B2B54EA810027ABAB /* TagCollectionViewCell.swift */,
+				5DF0A1502B56797800D4C15C /* AddTagViewController.swift */,
+				5DF0A1522B56798400D4C15C /* AddTagViewModel.swift */,
+				5DD1B6CF2B590B5300DEBD07 /* PostService.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -449,8 +478,46 @@
 			isa = PBXGroup;
 			children = (
 				5D4978862B32F36D00059120 /* ListViewController.swift */,
+				5DD1B6D12B5912C200DEBD07 /* PostDetailViewController.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		5DB686B22B50F2BD0027ABAB /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */,
+				A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */,
+				A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		5DB687242B54BE520027ABAB /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				5D8F09D82B43F3E100B7BE3E /* Tag.swift */,
+				5DB687272B54BF3F0027ABAB /* TagTarget.swift */,
+				5DB687292B54C38F0027ABAB /* UpdatePostTag.swift */,
+			);
+			path = Tag;
+			sourceTree = "<group>";
+		};
+		5DD1B6C62B59030B00DEBD07 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				5DD1B6C72B59033400DEBD07 /* PostTarget.swift */,
+				5DD1B6C92B59036B00DEBD07 /* UpdatePost.swift */,
+				5DD1B6CB2B59048F00DEBD07 /* FetchPost.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		5DD1B6D32B5912C700DEBD07 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		A24CDD222B064F2F00A699E8 /* Resources */ = {
@@ -593,6 +660,7 @@
 				AC3A3BBD2B049FB90081BF32 /* Products */,
 				B7095465C023B9A3BA4A747D /* Pods */,
 				DFDFF6A46F475BEC94995B9F /* Frameworks */,
+				5DB686B22B50F2BD0027ABAB /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -680,6 +748,8 @@
 				A2DFB7FF2B39C4C1008B95AC /* UIViewController+alert.swift */,
 				5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */,
 				5DB6866F2B4E68EA0027ABAB /* UIViewController+Rx.swift */,
+				5DF0A1542B57C56E00D4C15C /* UIImage+Utils.swift */,
+				5DF0A1562B58A9B200D4C15C /* materialized+elements.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1004,13 +1074,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DB686B42B50F8040027ABAB /* TagListViewController.swift in Sources */,
 				A28402DB2B45952F007C0A0D /* CustomLabel.swift in Sources */,
 				AC9E33CC2B35614000B0D9AE /* NavigationTitle.swift in Sources */,
 				AC9E33D12B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */,
 				5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */,
 				5D751F772B4CD717003BAC2C /* DeviceType.swift in Sources */,
 				5D8F09D52B3E8BFB00B7BE3E /* PhotoLibraryAuthorizationViewModel.swift in Sources */,
+				5DD1B6C82B59033400DEBD07 /* PostTarget.swift in Sources */,
 				5DB28DEC2B2AD0CD00C4E594 /* EnterNicknameViewController.swift in Sources */,
+				5DF0A1512B56797800D4C15C /* AddTagViewController.swift in Sources */,
 				5DB686702B4E68EA0027ABAB /* UIViewController+Rx.swift in Sources */,
 				5D4978812B32F26700059120 /* TabBarController.swift in Sources */,
 				AC185D0E2B47AD58007304CE /* NotificationModalViewModel.swift in Sources */,
@@ -1034,35 +1107,46 @@
 				A2C886822B4977E1008E5437 /* TitleTimeView.swift in Sources */,
 				5D751F8C2B4D21A6003BAC2C /* UpdateNickname.swift in Sources */,
 				5DB6866A2B4E2C2B0027ABAB /* SocialLogin.swift in Sources */,
+				5DD1B6CA2B59036B00DEBD07 /* UpdatePost.swift in Sources */,
 				A2D4CBBE2B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */,
 				A2DFB7DF2B383150008B95AC /* SettingIndexButton.swift in Sources */,
 				5D751F832B4CE48B003BAC2C /* BaseResponse.swift in Sources */,
 				5D751F752B4CD689003BAC2C /* ProvderType.swift in Sources */,
+				5DF0A1572B58A9B200D4C15C /* materialized+elements.swift in Sources */,
 				5D7252782B21ADE000CF6688 /* AgreeViewController.swift in Sources */,
 				AC9E33BF2B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */,
 				A2D4CBC62B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				5D7252872B21BEC100CF6688 /* CheckboxButton.swift in Sources */,
 				A2DFB8002B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
+				5DB6872C2B54EA810027ABAB /* TagCollectionViewCell.swift in Sources */,
 				5D751F7D2B4CDFD2003BAC2C /* ErrorResponse.swift in Sources */,
 				A2DFB8052B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
+				5DB6872A2B54C38F0027ABAB /* UpdatePostTag.swift in Sources */,
+				5DF0A1532B56798400D4C15C /* AddTagViewModel.swift in Sources */,
 				5D751F882B4D207D003BAC2C /* Consent.swift in Sources */,
 				A2DFB7E42B392A71008B95AC /* VersionInfoButton.swift in Sources */,
 				5D751F792B4CD757003BAC2C /* AuthInterceptor.swift in Sources */,
 				A2D4CBBA2B3D8C730066E89D /* LoginViewController.swift in Sources */,
+				5DD1B6CE2B5909BF00DEBD07 /* Constnats.swift in Sources */,
 				5D4978832B32F27300059120 /* HomeViewController.swift in Sources */,
 				A2D4CBC22B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */,
 				5D4978852B32F36500059120 /* RegisterViewController.swift in Sources */,
 				5D4977B32B327E4D00059120 /* UIViewController+backgroundColor.swift in Sources */,
 				5D8F09D92B43F3E100B7BE3E /* Tag.swift in Sources */,
+				5DB687282B54BF3F0027ABAB /* TagTarget.swift in Sources */,
 				5DB28DF02B2AF9DD00C4E594 /* EnterNicknameViewModel.swift in Sources */,
+				5DB687232B51333B0027ABAB /* TagListViewModel.swift in Sources */,
 				5D751F812B4CE05E003BAC2C /* APIEnvironment.swift in Sources */,
 				5D7252762B21ADD100CF6688 /* AgreeViewModel.swift in Sources */,
 				5D8F09CE2B3C242100B7BE3E /* RegisterViewModel.swift in Sources */,
 				5DB6866E2B4E62C00027ABAB /* MyInformationResponse.swift in Sources */,
+				5DF0A1552B57C56E00D4C15C /* UIImage+Utils.swift in Sources */,
 				5D8F09D72B43A97600B7BE3E /* UIImagePickerController+Rx.swift in Sources */,
+				5DD1B6D22B5912C200DEBD07 /* PostDetailViewController.swift in Sources */,
 				5D751F7B2B4CD772003BAC2C /* TargetType.swift in Sources */,
 				5D54D3F12B19CCD40008A5D7 /* ViewAttributes.swift in Sources */,
+				5DD1B6CC2B59048F00DEBD07 /* FetchPost.swift in Sources */,
 				A28402D62B458AB3007C0A0D /* AccountView.swift in Sources */,
 				A2DFB7E92B392E4B008B95AC /* Version.swift in Sources */,
 				A2C8867E2B49700F008E5437 /* SettingNotificationType.swift in Sources */,
@@ -1089,6 +1173,7 @@
 				A2DFB7ED2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
 				A2DFB7DA2B37C37C008B95AC /* SettingType.swift in Sources */,
 				5D751F8A2B4D211B003BAC2C /* MemberTarget.swift in Sources */,
+				5DD1B6D02B590B5300DEBD07 /* PostService.swift in Sources */,
 				5D72528A2B231CE300CF6688 /* UIColor+BeeHappy.swift in Sources */,
 				AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */,
 				5D4978872B32F36D00059120 /* ListViewController.swift in Sources */,

@@ -15,6 +15,7 @@ final class RegisterViewModel: ViewModel {
         let textChanged: Observable<String?>
         let backButtonTapped: Observable<Void>
         let registerButtonTapped: Observable<Void>
+        let imageViewTapped: Observable<UITapGestureRecognizer>
         let deleteImageAlertActionTapped: Observable<Int>
         let addImageButtonTapped: Observable<Void>
         let addTagButtonTapped: Observable<Void>
@@ -25,14 +26,14 @@ final class RegisterViewModel: ViewModel {
     
     struct Output {
         let canRegister: Observable<Bool>
-        let navigateToBack: Observable<Void>
-        let showAlert: Observable<Void>
+        let showNavigateToBackAlert: Observable<Bool>
         let showImagePicker: Observable<Void>
         let showTagListViewController: Observable<Void>
         let image: Observable<UIImage?>
         let text: Observable<String?>
         let tag: Observable<Tag?>
         let keyboard: Observable<Void>
+        let navigateToDetail: Observable<Int>
     }
     
     func transform(input: Input) -> Output {
@@ -40,18 +41,39 @@ final class RegisterViewModel: ViewModel {
             input.imageSelected
                 .map { $0[.editedImage] as? UIImage },
             input.deleteImageAlertActionTapped
-                .filter { $0 == 1 }
+                .filter { $0 == 1 } // "네" 버튼 클릭시
                 .map { _ in nil }
         )
+            .startWith(nil)
             .share()
             
         let text = input.textChanged
             .filter { $0 != RegisterViewController.Constants.textViewPlaceholder }
+            .startWith(nil)
             .share()
         
-        let sampleTag: Tag? = Tag(name: "휴식", color: "#FFC895")
-        let tag = Observable.just(sampleTag)
-        // TODO: '뒤로가기' 눌렀을 때, 글씨, 이미지 등록, 태그 등록 중 1가지라도 되어있을 경우 -> "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?" 팝업 노출
+        let tag = PreferencesService.shared.rx.tag
+            .startWith(nil)
+            .share()
+
+        let imageAndTextAndTag = Observable.combineLatest(
+            image.startWith(nil),
+            text.startWith(nil),
+            tag.startWith(nil)
+        )
+            .debug("imageAndTextAndTag")
+            .share()
+        
+        // '뒤로가기' 눌렀을 때, 글씨, 이미지 등록, 태그 등록 중 1가지라도 되어있을 경우
+        // "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?" 팝업 노출
+        let showNavigateToBackAlert = input.backButtonTapped.withLatestFrom(imageAndTextAndTag)
+            .debug("showNavigateToBackAlert")
+            .map { image, text, tag in
+                if image == nil && text == nil && tag == nil {
+                    return false
+                }
+                return true
+            }
         
         let textValid = text
             .map(checkTextValid)
@@ -67,16 +89,31 @@ final class RegisterViewModel: ViewModel {
         // 발행 버튼 활성화
         let canRegister = Observable.combineLatest(textValid, imageValid) { $0 || $1 }
         
+        let result = input.registerButtonTapped.withLatestFrom(imageAndTextAndTag)
+            .map { image, text, tag in
+                UpdatePostParameters(postId: nil, tagId: tag?.id, comments: text, imagePath: "/path1" )
+            }
+            .map { PostTarget.create($0) }
+            .flatMapLatest {
+                ApiService().request(type: UpdatePostResponse.self, target: $0)
+                    .materialize()
+            }
+            .share()
+            .debug("포스트 발행")
+        
+        let success = result.elements()
+            .compactMap { $0?.postId }
+        
         return .init(
             canRegister: canRegister,
-            navigateToBack: input.backButtonTapped,
-            showAlert: input.backButtonTapped,
+            showNavigateToBackAlert: showNavigateToBackAlert,
             showImagePicker: input.addImageButtonTapped,
             showTagListViewController: input.addTagButtonTapped,
             image: image,
             text: text,
             tag: tag,
-            keyboard: input.keyboardButtonTapped
+            keyboard: input.keyboardButtonTapped,
+            navigateToDetail: success
         )
     }
     
