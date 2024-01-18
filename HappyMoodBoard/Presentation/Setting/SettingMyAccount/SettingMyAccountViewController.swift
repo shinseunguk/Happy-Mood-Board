@@ -82,7 +82,8 @@ extension SettingMyAccountViewController {
     func setupBindings() {
         let input = SettingMyAccountViewModel.Input(
             navigateToBack: navigationItemBack.rxTap.asObservable(),
-            navigateToNextStep: nicknameView.rx.tapGesture().when(.recognized)
+            navigateToNextStep: nicknameView.rx.tapGesture().when(.recognized),
+            viewWillAppear: rx.viewWillAppear.asObservable()
         )
         let output = viewModel.transform(input: input)
         
@@ -94,6 +95,27 @@ extension SettingMyAccountViewController {
         output.navigateToNextStep.bind { [weak self] _ in
             let VC = ModifyNickNameViewController()
             self?.show(VC, sender: nil)
+        }
+        .disposed(by: disposeBag)
+        
+        output.myInfo.bind { [weak self] result in
+            if let nickname = result?.nickname {
+                self?.nicknameView.bindNickname(nickname: nickname)
+            } else {
+                self?.nicknameView.bindNickname(nickname: "알 수 없음")
+            }
+            
+            if let provider = result?.provider {
+                self?.connectAccountView.bindSocialLogin(provider: provider)
+            } else {
+                self?.connectAccountView.bindSocialLogin(provider: "알 수 없음")
+            }
+            
+            if let email = result?.email {
+                self?.emailView.bindEmail(email: email)
+            } else {
+                self?.emailView.bindEmail(email: "알 수 없음")
+            }
         }
         .disposed(by: disposeBag)
     }

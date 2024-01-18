@@ -8,10 +8,18 @@
 import Foundation
 
 struct SocialLoginParameters: Encodable {
-    let provider: ProviderType
+    let accessToken: String
+    let provider: String
+    let deviceToken: String
+    let deviceType: String
+    let deviceId: String
+}
+
+struct TestSocialLoginParameters: Encodable {
+    let provider: String
     let providerId: String
     let deviceToken: String
-    let deviceType: DeviceType
+    let deviceType: String
     let deviceId: String
 }
 

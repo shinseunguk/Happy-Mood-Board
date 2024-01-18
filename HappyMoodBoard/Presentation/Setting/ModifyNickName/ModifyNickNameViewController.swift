@@ -118,13 +118,14 @@ final class ModifyNickNameViewController: UIViewController, ViewAttributes, UIGe
         output.navigateToBack.bind { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+        .disposed(by: disposeBag)
         
-        output.nickname
-            .bind(to: nicknameTextField.rx.text)
+        output.nickname.asDriver(onErrorJustReturn: "")
+            .drive(nicknameTextField.rx.text)
             .disposed(by: disposeBag)
         
-        output.isValid
-            .bind(to: nextButton.rx.isEnabled)
+        output.isValid.asDriver(onErrorJustReturn: false)
+            .drive(nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
     }
 }

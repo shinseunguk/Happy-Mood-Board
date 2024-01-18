@@ -8,6 +8,6 @@
 import Foundation
 
 struct LogoutParameters: Encodable {
-    let deviceType: DeviceType
+    let deviceType: String
     let deviceId: String
 }

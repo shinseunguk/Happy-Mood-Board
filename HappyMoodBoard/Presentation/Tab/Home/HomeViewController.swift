@@ -41,6 +41,8 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        traceLog("accessToken =>\n\(UserDefaults.standard.string(forKey: "accessToken") ?? "")")
+        
         setCommonBackgroundColor()
         setupNavigationBar()
         setupSubviews()

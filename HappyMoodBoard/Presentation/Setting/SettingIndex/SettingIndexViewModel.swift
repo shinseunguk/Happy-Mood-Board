@@ -13,6 +13,7 @@ import RxCocoa
 final class SettingIndexViewModel: ViewModel {
     
     struct Input {
+        let viewWillAppear: Observable<Void>
         let checkNotification: Observable<Void>
         let navigationBack: ControlEvent<Void>
         let mySettings: Observable<Void>
@@ -23,10 +24,13 @@ final class SettingIndexViewModel: ViewModel {
         let leaveReview: Observable<Void>
         let versionInformation: Observable<Void>
         let logout: Observable<Void>
+        let logoutAction: Observable<Void>
         let withdrawMembership: Observable<Void>
+        let withdrawAction: Observable<Void>
     }
     
     struct Output {
+        let checkVersion: Observable<String>
         let checkNotification: Observable<Bool>
         let navigationBack: Observable<Void>
         let mySettings: Observable<Void>
@@ -35,22 +39,94 @@ final class SettingIndexViewModel: ViewModel {
         let privacyPolicy: Observable<Void>
         let openSourceLicense: Observable<Void>
         let leaveReview: Observable<Void>
-        let versionInformation: Observable<Void>
+        let versionInformation: Observable<Bool>
         let logout: Observable<Void>
+        let logoutAction: Observable<Void>
         let withdrawMembership: Observable<Void>
+        let withdrawAction: Observable<Void>
     }
     
     let disposeBag: DisposeBag = .init()
     
     func transform(input: Input) -> Output {
         
+        // MARK: - 시스템 알림설정 확인 로직
         let pushNotification = input.checkNotification
             .flatMap { _ in
                 return self.isSystemNotificationEnabled()
             }
         
+        // MARK: - 현재 앱버전과 서버에 올라가있는 버전을 체크하는 로직
+        let compareVersion = input.viewWillAppear
+            .flatMap { _ in
+                return self.getLatestAppStoreVersion()
+            }
+            .map { result in
+                if let version = result {
+                    if version == fetchAppVersion() { // 앱 스토어 버전 == 현재 앱 버전
+                        return "최신 버전이에요."
+                    } else if version > fetchAppVersion() {
+                        return "업데이트가 필요해요."
+                    } else {
+                        return "현재 앱 버전이 더 높아요."
+                    }
+                } else {
+                    return "서버 연결 실패, 네트워크 상태를 확인해주세요."
+                }
+            }
+        
+        // MARK: - 현재 앱버전과 서버에 올라가있는 버전을 체크하여 앱스토어로 보냄
+        let versionInformation = input.versionInformation
+            .flatMap { _ in
+                return self.getLatestAppStoreVersion()
+            }
+            .map { result in
+                if let version = result {
+                    if version > fetchAppVersion() {
+                        return true
+                    } else {
+                        return false
+                    }
+                } else {
+                    return false
+                }
+            }
+        
+        // MARK: - 로그아웃 버튼 클릭 Action
+        let logout = input.logoutAction
+            .map {
+                AuthTarget.logout(
+                    .init(
+                        deviceType: DeviceType.ios.rawValue,
+                        deviceId: getDeviceUUID() ?? ""
+                    )
+                )
+            }
+            .debug("로그아웃")
+            .flatMapLatest {
+                ApiService().request(type: Empty.self, target: $0)
+            }
+            .map { _ in
+                UserDefaults.standard.removeObject(forKey: "accessToekn")
+                UserDefaults.standard.removeObject(forKey: "refreshToken")
+            }
+        
+        // MARK: - 탈퇴하기 버튼 클릭 Action
+        let withdraw = input.withdrawAction
+            .map {
+                MemberTarget.retire
+            }
+            .debug("탈퇴하기")
+            .flatMapLatest {
+                ApiService().request(type: Empty.self, target: $0)
+            }
+            .map { _ in
+                UserDefaults.standard.removeObject(forKey: "accessToekn")
+                UserDefaults.standard.removeObject(forKey: "refreshToken")
+            }
         
         return Output(
+            checkVersion: compareVersion,
             checkNotification: pushNotification,
             navigationBack: input.navigationBack.asObservable(),
             mySettings: input.mySettings,
@@ -59,12 +135,16 @@ final class SettingIndexViewModel: ViewModel {
             privacyPolicy: input.privacyPolicy,
             openSourceLicense: input.openSourceLicense,
             leaveReview: input.leaveReview,
-            versionInformation: input.versionInformation,
+            versionInformation: versionInformation,
             logout: input.logout,
-            withdrawMembership: input.withdrawMembership
+            logoutAction: logout,
+            withdrawMembership: input.withdrawMembership,
+            withdrawAction: withdraw
         )
     }
     
+    /// 시스템 알림설정 확인 함수
+    /// - Returns: <#description#>
     func isSystemNotificationEnabled() -> Observable<Bool> {
         return Observable.create { observer in
             let center = NotificationCenter.default
@@ -81,5 +161,57 @@ final class SettingIndexViewModel: ViewModel {
                 center.removeObserver(notificationObserver)
             }
         }
+    }
+    
+    /// 앱스토에 올라가있는 버전을 체크하는 함수
+    /// - Returns: ex) 1.0.0 or nil
+    func getLatestAppStoreVersion() -> Observable<String?> {
+        return Observable.create { observer in
+            guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
+                observer.onNext(nil)
+                observer.onCompleted()
+                return Disposables.create {}
+            }
+            
+            let url = URL(string: "https://itunes.apple.com/kr/lookup?bundleId=\(bundleIdentifier)") // 여기에 앱의 번들 ID를 넣어주세요
+            let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                guard let data = data, error == nil else {
+                    observer.onNext(nil)
+                    observer.onCompleted()
+                    return
+                }
+                do {
+//                    traceLog(String(data: data, encoding: .utf8))
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let results = json["results"] as? [[String: Any]],
+                       let appStoreVersion = results.first?["version"] as? String {
+                        traceLog(appStoreVersion)
+                        observer.onNext(appStoreVersion)
+                    } else {
+                        observer.onNext(nil)
+                    }
+                    observer.onCompleted()
+                } catch {
+                    observer.onNext(nil)
+                    observer.onCompleted()
+                }
+            }
+            task.resume()
+            
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
+    
+    /// 앱 스토어로 이동하는 함수
+    func openAppStore() {
+        // appID 넣어야 됨.
+        let appID = "6455887973"
+        guard let url = URL(string: "itms-apps://itunes.apple.com/app/id\(appID)") else {
+            return
+        }
+        
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }

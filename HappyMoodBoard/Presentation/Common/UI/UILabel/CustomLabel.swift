@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 
 final class CustomLabel: UILabel {
-    init(font: UIFont?, textColor: UIColor?, text: String?) {
+    init(text: String?, textColor: UIColor?, font: UIFont?) {
         super.init(frame: .zero)
         
-        self.font = font
-        self.textColor = textColor
         self.text = text
+        self.textColor = textColor
+        self.font = font
     }
     
     required init?(coder: NSCoder) {

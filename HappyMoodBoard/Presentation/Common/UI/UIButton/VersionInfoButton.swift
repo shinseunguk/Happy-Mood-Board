@@ -16,7 +16,7 @@ final class VersionInfoButton: UIButton {
         $0.font = UIFont(name: "Pretendard-Regula", size: 16)
     }
     
-    private let descriptionLabel = UILabel().then {
+    let descriptionLabel = UILabel().then {
         $0.textColor = .init(hexString: "#BEBCB9")
         $0.font = UIFont(name: "Pretendard-Medium", size: 12)
         $0.text = "최신 버전이에요."

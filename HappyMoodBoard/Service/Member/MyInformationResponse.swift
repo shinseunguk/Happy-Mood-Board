@@ -9,7 +9,7 @@ import Foundation
 
 struct MyInformationResponse: Decodable {
     let nickname: String
-    let provider: ProviderType
+    let provider: String
     let email: String
     let status: String
 }

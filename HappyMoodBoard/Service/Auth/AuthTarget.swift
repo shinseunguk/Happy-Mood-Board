@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 enum AuthTarget {
-    case internalLogin(SocialLoginParameters) // 개발용 로그인/회원가입
+    case internalLogin(TestSocialLoginParameters) // 개발용 로그인/회원가입
     case login(SocialLoginParameters)
     case logout(LogoutParameters)
     case refresh(ReissueAccessTokenParameters)
@@ -28,7 +28,7 @@ extension AuthTarget: TargetType {
         case .internalLogin:
             return "/test/api/auth/v1/login/social"
         case .login:
-            return "/api/auth/v1/login/social"
+            return "/api/auth/v2/login/social"
         case .logout:
             return "/api/auth/v1/logout"
         case .refresh:

@@ -9,7 +9,12 @@ import Foundation
 
 struct BaseResponse<T: Decodable>: Decodable {
     let timestamp: Int
-    let data: T?
+    let responseData: T?
+    
+    private enum CodingKeys: String, CodingKey {
+        case responseData = "data"
+        case timestamp = "timestamp"
+    }
 }
 
 // Empty Data 처리를 위함

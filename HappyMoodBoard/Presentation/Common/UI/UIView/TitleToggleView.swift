@@ -10,18 +10,23 @@ import Foundation
 import SnapKit
 import Then
 
+import RxSwift
+
 final class TitleToggleView: UIView, ViewAttributes {
     
     private let titleLabel = CustomLabel(
-        font: UIFont(name: "Pretendard-Regular", size: 16),
+        text: nil,
         textColor: UIColor.black,
-        text: nil
+        font: UIFont(name: "Pretendard-Regular", size: 16)
     )
     
     private let toggleButton = UISwitch().then {
         $0.onTintColor = .primary500
-        $0.isOn = true
     }
+    
+    let togglePublishSubject = PublishSubject<Bool>()
+    let actionPublishSubject = PublishSubject<Bool>()
+    let disposeBag: DisposeBag = .init()
     
     init(type: SettingNotificationType) {
         super.init(frame: .zero)
@@ -59,6 +64,12 @@ final class TitleToggleView: UIView, ViewAttributes {
     }
     
     func setupBindings() {
+        togglePublishSubject.asDriver(onErrorJustReturn: false)
+            .drive(toggleButton.rx.isOn)
+            .disposed(by: disposeBag)
         
+        toggleButton.rx.isOn.asDriver(onErrorJustReturn: false)
+            .drive(actionPublishSubject)
+            .disposed(by: disposeBag)
     }
 }

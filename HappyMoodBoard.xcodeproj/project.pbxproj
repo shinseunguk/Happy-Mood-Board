@@ -85,6 +85,15 @@
 		A28402E82B45A79F007C0A0D /* ModifyNickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402E72B45A79F007C0A0D /* ModifyNickNameViewModel.swift */; };
 		A28402E92B45A79F007C0A0D /* ModifyNickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402E72B45A79F007C0A0D /* ModifyNickNameViewModel.swift */; };
 		A28402EA2B45A79F007C0A0D /* ModifyNickNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402E72B45A79F007C0A0D /* ModifyNickNameViewModel.swift */; };
+		A2B58B782B528E1D003FCFA9 /* TraceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B58B772B528E1D003FCFA9 /* TraceLog.swift */; };
+		A2B58B792B528E1D003FCFA9 /* TraceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B58B772B528E1D003FCFA9 /* TraceLog.swift */; };
+		A2B58B7A2B528E1D003FCFA9 /* TraceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B58B772B528E1D003FCFA9 /* TraceLog.swift */; };
+		A2B58B7E2B529418003FCFA9 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B58B7D2B529418003FCFA9 /* UUID.swift */; };
+		A2B58B7F2B529418003FCFA9 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B58B7D2B529418003FCFA9 /* UUID.swift */; };
+		A2B58B802B529418003FCFA9 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B58B7D2B529418003FCFA9 /* UUID.swift */; };
+		A2B58B862B529549003FCFA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2B58B852B529549003FCFA9 /* GoogleService-Info.plist */; };
+		A2B58B872B529549003FCFA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2B58B852B529549003FCFA9 /* GoogleService-Info.plist */; };
+		A2B58B882B529549003FCFA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2B58B852B529549003FCFA9 /* GoogleService-Info.plist */; };
 		A2C8867A2B496ED1008E5437 /* TitleToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886792B496ED1008E5437 /* TitleToggleView.swift */; };
 		A2C8867B2B496ED1008E5437 /* TitleToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886792B496ED1008E5437 /* TitleToggleView.swift */; };
 		A2C8867C2B496ED1008E5437 /* TitleToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C886792B496ED1008E5437 /* TitleToggleView.swift */; };
@@ -106,11 +115,6 @@
 		A2D0F9232B500B8C003BE282 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D0F9222B500B8C003BE282 /* PopUpViewController.swift */; };
 		A2D0F9242B500B8C003BE282 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D0F9222B500B8C003BE282 /* PopUpViewController.swift */; };
 		A2D0F9252B500B8C003BE282 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D0F9222B500B8C003BE282 /* PopUpViewController.swift */; };
-		A2D4CBC22B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
-		A2D4CBC32B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
-		A2D4CBC42B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */; };
-		5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF686022B35151700479D54 /* HomeViewModel.swift */; };
-		676E999C798E7795F8DED6EC /* Pods_HappyMoodBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E437ECCF20FBB94EF85D6F /* Pods_HappyMoodBoard.framework */; };
 		A2D4CBBA2B3D8C730066E89D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */; };
 		A2D4CBBB2B3D8C730066E89D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */; };
 		A2D4CBBC2B3D8C730066E89D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */; };
@@ -172,6 +176,15 @@
 		AC3A3BD72B049FBA0081BF32 /* HappyMoodBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BD62B049FBA0081BF32 /* HappyMoodBoardTests.swift */; };
 		AC3A3BE12B049FBA0081BF32 /* HappyMoodBoardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BE02B049FBA0081BF32 /* HappyMoodBoardUITests.swift */; };
 		AC3A3BE32B049FBA0081BF32 /* HappyMoodBoardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BE22B049FBA0081BF32 /* HappyMoodBoardUITestsLaunchTests.swift */; };
+		AC7B6B2A2B5907C400C32F0D /* TokenParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7B6B292B5907C400C32F0D /* TokenParsing.swift */; };
+		AC7B6B2B2B5907C400C32F0D /* TokenParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7B6B292B5907C400C32F0D /* TokenParsing.swift */; };
+		AC7B6B2C2B5907C400C32F0D /* TokenParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7B6B292B5907C400C32F0D /* TokenParsing.swift */; };
+		AC7FDD622B57656900E6F7FC /* UpdateNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7FDD612B57656900E6F7FC /* UpdateNotification.swift */; };
+		AC7FDD632B57656900E6F7FC /* UpdateNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7FDD612B57656900E6F7FC /* UpdateNotification.swift */; };
+		AC7FDD642B57656900E6F7FC /* UpdateNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7FDD612B57656900E6F7FC /* UpdateNotification.swift */; };
+		AC7FDD672B57AE0200E6F7FC /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7FDD662B57AE0200E6F7FC /* Date.swift */; };
+		AC7FDD682B57AE0200E6F7FC /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7FDD662B57AE0200E6F7FC /* Date.swift */; };
+		AC7FDD692B57AE0200E6F7FC /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7FDD662B57AE0200E6F7FC /* Date.swift */; };
 		AC9E33BF2B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E33BE2B35486E00B0D9AE /* SettingIndexViewController.swift */; };
 		AC9E33C02B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E33BE2B35486E00B0D9AE /* SettingIndexViewController.swift */; };
 		AC9E33C12B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E33BE2B35486E00B0D9AE /* SettingIndexViewController.swift */; };
@@ -181,6 +194,12 @@
 		AC9E33D12B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E33D02B35643000B0D9AE /* NavigtaionItemBack.swift */; };
 		AC9E33D22B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E33D02B35643000B0D9AE /* NavigtaionItemBack.swift */; };
 		AC9E33D32B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E33D02B35643000B0D9AE /* NavigtaionItemBack.swift */; };
+		ACD6D0FF2B55195D0039E5AE /* NotificationTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6D0FE2B55195D0039E5AE /* NotificationTarget.swift */; };
+		ACD6D1002B55195D0039E5AE /* NotificationTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6D0FE2B55195D0039E5AE /* NotificationTarget.swift */; };
+		ACD6D1012B55195D0039E5AE /* NotificationTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6D0FE2B55195D0039E5AE /* NotificationTarget.swift */; };
+		ACD6D1032B5524670039E5AE /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6D1022B5524670039E5AE /* Member.swift */; };
+		ACD6D1042B5524670039E5AE /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6D1022B5524670039E5AE /* Member.swift */; };
+		ACD6D1052B5524670039E5AE /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD6D1022B5524670039E5AE /* Member.swift */; };
 		E17C57EBA50B363CF865CBF2 /* Pods_HappyMoodBoardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD9B74EF4837EEE55C75F63 /* Pods_HappyMoodBoardTests.framework */; };
 		E34BC6A879C8BCCA61AE2BF9 /* Pods_HappyMoodBoard_HappyMoodBoardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC16FAC9EF5C81E2F6F03D73 /* Pods_HappyMoodBoard_HappyMoodBoardUITests.framework */; };
 /* End PBXBuildFile section */
@@ -272,6 +291,10 @@
 		A28402E32B45A4A0007C0A0D /* ModifyNickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNickNameViewController.swift; sourceTree = "<group>"; };
 		A28402E72B45A79F007C0A0D /* ModifyNickNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNickNameViewModel.swift; sourceTree = "<group>"; };
 		A2A3D01D2B0BA0960041DCDE /* HappyMoodBoardDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HappyMoodBoardDebug.entitlements; sourceTree = "<group>"; };
+		A2B58B752B528726003FCFA9 /* HappyMoodBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HappyMoodBoard.entitlements; sourceTree = "<group>"; };
+		A2B58B772B528E1D003FCFA9 /* TraceLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceLog.swift; sourceTree = "<group>"; };
+		A2B58B7D2B529418003FCFA9 /* UUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUID.swift; sourceTree = "<group>"; };
+		A2B58B852B529549003FCFA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A2C886792B496ED1008E5437 /* TitleToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleToggleView.swift; sourceTree = "<group>"; };
 		A2C8867D2B49700F008E5437 /* SettingNotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationType.swift; sourceTree = "<group>"; };
 		A2C886812B4977E1008E5437 /* TitleTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTimeView.swift; sourceTree = "<group>"; };
@@ -279,8 +302,6 @@
 		A2C886892B497D14008E5437 /* PushNotificationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationButton.swift; sourceTree = "<group>"; };
 		A2C8868D2B497D93008E5437 /* DayOfTheWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfTheWeek.swift; sourceTree = "<group>"; };
 		A2D0F9222B500B8C003BE282 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
-		A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
-		A2A3D01D2B0BA0960041DCDE /* HappyMoodBoardDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HappyMoodBoardDebug.entitlements; sourceTree = "<group>"; };
 		A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = HappyMoodBoard/Presentation/Setting/SettingOpenSourceLicense/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginType.swift; path = HappyMoodBoard/Presentation/Setting/SettingOpenSourceLicense/LoginType.swift; sourceTree = SOURCE_ROOT; };
 		A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
@@ -311,9 +332,14 @@
 		AC3A3BDC2B049FBA0081BF32 /* HappyMoodBoardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyMoodBoardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3A3BE02B049FBA0081BF32 /* HappyMoodBoardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyMoodBoardUITests.swift; sourceTree = "<group>"; };
 		AC3A3BE22B049FBA0081BF32 /* HappyMoodBoardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyMoodBoardUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AC7B6B292B5907C400C32F0D /* TokenParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenParsing.swift; sourceTree = "<group>"; };
+		AC7FDD612B57656900E6F7FC /* UpdateNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNotification.swift; sourceTree = "<group>"; };
+		AC7FDD662B57AE0200E6F7FC /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		AC9E33BE2B35486E00B0D9AE /* SettingIndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIndexViewController.swift; sourceTree = "<group>"; };
 		AC9E33CB2B35614000B0D9AE /* NavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitle.swift; sourceTree = "<group>"; };
 		AC9E33D02B35643000B0D9AE /* NavigtaionItemBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigtaionItemBack.swift; sourceTree = "<group>"; };
+		ACD6D0FE2B55195D0039E5AE /* NotificationTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTarget.swift; sourceTree = "<group>"; };
+		ACD6D1022B5524670039E5AE /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		DC16FAC9EF5C81E2F6F03D73 /* Pods_HappyMoodBoard_HappyMoodBoardUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoard_HappyMoodBoardUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -372,7 +398,7 @@
 		5D54D3EF2B19CCC60008A5D7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				A2DFB7E72B392E3D008B95AC /* Function */,
+				A2B58B7B2B5293E0003FCFA9 /* Util */,
 				AC9E33C82B35555600B0D9AE /* Extension */,
 				AC9E33C72B35554B00B0D9AE /* Protocol */,
 				AC9E33C92B3558A100B0D9AE /* UI */,
@@ -394,6 +420,7 @@
 		5D751F662B4CC87B003BAC2C /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				ACD6D0FD2B5519480039E5AE /* Notification */,
 				5DD1B6C62B59030B00DEBD07 /* Post */,
 				5DB687242B54BE520027ABAB /* Tag */,
 				5D751F862B4D205B003BAC2C /* Member */,
@@ -567,6 +594,34 @@
 			path = ModifyNickName;
 			sourceTree = "<group>";
 		};
+		A2B58B762B528E11003FCFA9 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				A2B58B772B528E1D003FCFA9 /* TraceLog.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		A2B58B7B2B5293E0003FCFA9 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				AC7B6B282B5907B300C32F0D /* TokenParsing */,
+				AC7FDD652B57ADFB00E6F7FC /* Date */,
+				AC680A422B54C3A1003D4729 /* Version */,
+				A2B58B7C2B5293F6003FCFA9 /* Device */,
+				A2B58B762B528E11003FCFA9 /* Log */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		A2B58B7C2B5293F6003FCFA9 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				A2B58B7D2B529418003FCFA9 /* UUID.swift */,
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
 		A2D0F9212B500B7F003BE282 /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,21 +640,12 @@
 			path = SettingIndex;
 			sourceTree = "<group>";
 		};
-		A2DFB7E72B392E3D008B95AC /* Function */ = {
-			isa = PBXGroup;
-			children = (
-				A2DFB7E82B392E4B008B95AC /* Version.swift */,
-			);
-			path = Function;
-			sourceTree = "<group>";
-		};
 		A2DFB7F02B3935C8008B95AC /* SettingMyAccount */ = {
 			isa = PBXGroup;
 			children = (
 				A28402D12B4589B0007C0A0D /* MyAccount.swift */,
 				A2DFB7F12B3935E1008B95AC /* SettingMyAccountViewController.swift */,
 				A28402DE2B459DBE007C0A0D /* SettingMyAccountViewModel.swift */,
-				A2DFB7F12B3935E1008B95AC /* SettingMyAccountViewController.swift */,
 			);
 			path = SettingMyAccount;
 			sourceTree = "<group>";
@@ -612,7 +658,6 @@
 				A2C8867D2B49700F008E5437 /* SettingNotificationType.swift */,
 				A2DFB7F62B393873008B95AC /* SettingNotificationViewController.swift */,
 				AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */,
-				A2DFB7F62B393873008B95AC /* SettingNotificationViewController.swift */,
 			);
 			path = SettingNotification;
 			sourceTree = "<group>";
@@ -677,7 +722,9 @@
 		AC3A3BBE2B049FB90081BF32 /* HappyMoodBoard */ = {
 			isa = PBXGroup;
 			children = (
+				A2B58B752B528726003FCFA9 /* HappyMoodBoard.entitlements */,
 				A2A3D01D2B0BA0960041DCDE /* HappyMoodBoardDebug.entitlements */,
+				A2B58B852B529549003FCFA9 /* GoogleService-Info.plist */,
 				AC3A3BCD2B049FBA0081BF32 /* Info.plist */,
 				A24CDD232B064F3D00A699E8 /* AppDelegate */,
 				A24CDD242B064F9100A699E8 /* Presentation */,
@@ -702,6 +749,30 @@
 				AC3A3BE22B049FBA0081BF32 /* HappyMoodBoardUITestsLaunchTests.swift */,
 			);
 			path = HappyMoodBoardUITests;
+			sourceTree = "<group>";
+		};
+		AC680A422B54C3A1003D4729 /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				A2DFB7E82B392E4B008B95AC /* Version.swift */,
+			);
+			path = Version;
+			sourceTree = "<group>";
+		};
+		AC7B6B282B5907B300C32F0D /* TokenParsing */ = {
+			isa = PBXGroup;
+			children = (
+				AC7B6B292B5907C400C32F0D /* TokenParsing.swift */,
+			);
+			path = TokenParsing;
+			sourceTree = "<group>";
+		};
+		AC7FDD652B57ADFB00E6F7FC /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				AC7FDD662B57AE0200E6F7FC /* Date.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 		AC9E33BD2B35483700B0D9AE /* Setting */ = {
@@ -742,8 +813,6 @@
 			isa = PBXGroup;
 			children = (
 				5D7252892B231CE300CF6688 /* UIColor+BeeHappy.swift */,
-				5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */,
-				A2DFB7FF2B39C4C1008B95AC /* UIViewController+alert.swift */,
 				5D8F09D62B43A97600B7BE3E /* UIImagePickerController+Rx.swift */,
 				A2DFB7FF2B39C4C1008B95AC /* UIViewController+alert.swift */,
 				5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */,
@@ -785,6 +854,16 @@
 				AC9E33D02B35643000B0D9AE /* NavigtaionItemBack.swift */,
 			);
 			path = UIBarButtonItem;
+			sourceTree = "<group>";
+		};
+		ACD6D0FD2B5519480039E5AE /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				ACD6D0FE2B55195D0039E5AE /* NotificationTarget.swift */,
+				ACD6D1022B5524670039E5AE /* Member.swift */,
+				AC7FDD612B57656900E6F7FC /* UpdateNotification.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		B7095465C023B9A3BA4A747D /* Pods */ = {
@@ -925,6 +1004,7 @@
 				5D72527F2B21AE2F00CF6688 /* Pretendard-Bold.otf in Resources */,
 				5D72527D2B21AE2F00CF6688 /* Pretendard-Regular.otf in Resources */,
 				AC3A3BC92B049FBA0081BF32 /* Assets.xcassets in Resources */,
+				A2B58B862B529549003FCFA9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -933,6 +1013,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2F0FA402B06599E00ADA84C /* .swiftlint.yml in Resources */,
+				A2B58B872B529549003FCFA9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,6 +1023,7 @@
 			files = (
 				A2F0FA412B06599E00ADA84C /* .swiftlint.yml in Resources */,
 				5D7252802B21AE2F00CF6688 /* Pretendard-Bold.otf in Resources */,
+				A2B58B882B529549003FCFA9 /* GoogleService-Info.plist in Resources */,
 				5D72527E2B21AE2F00CF6688 /* Pretendard-Regular.otf in Resources */,
 				5D7252822B21AE2F00CF6688 /* Pretendard-Medium.otf in Resources */,
 			);
@@ -1076,6 +1158,7 @@
 			files = (
 				5DB686B42B50F8040027ABAB /* TagListViewController.swift in Sources */,
 				A28402DB2B45952F007C0A0D /* CustomLabel.swift in Sources */,
+				ACD6D1032B5524670039E5AE /* Member.swift in Sources */,
 				AC9E33CC2B35614000B0D9AE /* NavigationTitle.swift in Sources */,
 				AC9E33D12B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */,
 				5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */,
@@ -1097,6 +1180,7 @@
 				A2D4CBC62B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				A28402E42B45A4A0007C0A0D /* ModifyNickNameViewController.swift in Sources */,
 				A2C886862B497C70008E5437 /* TitleDayOfWeekView.swift in Sources */,
+				ACD6D0FF2B55195D0039E5AE /* NotificationTarget.swift in Sources */,
 				5D7252872B21BEC100CF6688 /* CheckboxButton.swift in Sources */,
 				A2DFB8002B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
 				A2DFB8052B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
@@ -1105,12 +1189,14 @@
 				A28402DF2B459DBE007C0A0D /* SettingMyAccountViewModel.swift in Sources */,
 				AC185D042B479581007304CE /* HalfModalPresentationController.swift in Sources */,
 				A2C886822B4977E1008E5437 /* TitleTimeView.swift in Sources */,
+				A2B58B7E2B529418003FCFA9 /* UUID.swift in Sources */,
 				5D751F8C2B4D21A6003BAC2C /* UpdateNickname.swift in Sources */,
 				5DB6866A2B4E2C2B0027ABAB /* SocialLogin.swift in Sources */,
 				5DD1B6CA2B59036B00DEBD07 /* UpdatePost.swift in Sources */,
 				A2D4CBBE2B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */,
 				A2DFB7DF2B383150008B95AC /* SettingIndexButton.swift in Sources */,
+				AC7B6B2A2B5907C400C32F0D /* TokenParsing.swift in Sources */,
 				5D751F832B4CE48B003BAC2C /* BaseResponse.swift in Sources */,
 				5D751F752B4CD689003BAC2C /* ProvderType.swift in Sources */,
 				5DF0A1572B58A9B200D4C15C /* materialized+elements.swift in Sources */,
@@ -1132,8 +1218,10 @@
 				5D4978832B32F27300059120 /* HomeViewController.swift in Sources */,
 				A2D4CBC22B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */,
 				5D4978852B32F36500059120 /* RegisterViewController.swift in Sources */,
+				A2B58B782B528E1D003FCFA9 /* TraceLog.swift in Sources */,
 				5D4977B32B327E4D00059120 /* UIViewController+backgroundColor.swift in Sources */,
 				5D8F09D92B43F3E100B7BE3E /* Tag.swift in Sources */,
+				AC7FDD622B57656900E6F7FC /* UpdateNotification.swift in Sources */,
 				5DB687282B54BF3F0027ABAB /* TagTarget.swift in Sources */,
 				5DB28DF02B2AF9DD00C4E594 /* EnterNicknameViewModel.swift in Sources */,
 				5DB687232B51333B0027ABAB /* TagListViewModel.swift in Sources */,
@@ -1150,6 +1238,7 @@
 				A28402D62B458AB3007C0A0D /* AccountView.swift in Sources */,
 				A2DFB7E92B392E4B008B95AC /* Version.swift in Sources */,
 				A2C8867E2B49700F008E5437 /* SettingNotificationType.swift in Sources */,
+				AC7FDD672B57AE0200E6F7FC /* Date.swift in Sources */,
 				A2C8868A2B497D14008E5437 /* PushNotificationButton.swift in Sources */,
 				A2DFB7F72B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
 				AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */,
@@ -1190,6 +1279,7 @@
 				AC3A3BD72B049FBA0081BF32 /* HappyMoodBoardTests.swift in Sources */,
 				A2D4CBC32B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */,
 				A2DFB7DB2B37C37C008B95AC /* SettingType.swift in Sources */,
+				ACD6D1042B5524670039E5AE /* Member.swift in Sources */,
 				A2DFB7E52B392A71008B95AC /* VersionInfoButton.swift in Sources */,
 				A2DFB7EE2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
 				AC9E33C02B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */,
@@ -1199,12 +1289,17 @@
 				A2C886832B4977E1008E5437 /* TitleTimeView.swift in Sources */,
 				A2DFB7F32B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
 				A28402DC2B45952F007C0A0D /* CustomLabel.swift in Sources */,
+				ACD6D1002B55195D0039E5AE /* NotificationTarget.swift in Sources */,
 				A2C8867F2B49700F008E5437 /* SettingNotificationType.swift in Sources */,
+				AC7FDD682B57AE0200E6F7FC /* Date.swift in Sources */,
+				A2B58B792B528E1D003FCFA9 /* TraceLog.swift in Sources */,
+				AC7B6B2B2B5907C400C32F0D /* TokenParsing.swift in Sources */,
 				AC185D052B479581007304CE /* HalfModalPresentationController.swift in Sources */,
 				A2D4CBC72B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				AC185D092B4795E3007304CE /* NotificationModalViewController.swift in Sources */,
 				A2C8867B2B496ED1008E5437 /* TitleToggleView.swift in Sources */,
 				A2DFB8012B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
+				AC7FDD632B57656900E6F7FC /* UpdateNotification.swift in Sources */,
 				A28402E52B45A4A0007C0A0D /* ModifyNickNameViewController.swift in Sources */,
 				A28402D72B458AB3007C0A0D /* AccountView.swift in Sources */,
 				A2D4CBBF2B3D8E0D0066E89D /* LoginType.swift in Sources */,
@@ -1221,6 +1316,7 @@
 				AC185D012B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */,
 				A2DFB7F32B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
 				A2D4CBC72B3D9A200066E89D /* LoginViewModel.swift in Sources */,
+				A2B58B7F2B529418003FCFA9 /* UUID.swift in Sources */,
 				A2DFB8012B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
 				A2D4CBBF2B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				A2DFB8062B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
@@ -1244,18 +1340,23 @@
 				A2D0F9252B500B8C003BE282 /* PopUpViewController.swift in Sources */,
 				A2DFB8022B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
 				A2C886802B49700F008E5437 /* SettingNotificationType.swift in Sources */,
+				AC7FDD642B57656900E6F7FC /* UpdateNotification.swift in Sources */,
 				AC9E33CE2B35614000B0D9AE /* NavigationTitle.swift in Sources */,
 				AC185D0A2B4795E3007304CE /* NotificationModalViewController.swift in Sources */,
+				AC7B6B2C2B5907C400C32F0D /* TokenParsing.swift in Sources */,
 				A2DFB7F42B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
 				A2DFB7FE2B39B4F7008B95AC /* SettingWebViewController.swift in Sources */,
 				A28402E62B45A4A0007C0A0D /* ModifyNickNameViewController.swift in Sources */,
 				A28402D42B4589B0007C0A0D /* MyAccount.swift in Sources */,
+				A2B58B802B529418003FCFA9 /* UUID.swift in Sources */,
+				ACD6D1012B55195D0039E5AE /* NotificationTarget.swift in Sources */,
 				A2DFB7EF2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
 				A2DFB8072B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
 				AC185D062B479581007304CE /* HalfModalPresentationController.swift in Sources */,
 				5D7252852B21BE8300CF6688 /* AgreeType.swift in Sources */,
 				A2DFB8022B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
 				AC9E33CE2B35614000B0D9AE /* NavigationTitle.swift in Sources */,
+				AC7FDD692B57AE0200E6F7FC /* Date.swift in Sources */,
 				A2DFB7F42B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
 				A2DFB7FE2B39B4F7008B95AC /* SettingWebViewController.swift in Sources */,
 				A2DFB7EF2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
@@ -1267,8 +1368,10 @@
 				A2D4CBBC2B3D8C730066E89D /* LoginViewController.swift in Sources */,
 				A28402EA2B45A79F007C0A0D /* ModifyNickNameViewModel.swift in Sources */,
 				AC9E33D32B35643000B0D9AE /* NavigtaionItemBack.swift in Sources */,
+				ACD6D1052B5524670039E5AE /* Member.swift in Sources */,
 				A2DFB7F92B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
 				A2D4CBC42B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */,
+				A2B58B7A2B528E1D003FCFA9 /* TraceLog.swift in Sources */,
 				A2C886842B4977E1008E5437 /* TitleTimeView.swift in Sources */,
 				AC185D102B47AD58007304CE /* NotificationModalViewModel.swift in Sources */,
 				A28402D82B458AB3007C0A0D /* AccountView.swift in Sources */,
@@ -1429,11 +1532,11 @@
 				CODE_SIGN_ENTITLEMENTS = HappyMoodBoard/HappyMoodBoardDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
 				DEVELOPMENT_TEAM = XQ24HP64B3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HappyMoodBoard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Bee Happy";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app will use camera\n";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "You can select photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1447,7 +1550,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bside.BeeHappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1462,12 +1564,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HappyMoodBoard/HappyMoodBoard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XQ24HP64B3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HappyMoodBoard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Bee Happy";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app will use camera\n";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "You can select photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1481,7 +1585,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bside.BeeHappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
