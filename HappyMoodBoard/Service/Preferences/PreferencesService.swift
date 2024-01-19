@@ -1,5 +1,5 @@
 //
-//  PostService.swift
+//  PreferencesService.swift
 //  HappyMoodBoard
 //
 //  Created by 홍다희 on 2024/01/18.
@@ -27,7 +27,6 @@ class PreferencesService {
         defaults.set(data, forKey: UserPreferences.tag)
     }
 
-    /// removes the onBoarded preference
     func removeTag() {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: UserPreferences.tag)
@@ -41,7 +40,7 @@ class PreferencesService {
     
 }
 
-extension PreferencesService: ReactiveCompatible {}
+extension PreferencesService: ReactiveCompatible { }
 
 extension Reactive where Base: PreferencesService {
     var tag: Observable<Tag?> {

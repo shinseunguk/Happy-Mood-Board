@@ -59,7 +59,7 @@
 		5DD1B6CA2B59036B00DEBD07 /* UpdatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6C92B59036B00DEBD07 /* UpdatePost.swift */; };
 		5DD1B6CC2B59048F00DEBD07 /* FetchPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6CB2B59048F00DEBD07 /* FetchPost.swift */; };
 		5DD1B6CE2B5909BF00DEBD07 /* Constnats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6CD2B5909BF00DEBD07 /* Constnats.swift */; };
-		5DD1B6D02B590B5300DEBD07 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6CF2B590B5300DEBD07 /* PostService.swift */; };
+		5DD1B6D02B590B5300DEBD07 /* PreferencesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6CF2B590B5300DEBD07 /* PreferencesService.swift */; };
 		5DD1B6D22B5912C200DEBD07 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD1B6D12B5912C200DEBD07 /* PostDetailViewController.swift */; };
 		5DF0A1512B56797800D4C15C /* AddTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1502B56797800D4C15C /* AddTagViewController.swift */; };
 		5DF0A1532B56798400D4C15C /* AddTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1522B56798400D4C15C /* AddTagViewModel.swift */; };
@@ -274,7 +274,7 @@
 		5DD1B6C92B59036B00DEBD07 /* UpdatePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePost.swift; sourceTree = "<group>"; };
 		5DD1B6CB2B59048F00DEBD07 /* FetchPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPost.swift; sourceTree = "<group>"; };
 		5DD1B6CD2B5909BF00DEBD07 /* Constnats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constnats.swift; sourceTree = "<group>"; };
-		5DD1B6CF2B590B5300DEBD07 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		5DD1B6CF2B590B5300DEBD07 /* PreferencesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesService.swift; sourceTree = "<group>"; };
 		5DD1B6D12B5912C200DEBD07 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		5DF0A1502B56797800D4C15C /* AddTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagViewController.swift; sourceTree = "<group>"; };
 		5DF0A1522B56798400D4C15C /* AddTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagViewModel.swift; sourceTree = "<group>"; };
@@ -420,14 +420,8 @@
 		5D751F662B4CC87B003BAC2C /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				ACD6D0FD2B5519480039E5AE /* Notification */,
-				5DD1B6C62B59030B00DEBD07 /* Post */,
-				5DB687242B54BE520027ABAB /* Tag */,
-				5D751F862B4D205B003BAC2C /* Member */,
-				5D751F7F2B4CE02A003BAC2C /* Common */,
-				5D751F692B4CC8FA003BAC2C /* Auth */,
-				5D751F672B4CC8B4003BAC2C /* ApiService.swift */,
-				5D751F782B4CD756003BAC2C /* AuthInterceptor.swift */,
+				5DEB7EC12B5A11BB001654FE /* PreferencesService */,
+				5DEB7EC02B5A11B3001654FE /* ApiService */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -496,7 +490,6 @@
 				5DB6872B2B54EA810027ABAB /* TagCollectionViewCell.swift */,
 				5DF0A1502B56797800D4C15C /* AddTagViewController.swift */,
 				5DF0A1522B56798400D4C15C /* AddTagViewModel.swift */,
-				5DD1B6CF2B590B5300DEBD07 /* PostService.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -547,6 +540,29 @@
 			path = Post;
 			sourceTree = "<group>";
 		};
+		5DEB7EC02B5A11B3001654FE /* ApiService */ = {
+			isa = PBXGroup;
+			children = (
+				ACD6D0FD2B5519480039E5AE /* Notification */,
+				5DD1B6C62B59030B00DEBD07 /* Post */,
+				5DB687242B54BE520027ABAB /* Tag */,
+				5D751F862B4D205B003BAC2C /* Member */,
+				5D751F7F2B4CE02A003BAC2C /* Common */,
+				5D751F692B4CC8FA003BAC2C /* Auth */,
+				5D751F672B4CC8B4003BAC2C /* ApiService.swift */,
+				5D751F782B4CD756003BAC2C /* AuthInterceptor.swift */,
+			);
+			path = ApiService;
+			sourceTree = "<group>";
+		};
+		5DEB7EC12B5A11BB001654FE /* PreferencesService */ = {
+			isa = PBXGroup;
+			children = (
+				5DD1B6CF2B590B5300DEBD07 /* PreferencesService.swift */,
+			);
+			path = PreferencesService;
+			sourceTree = "<group>";
+		};
 		A24CDD222B064F2F00A699E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,7 +586,6 @@
 			children = (
 				5D54D3EF2B19CCC60008A5D7 /* Common */,
 				5D54D3E82B19B0C90008A5D7 /* Onboarding */,
-				5D54D3E72B19B0C20008A5D7 /* Login */,
 				AC9E33BD2B35483700B0D9AE /* Setting */,
 				5D49787F2B32F23300059120 /* Tab */,
 			);
@@ -1262,7 +1277,7 @@
 				A2DFB7ED2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
 				A2DFB7DA2B37C37C008B95AC /* SettingType.swift in Sources */,
 				5D751F8A2B4D211B003BAC2C /* MemberTarget.swift in Sources */,
-				5DD1B6D02B590B5300DEBD07 /* PostService.swift in Sources */,
+				5DD1B6D02B590B5300DEBD07 /* PreferencesService.swift in Sources */,
 				5D72528A2B231CE300CF6688 /* UIColor+BeeHappy.swift in Sources */,
 				AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */,
 				5D4978872B32F36D00059120 /* ListViewController.swift in Sources */,
