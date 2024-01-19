@@ -101,8 +101,8 @@ extension UIViewController {
                            leftActionCompletion: (() -> Void)?,
                            rightActionCompletion: (() -> Void)?) {
         popUpViewController.addActionToButton(title: leftActionTitle,
-                                              titleColor: .gray400 ?? UIColor(),
-                                              backgroundColor: .gray200 ?? UIColor()) {
+                                              titleColor: .gray500 ?? UIColor(),
+                                              backgroundColor: .primary100 ?? UIColor()) {
             popUpViewController.dismiss(animated: false, completion: leftActionCompletion)
         }
         

@@ -301,9 +301,9 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
             self?.showPopUp(
                 title: "회원탈퇴",
                 message: "회원탈퇴 이후에는 기록한 행복 아이템과\n저장된 모든 것을 볼 수 없어요.\n정말로 탈퇴하시겠습니까?",
-                leftActionTitle: "탈퇴하기",
-                rightActionTitle: "유지하기",
-                leftActionCompletion: {
+                leftActionTitle: "유지하기",
+                rightActionTitle: "탈퇴하기",
+                rightActionCompletion: {
                     withdrawAction.onNext(())
                 })
         }

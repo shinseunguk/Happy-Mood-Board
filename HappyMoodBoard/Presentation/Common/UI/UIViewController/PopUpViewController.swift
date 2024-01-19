@@ -118,12 +118,12 @@ class PopUpViewController: UIViewController {
     
     public func addActionToButton(title: String? = nil,
                                   titleColor: UIColor = .white,
-                                  backgroundColor: UIColor = .blue,
+                                  backgroundColor: UIColor,
                                   completion: (() -> Void)? = nil) {
         guard let title = title else { return }
         
         let button = UIButton()
-        button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .bold)
+        button.titleLabel?.font = UIFont(name: "Pretendard-Medium", size: 16)
         
         // enable
         button.setTitle(title, for: .normal)
@@ -133,6 +133,8 @@ class PopUpViewController: UIViewController {
         // disable
         button.setTitleColor(.gray, for: .disabled)
         button.setBackgroundImage(UIColor.gray.image(), for: .disabled)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.primary500?.cgColor
         
         // layer
         button.layer.cornerRadius = 20.0
