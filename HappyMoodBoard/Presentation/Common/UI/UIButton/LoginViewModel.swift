@@ -92,25 +92,25 @@ final class LoginViewModel: NSObject, ViewModel {
         
         appleLoginResult = socialLoginSubject.map {
             // TODO: 운영 API
-//            AuthTarget.login(
-//                .init(
-//                    accessToken: $0.accessToken,
-//                    provider: $0.provider,
-//                    deviceToken: $0.deviceToken,
-//                    deviceType: $0.deviceType,
-//                    deviceId: $0.deviceId
-//                )
-//            )
-            // TODO: 개발 API
-            AuthTarget.internalLogin(
+            AuthTarget.login(
                 .init(
+                    accessToken: $0.accessToken,
                     provider: $0.provider,
-                    providerId: "12345",
                     deviceToken: $0.deviceToken,
                     deviceType: $0.deviceType,
                     deviceId: $0.deviceId
                 )
             )
+            // TODO: 개발 API
+//            AuthTarget.internalLogin(
+//                .init(
+//                    provider: $0.provider,
+//                    providerId: "12345",
+//                    deviceToken: $0.deviceToken,
+//                    deviceType: $0.deviceType,
+//                    deviceId: $0.deviceId
+//                )
+//            )
         }
         .do(onNext: {
             dump($0)

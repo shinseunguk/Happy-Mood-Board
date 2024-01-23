@@ -18,15 +18,8 @@ final class HomeViewController: UIViewController {
     
     static let kHeaderLabelText = "님,\n행복 아이템을 꿀단지에 담아보세요."
     
-    private let settingButton: UIBarButtonItem = .init(
-        image: .init(named: "setting"),
-        style: .plain,
-        target: nil,
-        action: nil
-    )
-   
     private let headerLabel: UILabel = .init().then {
-        $0.text = " 님,\n오늘의 행복 아이템을 남겨주세요."
+//        $0.text = " 님,\n오늘의 행복 아이템을 남겨주세요."
         $0.textColor = .gray900
         $0.font = UIFont(name: "Pretendard-Bold", size: 24)
         $0.numberOfLines = 0
@@ -73,7 +66,7 @@ extension HomeViewController: ViewAttributes {
         }
         
         navigationItem.leftBarButtonItems = [spacing, .init(customView: titleLabel)]
-        navigationItem.rightBarButtonItems = [settingButton, spacing]
+//        navigationItem.rightBarButtonItems = [settingButton, spacing]
     }
     
     func setupSubviews() {
@@ -97,20 +90,9 @@ extension HomeViewController: ViewAttributes {
     func setupBindings() {
         let input = HomeViewModel.Input(
             viewWillAppear: rx.viewWillAppear.asObservable(),
-            viewWillDisAppear: rx.viewWillDisappear.asObservable(),
-            navigateToSetting: settingButton.rx.tap.asObservable()
+            viewWillDisAppear: rx.viewWillDisappear.asObservable()
         )
         let output = viewModel.transform(input: input)
-        
-        output.viewWillAppear.bind { [weak self] _ in
-            self?.tabBarController?.tabBar.isHidden = false
-        }
-        .disposed(by: disposeBag)
-        
-        output.viewWillDisAppear.bind { [weak self] _ in
-            self?.tabBarController?.tabBar.isHidden = true
-        }
-        .disposed(by: disposeBag)
         
         output.username.asDriver(onErrorJustReturn: "")
             .debug("사용자명")
@@ -124,13 +106,6 @@ extension HomeViewController: ViewAttributes {
                     range: (text as NSString).range(of: username)
                 )
                 owner.headerLabel.attributedText = attributedString
-            }
-            .disposed(by: disposeBag)
-        
-        output.navigateToSetting.asDriver(onErrorJustReturn: ())
-            .drive(with: self) { owner, _ in
-                let settingViewController = SettingIndexViewController()
-                owner.show(settingViewController, sender: nil)
             }
             .disposed(by: disposeBag)
     }

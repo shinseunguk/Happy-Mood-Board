@@ -14,6 +14,8 @@ import RxSwift
 import RxCocoa
 import RxViewController
 
+import Toast_Swift
+
 
 final class SettingNotificationViewController: UIViewController, ViewAttributes, UIGestureRecognizerDelegate {
     
@@ -171,17 +173,17 @@ extension SettingNotificationViewController {
         .disposed(by: disposeBag)
         
         // MARK: - 행복아이템 기록 알림 받기
-        Observable.merge(output.initRecordPush, output.responseRecordPush).asDriver(onErrorJustReturn: false)
+        output.recordPush.asDriver(onErrorJustReturn: false)
             .drive(recordPushOnOffView.togglePublishSubject)
             .disposed(by: disposeBag)
         
         // MARK: - 요일
-        Observable.merge(output.initDayOfWeek, output.responseDayOfWeek).asDriver(onErrorJustReturn: [])
+        output.dayOfWeek.asDriver(onErrorJustReturn: [])
             .drive(titleDayOfWeekView.dayOfWeekPublicSubject)
             .disposed(by: disposeBag)
         
         // MARK: - 최소 1개 이상의 요일을 선택하지 않았을때 => 뒤로가기 제스쳐 막기, 네비게이션 LeftbarButtonItem Disable, toast
-        Observable.merge(output.initDayOfWeek, output.responseDayOfWeek)
+        output.dayOfWeek
             .map {
                 $0.count == 0
             }
@@ -189,12 +191,12 @@ extension SettingNotificationViewController {
                 self?.navigationItemBack.isEnabled = !$0
                 self?.navigationController?.interactivePopGestureRecognizer?.delegate = nil
                 
-                traceLog("최소 1개 이상의 요일을 선택해 주세요.")
+                $0 ? makeToast("최소 1개 이상의 요일을 선택해 주세요.") : nil
             })
             .disposed(by: disposeBag)
         
         // MARK: - 시간
-        Observable.merge(output.initTime, output.responseTime)
+        output.pushTime
             .bind { [weak self] in
                 self?.titleTimeView.timePublishSubject.onNext($0)
                 if let setUpDate = convertStringToDate(dateString: $0, dateFormat: "HH:mm") {
@@ -220,8 +222,8 @@ extension SettingNotificationViewController {
         }
         .disposed(by: disposeBag)
         
-        // MARK: - 마케팅 동의 알림
-        Observable.merge(output.initMarketingPush, output.responseMarketingPush).asDriver(onErrorJustReturn: false)
+        // MARK: - 이벤트·혜택 알림 받기
+        output.marketingPush.asDriver(onErrorJustReturn: false)
             .drive(marketingPushOnOffView.togglePublishSubject)
             .disposed(by: disposeBag)
     }

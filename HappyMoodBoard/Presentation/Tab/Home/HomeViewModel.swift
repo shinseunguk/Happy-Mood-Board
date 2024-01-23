@@ -14,14 +14,12 @@ final class HomeViewModel: ViewModel {
     struct Input {
         let viewWillAppear: Observable<Void>
         let viewWillDisAppear: Observable<Bool>
-        let navigateToSetting: Observable<Void>
     }
     
     struct Output {
         let viewWillAppear: Observable<Void>
         let viewWillDisAppear: Observable<Bool>
         let username: Observable<String>
-        let navigateToSetting: Observable<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -35,8 +33,7 @@ final class HomeViewModel: ViewModel {
         return Output(
             viewWillAppear: input.viewWillAppear,
             viewWillDisAppear: input.viewWillDisAppear,
-            username: username,
-            navigateToSetting: input.navigateToSetting
+            username: username
         )
     }
     

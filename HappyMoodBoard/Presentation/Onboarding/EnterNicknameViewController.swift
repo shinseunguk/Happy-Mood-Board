@@ -171,7 +171,7 @@ final class EnterNicknameViewController: UIViewController, ViewAttributes {
                 registerViewController.tabBarItem.imageInsets = imageInsets
                 
                 // list
-                let listViewController = ListViewController()
+                let listViewController = MyTabViewController()
                 listViewController.tabBarItem.image = .init(named: "tabbar.list")
                 listViewController.tabBarItem.selectedImage = .init(named: "tabbar.list.selected")
                 listViewController.tabBarItem.imageInsets = imageInsets

@@ -10,6 +10,9 @@ import Foundation
 import RxSwift
 
 final class SettingNotificationViewModel: ViewModel {
+    
+    let disposeBag: DisposeBag = .init()
+    
     struct Input {
         let navigateToBack: Observable<Void>
         let viewWillAppear: Observable<Void>
@@ -24,26 +27,26 @@ final class SettingNotificationViewModel: ViewModel {
     
     struct Output {
         let navigateToBack: Observable<Void>
-        let initRecordPush: Observable<Bool>
-        let initDayOfWeek: Observable<[Int]>
-        let initTime: Observable<String>
-        let initMarketingPush: Observable<Bool>
+        let recordPush: Observable<Bool>
+        let dayOfWeek: Observable<[Int]>
+        let pushTime: Observable<String>
+        let marketingPush: Observable<Bool>
         let timeButtonEvent: Observable<Void>
         let pickerViewCancel: Observable<Void>
         let pickerViewSave: Observable<Void>
-        let responseRecordPush: Observable<Bool>
-        let responseDayOfWeek: Observable<[Int]>
-        let responseTime: Observable<String>
-        let responseMarketingPush: Observable<Bool>
     }
     
     func transform(input: Input) -> Output {
-        let initRecordPush: Observable<Bool>
-        let initDayOfWeek: Observable<[Int]>
-        let initTime: Observable<String>
+        let recordPush = PublishSubject<Bool>()
+        
+        let dayOfWeek = PublishSubject<[Int]>()
+        
+        let pushTime = PublishSubject<String>()
         let dateString: Observable<String>
-        let timeSaveString: Observable<String>
-        let marketingActive: Observable<Bool>
+        let timeSaveString = PublishSubject<String>()
+        
+        let marketing = PublishSubject<Bool>()
+        
         let notificationSettings: Observable<MemberResponse?>
         
         // MARK: - /api/notification/v1/member, 알림 설정 조회
@@ -57,32 +60,39 @@ final class SettingNotificationViewModel: ViewModel {
             .share()
         
         // MARK: - 행복아이템 기록 알림 받기
-        initRecordPush = notificationSettings
+        notificationSettings
             .filter {
                 $0 != nil
             }
             .compactMap {
                 $0?.happyItem.active
             }
+            .bind(to: recordPush)
+            .disposed(by: disposeBag)
 
         // MARK: - 요일
-        initDayOfWeek = notificationSettings
+        notificationSettings
             .filter {
                 $0 != nil
             }
             .compactMap {
                 $0?.happyItem.dayOfWeek
             }
+            .bind(to: dayOfWeek)
+            .disposed(by: disposeBag)
         
         // MARK: - 시간
-        initTime = notificationSettings
+        notificationSettings
             .filter {
                 $0 != nil
             }
             .compactMap {
                 $0?.happyItem.time
             }
+            .bind(to: pushTime)
+            .disposed(by: disposeBag)
         
+        // MARK: - 시간 버튼 터치시 HH:mm으로 format
         dateString = input.pickerViewEvent
             .distinctUntilChanged()
             .map { selectedDate in
@@ -94,94 +104,99 @@ final class SettingNotificationViewModel: ViewModel {
             }
             .share()
         
-        timeSaveString = input.pickerViewSave
+        // MARK: - pickerview의 [저장] 버튼 터치시 HH:mm으로 bind timeSaveString
+        input.pickerViewSave
             .flatMapLatest { _ in
                 return dateString.take(1)
             }
+            .bind(to: timeSaveString)
+            .disposed(by: disposeBag)
         
-        // MARK: - 마케팅 동의 알림
-        marketingActive = notificationSettings
+        // MARK: - 이벤트·혜택 알림 받기
+        notificationSettings
             .filter {
                 $0 != nil
             }
             .compactMap {
                 $0?.marketing.active
             }
+            .bind(to: marketing)
+            .disposed(by: disposeBag)
         
         // MARK: - /api/notification/v1/member/happy-item, 행복 아이템 알림 설정 변경
-        let responseRecordPush = Observable.combineLatest(input.recordPushEvent,
-            Observable.combineLatest(initDayOfWeek, initTime)
-        )
-        .map { (recordPush, tuple) in
-            let (dayOfWeek, time) = tuple
-            traceLog(recordPush)
-            traceLog(dayOfWeek)
-            traceLog(time)
-            return NotificationTarget.happyItem(
-                .init(
-                    active: recordPush,
-                    dayOfWeek: dayOfWeek,
-                    time: time
+        input.recordPushEvent
+            .withLatestFrom(dayOfWeek) { ($0, $1) }
+            .withLatestFrom(pushTime) { ($0, $1) }
+            .map { values in
+                let ((record, dayOfWeek), time) = values
+                
+                return NotificationTarget.happyItem(
+                    .init(
+                        active: record,
+                        dayOfWeek: dayOfWeek,
+                        time: time
+                    )
                 )
-            )
-        }
-        .flatMapLatest {
-            ApiService().request(type: HappyItem.self, target: $0)
-        }
-        .compactMap {
-            $0?.active
-        }
+            }
+            .flatMapLatest {
+                ApiService().request(type: HappyItem.self, target: $0)
+            }
+            .compactMap {
+                $0?.active
+            }
+            .bind(to: recordPush)
+            .disposed(by: disposeBag)
         
-        // MARK: - /api/notification/v1/member/happy-item, 행복 아이템 알림 설정 변경, 요일 설정 변경
-        let responseDayOfWeek = Observable.combineLatest(input.dayOfWeekEvent,
-            Observable.combineLatest(initRecordPush, initTime)
-        )
-        .map { (dayOfWeek, tuple) in
-            let (recordPush, time) = tuple
-            traceLog(recordPush)
-            traceLog(dayOfWeek)
-            traceLog(time)
-            return NotificationTarget.happyItem(
-                .init(
-                    active: recordPush,
-                    dayOfWeek: dayOfWeek,
-                    time: time
+        // MARK: - /api/notification/v1/member/happy-item, 행복 아이템 알림 설정 변경
+        input.dayOfWeekEvent
+            .withLatestFrom(recordPush) { ($1, $0) }
+            .withLatestFrom(pushTime) { ($0, $1) }
+            .map { values in
+                let ((record, dayOfWeek), time) = values
+                
+                return NotificationTarget.happyItem(
+                    .init(
+                        active: record,
+                        dayOfWeek: dayOfWeek,
+                        time: time
+                    )
                 )
-            )
-        }
-        .flatMapLatest {
-            ApiService().request(type: HappyItem.self, target: $0)
-        }
-        .compactMap {
-            $0?.dayOfWeek
-        }
+            }
+            .flatMapLatest {
+                ApiService().request(type: HappyItem.self, target: $0)
+            }
+            .compactMap {
+                $0?.dayOfWeek
+            }
+            .bind(to: dayOfWeek)
+            .disposed(by: disposeBag)
         
-//        // MARK: - /api/notification/v1/member/happy-item, 행복 아이템 알림 설정 변경, 시간 설정 변경
-        let responseTime = Observable.combineLatest(timeSaveString,
-            Observable.combineLatest(initRecordPush, initDayOfWeek)
-        )
-        .map { (time, tuple) in
-            let (recordPush, dayOfWeek) = tuple
-            traceLog(recordPush)
-            traceLog(dayOfWeek)
-            traceLog(time)
-            return NotificationTarget.happyItem(
-                .init(
-                    active: recordPush,
-                    dayOfWeek: dayOfWeek,
-                    time: time
+        // MARK: - /api/notification/v1/member/happy-item, 행복 아이템 알림 설정 변경
+        timeSaveString
+            .withLatestFrom(recordPush) { ($0, $1) }
+            .withLatestFrom(dayOfWeek) { ($0, $1) }
+            .map { values in
+                let ((time, record), dayOfWeek) = values
+                
+                return NotificationTarget.happyItem(
+                    .init(
+                        active: record,
+                        dayOfWeek: dayOfWeek,
+                        time: time
+                    )
                 )
-            )
-        }
-        .flatMapLatest {
-            ApiService().request(type: HappyItem.self, target: $0)
-        }
-        .compactMap {
-            $0?.time
-        }
+            }
+            .flatMapLatest {
+                ApiService().request(type: HappyItem.self, target: $0)
+            }
+            .compactMap {
+                $0?.time
+            }
+            .bind(to: pushTime)
+            .disposed(by: disposeBag)
         
-        // MARK: - /api/notification/v1/member/marketing, 마케팅 알림 설정 변경
-        let responseMarketingPush = input.marketingPushEvent
+        // MARK: - /api/notification/v1/member/marketing, 이벤트·혜택 알림 설정 변경
+        input.marketingPushEvent
             .map {
                 NotificationTarget.marketing(
                     .init(
@@ -195,20 +210,18 @@ final class SettingNotificationViewModel: ViewModel {
             .compactMap {
                 $0?.active
             }
+            .bind(to: marketing)
+            .disposed(by: disposeBag)
             
         return Output(
             navigateToBack: input.navigateToBack,
-            initRecordPush: initRecordPush,
-            initDayOfWeek: initDayOfWeek,
-            initTime: initTime,
-            initMarketingPush: marketingActive,
+            recordPush: recordPush,
+            dayOfWeek: dayOfWeek,
+            pushTime: pushTime,
+            marketingPush: marketing,
             timeButtonEvent: input.timeButtonEvent,
             pickerViewCancel: input.pickerViewCancel,
-            pickerViewSave: input.pickerViewSave,
-            responseRecordPush: responseRecordPush,
-            responseDayOfWeek: responseDayOfWeek,
-            responseTime: responseTime,
-            responseMarketingPush: responseMarketingPush
+            pickerViewSave: input.pickerViewSave
         )
     }
 }

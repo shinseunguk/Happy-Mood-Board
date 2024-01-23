@@ -19,7 +19,7 @@ final class NavigtaionItemBack: UIBarButtonItem {
     lazy var customButton = UIButton(type: .custom).then {
         $0.setImage(UIImage(named: "navigation.back"), for: .normal)
         $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        $0.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10) // 버튼의 터치 영역을 확장합니다.
+//        $0.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10) // 버튼의 터치 영역을 확장합니다.
     }
     
     private let tapSubject = PublishSubject<Void>()

@@ -22,7 +22,7 @@ enum SettingNotificationType {
         case .time:
             return "시간"
         case .marketingPushOnOff:
-            return "마케팅 동의 알림"
+            return "이벤트·혜택 알림 받기"
         }
         
     }

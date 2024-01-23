@@ -69,10 +69,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             .foregroundColor: UIColor.gray900,
             .font: UIFont(name: "Pretendard-Bold", size: 18)
         ]
-        appearance.titlePositionAdjustment = .init(
-            horizontal: -(UIScreen.main.bounds.width/2),
-            vertical: 0
-        )
+//        appearance.titlePositionAdjustment = .init(
+//            horizontal: -(UIScreen.main.bounds.width/2),
+//            vertical: 0
+//        )
 
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance

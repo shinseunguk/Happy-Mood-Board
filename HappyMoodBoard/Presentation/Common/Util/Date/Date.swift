@@ -44,4 +44,19 @@ func convertStringToDate(dateString: String, dateFormat: String) -> Date? {
     return dateFormatter.date(from: dateString)
 }
 
+func convertDateString(_ inputDateString: String) -> String? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+
+    guard let date = dateFormatter.date(from: inputDateString) else {
+        print("날짜 형식이 올바르지 않습니다.")
+        return nil
+    }
+
+    let outputFormatter = DateFormatter()
+    outputFormatter.dateFormat = "yyyy.MM.dd"
+    let resultString = outputFormatter.string(from: date)
+    return resultString
+}
+
 
