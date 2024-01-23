@@ -8,6 +8,7 @@
 import Foundation
 
 import RxSwift
+import FirebaseStorage
 
 final class RegisterViewModel: ViewModel {
     
@@ -16,6 +17,7 @@ final class RegisterViewModel: ViewModel {
         let backButtonTapped: Observable<Void>
         let registerButtonTapped: Observable<Void>
         let imageViewTapped: Observable<UITapGestureRecognizer>
+        let deleteTagButtonTapped: Observable<Void>
         let deleteImageAlertActionTapped: Observable<Int>
         let addImageButtonTapped: Observable<Void>
         let addTagButtonTapped: Observable<Void>
@@ -29,6 +31,7 @@ final class RegisterViewModel: ViewModel {
         let showNavigateToBackAlert: Observable<Bool>
         let showImagePicker: Observable<Void>
         let showTagListViewController: Observable<Void>
+        let showFullImageViewController: Observable<UIImage?>
         let image: Observable<UIImage?>
         let text: Observable<String?>
         let tag: Observable<Tag?>
@@ -46,28 +49,28 @@ final class RegisterViewModel: ViewModel {
         )
             .startWith(nil)
             .share()
-            
+        
         let text = input.textChanged
             .filter { $0 != RegisterViewController.Constants.textViewPlaceholder }
             .startWith(nil)
             .share()
         
-        let tag = PreferencesService.shared.rx.tag
-            .startWith(nil)
+        let tag = Observable.merge(
+            PreferencesService.shared.rx.tag.startWith(nil),
+            input.deleteTagButtonTapped.map { _ in nil }
+        )
             .share()
-
+        
         let imageAndTextAndTag = Observable.combineLatest(
             image.startWith(nil),
             text.startWith(nil),
             tag.startWith(nil)
         )
-            .debug("imageAndTextAndTag")
             .share()
         
         // '뒤로가기' 눌렀을 때, 글씨, 이미지 등록, 태그 등록 중 1가지라도 되어있을 경우
         // "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?" 팝업 노출
         let showNavigateToBackAlert = input.backButtonTapped.withLatestFrom(imageAndTextAndTag)
-            .debug("showNavigateToBackAlert")
             .map { image, text, tag in
                 if image == nil && text == nil && tag == nil {
                     return false
@@ -89,26 +92,55 @@ final class RegisterViewModel: ViewModel {
         // 발행 버튼 활성화
         let canRegister = Observable.combineLatest(textValid, imageValid) { $0 || $1 }
         
-        let result = input.registerButtonTapped.withLatestFrom(imageAndTextAndTag)
-            .map { image, text, tag in
-                UpdatePostParameters(postId: nil, tagId: tag?.id, comments: text, imagePath: "/path1" )
+        // 발행 버튼 클릭시 이미지 업로드
+        let uploadImage = input.registerButtonTapped.withLatestFrom(imageAndTextAndTag)
+            .flatMapLatest { image, text, tag -> Observable<UpdatePostParameters> in
+                if let image = image {
+                    return FirebaseStorageService.shared.rx.upload(image: image)
+                        .map {
+                            UpdatePostParameters(
+                                postId: nil,
+                                tagId: tag?.id,
+                                comments: text,
+                                imagePath: $0
+                            )
+                        }
+                } else {
+                    return .just(
+                        .init(
+                            postId: nil,
+                            tagId: tag?.id,
+                            comments: text,
+                            imagePath: nil
+                        )
+                    )
+                }
             }
+            .debug("이미지 업로드")
+        
+        // 이미지 업로드 후 게시글 등록
+        let result = uploadImage
             .map { PostTarget.create($0) }
             .flatMapLatest {
                 ApiService().request(type: UpdatePostResponse.self, target: $0)
                     .materialize()
             }
             .share()
-            .debug("포스트 발행")
+            .debug("게시글 등록")
         
         let success = result.elements()
             .compactMap { $0?.postId }
+        
+        let showFullImageViewController = input.imageViewTapped.withLatestFrom(image)
+            .debug()
+            .asObservable()
         
         return .init(
             canRegister: canRegister,
             showNavigateToBackAlert: showNavigateToBackAlert,
             showImagePicker: input.addImageButtonTapped,
             showTagListViewController: input.addTagButtonTapped,
+            showFullImageViewController: showFullImageViewController,
             image: image,
             text: text,
             tag: tag,

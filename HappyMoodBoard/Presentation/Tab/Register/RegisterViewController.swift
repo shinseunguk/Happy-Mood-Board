@@ -19,8 +19,7 @@ import RxKeyboard
 final class RegisterViewController: UIViewController {
     
     enum Constants {
-        static let normalImage: UIImage = .init(named: "navigation.register.normal") ?? .init()
-        static let disabledImage: UIImage = .init(named: "navigation.register.disabled") ?? .init()
+        static let registerImage: UIImage = .init(named: "navigation.register") ?? .init()
         static let textViewPlaceholder: String = "최대 1000자까지 작성 가능해요."
         static let textViewPlaceholderColor: UIColor? = .gray400
         static let textViewTextColor: UIColor? = .gray900
@@ -34,7 +33,7 @@ final class RegisterViewController: UIViewController {
     )
     
     private let registerButton: UIBarButtonItem = .init(
-        image: .init(named: "navigation.register.normal"),
+        image: Constants.registerImage,
         style: .done,
         target: nil,
         action: nil
@@ -93,6 +92,7 @@ final class RegisterViewController: UIViewController {
     private let textView: UITextView = .init().then {
         $0.text = Constants.textViewPlaceholder
         $0.textColor = Constants.textViewPlaceholderColor
+        $0.font = UIFont(name: "Pretendard-Regular", size: 16)
         $0.backgroundColor = .clear
         $0.layer.cornerRadius = 16
         $0.layer.borderWidth = 1
@@ -239,7 +239,8 @@ extension RegisterViewController: ViewAttributes {
             textChanged: textView.rx.text.asObservable(),
             backButtonTapped: backButton.rx.tap.asObservable(),
             registerButtonTapped: registerButton.rx.tap.asObservable(),
-            imageViewTapped: imageView.rx.tapGesture().when(.recognized).asObservable(),
+            imageViewTapped: frameImageView.rx.tapGesture().when(.recognized).asObservable(),
+            deleteTagButtonTapped: tagButton.rx.tap.asObservable(),
             deleteImageAlertActionTapped: deleteImageAlertActionTapped,
             addImageButtonTapped: addImageButton.rx.tap.asObservable(),
             addTagButtonTapped: addTagButton.rx.tap.asObservable(),
@@ -248,11 +249,11 @@ extension RegisterViewController: ViewAttributes {
             imageSelected: imagePicker.rx.didFinishPickingMediaWithInfo.asObservable()
         )
         let output = viewModel.transform(input: input)
-        output.canRegister
-            .withUnretained(self)
-            .subscribe(onNext: { owner, isEnabled in
-                owner.registerButton.image = isEnabled ? Constants.normalImage : Constants.disabledImage
-            })
+        output.canRegister.asDriver(onErrorJustReturn: false)
+            .drive(with: self) { owner, isEnabled in
+                owner.registerButton.isEnabled = isEnabled
+                owner.registerButton.tintColor = isEnabled ? .primary900 : .gray200
+            }
             .disposed(by: disposeBag)
                 
         output.showNavigateToBackAlert.asDriver(onErrorJustReturn: false)
@@ -265,11 +266,10 @@ extension RegisterViewController: ViewAttributes {
             }
             .disposed(by: disposeBag)
         
-        output.showImagePicker
-            .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
+        output.showImagePicker.asDriver(onErrorJustReturn: ())
+            .drive(with: self) { owner, _ in
                 owner.requestPhotoLibraryAuthorization()
-            })
+            }
             .disposed(by: disposeBag)
         
         output.showTagListViewController.asDriver(onErrorJustReturn: ())
@@ -278,21 +278,26 @@ extension RegisterViewController: ViewAttributes {
             }
             .disposed(by: disposeBag)
         
-        output.image
-            .withUnretained(self)
-            .subscribe(onNext: { onwer, image in
+        output.showFullImageViewController.asDriver(onErrorJustReturn: nil)
+            .drive(with: self) { owner, image in
+                let viewController = FullImageViewController(image: image)
+                viewController.modalPresentationStyle = .overFullScreen
+                owner.present(viewController, animated: false)
+            }
+            .disposed(by: disposeBag)
+        
+        output.image.asDriver(onErrorJustReturn: nil)
+            .drive(with: self) { onwer, image in
                 onwer.imageView.image = image
                 onwer.imageView.isHidden = (image == nil)
                 onwer.frameImageView.isHidden = (image == nil)
                 onwer.addImageButton.isEnabled = (image == nil)
                 onwer.imagePicker.dismiss(animated: true)
-            })
+            }
             .disposed(by: disposeBag)
         
-        output.tag
-            .withUnretained(self)
-            .debug("태그")
-            .subscribe { owner, tag in
+        output.tag.asDriver(onErrorJustReturn: nil)
+            .drive(with: self) { owner, tag in
                 guard let tag = tag else {
                     owner.tagButton.isHidden = true
                     return
@@ -310,8 +315,7 @@ extension RegisterViewController: ViewAttributes {
         
         output.navigateToDetail.asDriver(onErrorJustReturn: 0) // TODO: error 처리 어떻게할지에 대해
             .drive(with: self) { owner, postId in
-                let viewController = PostDetailViewController()
-                viewController.textLabel.text = "\(postId)"
+                let viewController = PostDetailViewController(viewModel: .init(postId: postId))
                 owner.navigationController?.pushViewController(viewController, animated: true)
             }
             .disposed(by: disposeBag)

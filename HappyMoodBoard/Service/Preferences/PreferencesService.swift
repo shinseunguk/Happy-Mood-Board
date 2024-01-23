@@ -11,12 +11,12 @@ import RxSwift
 
 struct UserPreferences {
     private init () {}
-
+    
     static let tag = "Tag"
 }
 
 class PreferencesService {
-
+    
     static let shared = PreferencesService()
     
     private init() { }
@@ -26,12 +26,12 @@ class PreferencesService {
         let data = try? JSONEncoder().encode(tag)
         defaults.set(data, forKey: UserPreferences.tag)
     }
-
+    
     func removeTag() {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: UserPreferences.tag)
     }
-
+    
     func tag() -> Tag? {
         let defaults = UserDefaults.standard
         guard let data = defaults.data(forKey: UserPreferences.tag) else { return nil }

@@ -11,3 +11,11 @@ struct FetchPostParamaters: Encodable {
     let tagId: Int?
     let postId: Int?
 }
+
+struct FetchPostResponse: Decodable {
+    let createdAt: String
+    let id: Int
+    let postTag: Tag?
+    let comments: String?
+    let imagePath: String?
+}

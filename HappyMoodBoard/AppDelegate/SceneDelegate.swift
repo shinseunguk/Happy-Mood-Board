@@ -15,7 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        handleAutoLogin() ? autoLogin(true) : autoLogin(false)
+//        handleAutoLogin() ? autoLogin(true) : autoLogin(false)
+        autoLogin(true)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

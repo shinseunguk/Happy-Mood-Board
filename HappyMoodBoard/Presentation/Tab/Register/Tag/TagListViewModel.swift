@@ -14,13 +14,13 @@ final class TagListViewModel: ViewModel {
     struct Input {
         let viewWillAppear: Observable<Void>
         let editButtonTapped: Observable<Void>
-        let itemSelected: Observable<TagListItemType>
+        let itemSelected: Observable<TagListItem>
         let closeButtonTapped: Observable<Void>
     }
     
     struct Output {
         let navigateToEdit: Observable<Void>
-        let items: Observable<[TagListItemType]>
+        let items: Observable<[TagListSection]>
         let navigateToAdd: Observable<Void>
         let dismiss: Observable<Tag?>
     }
@@ -30,15 +30,19 @@ final class TagListViewModel: ViewModel {
             .flatMapLatest {
                 ApiService()
                     .request(type: [Tag].self, target: TagTarget.fetch())
-                    .map { $0 != nil ? $0! : [] }
-                    .map { $0.map(TagListItemType.tag) }
-                    .map {
-                        var copy = $0
-                        copy.append(.add)
-                        return copy
+                    .filterNil()
+                    .map { tags -> [TagListSection] in
+                        var items: [TagListItem] = tags.map { .tag($0) }
+                        items.append(.add)
+                        return [TagListSection(items: items)]
                     }
             }
+            .share()
+        
+        // 태그/태그추가 선택시
         let itemSelected = input.itemSelected.share()
+        
+        // 태그 선택시
         let tagSelected = itemSelected.map {
             if case let .tag(tag) = $0 {
                 PreferencesService.shared.setTag(tag)
@@ -49,7 +53,9 @@ final class TagListViewModel: ViewModel {
             .filter { $0 != nil }
             .share()
     
-        let navigateToAdd = itemSelected.map { if case .add = $0 { return Void() } }
+        // 태그추가 선택시
+        let addSelected = itemSelected.map { if case .add = $0 { return Void() } }
+
         let dismiss = Observable<Tag?>.merge(
             tagSelected,
             input.closeButtonTapped.map { _ -> Tag? in return nil }
@@ -57,7 +63,7 @@ final class TagListViewModel: ViewModel {
         return .init(
             navigateToEdit: input.editButtonTapped,
             items: items,
-            navigateToAdd: navigateToAdd,
+            navigateToAdd: addSelected,
             dismiss: dismiss
         )
     }

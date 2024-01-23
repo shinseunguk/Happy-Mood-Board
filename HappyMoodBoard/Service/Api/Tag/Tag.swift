@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Tag: Codable {
+struct Tag: Codable, Equatable {
     let id: Int
     let tagName: String
     let tagColorId: Int

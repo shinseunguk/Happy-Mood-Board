@@ -28,7 +28,7 @@ extension TagTarget: TargetType {
         case .fetch:
             return .get
         case .delete:
-            return .post
+            return .delete
         }
     }
     

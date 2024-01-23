@@ -16,7 +16,8 @@ class AuthInterceptor: RequestInterceptor {
     
     // TODO: UserDefaults에 저장된 값으로 accessToken 설정
     var accessToken: String {
-        UserDefaults.standard.string(forKey: "accessToken") ?? ""
+//        UserDefaults.standard.string(forKey: "accessToken")
+        "eyJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MjQsImlhdCI6MTcwNTYzNzY4OSwiZXhwIjoxNzA1NzI0MDg5fQ.oc82FCIMggWRJZGe3LJaWvhnmfD-_oVhyTkZpOlnEf0"
     }
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {

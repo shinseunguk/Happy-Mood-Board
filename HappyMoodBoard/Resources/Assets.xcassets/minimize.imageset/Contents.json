@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "navigation.register.normal.png",
+      "filename" : "minimize.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "navigation.register.normal@2x.png",
+      "filename" : "minimize@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "navigation.register.normal@3x.png",
+      "filename" : "minimize@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

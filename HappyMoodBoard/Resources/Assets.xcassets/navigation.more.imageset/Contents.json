@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "navigation.register.disabled.png",
+      "filename" : "navigation.more.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "navigation.register.disabled@2x.png",
+      "filename" : "navigation.more@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "navigation.register.disabled@3x.png",
+      "filename" : "navigation.more@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
