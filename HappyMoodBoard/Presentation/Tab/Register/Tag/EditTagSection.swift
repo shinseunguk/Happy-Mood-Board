@@ -10,19 +10,19 @@ import Foundation
 import RxDataSources
 
 struct EditTagSection {
-    var header: String
     var items: [Item]
 }
 
 extension EditTagSection: AnimatableSectionModelType {
     typealias Item = Tag
-    
-    var identity: String { header }
+    typealias Identity = Int
     
     init(original: EditTagSection, items: [Item]) {
         self = original
         self.items = items
     }
+    
+    var identity: Int { 0 }
 }
 
 extension Tag: IdentifiableType {
