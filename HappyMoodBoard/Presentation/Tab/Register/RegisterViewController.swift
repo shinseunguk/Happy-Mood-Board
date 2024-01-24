@@ -433,7 +433,7 @@ extension RegisterViewController {
     
     func navigateToBack() {
         navigationController?.popViewController(animated: true)
-        PreferencesService.shared.removeTag()
+        PreferencesService.shared.tag = nil
     }
     
     func showNavigateToBackAlert() {

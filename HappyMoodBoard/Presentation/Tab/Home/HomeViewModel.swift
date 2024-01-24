@@ -19,16 +19,25 @@ final class HomeViewModel: ViewModel {
     struct Output {
         let viewWillAppear: Observable<Void>
         let viewWillDisAppear: Observable<Bool>
-        let username: Observable<String>
+        let username: Observable<String?>
     }
     
     func transform(input: Input) -> Output {
-        let username = input.viewWillAppear
+        let result = input.viewWillAppear
             .flatMapLatest {
                 ApiService()
                     .request(type: MyInformationResponse.self, target: MemberTarget.me)
-                    .map { $0?.nickname ?? "" }
+                    .materialize()
             }
+            .share()
+        
+        let user = result.elements()
+            .do(onNext: { user in
+                PreferencesService.shared.memberId = user?.memberId
+            })
+            .share()
+        let username = user.map { $0?.nickname }
+        
         
         return Output(
             viewWillAppear: input.viewWillAppear,

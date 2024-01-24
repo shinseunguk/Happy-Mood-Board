@@ -13,29 +13,35 @@ struct UserPreferences {
     private init () {}
     
     static let tag = "Tag"
+    static let memberId = "memberId"
 }
 
 class PreferencesService {
     
     static let shared = PreferencesService()
     
+    let defaults: UserDefaults = .standard
+    
     private init() { }
     
-    func setTag(_ tag: Tag) {
-        let defaults = UserDefaults.standard
-        let data = try? JSONEncoder().encode(tag)
-        defaults.set(data, forKey: UserPreferences.tag)
-    }
-    
     func removeTag() {
-        let defaults = UserDefaults.standard
         defaults.removeObject(forKey: UserPreferences.tag)
     }
     
-    func tag() -> Tag? {
-        let defaults = UserDefaults.standard
-        guard let data = defaults.data(forKey: UserPreferences.tag) else { return nil }
-        return try? JSONDecoder().decode(Tag.self, from: data)
+    var tag: Tag? {
+        get {
+            guard let data = defaults.data(forKey: UserPreferences.tag) else { return nil }
+            return try? JSONDecoder().decode(Tag.self, from: data)
+        }
+        set {
+            let data = try? JSONEncoder().encode(newValue)
+            defaults.set(data, forKey: UserPreferences.tag)
+        }
+    }
+    
+    var memberId: Int? {
+        get { defaults.integer(forKey: UserPreferences.memberId) }
+        set { defaults.setValue(memberId, forKey: UserPreferences.memberId) }
     }
     
 }
@@ -44,7 +50,7 @@ extension PreferencesService: ReactiveCompatible { }
 
 extension Reactive where Base: PreferencesService {
     var tag: Observable<Tag?> {
-        return UserDefaults.standard
+        return base.defaults
             .rx
             .observe(Data.self, UserPreferences.tag)
             .map { data in

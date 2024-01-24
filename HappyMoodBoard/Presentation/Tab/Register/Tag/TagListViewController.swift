@@ -14,34 +14,6 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-enum TagListItem {
-    case tag(Tag)
-    case add
-    
-    var id: Int {
-        switch self {
-        case .add: return -1
-        case .tag(let tag): return tag.id
-        }
-    }
-}
-
-struct TagListSection {
-    var header: String = ""
-    var items: [Item]
-}
-
-extension TagListSection: SectionModelType {
-    typealias Item = TagListItem
-    
-    var identity: String { header }
-    
-    init(original: TagListSection, items: [Item]) {
-        self = original
-        self.items = items
-    }
-}
-
 final class TagListViewController: UIViewController {
     
     enum Constants {
@@ -183,9 +155,8 @@ extension TagListViewController: ViewAttributes {
     }
     
     func navigatToBack(_ tag: Tag?) {
-        dismiss(animated: true) { [weak self] in
-            print(tag)
-        }
+        dismiss(animated: false)
+        // FIXME: true일 때 추가화면으로 이동 후 dismiss되는디..?.......ㅠㅠ
     }
     
     func navigateToAdd() {

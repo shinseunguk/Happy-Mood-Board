@@ -47,9 +47,10 @@ final class TagListViewModel: ViewModel {
         // 태그 선택시
         let tagSelected = itemSelected.map {
             if case let .tag(tag) = $0 {
-                PreferencesService.shared.setTag(tag)
+                PreferencesService.shared.tag = tag
                 return tag
             }
+            
             return nil
         }
             .filter { $0 != nil }

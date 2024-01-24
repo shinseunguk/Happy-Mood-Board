@@ -11,19 +11,25 @@ import FirebaseStorage
 
 import RxSwift
 
-class FirebaseStorageService {
-    
-    var storage = Storage.storage()
-    
+fileprivate enum Constants {
+    static let compressionQuality: CGFloat = 0.5
+    static let contentType: String = "image/jpeg"
+    static let maxSize: Int64 = 100 * 1024 * 1024
+}
+
+final class FirebaseStorageService {
+      
     static let shared = FirebaseStorageService()
     
-    func upload(image: UIImage, completion: @escaping (StorageMetadata?, Error?) -> Void) {
-        guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+    private init() {}
+    
+    let storage: Storage = .storage()
+    
+    func upload(image: UIImage, forPath path: String, completion: @escaping (StorageMetadata?, Error?) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: Constants.compressionQuality) else { return }
         let metadata = StorageMetadata()
-        metadata.contentType = "image/jpeg"
-        
-        let fileName = "\(getDeviceUUID() ?? "")/\(Date().timeIntervalSince1970.description)"
-        let storageRef = storage.reference().child(fileName)
+        metadata.contentType = Constants.contentType
+        let storageRef = storage.reference().child(path)
         DispatchQueue.global().async {
             storageRef.putData(imageData, metadata: metadata, completion: completion)
         }
@@ -31,10 +37,8 @@ class FirebaseStorageService {
     
     func downloadImage(forPath path: String, completion: @escaping (Data?, Error?) -> Void) {
         let storageRef = storage.reference().child(path)
-        let megaByte = Int64(100 * 1024 * 1024)
-
         DispatchQueue.global().async {
-            storageRef.getData(maxSize: megaByte, completion: completion)
+            storageRef.getData(maxSize: Constants.maxSize, completion: completion)
         }
     }
     
@@ -44,19 +48,18 @@ extension FirebaseStorageService: ReactiveCompatible { }
 
 extension Reactive where Base: FirebaseStorageService {
     
-    func upload(image: UIImage) -> Observable<String> {
-        let imageData = image.jpegData(compressionQuality: 0.5)!
+    func upload(image: UIImage, forPath path: String) -> Observable<String?> {
+        guard let imageData = image.jpegData(compressionQuality: Constants.compressionQuality) else { return .just(nil) }
         let metadata = StorageMetadata()
-        metadata.contentType = "image/jpeg"
-        let fileName = "\(getDeviceUUID() ?? "")/\(Date().timeIntervalSince1970.description)"
-        return Storage.storage().reference().child(fileName)
-            .rx.putData(imageData)
-            .map { _ in fileName }
+        metadata.contentType = Constants.contentType
+        return base.storage.reference().child(path)
+            .rx.putData(imageData, metadata: metadata)
+            .map { _ in path }
     }
     
     func download(forPath path: String) -> Observable<UIImage?> {
-        return Storage.storage().reference().child(path)
-            .rx.getData(maxSize: 100 * 1024 * 1024)
+        return base.storage.reference().child(path)
+            .rx.getData(maxSize: Constants.maxSize)
             .map { data in
                 return UIImage(data: data)
             }

@@ -33,7 +33,11 @@ final class TagCollectionViewCell: UICollectionViewCell {
     func configure(with item: TagListItem) {
         switch item {
         case .add:
-            nameButton.setImage(.init(named: "add"), for: .init())
+            var configuration = UIButton.Configuration.plain()
+            configuration.preferredSymbolConfigurationForImage = .init(pointSize: 30)
+            configuration.image = .init(named: "add")
+            configuration.imagePadding = .zero
+            nameButton.configuration = configuration
         case .tag(let tag):
             var configuration = UIButton.Configuration.filled()
             configuration.cornerStyle = .capsule

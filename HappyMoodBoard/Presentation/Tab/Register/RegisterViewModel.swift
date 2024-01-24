@@ -96,7 +96,8 @@ final class RegisterViewModel: ViewModel {
         let uploadImage = input.registerButtonTapped.withLatestFrom(imageAndTextAndTag)
             .flatMapLatest { image, text, tag -> Observable<UpdatePostParameters> in
                 if let image = image {
-                    return FirebaseStorageService.shared.rx.upload(image: image)
+                    let path = "\(PreferencesService.shared.memberId ?? .init())/\(Date().timeIntervalSince1970.description)"
+                    return FirebaseStorageService.shared.rx.upload(image: image, forPath: path)
                         .map {
                             UpdatePostParameters(
                                 postId: nil,
@@ -117,6 +118,7 @@ final class RegisterViewModel: ViewModel {
                 }
             }
             .debug("이미지 업로드")
+            .share()
         
         // 이미지 업로드 후 게시글 등록
         let result = uploadImage

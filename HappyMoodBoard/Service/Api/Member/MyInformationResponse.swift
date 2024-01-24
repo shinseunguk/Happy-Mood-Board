@@ -8,6 +8,7 @@
 import Foundation
 
 struct MyInformationResponse: Decodable {
+    let memberId: Int
     let nickname: String
     let provider: String
     let email: String

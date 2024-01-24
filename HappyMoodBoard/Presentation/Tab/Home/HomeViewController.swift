@@ -90,8 +90,8 @@ extension HomeViewController: ViewAttributes {
         let output = viewModel.transform(input: input)
         
         output.username.asDriver(onErrorJustReturn: "")
-            .debug("사용자명")
             .drive(with: self) { owner, username in
+                guard let username = username else { return }
                 let text = "\(username) \(Self.kHeaderLabelText)"
                 owner.headerLabel.text = text
                 let attributedString = NSMutableAttributedString(string: text)
