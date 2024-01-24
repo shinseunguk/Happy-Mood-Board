@@ -20,6 +20,8 @@ enum SettingType {
     case logout
     case withdrawMembership
     
+    case marketingEmail
+    
     var title: String {
         switch self {
         case .mySettings:
@@ -40,6 +42,8 @@ enum SettingType {
             return "로그아웃"
         case .withdrawMembership:
             return "회원탈퇴"
+        case .marketingEmail:
+            return "마케팅 수신 동의"
         }
     }
   
@@ -51,6 +55,8 @@ enum SettingType {
             return "https://beehappy-official.notion.site/1d48f3bfca2b48d5b693371e352a7232"
         case .openSourceLicense:
             return "https://beehappy-official.notion.site/cc5183bc295b42678ab8a0a2600cfc34"
+        case .marketingEmail:
+            return "https://beehappy-official.notion.site/ab74900af7844afcad2b6ba3fcfa126a"
         default:
             return ""
         }

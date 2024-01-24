@@ -30,7 +30,11 @@ final class AgreeViewModel: ViewModel {
         let agreeToPrivacyPolicy: Observable<Bool>
         let agreeToTerms: Observable<Bool>
         let agreeToMarketingEmail: Observable<Bool>
-        // TODO: webview
+        
+        let navigateToPrivacyPolicy: Observable<Void>
+        let navigateToTerms: Observable<Void>
+        let navigateToMarketingEmail: Observable<Void>
+        
         let navigateToNextStep: Observable<Void>
     }
     
@@ -118,6 +122,9 @@ final class AgreeViewModel: ViewModel {
             agreeToPrivacyPolicy: state.map { $0.privacyPolicy },
             agreeToTerms: state.map { $0.terms },
             agreeToMarketingEmail: state.map { $0.marketingEmail },
+            navigateToPrivacyPolicy: input.navigateToPrivacyPolicy,
+            navigateToTerms: input.navigateToTerms,
+            navigateToMarketingEmail: input.navigateToMarketingEmail,
             navigateToNextStep: success
         )
     }

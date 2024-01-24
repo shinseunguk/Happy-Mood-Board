@@ -87,6 +87,11 @@ final class AgreeViewController: UIViewController {
         setupBindings()
     }
     
+    /// 웹뷰로 이동하고 해당 페이지로 재진입시 네비바가 보이기 때문에 해당 코드 삽입
+    /// - Parameter animated: <#animated description#>
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
 }
 
 // MARK: - ViewAttributes
@@ -184,6 +189,24 @@ extension AgreeViewController: ViewAttributes {
         output.agreeToAllOptions.asDriver(onErrorJustReturn: false)
             .drive(nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
+        
+        output.navigateToTerms.bind { [weak self] in
+            let viewController = SettingWebViewController(type: .termsOfService)
+            self?.show(viewController, sender: nil)
+        }
+        .disposed(by: disposeBag)
+        
+        output.navigateToPrivacyPolicy.bind { [weak self] in
+            let viewController = SettingWebViewController(type: .privacyPolicy)
+            self?.show(viewController, sender: nil)
+        }
+        .disposed(by: disposeBag)
+        
+        output.navigateToMarketingEmail.bind { [weak self] in
+            let viewController = SettingWebViewController(type: .marketingEmail)
+            self?.show(viewController, sender: nil)
+        }
+        .disposed(by: disposeBag)
         
         output.navigateToNextStep
             .bind { [weak self] in

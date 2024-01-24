@@ -58,6 +58,7 @@ extension SettingWebViewController: WKNavigationDelegate {
     }
     
     func setupNavigationBar() {
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.titleView = navigtaionTitle
         self.navigationItem.leftBarButtonItem = navigationItemBack
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
