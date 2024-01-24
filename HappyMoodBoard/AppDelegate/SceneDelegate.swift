@@ -14,7 +14,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        autoLogin(false)
+        
+        let handler = UserDefaults.standard.bool(forKey: "autoLogin")
+        autoLogin(handler)
 
         /*
         만료된 액세스 토큰 갱신 테스트용

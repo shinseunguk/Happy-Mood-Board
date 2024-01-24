@@ -10,7 +10,6 @@
 		4BB8D553194DE8941764A245 /* Pods_HappyMoodBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC308A98FD44DFE9EB514385 /* Pods_HappyMoodBoard.framework */; };
 		5D26C15C2B5F9F3B009570EB /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26C15B2B5F9F3B009570EB /* FullImageViewController.swift */; };
 		5D26C19E2B5FAF34009570EB /* AutoSizeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26C19D2B5FAF34009570EB /* AutoSizeImageView.swift */; };
-		5D26C1A02B60A2B7009570EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D26C19F2B60A2B7009570EB /* GoogleService-Info.plist */; };
 		5D4977B32B327E4D00059120 /* UIViewController+backgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */; };
 		5D4978812B32F26700059120 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4978802B32F26600059120 /* TabBarController.swift */; };
 		5D4978832B32F27300059120 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4978822B32F27300059120 /* HomeViewController.swift */; };
@@ -92,7 +91,6 @@
 		A26285222B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
 		A26285232B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
 		A26285242B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
-		A262852A2B5FE26A0016C4C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A26285292B5FE26A0016C4C6 /* GoogleService-Info.plist */; };
 		A28402D22B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
 		A28402D32B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
 		A28402D42B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
@@ -196,6 +194,7 @@
 		AC27433C2B5F94B1006E1DC3 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27433B2B5F94B1006E1DC3 /* ToastMessage.swift */; };
 		AC27433D2B5F94B1006E1DC3 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27433B2B5F94B1006E1DC3 /* ToastMessage.swift */; };
 		AC27433E2B5F94B1006E1DC3 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27433B2B5F94B1006E1DC3 /* ToastMessage.swift */; };
+		AC39C67E2B60D53A00165386 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC39C67D2B60D53A00165386 /* GoogleService-Info.plist */; };
 		AC3A3BC02B049FB90081BF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BBF2B049FB90081BF32 /* AppDelegate.swift */; };
 		AC3A3BC22B049FB90081BF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A3BC12B049FB90081BF32 /* SceneDelegate.swift */; };
 		AC3A3BC92B049FBA0081BF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC3A3BC82B049FBA0081BF32 /* Assets.xcassets */; };
@@ -256,7 +255,6 @@
 		3A6D12E40B69D872C4C5ED73 /* Pods-HappyMoodBoardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.release.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D26C15B2B5F9F3B009570EB /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
 		5D26C19D2B5FAF34009570EB /* AutoSizeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizeImageView.swift; sourceTree = "<group>"; };
-		5D26C19F2B60A2B7009570EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+backgroundColor.swift"; sourceTree = "<group>"; };
 		5D4978802B32F26600059120 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5D4978822B32F27300059120 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -328,7 +326,6 @@
 		A26285182B5CF4D00016C4C6 /* FetchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResponse.swift; sourceTree = "<group>"; };
 		A262851C2B5D02120016C4C6 /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
 		A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabTableViewCell.swift; sourceTree = "<group>"; };
-		A26285292B5FE26A0016C4C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A28402D12B4589B0007C0A0D /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
 		A28402D52B458AB3007C0A0D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A28402DA2B45952F007C0A0D /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
@@ -366,6 +363,7 @@
 		AC185D072B4795E3007304CE /* NotificationModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModalViewController.swift; sourceTree = "<group>"; };
 		AC185D0D2B47AD58007304CE /* NotificationModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModalViewModel.swift; sourceTree = "<group>"; };
 		AC27433B2B5F94B1006E1DC3 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
+		AC39C67D2B60D53A00165386 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../InfoPlist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC3A3BBC2B049FB90081BF32 /* HappyMoodBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyMoodBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3A3BBF2B049FB90081BF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC3A3BC12B049FB90081BF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -839,7 +837,7 @@
 			children = (
 				A2B58B752B528726003FCFA9 /* HappyMoodBoard.entitlements */,
 				A2A3D01D2B0BA0960041DCDE /* HappyMoodBoardDebug.entitlements */,
-				5D26C19F2B60A2B7009570EB /* GoogleService-Info.plist */,
+				AC39C67D2B60D53A00165386 /* GoogleService-Info.plist */,
 				AC3A3BCD2B049FBA0081BF32 /* Info.plist */,
 				A24CDD232B064F3D00A699E8 /* AppDelegate */,
 				A24CDD242B064F9100A699E8 /* Presentation */,
@@ -1122,7 +1120,7 @@
 				5D72527F2B21AE2F00CF6688 /* Pretendard-Bold.otf in Resources */,
 				5D72527D2B21AE2F00CF6688 /* Pretendard-Regular.otf in Resources */,
 				AC3A3BC92B049FBA0081BF32 /* Assets.xcassets in Resources */,
-				5D26C1A02B60A2B7009570EB /* GoogleService-Info.plist in Resources */,
+				AC39C67E2B60D53A00165386 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
