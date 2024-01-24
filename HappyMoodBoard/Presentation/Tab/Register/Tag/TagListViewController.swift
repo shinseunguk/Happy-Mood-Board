@@ -125,9 +125,7 @@ extension TagListViewController: ViewAttributes {
     
     func setupNavigationBar() {
         navigationItem.title = "태그 선택"
-        let spacing = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        spacing.width = 20
-        navigationItem.rightBarButtonItems = [editButton, spacing]
+        navigationItem.rightBarButtonItems = [editButton, .fixedSpace(20)]
         navigationItem.backButtonDisplayMode = .minimal
     }
     

@@ -13,7 +13,7 @@ struct Post: Decodable {
     let id: Int
     let postTag: PostTag?
     let memberId: Int
-    let comments: String
+    let comments: String?
     let imagePath: String?
     let tagId: Int?
 }

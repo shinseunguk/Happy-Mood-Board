@@ -36,7 +36,9 @@ final class TagListViewModel: ViewModel {
                         items.append(.add)
                         return [TagListSection(items: items)]
                     }
+//                    .materialize()
             }
+            .catchAndReturn([TagListSection(items: [.add])])
             .share()
         
         // 태그/태그추가 선택시

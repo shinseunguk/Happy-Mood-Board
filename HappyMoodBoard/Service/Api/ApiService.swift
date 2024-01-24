@@ -15,6 +15,7 @@ final class ApiService {
     func request<T: Decodable>(type: T.Type, target: TargetType) -> Observable<T?> {
         return RxAlamofire
             .request(target, interceptor: AuthInterceptor())
+            .validate(statusCode: 200..<300)
             .observe(on: MainScheduler.instance)
             .responseData()
             .map { response, data -> T? in
@@ -23,7 +24,6 @@ final class ApiService {
                     do {
                         let result = try JSONDecoder().decode(BaseResponse<T>.self, from: data)
 //                        traceLog(String(data: data, encoding: .utf8))
-
                         return result.responseData
                     } catch {
                         // TODO: 성공시 디코딩 에러 처리
@@ -57,6 +57,7 @@ final class ApiService {
                 }
             }
     }
+    
 }
 
 enum ApiError: LocalizedError {

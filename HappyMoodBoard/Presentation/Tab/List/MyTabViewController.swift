@@ -94,9 +94,6 @@ final class MyTabViewController: UIViewController {
 extension MyTabViewController: ViewAttributes {
     
     func setupNavigationBar() {
-        let spacing = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        spacing.width = 12
-        
         let titleLabel = UILabel().then {
             $0.textColor = .primary900
             $0.font = .init(name: "Pretendard-Bold", size: 16)
@@ -110,10 +107,9 @@ extension MyTabViewController: ViewAttributes {
                 ]
             )
         }
-        //        titleLabel.sizeToFit()
         
-        navigationItem.leftBarButtonItems = [spacing, .init(customView: titleLabel)]
-        navigationItem.rightBarButtonItems = [settingButton, spacing]
+        navigationItem.leftBarButtonItems = [.fixedSpace(12), .init(customView: titleLabel)]
+        navigationItem.rightBarButtonItems = [settingButton, .fixedSpace(12)]
     }
     
     func setupSubviews() {

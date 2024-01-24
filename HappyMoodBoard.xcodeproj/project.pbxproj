@@ -10,6 +10,7 @@
 		4BB8D553194DE8941764A245 /* Pods_HappyMoodBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC308A98FD44DFE9EB514385 /* Pods_HappyMoodBoard.framework */; };
 		5D26C15C2B5F9F3B009570EB /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26C15B2B5F9F3B009570EB /* FullImageViewController.swift */; };
 		5D26C19E2B5FAF34009570EB /* AutoSizeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26C19D2B5FAF34009570EB /* AutoSizeImageView.swift */; };
+		5D26C1A02B60A2B7009570EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D26C19F2B60A2B7009570EB /* GoogleService-Info.plist */; };
 		5D4977B32B327E4D00059120 /* UIViewController+backgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */; };
 		5D4978812B32F26700059120 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4978802B32F26600059120 /* TabBarController.swift */; };
 		5D4978832B32F27300059120 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4978822B32F27300059120 /* HomeViewController.swift */; };
@@ -69,13 +70,16 @@
 		5DEB7EC52B5A1440001654FE /* EditTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB7EC42B5A1440001654FE /* EditTagTableViewCell.swift */; };
 		5DEB7EC72B5A21C3001654FE /* EditTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB7EC62B5A21C3001654FE /* EditTagViewModel.swift */; };
 		5DEB7EC92B5A23CA001654FE /* EditTagSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB7EC82B5A23CA001654FE /* EditTagSection.swift */; };
-		5DEB7ECE2B5DEE14001654FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DEB7ECD2B5DEE14001654FE /* GoogleService-Info.plist */; };
 		5DF0A1512B56797800D4C15C /* AddTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1502B56797800D4C15C /* AddTagViewController.swift */; };
 		5DF0A1532B56798400D4C15C /* AddTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1522B56798400D4C15C /* AddTagViewModel.swift */; };
 		5DF0A1552B57C56E00D4C15C /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1542B57C56E00D4C15C /* UIImage+Utils.swift */; };
 		5DF0A1572B58A9B200D4C15C /* materialized+elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1562B58A9B200D4C15C /* materialized+elements.swift */; };
 		5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF686022B35151700479D54 /* HomeViewModel.swift */; };
-		676E999C798E7795F8DED6EC /* Pods_HappyMoodBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E437ECCF20FBB94EF85D6F /* Pods_HappyMoodBoard.framework */; };
+		5DFBC9C02B5DF350006C0EF8 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9BF2B5DF350006C0EF8 /* FirebaseStorageService.swift */; };
+		5DFBC9C22B5E37D4006C0EF8 /* Optional+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9C12B5E37D4006C0EF8 /* Optional+Rx.swift */; };
+		5DFBC9C42B5E44C1006C0EF8 /* PostDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9C32B5E44C1006C0EF8 /* PostDetailModalViewController.swift */; };
+		5DFBC9C62B5F58C0006C0EF8 /* FirebaseStorage+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9C52B5F58C0006C0EF8 /* FirebaseStorage+Rx.swift */; };
+		9075F8CCC8E912935B674C3A /* Pods_HappyMoodBoard_HappyMoodBoardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D3DF86188F868617264C16 /* Pods_HappyMoodBoard_HappyMoodBoardUITests.framework */; };
 		A25747382B594AC70067F20D /* MyTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25747372B594AC70067F20D /* MyTabViewModel.swift */; };
 		A25747392B594AC70067F20D /* MyTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25747372B594AC70067F20D /* MyTabViewModel.swift */; };
 		A257473A2B594AC70067F20D /* MyTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25747372B594AC70067F20D /* MyTabViewModel.swift */; };
@@ -88,11 +92,6 @@
 		A26285222B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
 		A26285232B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
 		A26285242B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
-		5DFBC9C02B5DF350006C0EF8 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9BF2B5DF350006C0EF8 /* FirebaseStorageService.swift */; };
-		5DFBC9C22B5E37D4006C0EF8 /* Optional+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9C12B5E37D4006C0EF8 /* Optional+Rx.swift */; };
-		5DFBC9C42B5E44C1006C0EF8 /* PostDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9C32B5E44C1006C0EF8 /* PostDetailModalViewController.swift */; };
-		5DFBC9C62B5F58C0006C0EF8 /* FirebaseStorage+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9C52B5F58C0006C0EF8 /* FirebaseStorage+Rx.swift */; };
-		9075F8CCC8E912935B674C3A /* Pods_HappyMoodBoard_HappyMoodBoardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D3DF86188F868617264C16 /* Pods_HappyMoodBoard_HappyMoodBoardUITests.framework */; };
 		A28402D22B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
 		A28402D32B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
 		A28402D42B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
@@ -256,6 +255,7 @@
 		3A6D12E40B69D872C4C5ED73 /* Pods-HappyMoodBoardTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.release.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D26C15B2B5F9F3B009570EB /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
 		5D26C19D2B5FAF34009570EB /* AutoSizeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizeImageView.swift; sourceTree = "<group>"; };
+		5D26C19F2B60A2B7009570EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+backgroundColor.swift"; sourceTree = "<group>"; };
 		5D4978802B32F26600059120 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5D4978822B32F27300059120 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -311,19 +311,11 @@
 		5DEB7EC42B5A1440001654FE /* EditTagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTagTableViewCell.swift; sourceTree = "<group>"; };
 		5DEB7EC62B5A21C3001654FE /* EditTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTagViewModel.swift; sourceTree = "<group>"; };
 		5DEB7EC82B5A23CA001654FE /* EditTagSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTagSection.swift; sourceTree = "<group>"; };
-		5DEB7ECD2B5DEE14001654FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DF0A1502B56797800D4C15C /* AddTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagViewController.swift; sourceTree = "<group>"; };
 		5DF0A1522B56798400D4C15C /* AddTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagViewModel.swift; sourceTree = "<group>"; };
 		5DF0A1542B57C56E00D4C15C /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		5DF0A1562B58A9B200D4C15C /* materialized+elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "materialized+elements.swift"; sourceTree = "<group>"; };
 		5DF686022B35151700479D54 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		6575D7DDF37C8F4547644BF0 /* Pods-HappyMoodBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7AD9B74EF4837EEE55C75F63 /* Pods_HappyMoodBoardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		928F15A5095CBB78C4957AD4 /* Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard-HappyMoodBoardUITests/Pods-HappyMoodBoard-HappyMoodBoardUITests.release.xcconfig"; sourceTree = "<group>"; };
-		A25747372B594AC70067F20D /* MyTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabViewModel.swift; sourceTree = "<group>"; };
-		A26285182B5CF4D00016C4C6 /* FetchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResponse.swift; sourceTree = "<group>"; };
-		A262851C2B5D02120016C4C6 /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
-		A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabTableViewCell.swift; sourceTree = "<group>"; };
 		5DFBC9BF2B5DF350006C0EF8 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
 		5DFBC9C12B5E37D4006C0EF8 /* Optional+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Rx.swift"; sourceTree = "<group>"; };
 		5DFBC9C32B5E44C1006C0EF8 /* PostDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailModalViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +323,10 @@
 		71399255804912B03A8ED94C /* Pods-HappyMoodBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard.release.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard/Pods-HappyMoodBoard.release.xcconfig"; sourceTree = "<group>"; };
 		71AECA42DC801AD790D25710 /* Pods-HappyMoodBoardTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoardTests.debug.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoardTests/Pods-HappyMoodBoardTests.debug.xcconfig"; sourceTree = "<group>"; };
 		83D3DF86188F868617264C16 /* Pods_HappyMoodBoard_HappyMoodBoardUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyMoodBoard_HappyMoodBoardUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A25747372B594AC70067F20D /* MyTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabViewModel.swift; sourceTree = "<group>"; };
+		A26285182B5CF4D00016C4C6 /* FetchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResponse.swift; sourceTree = "<group>"; };
+		A262851C2B5D02120016C4C6 /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
+		A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabTableViewCell.swift; sourceTree = "<group>"; };
 		A28402D12B4589B0007C0A0D /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
 		A28402D52B458AB3007C0A0D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A28402DA2B45952F007C0A0D /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
@@ -841,7 +837,7 @@
 			children = (
 				A2B58B752B528726003FCFA9 /* HappyMoodBoard.entitlements */,
 				A2A3D01D2B0BA0960041DCDE /* HappyMoodBoardDebug.entitlements */,
-				5DEB7ECD2B5DEE14001654FE /* GoogleService-Info.plist */,
+				5D26C19F2B60A2B7009570EB /* GoogleService-Info.plist */,
 				AC3A3BCD2B049FBA0081BF32 /* Info.plist */,
 				A24CDD232B064F3D00A699E8 /* AppDelegate */,
 				A24CDD242B064F9100A699E8 /* Presentation */,
@@ -1124,7 +1120,7 @@
 				5D72527F2B21AE2F00CF6688 /* Pretendard-Bold.otf in Resources */,
 				5D72527D2B21AE2F00CF6688 /* Pretendard-Regular.otf in Resources */,
 				AC3A3BC92B049FBA0081BF32 /* Assets.xcassets in Resources */,
-				5DEB7ECE2B5DEE14001654FE /* GoogleService-Info.plist in Resources */,
+				5D26C1A02B60A2B7009570EB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1677,9 +1673,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HappyMoodBoard/HappyMoodBoardDebug.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 325UV7FT5F;
+				DEVELOPMENT_TEAM = B6J76W3Z6W;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HappyMoodBoard/Info.plist;
@@ -1697,8 +1694,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.betterhee.beside.BeeHappy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bside.BeeHappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1712,9 +1710,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HappyMoodBoard/HappyMoodBoard.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 325UV7FT5F;
+				DEVELOPMENT_TEAM = B6J76W3Z6W;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HappyMoodBoard/Info.plist;
@@ -1732,8 +1731,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.betterhee.beside.BeeHappy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bside.BeeHappy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -15,8 +15,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-//        handleAutoLogin() ? autoLogin(true) : autoLogin(false)
-        autoLogin(true)
+        
+        handleAutoLogin() ? autoLogin(true) : autoLogin(false)
+        
+        /*
+        만료된 액세스 토큰 갱신 테스트용
+        let expiredAccessToken = "eyJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MjQsImlhdCI6MTcwNTUzOTE2NywiZXhwIjoxNzA1NjI1NTY3fQ.XyUKMrZ1Hd5boaaC04UcW3zHEoqKfZNJ_XBH8Y8hwj8"
+        let refreshToken = "eyJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MjQsImlhdCI6MTcwNTUzOTE2NywiZXhwIjoxNzEwNzIzMTY3fQ.NwdKleV9XjuLigXu4xXiXv5WeNI2GJoVE8hw_d3OqFE"
+        UserDefaults.standard.setValue(expiredAccessToken, forKey: AuthInterceptor.Key.accessToken.rawValue)
+        UserDefaults.standard.setValue(refreshToken, forKey: AuthInterceptor.Key.refreshToken.rawValue)
+         autoLogin(true) // 개발용 로그인
+         */
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

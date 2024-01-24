@@ -11,3 +11,8 @@ struct ReissueAccessTokenParameters: Encodable {
     /// 액세스 토큰
     let token: String
 }
+
+struct ReissueAccessTokenResponse: Decodable {
+    /// 재발급된 액세스 토큰
+    let token: String
+}
