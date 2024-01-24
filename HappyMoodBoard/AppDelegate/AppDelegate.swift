@@ -63,7 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         appearance.configureWithTransparentBackground()
         
         let backButtonImage = UIImage(named: "navigation.back")?.withAlignmentRectInsets(.init(top: 6, left: 0, bottom: 6, right: 0))
-        appearance.shadowColor = .gray200
         appearance.setBackIndicatorImage(backButtonImage, transitionMaskImage: backButtonImage)
         appearance.titleTextAttributes = [
             .foregroundColor: UIColor.gray900,

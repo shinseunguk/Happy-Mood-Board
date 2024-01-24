@@ -73,7 +73,7 @@ extension HomeViewController: ViewAttributes {
     
     func setupLayouts() {
         headerLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(8)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(16)
             make.leading.trailing.equalToSuperview().offset(24)
         }
         

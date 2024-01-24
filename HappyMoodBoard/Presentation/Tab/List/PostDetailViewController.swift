@@ -13,7 +13,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class PostDetailViewController: UIViewController {
+final class PostDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
     enum Constants {
         static let deleteAlertTitle = "삭제하시겠어요?"
@@ -123,6 +123,8 @@ final class PostDetailViewController: UIViewController {
 extension PostDetailViewController: ViewAttributes {
     
     func setupNavigationBar() {
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
         navigationItem.leftBarButtonItem = backButton
         navigationItem.rightBarButtonItem = moreButton
     }
@@ -147,7 +149,7 @@ extension PostDetailViewController: ViewAttributes {
         }
         
         contentStackView.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(8)
+            make.top.equalTo(dateLabel.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(24)
         }
         

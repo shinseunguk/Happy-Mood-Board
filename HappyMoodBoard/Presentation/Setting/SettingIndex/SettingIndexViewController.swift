@@ -292,6 +292,7 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
         
         // MARK: - 로그아웃 서버 response 이후
         output.logoutAction.bind { [weak self] in
+            UserDefaults.standard.set(false, forKey: "autoLogin")
             self?.setRootViewController(LoginViewController())
         }
         .disposed(by: disposeBag)
@@ -311,6 +312,7 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
         
         // MARK: - 회원탈퇴 서버 response 이후
         output.withdrawAction.bind { [weak self] in
+            UserDefaults.standard.set(false, forKey: "autoLogin")
             self?.setRootViewController(LoginViewController())
         }
         .disposed(by: disposeBag)

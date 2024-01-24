@@ -92,6 +92,7 @@
 		A26285222B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
 		A26285232B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
 		A26285242B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
+		A262852A2B5FE26A0016C4C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A26285292B5FE26A0016C4C6 /* GoogleService-Info.plist */; };
 		A28402D22B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
 		A28402D32B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
 		A28402D42B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
@@ -327,6 +328,7 @@
 		A26285182B5CF4D00016C4C6 /* FetchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResponse.swift; sourceTree = "<group>"; };
 		A262851C2B5D02120016C4C6 /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
 		A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabTableViewCell.swift; sourceTree = "<group>"; };
+		A26285292B5FE26A0016C4C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A28402D12B4589B0007C0A0D /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
 		A28402D52B458AB3007C0A0D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A28402DA2B45952F007C0A0D /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };

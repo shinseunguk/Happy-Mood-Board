@@ -8,9 +8,18 @@
 import Foundation
 import UIKit
 
+import RxSwift
+
 class TagButton: UIButton {
-    init(title: String?, bgColor: UIColor?) {
+    
+    var tagId: Int? = nil
+    let actionPublishSubject = PublishSubject<Int>()
+    
+    init(tagId: Int?, title: String?, bgColor: UIColor?) {
         super.init(frame: .zero)
+        
+        self.tagId = tagId
+        
         setupButton(title: title, bgColor: bgColor)
     }
     

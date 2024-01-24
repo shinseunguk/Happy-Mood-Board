@@ -188,7 +188,7 @@ extension RegisterViewController: ViewAttributes {
     
     func setupLayouts() {
         headerLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
             make.leading.trailing.equalToSuperview().inset(24)
         }
         

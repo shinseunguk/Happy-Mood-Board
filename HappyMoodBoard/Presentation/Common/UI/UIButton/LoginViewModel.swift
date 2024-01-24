@@ -28,15 +28,14 @@ final class LoginViewModel: NSObject, ViewModel {
     }
     
     struct Output {
-        let kakaoLogin: Observable<Void>
-        let appleLogin: Observable<String?>
+        let success: Observable<String?>
     }
     
     let disposeBag: DisposeBag = .init()
     let socialLoginSubject = PublishSubject<SocialLoginParameters>()
     
     func transform(input: Input) -> Output {
-        let appleLoginResult: Observable<String?>
+        let loginResult: Observable<String?>
         
         input.kakaoLogin
             .subscribe(onNext: { [weak self] in
@@ -90,7 +89,7 @@ final class LoginViewModel: NSObject, ViewModel {
             })
             .disposed(by: disposeBag)
         
-        appleLoginResult = socialLoginSubject.map {
+        loginResult = socialLoginSubject.map {
             // TODO: 운영 API
             AuthTarget.login(
                 .init(
@@ -134,8 +133,7 @@ final class LoginViewModel: NSObject, ViewModel {
         }
         
         return Output(
-            kakaoLogin: input.kakaoLogin,
-            appleLogin: appleLoginResult.asObservable()
+            success: loginResult.asObservable()
         )
     }
     
@@ -169,14 +167,15 @@ extension LoginViewModel: ASAuthorizationControllerDelegate, ASAuthorizationCont
                 let identityToken = appleIDCredential.identityToken,
                 let authCodeString = String(data: authorizationCode, encoding: .utf8),
                 let identifyTokenString = String(data: identityToken, encoding: .utf8),
-                let deviceToken = UserDefaults.standard.string(forKey: "deviceToken"),
-                let deviceId = getDeviceUUID(){
+                let deviceId = getDeviceUUID() {
                 print("authorizationCode: \(authorizationCode)")
                 print("identityToken: \(identityToken)")
                 print("authCodeString: \(authCodeString)")
                 print("identifyTokenString: \(identifyTokenString)")
                 
                 parseAppleIdentityToken(identityToken: identifyTokenString)
+                
+                let deviceToken = UserDefaults.standard.string(forKey: "deviceToken") ?? "123456789" 
                 
                 let paramters = SocialLoginParameters(
                     accessToken: identifyTokenString,

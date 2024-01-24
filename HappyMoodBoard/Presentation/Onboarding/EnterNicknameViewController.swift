@@ -184,6 +184,8 @@ final class EnterNicknameViewController: UIViewController, ViewAttributes {
                     registerViewController,
                     listNavigationController
                 ]
+                
+                UserDefaults.standard.set(true, forKey: "autoLogin")
                 owner.show(tabBarController, sender: nil)
             }
             .disposed(by: disposeBag)

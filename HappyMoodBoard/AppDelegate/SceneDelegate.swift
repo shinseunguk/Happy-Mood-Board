@@ -14,10 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        
-        
-        handleAutoLogin() ? autoLogin(true) : autoLogin(false)
-        
+        autoLogin(false)
+
         /*
         만료된 액세스 토큰 갱신 테스트용
         let expiredAccessToken = "eyJhbGciOiJIUzI1NiJ9.eyJtZW1iZXJJZCI6MjQsImlhdCI6MTcwNTUzOTE2NywiZXhwIjoxNzA1NjI1NTY3fQ.XyUKMrZ1Hd5boaaC04UcW3zHEoqKfZNJ_XBH8Y8hwj8"
@@ -98,15 +96,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.backgroundColor = .primary100
             window?.makeKeyAndVisible()
         }
-    }
-    
-    /// 자동로그인 분기 함수
-    /// - Returns: AccessToken, RefreshToken이 UserDefaults에 존재하면 True, 그렇지 않다면 false
-    func handleAutoLogin() -> Bool {
-        guard let _ = UserDefaults.standard.string(forKey: "accessToken"),
-              let _ = UserDefaults.standard.string(forKey: "refreshToken") else {
-                  return false
-              }
-        return true
     }
 }

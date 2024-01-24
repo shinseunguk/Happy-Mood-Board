@@ -44,6 +44,7 @@ final class MyTabViewController: UIViewController {
         $0.alwaysBounceHorizontal = true // 스크롤이 컨텐츠의 크기보다 작아도 가로로 스크롤 가능하도록 설정
         $0.isPagingEnabled = false // 페이지별 스크롤 여부 (필요에 따라 설정)
         $0.isScrollEnabled = true
+        $0.isHidden = true
     }
     
     private let tagStackView = UIStackView().then {
@@ -54,6 +55,12 @@ final class MyTabViewController: UIViewController {
     }
     
     private let stickyScrollView = UIScrollView().then {
+        $0.showsVerticalScrollIndicator = false
+        $0.showsHorizontalScrollIndicator = false // 수평 스크롤 인디케이터 표시 여부
+        $0.isDirectionalLockEnabled = true // 수평 스크롤 고정 여부 (수직 스크롤을 막고 수평 스크롤만 허용)
+        $0.alwaysBounceHorizontal = true // 스크롤이 컨텐츠의 크기보다 작아도 가로로 스크롤 가능하도록 설정
+        $0.isPagingEnabled = false // 페이지별 스크롤 여부 (필요에 따라 설정)
+        $0.isScrollEnabled = true
         $0.backgroundColor = .primary100
         $0.isHidden = true
     }
@@ -74,6 +81,13 @@ final class MyTabViewController: UIViewController {
         $0.rowHeight = UITableView.automaticDimension
         $0.estimatedRowHeight = 100.0 // 셀의 기본 예상 높이
         $0.separatorStyle = .none
+    }
+    
+    private let emptyImageView = UIImageView().then {
+        $0.isHidden = true
+        $0.image = UIImage(named: "happyItem.empty")
+        $0.contentMode = .scaleAspectFit
+        $0.clipsToBounds = true
     }
     
     let disposeBag : DisposeBag = .init()
@@ -115,7 +129,8 @@ extension MyTabViewController: ViewAttributes {
     func setupSubviews() {
         [
             scrollView,
-            stickyScrollView
+            stickyScrollView,
+            emptyImageView
         ].forEach { self.view.addSubview($0) }
         
         [
@@ -148,6 +163,12 @@ extension MyTabViewController: ViewAttributes {
             $0.height.equalTo(46)
         }
         
+        emptyImageView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(30)
+            $0.height.equalTo(emptyImageView.snp.width).multipliedBy(0.48)
+        }
+        
         stickyHeaderTagStackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.centerY.equalToSuperview()
@@ -159,7 +180,7 @@ extension MyTabViewController: ViewAttributes {
         }
         
         headerLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
+            $0.top.equalToSuperview().inset(16)
             $0.leading.trailing.equalToSuperview().inset(24)
         }
         
@@ -233,8 +254,26 @@ extension MyTabViewController: ViewAttributes {
             
             // MARK: - StickyView
             for (index, element) in tag.enumerated() {
-                let tagButton = TagButton(title: element.0, bgColor: .primary600/*element.1*/)
+                let tagButton = TagButton(tagId: element.0, title: element.1, bgColor: .primary600/*element.1*/)
                 self?.stickyHeaderTagStackView.addArrangedSubview(tagButton)
+                
+                tagButton.rx.tap
+                    .compactMap {
+                        (index, tagButton.tagId ?? 0)
+                    }
+                    .bind(to: self!.viewModel.selectedIndex)
+                .disposed(by: self!.disposeBag)
+                
+                self?.viewModel.selectedIndex.bind {
+                    if index == $0.0 {
+                        tagButton.backgroundColor = .accent300
+                        tagButton.layer.borderColor = UIColor.accent300?.cgColor
+                    } else {
+                        tagButton.backgroundColor = .white
+                        tagButton.layer.borderColor = UIColor.primary600?.cgColor
+                    }
+                }
+                .disposed(by: self!.disposeBag)
                 
                 tagButton.snp.makeConstraints {
                     $0.height.equalTo(30)
@@ -242,17 +281,31 @@ extension MyTabViewController: ViewAttributes {
                     if index == 0 {
                         $0.leading.equalTo((self?.stickyHeaderTagStackView.snp.leading)!).offset(24)
                     }
-                    // TODO: trailing margin도 줘야하는지 ?
-//                        else if i == 5 {
-//                            $0.trailing.equalTo(tagStackView.snp.trailing).offset(-24)
-//                        }
                 }
             }
             
             // MARK: - TagView
             for (index, element) in tag.enumerated() {
-                let tagButton = TagButton(title: element.0, bgColor: .primary600/*element.1*/)
+                let tagButton = TagButton(tagId: element.0, title: element.1, bgColor: .primary600/*element.1*/)
                 self?.tagStackView.addArrangedSubview(tagButton)
+                
+                tagButton.rx.tap
+                    .compactMap {
+                        (index, tagButton.tagId ?? 0)
+                    }
+                    .bind(to: self!.viewModel.selectedIndex)
+                .disposed(by: self!.disposeBag)
+                
+                self?.viewModel.selectedIndex.bind {
+                    if index == $0.0 {
+                        tagButton.backgroundColor = .accent300
+                        tagButton.layer.borderColor = UIColor.accent300?.cgColor
+                    } else {
+                        tagButton.backgroundColor = .white
+                        tagButton.layer.borderColor = UIColor.primary600?.cgColor
+                    }
+                }
+                .disposed(by: self!.disposeBag)
                 
                 tagButton.snp.makeConstraints {
                     $0.height.equalTo(30)
@@ -260,14 +313,20 @@ extension MyTabViewController: ViewAttributes {
                     if index == 0 {
                         $0.leading.equalTo((self?.tagStackView.snp.leading)!).offset(24)
                     }
-                    // TODO: trailing margin도 줘야하는지 ?
-//                        else if i == 5 {
-//                            $0.trailing.equalTo(tagStackView.snp.trailing).offset(-24)
-//                        }
                 }
             }
         })
         .disposed(by: disposeBag)
+        
+        output.happyItem
+            .map {
+                $0.count == 0
+            }
+            .bind { [weak self] in
+                    self?.emptyImageView.isHidden = !$0
+                    self?.tagScrollView.isHidden = $0
+            }
+            .disposed(by: disposeBag)
         
         output.happyItem
             .bind(to: tableView.rx.items(cellIdentifier: "MyTabTableViewCell", cellType: MyTabTableViewCell.self)) { (row, element, cell) in
@@ -284,9 +343,8 @@ extension MyTabViewController: ViewAttributes {
             }
             .subscribe { [weak self] (indexPath, postId) in
                 traceLog(postId)
-                // TODO: 게시글로 이동 merge할때 수정
-//                let viewController = PostDetailViewController(viewModel: .init(postId: postId))
-//                self.show(viewController, sender: nil)
+                let viewController = PostDetailViewController(viewModel: .init(postId: postId))
+                self?.show(viewController, sender: nil)
             }
             .disposed(by: disposeBag)
     }

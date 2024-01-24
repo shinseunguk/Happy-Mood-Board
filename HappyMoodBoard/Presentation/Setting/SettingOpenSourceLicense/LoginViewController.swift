@@ -66,14 +66,8 @@ extension LoginViewController {
         
         let output = viewModel.transform(input: input)
         
-        // 카카오 로그인
-        output.kakaoLogin.bind { [weak self] in
-            print("카카오 로그인")
-        }
-        .disposed(by: disposeBag)
-        
-        // 애플 로그인
-        output.appleLogin
+        // 로그인 결과
+        output.success
             .bind { [weak self] result in
                 
                 switch result {
@@ -114,6 +108,8 @@ extension LoginViewController {
                         registerViewController,
                         listNavigationController
                     ]
+                    
+                    UserDefaults.standard.set(true, forKey: "autoLogin")
                     self?.show(tabBarController, sender: nil)
                     
                 case MemberStatus.SUSPEND.rawValue: // 차단된 회원
