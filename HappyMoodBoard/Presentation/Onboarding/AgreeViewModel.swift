@@ -25,6 +25,7 @@ final class AgreeViewModel: ViewModel {
     }
     
     struct Output {
+        let availableNextStep: Observable<Bool>
         let agreeToAllOptions: Observable<Bool>
         let agreeToAge: Observable<Bool>
         let agreeToPrivacyPolicy: Observable<Bool>
@@ -88,7 +89,7 @@ final class AgreeViewModel: ViewModel {
             current.allOptions = current.age
             && current.privacyPolicy
             && current.terms // 필수
-            // && current.marketingEmail // 선택
+            && current.marketingEmail // 선택
         }
             .share()
         
@@ -110,14 +111,15 @@ final class AgreeViewModel: ViewModel {
             .share()
         
         let success = result
-//            .elements()
+            .elements()
             .map { _ in Void() }
 
         // TODO: 에러 응답 처리
         // (약관동의 한번 더 하는 경우) 발생하는 케이스가 있는지 확인 후, 사용자 편의성을 위해 그냥 다음 화면으로 이동할지 or 경고창 띄울지
         
         return Output(
-            agreeToAllOptions: state.map { $0.allOptions }, // canNext
+            availableNextStep: state.map { $0.age && $0.terms && $0.privacyPolicy }, // canNext
+            agreeToAllOptions: state.map { $0.allOptions },
             agreeToAge: state.map { $0.age },
             agreeToPrivacyPolicy: state.map { $0.privacyPolicy },
             agreeToTerms: state.map { $0.terms },

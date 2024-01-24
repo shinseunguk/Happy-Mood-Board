@@ -92,6 +92,9 @@
 		A26285222B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
 		A26285232B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
 		A26285242B5D5C520016C4C6 /* MyTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */; };
+		A262852E2B6137C30016C4C6 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A262852D2B6137C30016C4C6 /* HeaderLabel.swift */; };
+		A262852F2B6137C30016C4C6 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A262852D2B6137C30016C4C6 /* HeaderLabel.swift */; };
+		A26285302B6137C30016C4C6 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A262852D2B6137C30016C4C6 /* HeaderLabel.swift */; };
 		A28402D22B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
 		A28402D32B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
 		A28402D42B4589B0007C0A0D /* MyAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28402D12B4589B0007C0A0D /* MyAccount.swift */; };
@@ -328,6 +331,7 @@
 		A26285182B5CF4D00016C4C6 /* FetchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResponse.swift; sourceTree = "<group>"; };
 		A262851C2B5D02120016C4C6 /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
 		A26285212B5D5C520016C4C6 /* MyTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabTableViewCell.swift; sourceTree = "<group>"; };
+		A262852D2B6137C30016C4C6 /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
 		A28402D12B4589B0007C0A0D /* MyAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccount.swift; sourceTree = "<group>"; };
 		A28402D52B458AB3007C0A0D /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A28402DA2B45952F007C0A0D /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
@@ -688,6 +692,7 @@
 			isa = PBXGroup;
 			children = (
 				A28402DA2B45952F007C0A0D /* CustomLabel.swift */,
+				A262852D2B6137C30016C4C6 /* HeaderLabel.swift */,
 			);
 			path = UILabel;
 			sourceTree = "<group>";
@@ -1376,6 +1381,7 @@
 				A2DFB7F22B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
 				5D26C15C2B5F9F3B009570EB /* FullImageViewController.swift in Sources */,
 				A2DFB7FC2B39B4F7008B95AC /* SettingWebViewController.swift in Sources */,
+				A262852E2B6137C30016C4C6 /* HeaderLabel.swift in Sources */,
 				A2C8868E2B497D93008E5437 /* DayOfTheWeek.swift in Sources */,
 				A2DFB7ED2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
 				A2DFB7DA2B37C37C008B95AC /* SettingType.swift in Sources */,
@@ -1417,6 +1423,7 @@
 				ACD6D1042B5524670039E5AE /* Member.swift in Sources */,
 				A2DFB7E52B392A71008B95AC /* VersionInfoButton.swift in Sources */,
 				A2DFB7EE2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
+				A262852F2B6137C30016C4C6 /* HeaderLabel.swift in Sources */,
 				AC9E33C02B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */,
 				A2DFB7EA2B392E4B008B95AC /* Version.swift in Sources */,
 				A2DFB7F82B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
@@ -1474,6 +1481,7 @@
 				A2DFB7E62B392A71008B95AC /* VersionInfoButton.swift in Sources */,
 				A2D4CBC02B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				A2DFB7EB2B392E4B008B95AC /* Version.swift in Sources */,
+				A26285302B6137C30016C4C6 /* HeaderLabel.swift in Sources */,
 				A2DFB7DC2B37C37C008B95AC /* SettingType.swift in Sources */,
 				A2C8868C2B497D14008E5437 /* PushNotificationButton.swift in Sources */,
 				5D7252852B21BE8300CF6688 /* AgreeType.swift in Sources */,

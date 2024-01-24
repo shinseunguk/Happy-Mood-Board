@@ -15,6 +15,10 @@ import RxCocoa
 
 final class EnterNicknameViewController: UIViewController, ViewAttributes {
     
+    enum Constants {
+        static let headerLabelText = "회원님만의\n애칭을 알려주세요."
+    }
+    
     private let pageOneLabel = UILabel().then {
         $0.text = "1"
         $0.textColor = .gray400
@@ -32,11 +36,10 @@ final class EnterNicknameViewController: UIViewController, ViewAttributes {
         $0.layer.backgroundColor = UIColor.primary400?.cgColor
     }
     
-    private let titleLabel = UILabel().then {
+    private lazy var titleLabel = HeaderLabel(labelText: Constants.headerLabelText).then {
         $0.textColor = .gray900
         $0.font = UIFont(name: "Pretendard-Bold", size: 24)
         $0.numberOfLines = 0
-        $0.text = "회원님만의\n애칭을 알려주세요."
     }
     
     private let nicknameTextField = UITextField().then {

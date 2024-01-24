@@ -20,18 +20,25 @@ protocol NotificationModalDelegate: AnyObject {
 final class NotificationModalViewController: UIViewController, ViewAttributes {
     weak var delegate: NotificationModalDelegate?
     
+    enum Constants {
+        static let guideLabelText = "기기의 알림 설정이 꺼져있어요."
+        static let descriptionLabelText = "알림을 받기 위해 시스템 설정에서\n알림을 허용해 주세요."
+        static let goToSettingButtonTitle = "설정 바로 가기"
+        static let dismissButton = "닫기"
+        static let prefURL = "App-prefs:root=NOTIFICATIONS_ID"
+    }
+    
     private let guideLabel = UILabel().then {
         $0.font = UIFont(name: "Pretendard-Bold", size: 22)
         $0.textColor = .black
-        $0.text = "기기의 알림 설정이 꺼진 상태입니다."
+        $0.text = Constants.guideLabelText
         $0.textAlignment = .center
         $0.sizeToFit()
     }
     
-    private let descriptionLabel = UILabel().then {
+    private let descriptionLabel = HeaderLabel(labelText: Constants.descriptionLabelText).then {
         $0.font = UIFont(name: "Pretendard-Regular", size: 16)
         $0.textColor = .black
-        $0.text = "알림 수신을 위해 시스템 설정에서\n알림을 허용해 주세요."
         $0.numberOfLines = 0
         $0.textAlignment = .center
         $0.sizeToFit()
@@ -45,19 +52,18 @@ final class NotificationModalViewController: UIViewController, ViewAttributes {
             var configuration = UIButton.Configuration.filled()
             configuration.cornerStyle = .capsule
             configuration.background.backgroundColor = .primary500
-            configuration.attributedTitle = AttributedString("설정 바로 가기", attributes: container)
+            configuration.attributedTitle = AttributedString(Constants.goToSettingButtonTitle, attributes: container)
             button.configuration = configuration
         }
     }
     
     private let dismissButton = UIButton(type: .system).then {
-        let title = "닫기"
         let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont(name: "Pretendard-Medium", size: 16),
             .underlineStyle: NSUnderlineStyle.single.rawValue,
             .foregroundColor: UIColor.black // 원하는 색상으로 설정
         ]
-        let attributedTitle = NSAttributedString(string: title, attributes: attributes)
+        let attributedTitle = NSAttributedString(string: Constants.dismissButton, attributes: attributes)
         $0.setAttributedTitle(attributedTitle, for: .normal)
     }
     
@@ -86,14 +92,14 @@ extension NotificationModalViewController {
     
     func setupLayouts() {
         guideLabel.snp.makeConstraints {
-            $0.top.equalTo(52)
+            $0.top.equalTo(40)
             $0.centerX.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(24)
             $0.height.equalTo(40)
         }
         
         descriptionLabel.snp.makeConstraints {
-            $0.top.equalTo(guideLabel.snp.bottom).offset(16)
+            $0.top.equalTo(guideLabel.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
         }
         
@@ -104,7 +110,7 @@ extension NotificationModalViewController {
         }
         
         dismissButton.snp.makeConstraints {
-            $0.top.equalTo(goToSettingButton.snp.bottom).offset(10)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(10)
             $0.centerX.equalToSuperview()
         }
     }
@@ -118,7 +124,7 @@ extension NotificationModalViewController {
         
         output.prefNotification
             .bind { [weak self] in
-                let prefURL = NSURL(string:"App-prefs:root=NOTIFICATIONS_ID")! as URL
+                let prefURL = NSURL(string: Constants.prefURL)! as URL
                 UIApplication.shared.open(prefURL)
                 
                 self?.delegate?.didDismissModal()

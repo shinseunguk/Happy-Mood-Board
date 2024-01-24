@@ -15,6 +15,10 @@ import RxCocoa
 
 final class AgreeViewController: UIViewController {
     
+    enum Constants {
+        static let labelText = "회원가입을 위해\n약관에 동의해 주세요."
+    }
+    
     private let pageOneLabel = UILabel().then {
         $0.text = "1"
         $0.textColor = .gray900
@@ -32,18 +36,17 @@ final class AgreeViewController: UIViewController {
         $0.layer.cornerRadius = 10
     }
     
-    private let titleLabel = UILabel().then {
+    private lazy var titleLabel = HeaderLabel(labelText: Constants.labelText).then {
         $0.textColor = .gray900
         $0.font = UIFont(name: "Pretendard-Bold", size: 24)
         $0.numberOfLines = 0
-        $0.text = "회원가입을 위해\n약관에 동의해 주세요."
     }
     
     private let contentStackView = UIStackView().then {
         $0.axis = .vertical
         $0.alignment = .fill
         $0.distribution = .fill
-        $0.spacing = 16
+        $0.spacing = 24
     }
     
     private let allOptionsButton = AgreeCheckboxButton(type: .all)
@@ -186,7 +189,7 @@ extension AgreeViewController: ViewAttributes {
             .drive(marketingEmailButton.checkboxButton.rx.isSelected)
             .disposed(by: disposeBag)
         
-        output.agreeToAllOptions.asDriver(onErrorJustReturn: false)
+        output.availableNextStep.asDriver(onErrorJustReturn: false)
             .drive(nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
         

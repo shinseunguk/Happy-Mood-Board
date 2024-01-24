@@ -15,6 +15,10 @@ import RxCocoa
 
 final class MyTabViewController: UIViewController {
     
+    enum Constants {
+        static let headerLabelText = "님의 꿀단지에는\n어떤 행복이 담겨있나요?"
+    }
+    
     private let settingButton: UIBarButtonItem = .init(
         image: .init(named: "setting"),
         style: .plain,
@@ -28,9 +32,7 @@ final class MyTabViewController: UIViewController {
     
     private let contentView = UIView()
     
-    static let kHeaderLabelText = "님의 꿀단지에는\n어떤 행복이 담겨있나요?"
-    
-    private let headerLabel: UILabel = .init().then {
+    private let headerLabel = HeaderLabel(labelText: Constants.headerLabelText).then {
         $0.textColor = .gray900
         $0.font = UIFont(name: "Pretendard-Bold", size: 24)
         $0.numberOfLines = 0
@@ -218,7 +220,7 @@ extension MyTabViewController: ViewAttributes {
         output.username.asDriver(onErrorJustReturn: "")
             .debug("사용자명")
             .drive(with: self) { owner, username in
-                let text = "\(username) \(Self.kHeaderLabelText)"
+                let text = "\(username) \(Self.Constants.headerLabelText)"
                 owner.headerLabel.text = text
                 let attributedString = NSMutableAttributedString(string: text)
                 attributedString.addAttribute(

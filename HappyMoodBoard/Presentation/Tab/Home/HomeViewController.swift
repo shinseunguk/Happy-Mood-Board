@@ -16,9 +16,11 @@ import RxViewController
 
 final class HomeViewController: UIViewController {
     
-    static let kHeaderLabelText = "님,\n행복 아이템을 꿀단지에 담아보세요."
+    enum Constants {
+        static let headerLabelText = "님,\n행복 아이템을 꿀단지에 담아보세요."
+    }
     
-    private let headerLabel: UILabel = .init().then {
+    private let headerLabel = HeaderLabel(labelText: Constants.headerLabelText).then {
 //        $0.text = " 님,\n오늘의 행복 아이템을 남겨주세요."
         $0.textColor = .gray900
         $0.font = UIFont(name: "Pretendard-Bold", size: 24)
@@ -92,7 +94,7 @@ extension HomeViewController: ViewAttributes {
         output.username.asDriver(onErrorJustReturn: "")
             .drive(with: self) { owner, username in
                 guard let username = username else { return }
-                let text = "\(username) \(Self.kHeaderLabelText)"
+                let text = "\(username) \(Self.Constants.headerLabelText)"
                 owner.headerLabel.text = text
                 let attributedString = NSMutableAttributedString(string: text)
                 attributedString.addAttribute(

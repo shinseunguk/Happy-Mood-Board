@@ -129,6 +129,7 @@ final class RegisterViewController: UIViewController {
     ).then {
         $0.items = [
             .init(customView: addImageButton),
+            .fixedSpace(20),
             addTagButton,
             .flexibleSpace(),
             keyboardToggleButton
