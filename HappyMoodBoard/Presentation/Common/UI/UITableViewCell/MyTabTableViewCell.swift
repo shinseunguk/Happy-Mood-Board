@@ -9,8 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
+import RxSwift
+
 class MyTabTableViewCell: UITableViewCell {
-    // 셀 내부의 요소들을 정의합니다.
+    
+    let disposeBag: DisposeBag = .init()
     
     let myTabView = UIView().then {
         $0.layer.borderWidth = 1
@@ -33,7 +36,8 @@ class MyTabTableViewCell: UITableViewCell {
     }
     
     let postImageView = UIImageView().then {
-        $0.image = UIImage(named: "test.image")
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -108,7 +112,15 @@ class MyTabTableViewCell: UITableViewCell {
         self.titleLabel.text = post.comments
         
         // TODO: 이미지 SET 조건절로 이미지 addsubview 할건지 말건지
-        false ? setupImageView() : nil
+        guard let imagePath = post.imagePath else { return }
+        
+        setupImageView()
+        
+        Observable.just(imagePath)
+            .flatMapLatest { FirebaseStorageService.shared.rx.download(forPath: $0) }
+            .filterNil()
+            .bind(to: postImageView.rx.image)
+            .disposed(by: disposeBag)
     }
 }
 
