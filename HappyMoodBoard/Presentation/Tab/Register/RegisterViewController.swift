@@ -23,6 +23,10 @@ final class RegisterViewController: UIViewController {
         static let textViewPlaceholder: String = "최대 1000자까지 작성 가능해요."
         static let textViewPlaceholderColor: UIColor? = .gray400
         static let textViewTextColor: UIColor? = .gray900
+        
+        // 최소 높이와 최대 높이를 정의합니다.
+        static let minHeight: CGFloat = 200.0
+        static let maxHeight: CGFloat = 400.0
     }
     
     private let backButton: UIBarButtonItem = .init(
@@ -237,6 +241,7 @@ extension RegisterViewController: ViewAttributes {
             }
         
         let input = RegisterViewModel.Input(
+            textDidChanged: textView.rx.didChange.asObservable(),
             textChanged: textView.rx.text.asObservable(),
             backButtonTapped: backButton.rx.tap.asObservable(),
             registerButtonTapped: registerButton.rx.tap.asObservable(),
@@ -250,6 +255,25 @@ extension RegisterViewController: ViewAttributes {
             imageSelected: imagePicker.rx.didFinishPickingMediaWithInfo.asObservable()
         )
         let output = viewModel.transform(input: input)
+        // MARK: - TextView가 자동으로 줄어들고 늘어나는 로직, minHeight / maxHeight 으로 최소 높이, 최대 높이 설정
+        output.textDidChanged
+            .bind { [weak self] in
+                guard let self = self else { return }
+                
+                let size = CGSize(width: self.view.frame.width, height: .infinity)
+                let estimatedSize = self.textView.sizeThatFits(size)
+                
+                // 최소 높이와 최대 높이를 적용하여 높이를 제한합니다.
+                let constrainedHeight = max(Constants.minHeight, min(estimatedSize.height, Constants.maxHeight))
+                
+                self.textView.constraints.forEach { (constraint) in
+                    if constraint.firstAttribute == .height {
+                        constraint.constant = constrainedHeight
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+        
         output.canRegister.asDriver(onErrorJustReturn: false)
             .drive(with: self) { owner, isEnabled in
                 owner.registerButton.isEnabled = isEnabled

@@ -13,6 +13,7 @@ import FirebaseStorage
 final class RegisterViewModel: ViewModel {
     
     struct Input {
+        let textDidChanged: Observable<Void>
         let textChanged: Observable<String?>
         let backButtonTapped: Observable<Void>
         let registerButtonTapped: Observable<Void>
@@ -27,6 +28,7 @@ final class RegisterViewModel: ViewModel {
     }
     
     struct Output {
+        let textDidChanged: Observable<Void>
         let canRegister: Observable<Bool>
         let showNavigateToBackAlert: Observable<Bool>
         let showImagePicker: Observable<Void>
@@ -138,6 +140,7 @@ final class RegisterViewModel: ViewModel {
             .asObservable()
         
         return .init(
+            textDidChanged: input.textDidChanged,
             canRegister: canRegister,
             showNavigateToBackAlert: showNavigateToBackAlert,
             showImagePicker: input.addImageButtonTapped,
