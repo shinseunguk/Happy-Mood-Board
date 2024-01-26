@@ -26,5 +26,5 @@ extension EditTagSection: AnimatableSectionModelType {
 }
 
 extension Tag: IdentifiableType {
-    var identity: Int { id }
+    var identity: Int { id ?? 0 }
 }

@@ -11,11 +11,10 @@ import RxSwift
 
 final class EditTagViewModel: ViewModel {
     
-    
     struct Input {
         let viewWillAppear: Observable<Void>
         let itemDeleted: Observable<Tag>
-        let itemAccessoryButtonTapped: Observable<IndexPath>
+        let editButtonTapped: Observable<Tag>
         let deleteOkActionTapped: Observable<Tag>
     }
     
@@ -29,14 +28,12 @@ final class EditTagViewModel: ViewModel {
         let itemDeleted = input.itemDeleted
             .share()
         
-        // TODO: 태그로 수정
-        let itemAccessoryButtonTapped = input.itemAccessoryButtonTapped
-            .map { Tag(id: $0.section, tagName: "name", tagColorId: $0.row) }
-        
         let result = input.deleteOkActionTapped
+            .map { $0.id }
+            .filterNil()
             .flatMapLatest {
                 ApiService()
-                    .request(type: Empty.self, target: TagTarget.delete($0.id))
+                    .request(type: Empty.self, target: TagTarget.delete($0))
                     .materialize()
             }
             .elements()
@@ -55,7 +52,7 @@ final class EditTagViewModel: ViewModel {
         return .init(
             items: items,
             showDeleteAlert: itemDeleted,
-            navigateToEdit: itemAccessoryButtonTapped
+            navigateToEdit: input.editButtonTapped
         )
     }
     

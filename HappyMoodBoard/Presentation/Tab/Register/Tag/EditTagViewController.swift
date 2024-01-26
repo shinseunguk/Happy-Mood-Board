@@ -46,20 +46,9 @@ final class EditTagViewController: UIViewController {
     private let viewModel: EditTagViewModel = .init()
     private let disposeBag: DisposeBag = .init()
     
-    private var dataSource: RxTableViewSectionedAnimatedDataSource<EditTagSection> = .init(
-        configureCell: { dataSource, tableView, indexPath, item in
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: EditTagTableViewCell.reuseIdentifier
-            ) as? EditTagTableViewCell else {
-                return .init()
-            }
-            cell.nameLabel.text = item.tagName
-            return cell
-        },
-        canEditRowAtIndexPath: { _, _ in return true }
-    )
+    private var dataSource: RxTableViewSectionedAnimatedDataSource<EditTagSection>!
     
-    override func viewDidLoad() {
+override func viewDidLoad() {
         super.viewDidLoad()
         
         setCommonBackgroundColor()
@@ -74,6 +63,7 @@ final class EditTagViewController: UIViewController {
 extension EditTagViewController: ViewAttributes {
     func setupNavigationBar() {
         navigationItem.title = "태그 편집"
+        navigationItem.backButtonDisplayMode = .minimal
     }
     
     func setupSubviews() {
@@ -99,6 +89,23 @@ extension EditTagViewController: ViewAttributes {
     
     func setupBindings() {
         let deleteOkActionTapped: PublishSubject<Tag> = .init()
+        let editButtonTapped: PublishSubject<Tag> = .init()
+        
+        dataSource = .init(
+                configureCell: { dataSource, tableView, indexPath, item in
+                    guard let cell = tableView.dequeueReusableCell(
+                        withIdentifier: EditTagTableViewCell.reuseIdentifier
+                    ) as? EditTagTableViewCell else {
+                        return .init()
+                    }
+                    cell.nameLabel.text = item.tagName
+                    cell.rx.editButtonTapped.subscribe(onNext: {
+                        editButtonTapped.onNext(item)
+                    }).disposed(by: cell.cellDisposeBag)
+                    return cell
+                },
+                canEditRowAtIndexPath: { _, _ in return true }
+            )
         
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
@@ -106,7 +113,7 @@ extension EditTagViewController: ViewAttributes {
         let input = EditTagViewModel.Input(
             viewWillAppear: rx.viewWillAppear.asObservable(),
             itemDeleted: tableView.rx.modelDeleted(Tag.self).asObservable(),
-            itemAccessoryButtonTapped: tableView.rx.itemAccessoryButtonTapped.asObservable(),
+            editButtonTapped: editButtonTapped,
             deleteOkActionTapped: deleteOkActionTapped
         )
         let output = viewModel.transform(input: input)
@@ -139,7 +146,7 @@ extension EditTagViewController: ViewAttributes {
             .map { $0! }
             .drive(with: self) { owner, tag in
                 // TODO: viewModel 수정
-                let viewController = AddTagViewController()
+                let viewController = AddTagViewController(viewModel: .init(tag: tag))
                 owner.show(viewController, sender: nil)
             }
             .disposed(by: disposeBag)

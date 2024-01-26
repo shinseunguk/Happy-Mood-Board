@@ -53,7 +53,7 @@ final class TagCollectionViewCell: UICollectionViewCell {
             var container = AttributeContainer()
             container.font = UIFont(name: "Pretendard-Medium", size: 14)
             container.foregroundColor = .gray900
-            configuration.attributedTitle = .init(tag.tagName, attributes: container)
+            configuration.attributedTitle = .init(tag.tagName ?? "", attributes: container)
             nameButton.configuration = configuration
             nameButton.titleLabel?.numberOfLines = 1
         }

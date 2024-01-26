@@ -88,3 +88,11 @@ extension EditTagTableViewCell: ViewAttributes {
     }
     
 }
+
+extension Reactive where Base: EditTagTableViewCell {
+    
+    var editButtonTapped: ControlEvent<Void> {
+        base.editButton.rx.tap
+    }
+    
+}

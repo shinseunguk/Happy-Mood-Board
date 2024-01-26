@@ -201,7 +201,7 @@ extension PostDetailViewController: ViewAttributes {
                 var configuration = owner.tagButton.configuration
                 var container = AttributeContainer()
                 container.font = UIFont(name: "Pretendard-Medium", size: 14)
-                configuration?.attributedTitle = AttributedString(tag.tagName, attributes: container)
+                configuration?.attributedTitle = AttributedString(tag.tagName ?? "", attributes: container)
                 configuration?.baseBackgroundColor = .tagColor(for: tag.tagColorId)
                 configuration?.baseForegroundColor = .gray700
                 owner.tagButton.configuration = configuration

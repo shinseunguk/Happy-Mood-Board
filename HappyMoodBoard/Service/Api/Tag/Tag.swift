@@ -8,7 +8,13 @@
 import Foundation
 
 struct Tag: Codable, Equatable {
-    let id: Int
-    let tagName: String
+    let id: Int?
+    let tagName: String?
     let tagColorId: Int
+}
+
+extension Tag {
+    init() {
+        self.init(id: nil, tagName: nil, tagColorId: 0)
+    }
 }

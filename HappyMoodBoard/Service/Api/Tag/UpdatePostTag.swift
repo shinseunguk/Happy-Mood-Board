@@ -12,3 +12,7 @@ struct UpdatePostTagParameters: Encodable {
     let tagName: String
     let tagColorId: Int
 }
+
+struct PostTagResponse: Decodable {
+    let tagId: Int
+}

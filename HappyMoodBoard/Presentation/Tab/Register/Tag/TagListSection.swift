@@ -22,7 +22,7 @@ extension TagListItem: IdentifiableType, Equatable {
         case .add:
             return -1
         case .tag(let tag):
-            return tag.id
+            return tag.id ?? 0
         }
     }
     
