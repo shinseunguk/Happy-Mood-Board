@@ -12,7 +12,6 @@ import RxSwift
 struct UserPreferences {
     private init () {}
     
-    static let tag = "Tag"
     static let memberId = "memberId"
 }
 
@@ -24,38 +23,11 @@ class PreferencesService {
     
     private init() { }
     
-    func removeTag() {
-        defaults.removeObject(forKey: UserPreferences.tag)
-    }
-    
-    var tag: Tag? {
-        get {
-            guard let data = defaults.data(forKey: UserPreferences.tag) else { return nil }
-            return try? JSONDecoder().decode(Tag.self, from: data)
-        }
-        set {
-            let data = try? JSONEncoder().encode(newValue)
-            defaults.set(data, forKey: UserPreferences.tag)
-        }
-    }
-    
     var memberId: Int? {
         get { defaults.integer(forKey: UserPreferences.memberId) }
-        set { defaults.setValue(memberId, forKey: UserPreferences.memberId) }
+        set { defaults.setValue(newValue, forKey: UserPreferences.memberId) }
     }
     
 }
 
 extension PreferencesService: ReactiveCompatible { }
-
-extension Reactive where Base: PreferencesService {
-    var tag: Observable<Tag?> {
-        return base.defaults
-            .rx
-            .observe(Data.self, UserPreferences.tag)
-            .map { data in
-                guard let data = data else { return nil }
-                return try? JSONDecoder().decode(Tag.self, from: data)
-            }
-    }
-}

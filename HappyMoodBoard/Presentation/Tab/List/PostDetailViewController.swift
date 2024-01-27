@@ -228,11 +228,11 @@ extension PostDetailViewController: ViewAttributes {
             }
             .disposed(by: disposeBag)
         
-        output.navigateToEdit.asDriver(onErrorJustReturn: nil)
+        output.navigateToEdit.asDriver(onErrorJustReturn: .init())
+            .debug()
             .drive(with: self) { owner, post in
-                // TODO: RegisterViewModel 수정
-                let viewController = RegisterViewController()
-                owner.navigationController?.pushViewController(viewController, animated: true)
+                let viewController = RegisterViewController(viewModel: .init(post: post))
+                owner.show(viewController, sender: nil)
             }
             .disposed(by: disposeBag)
         
@@ -264,7 +264,7 @@ extension PostDetailViewController: ViewAttributes {
 extension PostDetailViewController: UIViewControllerTransitioningDelegate {
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return CustomPresentationController(presentedViewController: presented, presenting: presenting)
+        return CustomPresentationController(presentedViewController: presented, presenting: presenting, height: 245)
     }
     
 }

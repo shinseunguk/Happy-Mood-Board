@@ -10,18 +10,38 @@ import Foundation
 import RxSwift
 import FirebaseStorage
 
+struct PostDomain {
+    let id: Int?
+    let comments: String?
+    let tag: Tag?
+    let image: UIImage?
+}
+
+extension PostDomain {
+    init() {
+        self.init(id: nil, comments: nil, tag: nil, image: nil)
+    }
+}
+
 final class RegisterViewModel: ViewModel {
+    
+    enum Constants {
+        static let maxLength = 1000
+    }
     
     struct Input {
         let textDidChanged: Observable<Void>
         let textChanged: Observable<String?>
         let backButtonTapped: Observable<Void>
+        let navigatToBackOkActionTapped: Observable<Void>
         let registerButtonTapped: Observable<Void>
         let imageViewTapped: Observable<UITapGestureRecognizer>
         let deleteTagButtonTapped: Observable<Void>
-        let deleteImageAlertActionTapped: Observable<Int>
+        let deleteImageButtonTapped: Observable<Void>
+        let deleteImageOkActionTapped: Observable<Void>
         let addImageButtonTapped: Observable<Void>
         let addTagButtonTapped: Observable<Void>
+        let tagSelected: Observable<Tag?>
         let keyboardButtonTapped: Observable<Void>
         let keyboardWillShow: Observable<Notification>
         let imageSelected: Observable<[UIImagePickerController.InfoKey: Any]>
@@ -32,60 +52,72 @@ final class RegisterViewModel: ViewModel {
         let canRegister: Observable<Bool>
         let showNavigateToBackAlert: Observable<Bool>
         let showImagePicker: Observable<Void>
+        let shwoDeleteImageAlert: Observable<Void>
         let showTagListViewController: Observable<Void>
         let showFullImageViewController: Observable<UIImage?>
-        let image: Observable<UIImage?>
-        let text: Observable<String?>
-        let tag: Observable<Tag?>
+        let post: Observable<PostDomain>
         let keyboard: Observable<Void>
-        let navigateToDetail: Observable<Int>
+        let navigateToDetail: Observable<Int?>
+        let navigateToBack: Observable<Void>
+    }
+    
+    private let post: PostDomain
+    
+    init(post: PostDomain = .init()) {
+        self.post = post
     }
     
     func transform(input: Input) -> Output {
         let image = Observable.merge(
             input.imageSelected
                 .map { $0[.editedImage] as? UIImage },
-            input.deleteImageAlertActionTapped
-                .filter { $0 == 1 } // "네" 버튼 클릭시
+            input.deleteImageOkActionTapped
                 .map { _ in nil }
         )
-            .startWith(nil)
-            .share()
-        
+            .startWith(self.post.image)
+
         let text = input.textChanged
             .filter { $0 != RegisterViewController.Constants.textViewPlaceholder }
-            .startWith(nil)
-            .share()
+            .startWith(self.post.comments)
         
         let tag = Observable.merge(
-            PreferencesService.shared.rx.tag.startWith(nil),
+            input.tagSelected,
             input.deleteTagButtonTapped.map { _ in nil }
         )
-            .share()
+            .startWith(self.post.tag)
         
-        let imageAndTextAndTag = Observable.combineLatest(
-            image.startWith(nil),
-            text.startWith(nil),
-            tag.startWith(nil)
-        )
+        let textAndTagAndImage = Observable.combineLatest(text, tag, image)
+            .debug("밡행 글 :: textAndTagAndImage")
+        
+        let post = Observable.combineLatest(Observable.just(self.post), textAndTagAndImage) { post, textAndTagAndImage -> PostDomain in
+            return PostDomain(
+                id: post.id,
+                comments: textAndTagAndImage.0,
+                tag: textAndTagAndImage.1,
+                image: textAndTagAndImage.2
+            )
+        }
+            .startWith(self.post)
+            .debug("발행 글 :: post")
             .share()
         
         // '뒤로가기' 눌렀을 때, 글씨, 이미지 등록, 태그 등록 중 1가지라도 되어있을 경우
         // "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?" 팝업 노출
-        let showNavigateToBackAlert = input.backButtonTapped.withLatestFrom(imageAndTextAndTag)
-            .map { image, text, tag in
-                if image == nil && text == nil && tag == nil {
+        let showNavigateToBackAlert = input.backButtonTapped.withLatestFrom(post)
+            .map { post in
+                if post.comments == nil && post.tag == nil && post.image == nil {
                     return false
                 }
                 return true
             }
+            .debug("뒤로가기")
         
-        let textValid = text
+        let textValid = post
             .map(checkTextValid)
             .startWith(false)
             .distinctUntilChanged()
         
-        let imageValid = image
+        let imageValid = post
             .map(checkImageValid)
             .startWith(false)
             .distinctUntilChanged()
@@ -95,25 +127,25 @@ final class RegisterViewModel: ViewModel {
         let canRegister = Observable.combineLatest(textValid, imageValid) { $0 || $1 }
         
         // 발행 버튼 클릭시 이미지 업로드
-        let uploadImage = input.registerButtonTapped.withLatestFrom(imageAndTextAndTag)
-            .flatMapLatest { image, text, tag -> Observable<UpdatePostParameters> in
-                if let image = image {
+        let uploadImage = input.registerButtonTapped.withLatestFrom(post)
+            .flatMapLatest { post -> Observable<UpdatePostParameters> in
+                if let image = post.image {
                     let path = "\(PreferencesService.shared.memberId ?? .init())/\(Date().timeIntervalSince1970.description)"
                     return FirebaseStorageService.shared.rx.upload(image: image, forPath: path)
                         .map {
                             UpdatePostParameters(
-                                postId: nil,
-                                tagId: tag?.id,
-                                comments: text,
+                                postId: post.id,
+                                tagId: post.tag?.id,
+                                comments: post.comments,
                                 imagePath: $0
                             )
                         }
                 } else {
                     return .just(
                         .init(
-                            postId: nil,
-                            tagId: tag?.id,
-                            comments: text,
+                            postId: post.id,
+                            tagId: post.tag?.id,
+                            comments: post.comments,
                             imagePath: nil
                         )
                     )
@@ -122,9 +154,16 @@ final class RegisterViewModel: ViewModel {
             .debug("이미지 업로드")
             .share()
         
-        // 이미지 업로드 후 게시글 등록
+        // 이미지 업로드 후 게시글 등록 또는 수정
         let result = uploadImage
-            .map { PostTarget.create($0) }
+            .map {
+                // 게시글 등록
+                if $0.postId != nil {
+                    return PostTarget.update($0)
+                }
+                // 게시글 수정
+                return PostTarget.create($0)
+            }
             .flatMapLatest {
                 ApiService().request(type: UpdatePostResponse.self, target: $0)
                     .materialize()
@@ -133,10 +172,9 @@ final class RegisterViewModel: ViewModel {
             .debug("게시글 등록")
         
         let success = result.elements()
-            .compactMap { $0?.postId }
+            .map { $0?.postId }
         
         let showFullImageViewController = input.imageViewTapped.withLatestFrom(image)
-            .debug()
             .asObservable()
         
         return .init(
@@ -144,22 +182,22 @@ final class RegisterViewModel: ViewModel {
             canRegister: canRegister,
             showNavigateToBackAlert: showNavigateToBackAlert,
             showImagePicker: input.addImageButtonTapped,
+            shwoDeleteImageAlert: input.deleteImageButtonTapped,
             showTagListViewController: input.addTagButtonTapped,
             showFullImageViewController: showFullImageViewController,
-            image: image,
-            text: text,
-            tag: tag,
+            post: post,
             keyboard: input.keyboardButtonTapped,
-            navigateToDetail: success
+            navigateToDetail: success,
+            navigateToBack: input.navigatToBackOkActionTapped
         )
     }
     
-    private func checkTextValid(_ text: String?) -> Bool {
-        (text ?? "").count > 0
+    private func checkTextValid(_ post: PostDomain) -> Bool {
+        (post.comments ?? "").count > 0
     }
     
-    private func checkImageValid(_ image: UIImage?) -> Bool {
-        image != nil
+    private func checkImageValid(_ post: PostDomain) -> Bool {
+        post.image != nil
     }
     
 }

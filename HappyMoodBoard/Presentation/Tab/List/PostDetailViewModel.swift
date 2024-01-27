@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 
 final class PostDetailViewModel: ViewModel {
+    
     enum Constants {
         static let inputDateFomat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
         static let outputDateFormat = "yyyy.MM.dd"
@@ -32,7 +33,7 @@ final class PostDetailViewModel: ViewModel {
         let tag: Observable<Tag?>
         let showActionSheet: Observable<Void>
         let showDeleteAlert: Observable<Void>
-        let navigateToEdit: Observable<FetchPostResponse?>
+        let navigateToEdit: Observable<PostDomain>
         let navigateToBack: Observable<Void>
     }
 
@@ -74,8 +75,26 @@ final class PostDetailViewModel: ViewModel {
             .debug()
 
         // 수정하기 버튼 클릭시
-        let navigateToEdit = input.editActionTapped
-            .flatMap { _ in postSuccess }
+        let navigateToEdit = input.editActionTapped.withLatestFrom(postSuccess.filterNil())
+            .flatMap { response in
+                if let imagePath = response.imagePath {
+                    return FirebaseStorageService.shared.rx.download(forPath: imagePath)
+                        .map {
+                            PostDomain(
+                            id: response.id,
+                            comments: response.comments,
+                            tag: response.postTag,
+                            image: $0
+                            )
+                        }
+                }
+                return .just(PostDomain(
+                    id: response.id,
+                    comments: response.comments,
+                    tag: response.postTag,
+                    image: nil
+                ))
+            }
         
         // 삭제하기 버튼 클릭시
         let deleteResult = input.deleteOkActionTapped

@@ -25,6 +25,12 @@ final class TagListViewModel: ViewModel {
         let dismiss: Observable<Tag?>
     }
     
+    let tagSelected: PublishSubject<Tag?>
+    
+    init(tagSelected: PublishSubject<Tag?>) {
+        self.tagSelected = tagSelected
+    }
+    
     func transform(input: Input) -> Output {
         let items = input.viewWillAppear
             .flatMapLatest {
@@ -36,7 +42,7 @@ final class TagListViewModel: ViewModel {
                         items.append(.add)
                         return [TagListSection(items: items)]
                     }
-//                    .materialize()
+                //                    .materialize()
             }
             .catchAndReturn([TagListSection(items: [.add])])
             .share()
@@ -45,24 +51,36 @@ final class TagListViewModel: ViewModel {
         let itemSelected = input.itemSelected.share()
         
         // 태그 선택시
-        let tagSelected = itemSelected.map {
-            if case let .tag(tag) = $0 {
-                PreferencesService.shared.tag = tag
-                return tag
+        let tagSelected = itemSelected
+            .filter {
+                if case .tag(_) = $0 {
+                    return true
+                }
+                return false
             }
-            
-            return nil
-        }
-            .filter { $0 != nil }
+            .map {
+                if case .tag(let tag) = $0 {
+                    return Optional(tag)
+                }
+                return nil
+            }
             .share()
-    
+        
         // 태그추가 선택시
-        let addSelected = itemSelected.map { if case .add = $0 { return Void() } }
-
+        let addSelected = itemSelected
+            .filter {
+                if case .add = $0 {
+                    return true
+                }
+                return false
+            }
+            .map { _ in () }
+        
         let dismiss = Observable<Tag?>.merge(
             tagSelected,
             input.closeButtonTapped.map { _ -> Tag? in return nil }
-        )
+        ).do(onNext: self.tagSelected.onNext)
+        
         return .init(
             navigateToEdit: input.editButtonTapped,
             items: items,

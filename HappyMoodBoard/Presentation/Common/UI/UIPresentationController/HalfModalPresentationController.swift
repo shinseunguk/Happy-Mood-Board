@@ -44,9 +44,22 @@ final class CustomPresentationController: UIPresentationController {
             forChildContentContainer: presentedViewController,
             withParentContainerSize: containerView.bounds.size
         )
-        
-        frame.origin.y = containerView.frame.height * (2.0/3.0)
+        frame.origin.y = containerView.frame.height - height
         return frame
+    }
+    
+    private let height: CGFloat
+    
+    init(
+        presentedViewController: UIViewController,
+        presenting presentingViewController: UIViewController?,
+        height: CGFloat
+    ) {
+        self.height = height
+        super.init(
+            presentedViewController: presentedViewController,
+            presenting: presentingViewController
+        )
     }
     
     override func presentationTransitionWillBegin() {
@@ -90,7 +103,7 @@ final class CustomPresentationController: UIPresentationController {
     
     override func size(forChildContentContainer container: UIContentContainer,
                        withParentContainerSize parentSize: CGSize) -> CGSize {
-        return CGSize(width: parentSize.width, height: parentSize.height * (1.0/3.0))
+        return CGSize(width: parentSize.width, height: height)
     }
 }
 

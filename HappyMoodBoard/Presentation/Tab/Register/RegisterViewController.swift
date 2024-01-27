@@ -24,6 +24,12 @@ final class RegisterViewController: UIViewController {
         static let textViewPlaceholderColor: UIColor? = .gray400
         static let textViewTextColor: UIColor? = .gray900
         
+        static let deleteImageAlertTitle = "사진을 삭제하시겠어요?"
+        static let navigateToBackAlertMessage = "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?"
+        static let alertNoAction = "아니오"
+        static let alertYesActon = "네"
+        
+        
         // 최소 높이와 최대 높이를 정의합니다.
         static let minHeight: CGFloat = 200.0
         static let maxHeight: CGFloat = 400.0
@@ -141,8 +147,17 @@ final class RegisterViewController: UIViewController {
         $0.barTintColor = .primary100
     }
     
-    private let viewModel: RegisterViewModel = .init()
+    private let viewModel: RegisterViewModel
     private let disposeBag: DisposeBag = .init()
+    
+    init(viewModel: RegisterViewModel = .init()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -227,29 +242,23 @@ extension RegisterViewController: ViewAttributes {
     }
     
     func setupBindings() {
-        let deleteImageAlertActionTapped = deleteImageButton.rx.tap
-            .flatMap {
-                self.showAlert(
-                    title: nil,
-                    message: "사진을 삭제하시겠어요?",
-                    style: .alert,
-                    actions: [
-                        .action(title: "아니오", style: .cancel),
-                        .action(title: "네", style: .default)
-                    ]
-                )
-            }
+        let deleteImageOkActionTapped: PublishSubject<Void> = .init()
+        let navigatToBackOkActionTapped: PublishSubject<Void> = .init()
+        let tagSelected: PublishSubject<Tag?> = .init()
         
         let input = RegisterViewModel.Input(
             textDidChanged: textView.rx.didChange.asObservable(),
             textChanged: textView.rx.text.asObservable(),
             backButtonTapped: backButton.rx.tap.asObservable(),
+            navigatToBackOkActionTapped: navigatToBackOkActionTapped.asObservable(),
             registerButtonTapped: registerButton.rx.tap.asObservable(),
             imageViewTapped: frameImageView.rx.tapGesture().when(.recognized).asObservable(),
             deleteTagButtonTapped: tagButton.rx.tap.asObservable(),
-            deleteImageAlertActionTapped: deleteImageAlertActionTapped,
+            deleteImageButtonTapped: deleteImageButton.rx.tap.asObservable(),
+            deleteImageOkActionTapped: deleteImageOkActionTapped.asObservable(),
             addImageButtonTapped: addImageButton.rx.tap.asObservable(),
             addTagButtonTapped: addTagButton.rx.tap.asObservable(),
+            tagSelected: tagSelected.asObservable(),
             keyboardButtonTapped: keyboardToggleButton.rx.tap.asObservable(),
             keyboardWillShow: NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification),
             imageSelected: imagePicker.rx.didFinishPickingMediaWithInfo.asObservable()
@@ -284,9 +293,17 @@ extension RegisterViewController: ViewAttributes {
         output.showNavigateToBackAlert.asDriver(onErrorJustReturn: false)
             .drive(with: self) { owner, isShow in
                 if isShow {
-                    owner.showNavigateToBackAlert()
+                    owner.showPopUp(
+                        title: nil,
+                        message: Constants.navigateToBackAlertMessage,
+                        leftActionTitle: Constants.alertNoAction,
+                        rightActionTitle: Constants.alertYesActon,
+                        rightActionCompletion: {
+                            navigatToBackOkActionTapped.onNext(())
+                        }
+                    )
                 } else {
-                    owner.navigateToBack()
+                    navigatToBackOkActionTapped.onNext(())
                 }
             }
             .disposed(by: disposeBag)
@@ -297,9 +314,28 @@ extension RegisterViewController: ViewAttributes {
             }
             .disposed(by: disposeBag)
         
+        output.shwoDeleteImageAlert.asDriver(onErrorJustReturn: ())
+            .drive(with: self) { owner, _ in
+                owner.showPopUp(
+                    title: Constants.deleteImageAlertTitle,
+                    message: nil,
+                    leftActionTitle: Constants.alertNoAction,
+                    rightActionTitle: Constants.alertYesActon,
+                    rightActionCompletion: {
+                        deleteImageOkActionTapped.onNext(())
+                    }
+                )
+            }
+            .disposed(by: disposeBag)
+        
         output.showTagListViewController.asDriver(onErrorJustReturn: ())
             .drive(with: self) { owner, _ in
-                owner.showTagListViewController()
+                let viewModel = TagListViewModel(tagSelected: tagSelected)
+                let viewController = TagListViewController(viewModel: viewModel)
+                let navigationController = UINavigationController(rootViewController: viewController)
+                navigationController.sheetPresentationController?.detents = [.medium()]
+                navigationController.sheetPresentationController?.prefersGrabberVisible = false
+                owner.show(navigationController, sender: nil)
             }
             .disposed(by: disposeBag)
         
@@ -311,37 +347,46 @@ extension RegisterViewController: ViewAttributes {
             }
             .disposed(by: disposeBag)
         
-        output.image.asDriver(onErrorJustReturn: nil)
-            .drive(with: self) { onwer, image in
-                onwer.imageView.image = image
-                onwer.imageView.isHidden = (image == nil)
-                onwer.frameImageView.isHidden = (image == nil)
-                onwer.addImageButton.isEnabled = (image == nil)
-                onwer.imagePicker.dismiss(animated: true)
-            }
-            .disposed(by: disposeBag)
-        
-        output.tag.asDriver(onErrorJustReturn: nil)
-            .drive(with: self) { owner, tag in
-                guard let tag = tag else {
+        output.post.asDriver(onErrorJustReturn: .init())
+            .drive(with: self) { owner, post in
+                // image
+                owner.imageView.image = post.image
+                owner.imageView.isHidden = (post.image == nil)
+                owner.frameImageView.isHidden = (post.image == nil)
+                owner.addImageButton.isEnabled = (post.image == nil)
+                owner.imagePicker.dismiss(animated: true)
+                
+                // tag
+                if post.tag == nil {
                     owner.tagButton.isHidden = true
-                    return
+                } else {
+                    var configuration = owner.tagButton.configuration
+                    var container = AttributeContainer()
+                    container.font = UIFont(name: "Pretendard-Medium", size: 14)
+                    configuration?.attributedTitle = AttributedString(post.tag?.tagName ?? "", attributes: container)
+                    configuration?.baseBackgroundColor = .tagColor(for: post.tag?.tagColorId ?? 0)
+                    configuration?.baseForegroundColor = .gray700
+                    owner.tagButton.configuration = configuration
+                    owner.tagButton.isHidden = false
                 }
-                var configuration = owner.tagButton.configuration
-                var container = AttributeContainer()
-                container.font = UIFont(name: "Pretendard-Medium", size: 14)
-                configuration?.attributedTitle = AttributedString(tag.tagName ?? "", attributes: container)
-                configuration?.baseBackgroundColor = .tagColor(for: tag.tagColorId)
-                configuration?.baseForegroundColor = .gray700
-                owner.tagButton.configuration = configuration
-                owner.tagButton.isHidden = false
+                
+                // comments
+                owner.textView.text = post.comments
             }
             .disposed(by: disposeBag)
         
-        output.navigateToDetail.asDriver(onErrorJustReturn: 0) // TODO: error 처리 어떻게할지에 대해
+        output.navigateToDetail.asDriver(onErrorJustReturn: nil)
             .drive(with: self) { owner, postId in
+                guard let postId = postId else { return }
                 let viewController = PostDetailViewController(viewModel: .init(postId: postId))
                 owner.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        output.navigateToBack.asDriver(onErrorJustReturn: ())
+            .debug()
+            .drive(with: self) { owner, _ in
+                owner.navigationController?.popViewController(animated: true)
             }
             .disposed(by: disposeBag)
         
@@ -368,7 +413,8 @@ extension RegisterViewController: ViewAttributes {
         
         textView.rx.didBeginEditing.asDriver()
             .drive(with: self) { owner, _ in
-                if owner.textView.textColor == Constants.textViewPlaceholderColor {
+                if owner.textView.textColor == Constants.textViewPlaceholderColor
+                    && owner.textView.text == Constants.textViewPlaceholder {
                     owner.textView.text = nil
                     owner.textView.textColor = Constants.textViewTextColor
                 }
@@ -442,40 +488,6 @@ extension RegisterViewController {
         viewController.sheetPresentationController?.detents = [.medium()]
         viewController.sheetPresentationController?.prefersGrabberVisible = true
         present(viewController, animated: true, completion: nil)
-    }
-    
-}
-
-extension RegisterViewController {
-
-    func showTagListViewController() {
-        let viewController = TagListViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.sheetPresentationController?.detents = [.medium()]
-        navigationController.sheetPresentationController?.prefersGrabberVisible = false
-        show(navigationController, sender: nil)
-    }
-    
-    func navigateToBack() {
-        navigationController?.popViewController(animated: true)
-        PreferencesService.shared.tag = nil
-    }
-    
-    func showNavigateToBackAlert() {
-        showAlert(
-            title: nil,
-            message: "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?",
-            style: .alert,
-            actions: [
-                .action(title: "아니오", style: .cancel),
-                .action(title: "네", style: .default)
-            ]
-        )
-        .filter { $0 == 1 }
-        .subscribe(onNext: { _ in
-            self.navigateToBack()
-        })
-        .disposed(by: disposeBag)
     }
     
 }

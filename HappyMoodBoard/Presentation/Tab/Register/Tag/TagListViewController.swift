@@ -65,7 +65,7 @@ final class TagListViewController: UIViewController {
     }
     
     private let disposeBag: DisposeBag = .init()
-    private let viewModel: TagListViewModel = .init()
+    private let viewModel: TagListViewModel
     
     private var dataSource: RxCollectionViewSectionedReloadDataSource<TagListSection> = .init(
         configureCell: {
@@ -80,6 +80,15 @@ final class TagListViewController: UIViewController {
             return cell
         }
     )
+    
+    init(viewModel: TagListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,8 +164,9 @@ extension TagListViewController: ViewAttributes {
     }
     
     func navigatToBack(_ tag: Tag?) {
-        dismiss(animated: false)
-        // FIXME: true일 때 추가화면으로 이동 후 dismiss되는디..?.......ㅠㅠ
+        dismiss(animated: true) { [weak self] in
+            self?.viewModel.tagSelected.onNext(tag)
+        }
     }
     
     func navigateToAdd() {
