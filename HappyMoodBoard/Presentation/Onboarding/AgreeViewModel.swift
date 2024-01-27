@@ -37,6 +37,7 @@ final class AgreeViewModel: ViewModel {
         let navigateToMarketingEmail: Observable<Void>
         
         let navigateToNextStep: Observable<Void>
+        let error: Observable<String>
     }
     
     func transform(input: Input) -> Output {
@@ -113,9 +114,9 @@ final class AgreeViewModel: ViewModel {
         let success = result
             .elements()
             .map { _ in Void() }
-
-        // TODO: 에러 응답 처리
-        // (약관동의 한번 더 하는 경우) 발생하는 케이스가 있는지 확인 후, 사용자 편의성을 위해 그냥 다음 화면으로 이동할지 or 경고창 띄울지
+        
+        let failrue = result.errors()
+            .map { $0.localizedDescription }
         
         return Output(
             availableNextStep: state.map { $0.age && $0.terms && $0.privacyPolicy }, // canNext
@@ -127,7 +128,8 @@ final class AgreeViewModel: ViewModel {
             navigateToPrivacyPolicy: input.navigateToPrivacyPolicy,
             navigateToTerms: input.navigateToTerms,
             navigateToMarketingEmail: input.navigateToMarketingEmail,
-            navigateToNextStep: success
+            navigateToNextStep: success,
+            error: failrue
         )
     }
     

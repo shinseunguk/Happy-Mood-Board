@@ -217,6 +217,12 @@ extension AgreeViewController: ViewAttributes {
                 self?.show(viewController, sender: nil)
             }
             .disposed(by: disposeBag)
+        
+        output.error
+            .bind {
+                makeToast($0)
+            }
+            .disposed(by: disposeBag)
     }
     
 }

@@ -201,7 +201,7 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
         output.checkNotification
             .bind { [weak self] handler in
                 
-                if !handler {
+                if handler {
                     self?.dimView.alpha = 0.0
                 } else {
                     self?.dimView.alpha = 0.5
@@ -262,7 +262,12 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
         
         // MARK: - 리뷰 남기기
         output.leaveReview.bind {
-            SKStoreReviewController.requestReview()
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                // SKStoreReviewController.requestReview(in:)를 호출하여 리뷰 요청을 합니다.
+                SKStoreReviewController.requestReview(in: windowScene)
+            } else {
+                makeToast("리뷰 남기기 에러")
+            }
         }
         .disposed(by: disposeBag)
         
@@ -291,9 +296,14 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
         .disposed(by: disposeBag)
         
         // MARK: - 로그아웃 서버 response 이후
-        output.logoutAction.bind { [weak self] in
+        output.logoutSuccess.bind { [weak self] in
             UserDefaults.standard.set(false, forKey: "autoLogin")
             self?.setRootViewController(LoginViewController())
+        }
+        .disposed(by: disposeBag)
+        
+        output.logoutError.bind {
+            makeToast($0)
         }
         .disposed(by: disposeBag)
         
@@ -311,9 +321,14 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
         .disposed(by: disposeBag)
         
         // MARK: - 회원탈퇴 서버 response 이후
-        output.withdrawAction.bind { [weak self] in
+        output.withdrawSuccess.bind { [weak self] in
             UserDefaults.standard.set(false, forKey: "autoLogin")
             self?.setRootViewController(LoginViewController())
+        }
+        .disposed(by: disposeBag)
+        
+        output.withdrawError.bind {
+            makeToast($0)
         }
         .disposed(by: disposeBag)
     }

@@ -252,7 +252,7 @@ extension MyTabViewController: ViewAttributes {
             .disposed(by: disposeBag)
         
         // MARK: - TAG set, stickyView와 tagView
-        output.tag.subscribe(onNext: { [weak self] tag in
+        output.tagSuccess.subscribe(onNext: { [weak self] tag in
             
             // MARK: - StickyView
             for (index, element) in tag.enumerated() {
@@ -320,24 +320,34 @@ extension MyTabViewController: ViewAttributes {
         })
         .disposed(by: disposeBag)
         
-        output.happyItem
-            .map {
-                $0.count == 0
-            }
-            .bind { [weak self] in
-                    self?.emptyImageView.isHidden = !$0
-                    self?.tagScrollView.isHidden = $0
-            }
-            .disposed(by: disposeBag)
+        output.tagErrorMessage.bind {
+            makeToast($0)
+        }
+        .disposed(by: disposeBag)
         
-        output.happyItem
+        output.happyItemSuccess
+            .do(onNext: { [weak self] in
+                if $0.count == 0 {
+                    self?.emptyImageView.isHidden = false
+                    self?.tagScrollView.isHidden = true
+                } else {
+                    self?.emptyImageView.isHidden = true
+                    self?.tagScrollView.isHidden = false
+                }
+            })
             .bind(to: tableView.rx.items(cellIdentifier: "MyTabTableViewCell", cellType: MyTabTableViewCell.self)) { (row, element, cell) in
                 cell.bindData(post: element)
             }
             .disposed(by: disposeBag)
         
+        output.happyItemErrorMessage
+            .bind {
+                makeToast($0)
+            }
+            .disposed(by: disposeBag)
+        
         tableView.rx.itemSelected
-            .withLatestFrom(output.happyItem) { indexPath, happyItem in
+            .withLatestFrom(output.happyItemSuccess) { indexPath, happyItem in
                 return (indexPath, happyItem)
             }
             .map { (indexPath, happyItem) in

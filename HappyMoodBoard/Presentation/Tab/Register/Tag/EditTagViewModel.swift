@@ -20,6 +20,7 @@ final class EditTagViewModel: ViewModel {
     
     struct Output {
         let items: Observable<[EditTagSection]>
+        let errorMessage: Observable<String>
         let showDeleteAlert: Observable<Tag>
         let navigateToEdit: Observable<Tag>
     }
@@ -46,11 +47,17 @@ final class EditTagViewModel: ViewModel {
                 ApiService()
                     .request(type: [Tag].self, target: TagTarget.fetch())
                     .compactMap { [EditTagSection(items: $0 ?? [])] }
+                    .materialize()
             }
             .share()
+        
+        let success = items.elements()
+        
+        let failure = items.errors().map { $0.localizedDescription }
             
         return .init(
-            items: items,
+            items: success,
+            errorMessage: failure,
             showDeleteAlert: itemDeleted,
             navigateToEdit: input.editButtonTapped
         )

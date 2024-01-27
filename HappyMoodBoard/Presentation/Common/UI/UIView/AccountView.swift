@@ -38,7 +38,6 @@ final class AccountView: UIView {
         font: UIFont(name: "Pretendard-Regular", size: 16)
     )
     private let socialImageView = UIImageView().then {
-        $0.image = UIImage(named: "KakaoLogin")
         $0.layer.cornerRadius = 4
         $0.contentMode = .scaleAspectFit
         $0.clipsToBounds = true

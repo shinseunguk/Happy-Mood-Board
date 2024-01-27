@@ -26,11 +26,16 @@ final class SettingNotificationViewModel: ViewModel {
     }
     
     struct Output {
+        let viewWillAppearErrorMessage: Observable<String>
         let navigateToBack: Observable<Void>
         let recordPush: Observable<Bool>
+        let recordPushErrorMessage: Observable<String>
         let dayOfWeek: Observable<[Int]>
+        let dayOfWeekErrorMessage: Observable<String>
         let pushTime: Observable<String>
+        let pushTimeErrorMessage: Observable<String>
         let marketingPush: Observable<Bool>
+        let marketingErrorMessage: Observable<String>
         let timeButtonEvent: Observable<Void>
         let pickerViewCancel: Observable<Void>
         let pickerViewSave: Observable<Void>
@@ -38,29 +43,26 @@ final class SettingNotificationViewModel: ViewModel {
     
     func transform(input: Input) -> Output {
         let recordPush = PublishSubject<Bool>()
-        
         let dayOfWeek = PublishSubject<[Int]>()
-        
         let pushTime = PublishSubject<String>()
-        let dateString: Observable<String>
         let timeSaveString = PublishSubject<String>()
-        
         let marketing = PublishSubject<Bool>()
         
-        let notificationSettings: Observable<MemberResponse?>
-        
         // MARK: - /api/notification/v1/member, 알림 설정 조회
-        notificationSettings = input.viewWillAppear
+        let notificationSettings = input.viewWillAppear
             .map {
                 NotificationTarget.member
             }
             .flatMapLatest {
                 ApiService().request(type: MemberResponse.self, target: $0)
+                    .materialize()
             }
             .share()
         
+        let notificationSettingsFailure = notificationSettings.errors().map { $0.localizedDescription }
+        
         // MARK: - 행복아이템 기록 알림 받기
-        notificationSettings
+        notificationSettings.elements()
             .filter {
                 $0 != nil
             }
@@ -71,7 +73,7 @@ final class SettingNotificationViewModel: ViewModel {
             .disposed(by: disposeBag)
 
         // MARK: - 요일
-        notificationSettings
+        notificationSettings.elements()
             .filter {
                 $0 != nil
             }
@@ -82,7 +84,7 @@ final class SettingNotificationViewModel: ViewModel {
             .disposed(by: disposeBag)
         
         // MARK: - 시간
-        notificationSettings
+        notificationSettings.elements()
             .filter {
                 $0 != nil
             }
@@ -93,7 +95,7 @@ final class SettingNotificationViewModel: ViewModel {
             .disposed(by: disposeBag)
         
         // MARK: - 시간 버튼 터치시 HH:mm으로 format
-        dateString = input.pickerViewEvent
+        let dateString = input.pickerViewEvent
             .distinctUntilChanged()
             .map { selectedDate in
                 let dateFormatter = DateFormatter()
@@ -113,7 +115,7 @@ final class SettingNotificationViewModel: ViewModel {
             .disposed(by: disposeBag)
         
         // MARK: - 이벤트·혜택 알림 받기
-        notificationSettings
+        notificationSettings.elements()
             .filter {
                 $0 != nil
             }
@@ -124,7 +126,7 @@ final class SettingNotificationViewModel: ViewModel {
             .disposed(by: disposeBag)
         
         // MARK: - /api/notification/v1/member/happy-item, 행복 아이템 알림 설정 변경
-        input.recordPushEvent
+        let recordPushEvent = input.recordPushEvent
             .withLatestFrom(dayOfWeek) { ($0, $1) }
             .withLatestFrom(pushTime) { ($0, $1) }
             .map { values in
@@ -140,15 +142,21 @@ final class SettingNotificationViewModel: ViewModel {
             }
             .flatMapLatest {
                 ApiService().request(type: HappyItem.self, target: $0)
+                    .materialize()
             }
+        
+        recordPushEvent.elements()
             .compactMap {
                 $0?.active
             }
             .bind(to: recordPush)
             .disposed(by: disposeBag)
         
+        let recordEventError = recordPushEvent.errors().map { $0.localizedDescription }
+            
+        
         // MARK: - /api/notification/v1/member/happy-item, 행복 아이템 알림 설정 변경
-        input.dayOfWeekEvent
+        let dayOfWeekEvent = input.dayOfWeekEvent
             .withLatestFrom(recordPush) { ($1, $0) }
             .withLatestFrom(pushTime) { ($0, $1) }
             .map { values in
@@ -164,15 +172,21 @@ final class SettingNotificationViewModel: ViewModel {
             }
             .flatMapLatest {
                 ApiService().request(type: HappyItem.self, target: $0)
+                    .materialize()
             }
+        
+        dayOfWeekEvent.elements()
             .compactMap {
                 $0?.dayOfWeek
             }
             .bind(to: dayOfWeek)
             .disposed(by: disposeBag)
         
+        let dayOfWeekEventError = dayOfWeekEvent.errors().map { $0.localizedDescription }
+            
+        
         // MARK: - /api/notification/v1/member/happy-item, 행복 아이템 알림 설정 변경
-        timeSaveString
+        let timeEvent = timeSaveString
             .withLatestFrom(recordPush) { ($0, $1) }
             .withLatestFrom(dayOfWeek) { ($0, $1) }
             .map { values in
@@ -188,15 +202,20 @@ final class SettingNotificationViewModel: ViewModel {
             }
             .flatMapLatest {
                 ApiService().request(type: HappyItem.self, target: $0)
+                    .materialize()
             }
+        
+        timeEvent.elements()
             .compactMap {
                 $0?.time
             }
             .bind(to: pushTime)
             .disposed(by: disposeBag)
         
+        let timeEventError = timeEvent.errors().map { $0.localizedDescription }
+        
         // MARK: - /api/notification/v1/member/marketing, 이벤트·혜택 알림 설정 변경
-        input.marketingPushEvent
+        let marketingPushEvent = input.marketingPushEvent
             .map {
                 NotificationTarget.marketing(
                     .init(
@@ -206,19 +225,30 @@ final class SettingNotificationViewModel: ViewModel {
             }
             .flatMapLatest {
                 ApiService().request(type: MarketingResponse.self, target: $0)
+                    .materialize()
             }
+        
+        marketingPushEvent.elements()
             .compactMap {
                 $0?.active
             }
             .bind(to: marketing)
             .disposed(by: disposeBag)
+        
+        let marketingPushEventError = marketingPushEvent.errors().map { $0.localizedDescription }
+            
             
         return Output(
+            viewWillAppearErrorMessage: notificationSettingsFailure,
             navigateToBack: input.navigateToBack,
             recordPush: recordPush,
+            recordPushErrorMessage: recordEventError,
             dayOfWeek: dayOfWeek,
+            dayOfWeekErrorMessage: dayOfWeekEventError,
             pushTime: pushTime,
+            pushTimeErrorMessage: timeEventError,
             marketingPush: marketing,
+            marketingErrorMessage: marketingPushEventError,
             timeButtonEvent: input.timeButtonEvent,
             pickerViewCancel: input.pickerViewCancel,
             pickerViewSave: input.pickerViewSave

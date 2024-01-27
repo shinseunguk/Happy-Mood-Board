@@ -27,6 +27,7 @@ final class PostDetailViewModel: ViewModel {
 
     struct Output {
         let post: Observable<FetchPostResponse?>
+        let postError: Observable<String>
         let date: Observable<String>
         let image: Observable<UIImage?>
         let comment: Observable<String?>
@@ -35,6 +36,7 @@ final class PostDetailViewModel: ViewModel {
         let showDeleteAlert: Observable<Void>
         let navigateToEdit: Observable<PostDomain>
         let navigateToBack: Observable<Void>
+        let deleteErrorMessage: Observable<String>
     }
 
     private let postId: Int
@@ -57,6 +59,9 @@ final class PostDetailViewModel: ViewModel {
             .elements()
             .map { $0?.first }
             .share()
+        
+        let postfailure = postResult.errors().map { $0.localizedDescription }
+            
         
         let date = postSuccess.map { $0?.createdAt }
             .filterNil()
@@ -109,11 +114,14 @@ final class PostDetailViewModel: ViewModel {
         let deleteSuccess = deleteResult
             .elements()
             .map { _ in }
+        
+        let deleteError = deleteResult.errors().map { $0.localizedDescription }
 
         let navigateToBack = Observable.merge(deleteSuccess, input.backButtonTapped)
 
         return .init(
             post: postSuccess,
+            postError: postfailure,
             date: date,
             image: image,
             comment: comment,
@@ -121,7 +129,8 @@ final class PostDetailViewModel: ViewModel {
             showActionSheet: input.moreButtonTapped,
             showDeleteAlert: input.deleteActionTapped,
             navigateToEdit: navigateToEdit,
-            navigateToBack: navigateToBack
+            navigateToBack: navigateToBack,
+            deleteErrorMessage: deleteError
         )
     }
 }

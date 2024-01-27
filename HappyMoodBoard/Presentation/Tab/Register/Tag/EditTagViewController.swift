@@ -121,6 +121,12 @@ extension EditTagViewController: ViewAttributes {
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
+        output.errorMessage
+            .bind {
+                makeToast($0)
+            }
+            .disposed(by: disposeBag)
+        
         output.showDeleteAlert
             .map { Optional($0) }
             .asDriver(onErrorJustReturn: nil)

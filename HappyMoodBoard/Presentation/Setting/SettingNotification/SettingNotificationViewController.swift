@@ -226,6 +226,31 @@ extension SettingNotificationViewController {
         output.marketingPush.asDriver(onErrorJustReturn: false)
             .drive(marketingPushOnOffView.togglePublishSubject)
             .disposed(by: disposeBag)
+        
+        output.viewWillAppearErrorMessage.bind {
+            makeToast($0)
+        }
+        .disposed(by: disposeBag)
+        
+        output.recordPushErrorMessage.bind {
+            makeToast($0)
+        }
+        .disposed(by: disposeBag)
+        
+        output.dayOfWeekErrorMessage.bind {
+            makeToast($0)
+        }
+        .disposed(by: disposeBag)
+        
+        output.pushTimeErrorMessage.bind {
+            makeToast($0)
+        }
+        .disposed(by: disposeBag)
+        
+        output.marketingErrorMessage.bind {
+            makeToast($0)
+        }
+        .disposed(by: disposeBag)
     }
     
     func hiddenPickerView(_ handler: Bool) {

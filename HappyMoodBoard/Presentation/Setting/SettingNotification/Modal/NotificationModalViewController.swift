@@ -28,6 +28,12 @@ final class NotificationModalViewController: UIViewController, ViewAttributes {
         static let prefURL = "App-prefs:root=NOTIFICATIONS_ID"
     }
     
+    private let stackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.spacing = 12.0
+        $0.alignment = .center
+    }
+    
     private let guideLabel = UILabel().then {
         $0.font = UIFont(name: "Pretendard-Bold", size: 22)
         $0.textColor = .black
@@ -81,18 +87,27 @@ final class NotificationModalViewController: UIViewController, ViewAttributes {
 extension NotificationModalViewController {
     func setupSubviews() {
         [
+            stackView
+        ].forEach { self.view.addSubview($0) }
+        
+        [
             guideLabel,
             descriptionLabel,
             goToSettingButton,
             dismissButton
-        ].forEach { self.view.addSubview($0) }
+        ].forEach { self.stackView.addArrangedSubview($0) }
         
         self.view.layer.cornerRadius = 15
     }
     
     func setupLayouts() {
+        stackView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview().inset(10)
+            $0.leading.trailing.equalToSuperview()
+        }
+        
         guideLabel.snp.makeConstraints {
-            $0.top.equalTo(40)
+            $0.top.equalTo(20)
             $0.centerX.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(24)
             $0.height.equalTo(40)

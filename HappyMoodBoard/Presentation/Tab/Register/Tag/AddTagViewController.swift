@@ -170,6 +170,15 @@ extension AddTagViewController: ViewAttributes {
     }
     
     func setupBindings() {
+        RxKeyboard.instance.visibleHeight
+            .drive(with: self) { owner, keyboardVisibleHeight in
+                owner.completeButton.snp.updateConstraints {
+                    $0.bottom.equalTo(owner.view.safeAreaLayoutGuide.snp.bottom).offset(-keyboardVisibleHeight)
+                }
+                owner.view.setNeedsLayout()
+            }
+            .disposed(by: disposeBag)
+        
         let colorButtons = colorButtonStackView.arrangedSubviews.compactMap { $0 as? UIButton }
         let colorButtonTapped = Observable.from(colorButtons.map { button in
             button.rx.tap.map { button }

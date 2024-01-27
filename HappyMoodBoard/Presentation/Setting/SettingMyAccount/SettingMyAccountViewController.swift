@@ -98,24 +98,10 @@ extension SettingMyAccountViewController {
         }
         .disposed(by: disposeBag)
         
-        output.myInfo.bind { [weak self] result in
-            if let nickname = result?.nickname {
-                self?.nicknameView.bindNickname(nickname: nickname)
-            } else {
-                self?.nicknameView.bindNickname(nickname: "알 수 없음")
-            }
-            
-            if let provider = result?.provider {
-                self?.connectAccountView.bindSocialLogin(provider: provider)
-            } else {
-                self?.connectAccountView.bindSocialLogin(provider: "알 수 없음")
-            }
-            
-            if let email = result?.email {
-                self?.emailView.bindEmail(email: email)
-            } else {
-                self?.emailView.bindEmail(email: "알 수 없음")
-            }
+        output.myInfoSuccess.bind { [weak self] result in
+            self?.nicknameView.bindNickname(nickname: result.nickname)
+            self?.connectAccountView.bindSocialLogin(provider: result.provider)
+            self?.emailView.bindEmail(email: result.email)
         }
         .disposed(by: disposeBag)
     }

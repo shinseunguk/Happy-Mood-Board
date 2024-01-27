@@ -13,6 +13,8 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
+import Toast_Swift
+
 enum MemberStatus: String {
     case REQUIRED_CONSENT = "REQUIRED_CONSENT"
     case REQUIRED_NICKNAME = "REQUIRED_NICKNAME"
@@ -122,5 +124,13 @@ extension LoginViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        output.errorMessage.bind {
+            var style = ToastStyle()
+            style.messageAlignment = .center
+            
+            self.view.makeToast($0, duration: 2.0, position: .bottom, style: style)
+        }
+        .disposed(by: disposeBag)
     }
 }

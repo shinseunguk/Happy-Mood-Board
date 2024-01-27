@@ -59,6 +59,7 @@ final class RegisterViewModel: ViewModel {
         let keyboard: Observable<Void>
         let showLoadingView: Observable<Bool>
         let navigateToDetail: Observable<Int?>
+        let error: Observable<String>
         let navigateToBack: Observable<Void>
     }
     
@@ -186,6 +187,8 @@ final class RegisterViewModel: ViewModel {
         
         let success = result.elements()
             .map { $0?.postId }
+        
+        let failure = result.errors().map { $0.localizedDescription }
             
         let showFullImageViewController = input.imageViewTapped.withLatestFrom(image)
             .asObservable()
@@ -202,6 +205,7 @@ final class RegisterViewModel: ViewModel {
             keyboard: input.keyboardButtonTapped,
             showLoadingView: showLoadingView,
             navigateToDetail: success,
+            error: failure,
             navigateToBack: input.navigatToBackOkActionTapped
         )
     }

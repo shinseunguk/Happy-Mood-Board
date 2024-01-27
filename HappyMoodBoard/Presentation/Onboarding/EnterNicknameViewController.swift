@@ -12,6 +12,7 @@ import SnapKit
 
 import RxSwift
 import RxCocoa
+import RxKeyboard
 
 final class EnterNicknameViewController: UIViewController, ViewAttributes {
     
@@ -143,6 +144,15 @@ final class EnterNicknameViewController: UIViewController, ViewAttributes {
     }
     
     func setupBindings() {
+        RxKeyboard.instance.visibleHeight
+            .drive(with: self) { owner, keyboardVisibleHeight in
+                owner.nextButton.snp.updateConstraints {
+                    $0.bottom.equalTo(owner.view.safeAreaLayoutGuide.snp.bottom).offset(-keyboardVisibleHeight)
+                }
+                owner.view.setNeedsLayout()
+            }
+            .disposed(by: disposeBag)
+        
         let input = EnterNicknameViewModel.Input(
             nickname: nicknameTextField.rx.text.orEmpty.asObservable(),
             navigateToHome: nextButton.rx.tap.asObservable()

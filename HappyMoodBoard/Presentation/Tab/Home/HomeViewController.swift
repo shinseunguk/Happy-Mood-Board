@@ -110,6 +110,12 @@ extension HomeViewController: ViewAttributes {
                 owner.headerLabel.attributedText = attributedString
             }
             .disposed(by: disposeBag)
+        
+        output.error.asDriver(onErrorJustReturn: "")
+            .drive(with: self) { owner, error in
+                owner.headerLabel.text = error
+            }
+            .disposed(by: disposeBag)
     }
     
 }

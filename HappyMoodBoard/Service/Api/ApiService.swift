@@ -15,7 +15,7 @@ final class ApiService {
     func request<T: Decodable>(type: T.Type, target: TargetType) -> Observable<T?> {
         return RxAlamofire
             .request(target, interceptor: AuthInterceptor())
-            .validate(statusCode: 200..<300)
+            .validate(statusCode: 200..<500)
             .observe(on: MainScheduler.instance)
             .responseData()
             .map { response, data -> T? in

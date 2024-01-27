@@ -41,9 +41,11 @@ final class SettingIndexViewModel: ViewModel {
         let leaveReview: Observable<Void>
         let versionInformation: Observable<Bool>
         let logout: Observable<Void>
-        let logoutAction: Observable<Void>
+        let logoutSuccess: Observable<Void>
+        let logoutError: Observable<String>
         let withdrawMembership: Observable<Void>
-        let withdrawAction: Observable<Void>
+        let withdrawSuccess: Observable<Void>
+        let withdrawError: Observable<String>
     }
     
     let disposeBag: DisposeBag = .init()
@@ -105,11 +107,21 @@ final class SettingIndexViewModel: ViewModel {
             .debug("로그아웃")
             .flatMapLatest {
                 ApiService().request(type: Empty.self, target: $0)
+                    .materialize()
             }
-            .map { _ in
+            .share()
+        
+        let logoutSuccess = logout.elements()
+            .do(onNext: { _ in
+                UserDefaults.standard.removeObject(forKey: "autoLogin")
                 UserDefaults.standard.removeObject(forKey: "accessToekn")
                 UserDefaults.standard.removeObject(forKey: "refreshToken")
-            }
+            })
+            .map { _ in Void() }
+        
+        let logoutError = logout.errors()
+            .map { $0.localizedDescription }
+        
         
         // MARK: - 탈퇴하기 버튼 클릭 Action
         let withdraw = input.withdrawAction
@@ -119,11 +131,20 @@ final class SettingIndexViewModel: ViewModel {
             .debug("탈퇴하기")
             .flatMapLatest {
                 ApiService().request(type: Empty.self, target: $0)
+                    .materialize()
             }
-            .map { _ in
+            .share()
+        
+        let withdrawSuccess = withdraw.elements()
+            .do(onNext: { _ in
+                UserDefaults.standard.removeObject(forKey: "autoLogin")
                 UserDefaults.standard.removeObject(forKey: "accessToekn")
                 UserDefaults.standard.removeObject(forKey: "refreshToken")
-            }
+            })
+            .map { _ in Void() }
+        
+        let withdrawError = withdraw.errors()
+            .map { $0.localizedDescription }
         
         return Output(
             checkVersion: compareVersion,
@@ -137,9 +158,11 @@ final class SettingIndexViewModel: ViewModel {
             leaveReview: input.leaveReview,
             versionInformation: versionInformation,
             logout: input.logout,
-            logoutAction: logout,
+            logoutSuccess: logoutSuccess,
+            logoutError: logoutError,
             withdrawMembership: input.withdrawMembership,
-            withdrawAction: withdraw
+            withdrawSuccess: withdrawSuccess,
+            withdrawError: withdrawError
         )
     }
     

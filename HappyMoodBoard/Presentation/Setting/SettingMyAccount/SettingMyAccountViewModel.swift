@@ -21,31 +21,33 @@ final class SettingMyAccountViewModel: ViewModel {
     struct Output {
         let navigateToBack: Observable<Void>
         let navigateToNextStep: Observable<UITapGestureRecognizer>
-        let myInfo: Observable<MyInformationResponse?>
+        let myInfoSuccess: Observable<MyInformationResponse>
+        let myInfoError: Observable<String>
     }
     
     func transform(input: Input) -> Output {
         
-        let myInfo: Observable<MyInformationResponse?> = input.viewWillAppear
+        let myInfo = input.viewWillAppear
             .map {
                 MemberTarget.me
             }
             .debug("내 정보 보기")
             .flatMapLatest {
                 ApiService().request(type: MyInformationResponse.self, target: $0)
+                    .materialize()
             }
-            .map { result in
-                if let response = result {
-                    return response
-                } else {
-                    return nil
-                }
-            }
+            .share()
+        
+        let success = myInfo.elements()
+            .filterNil()
+        
+        let failure = myInfo.errors().map { $0.localizedDescription }
         
         return Output(
             navigateToBack: input.navigateToBack,
             navigateToNextStep: input.navigateToNextStep,
-            myInfo: myInfo
+            myInfoSuccess: success,
+            myInfoError: failure
         )
     }
 }

@@ -33,7 +33,7 @@ final class RegisterViewController: UIViewController {
         
         // 최소 높이와 최대 높이를 정의합니다.
         static let minHeight: CGFloat = 200.0
-        static let maxHeight: CGFloat = 400.0
+        static let maxHeight: CGFloat = 350.0
     }
     
     private let backButton: UIBarButtonItem = .init(
@@ -441,6 +441,11 @@ extension RegisterViewController: ViewAttributes {
                 owner.navigationController?.pushViewController(viewController, animated: true)
             }
             .disposed(by: disposeBag)
+        
+        output.error.bind {
+            makeToast($0)
+        }
+        .disposed(by: disposeBag)
         
         output.navigateToBack.asDriver(onErrorJustReturn: ())
             .debug()

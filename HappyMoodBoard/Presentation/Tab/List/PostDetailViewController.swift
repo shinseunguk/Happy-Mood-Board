@@ -255,6 +255,16 @@ extension PostDetailViewController: ViewAttributes {
                 owner.navigationController?.popToRootViewController(animated: true)
             }
             .disposed(by: disposeBag)
+        
+        output.postError.bind {
+            makeToast($0)
+        }
+        .disposed(by: disposeBag)
+        
+        output.deleteErrorMessage.bind {
+            makeToast($0)
+        }
+        .disposed(by: disposeBag)
     }
     
 }

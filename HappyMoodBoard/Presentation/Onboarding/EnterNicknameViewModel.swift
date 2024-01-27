@@ -58,7 +58,8 @@ final class EnterNicknameViewModel: ViewModel {
             .elements()
             .map { _ in }
         
-        // TODO: 응답 에러 처리
+        let failure = result.errors()
+            .map { $0.localizedDescription }
         
         return Output(
             nickname: nickname,

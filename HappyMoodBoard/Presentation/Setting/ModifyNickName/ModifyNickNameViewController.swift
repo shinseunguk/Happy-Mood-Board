@@ -11,6 +11,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+import RxKeyboard
+
 final class ModifyNickNameViewController: UIViewController, ViewAttributes, UIGestureRecognizerDelegate {
     
     // 네비게이션
@@ -108,6 +110,15 @@ final class ModifyNickNameViewController: UIViewController, ViewAttributes, UIGe
     }
     
     func setupBindings() {
+        RxKeyboard.instance.visibleHeight
+            .drive(with: self) { owner, keyboardVisibleHeight in
+                owner.nextButton.snp.updateConstraints {
+                    $0.bottom.equalTo(owner.view.safeAreaLayoutGuide.snp.bottom).offset(-keyboardVisibleHeight)
+                }
+                owner.view.setNeedsLayout()
+            }
+            .disposed(by: disposeBag)
+                
         let input = ModifyNickNameViewModel.Input(
             navigateToBack: navigationItemBack.rxTap.asObservable(),
             nickname: nicknameTextField.rx.text.orEmpty.asObservable(),

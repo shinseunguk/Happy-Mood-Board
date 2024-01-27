@@ -20,6 +20,7 @@ final class HomeViewModel: ViewModel {
         let viewWillAppear: Observable<Void>
         let viewWillDisAppear: Observable<Bool>
         let username: Observable<String?>
+        let error: Observable<String>
     }
     
     func transform(input: Input) -> Output {
@@ -38,11 +39,13 @@ final class HomeViewModel: ViewModel {
             .share()
         let username = user.map { $0?.nickname }
         
+        let failure = result.errors().map { $0.localizedDescription }
         
         return Output(
             viewWillAppear: input.viewWillAppear,
             viewWillDisAppear: input.viewWillDisAppear,
-            username: username
+            username: username,
+            error: failure
         )
     }
     

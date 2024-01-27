@@ -28,15 +28,14 @@ final class LoginViewModel: NSObject, ViewModel {
     }
     
     struct Output {
-        let success: Observable<String?>
+        let success: Observable<String>
+        let errorMessage: Observable<String>
     }
     
     let disposeBag: DisposeBag = .init()
     let socialLoginSubject = PublishSubject<SocialLoginParameters>()
     
     func transform(input: Input) -> Output {
-        let loginResult: Observable<String?>
-        
         input.kakaoLogin
             .subscribe(onNext: { [weak self] in
                 // TODO: 실제 기기에서 테스트 해야함. 현재 Certificates, Identifiers & Profiles에 디바이스 등록이 제한되어 있음....
@@ -89,7 +88,7 @@ final class LoginViewModel: NSObject, ViewModel {
             })
             .disposed(by: disposeBag)
         
-        loginResult = socialLoginSubject.map {
+        let loginResult = socialLoginSubject.map {
             // TODO: 운영 API
             AuthTarget.login(
                 .init(
@@ -111,29 +110,28 @@ final class LoginViewModel: NSObject, ViewModel {
 //                )
 //            )
         }
-        .do(onNext: {
-            dump($0)
-        })
-        .debug("소셜 로그인(애플)")
+        .debug("소셜 로그인")
         .flatMapLatest {
             ApiService().request(type: SocialLoginResponse.self, target: $0)
+                .materialize()
         }
-        .filter {
-            $0 != nil
-        }
-        .map { result in
-            if let response = result {
-                UserDefaults.standard.set(response.accessToken, forKey: "accessToken")
-                UserDefaults.standard.set(response.refreshToken, forKey: "refreshToken")
+        .debug("소셜 로그인 Reponse")
+        .share()
+        
+        let success = loginResult.elements()
+            .filterNil()
+            .map {
+                UserDefaults.standard.set($0.accessToken, forKey: "accessToken")
+                UserDefaults.standard.set($0.refreshToken, forKey: "refreshToken")
                 
-                return response.status
-            } else {
-                return nil
+                return $0.status
             }
-        }
+        
+        let failure = loginResult.errors().map { $0.localizedDescription }
         
         return Output(
-            success: loginResult.asObservable()
+            success: success,
+            errorMessage: failure
         )
     }
     

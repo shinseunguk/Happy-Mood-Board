@@ -58,6 +58,13 @@ class MyTabTableViewCell: UITableViewCell {
         contentView.backgroundColor = .primary100
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        titleLabel.text = nil
+        postImageView.image = UIImage()
+    }
+    
     func setupSubviews() {
         
         [
@@ -87,40 +94,54 @@ class MyTabTableViewCell: UITableViewCell {
         }
     }
     
-    func setupImageView() {
-        myTabView.addSubview(postImageView)
-        
-        titleLabel.snp.removeConstraints()
-        
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(createdAtLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalTo(createdAtLabel)
-        }
-        
-        postImageView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(24)
-            $0.height.equalTo(postImageView.snp.width)
-            $0.bottom.equalTo(-24)
-        }
-    }
-    
     /// Cell Bind 함수
     /// - Parameter tuple: (게시글 ID ,생성일자, 게시글 내용, 이미지 path)
     func bindData(post: Post) {
         self.createdAtLabel.text = convertDateString(post.createdAt) ?? "9999/99/99"
         self.titleLabel.text = post.comments
         
-        // TODO: 이미지 SET 조건절로 이미지 addsubview 할건지 말건지
-        guard let imagePath = post.imagePath else { return }
         
-        setupImageView()
-        
-        Observable.just(imagePath)
-            .flatMapLatest { FirebaseStorageService.shared.rx.download(forPath: $0) }
-            .filterNil()
-            .bind(to: postImageView.rx.image)
-            .disposed(by: disposeBag)
+        if let imagePath = post.imagePath {
+            setupImageView(handelr: true)
+            
+            Observable.just(imagePath)
+                .flatMapLatest { FirebaseStorageService.shared.rx.download(forPath: $0) }
+                .filterNil()
+                .bind(to: postImageView.rx.image)
+                .disposed(by: disposeBag)
+        } else {
+            setupImageView(handelr: false)
+        }
+    }
+    
+    func setupImageView(handelr: Bool) {
+        if handelr {
+            myTabView.addSubview(postImageView)
+            
+            titleLabel.snp.removeConstraints()
+            
+            titleLabel.snp.makeConstraints {
+                $0.top.equalTo(createdAtLabel.snp.bottom).offset(10)
+                $0.leading.trailing.equalTo(createdAtLabel)
+            }
+            
+            postImageView.snp.makeConstraints {
+                $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+                $0.leading.trailing.equalToSuperview().inset(24)
+                $0.height.equalTo(postImageView.snp.width)
+                $0.bottom.equalTo(-24)
+            }
+        } else {
+            postImageView.removeFromSuperview()
+            
+            titleLabel.snp.removeConstraints()
+            
+            titleLabel.snp.makeConstraints {
+                $0.top.equalTo(createdAtLabel.snp.bottom).offset(10)
+                $0.leading.trailing.equalTo(createdAtLabel)
+                $0.bottom.equalTo(-24)
+            }
+        }
     }
 }
 
