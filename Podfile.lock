@@ -105,7 +105,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.12.0):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (3.2.0)
+  - GTMSessionFetcher/Core (3.3.1)
   - JWTDecode (3.1.0)
   - KakaoSDKAuth (2.20.0):
     - KakaoSDKCommon (= 2.20.0)
@@ -249,7 +249,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: bb3c564c3efb933136af0e94899e0a46167466a8
   GoogleDataTransport: 57c22343ab29bc686febbf7cbb13bad167c2d8fe
   GoogleUtilities: 0759d1a57ebb953965c2dfe0ba4c82e95ccc2e34
-  GTMSessionFetcher: 41b9ef0b4c08a6db4b7eb51a21ae5183ec99a2c8
+  GTMSessionFetcher: 8a1b34ad97ebe6f909fb8b9b77fba99943007556
   JWTDecode: 3eaab1e06b6f4dcbdd6716aff09ba4c2104ca8b7
   KakaoSDKAuth: 02742f4681af6da8c4aa7b0f71df98ca9e7df834
   KakaoSDKCommon: 060a8085733a215a048f9bf9b39a846d1be1daee
@@ -275,4 +275,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: e562756553a0ddfc12baf4c543666c8cd505e203
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.14.3
