@@ -61,9 +61,11 @@ final class RegisterViewController: UIViewController {
     private let contentStackView: UIStackView = .init().then {
         $0.axis = .vertical
         $0.distribution = .fill
-        $0.alignment = .center
+        $0.alignment = .leading
         $0.spacing = 24
     }
+    
+    private let imageContainerView: UIView = .init()
     
     private let imageView: UIImageView = .init().then {
         $0.isHidden = true
@@ -223,10 +225,12 @@ extension RegisterViewController: ViewAttributes {
         ].forEach { view.addSubview($0) }
         
         [
-            frameImageView,
+            imageContainerView,
             textView,
             tagButton
         ].forEach { contentStackView.addArrangedSubview($0) }
+        
+        imageContainerView.addSubview(frameImageView)
     }
     
     func setupLayouts() {
@@ -245,8 +249,14 @@ extension RegisterViewController: ViewAttributes {
             make.height.equalTo(200)
         }
         
+        imageContainerView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        
         frameImageView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
             make.width.height.equalTo(216)
+            make.centerX.equalToSuperview()
         }
         
         imageView.snp.makeConstraints { make in
@@ -389,9 +399,11 @@ extension RegisterViewController: ViewAttributes {
             .drive(with: self) { owner, post in
                 // image
                 owner.imageView.image = post.image
+                owner.imageContainerView.isHidden = (post.image == nil)
                 owner.imageView.isHidden = (post.image == nil)
                 owner.frameImageView.isHidden = (post.image == nil)
                 owner.addImageButton.isEnabled = (post.image == nil)
+                owner.deleteImageButton.isHidden = (post.image == nil)
                 owner.imagePicker.dismiss(animated: true)
                 
                 // tag
@@ -409,7 +421,8 @@ extension RegisterViewController: ViewAttributes {
                 }
                 
                 // comments
-                owner.textView.text = post.comments
+                owner.textView.text = post.comments ?? Constants.textViewPlaceholder
+                owner.textView.textColor = (post.comments?.isEmpty ?? true) ? Constants.textViewPlaceholderColor : Constants.textViewTextColor
             }
             .disposed(by: disposeBag)
         
@@ -531,9 +544,19 @@ extension RegisterViewController {
     
     func showPhotoLibraryAuthorizationAlert() {
         let viewController = PhotoLibraryAuthorizationViewController()
-        viewController.sheetPresentationController?.detents = [.medium()]
-        viewController.sheetPresentationController?.prefersGrabberVisible = true
+        viewController.modalPresentationStyle = .custom
+        viewController.transitioningDelegate = self
         present(viewController, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - UIViewControllerTransitioningDelegate
+
+extension RegisterViewController: UIViewControllerTransitioningDelegate {
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return CustomPresentationController(presentedViewController: presented, presenting: presenting, height: 465)
     }
     
 }

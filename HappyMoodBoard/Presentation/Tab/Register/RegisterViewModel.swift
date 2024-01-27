@@ -80,6 +80,7 @@ final class RegisterViewModel: ViewModel {
         let text = input.textChanged
             .filter { $0 != RegisterViewController.Constants.textViewPlaceholder }
             .startWith(self.post.comments)
+            .distinctUntilChanged()
         
         let tag = Observable.merge(
             input.tagSelected,
@@ -88,9 +89,11 @@ final class RegisterViewModel: ViewModel {
             .startWith(self.post.tag)
         
         let textAndTagAndImage = Observable.combineLatest(text, tag, image)
-            .debug("밡행 글 :: textAndTagAndImage")
         
-        let post = Observable.combineLatest(Observable.just(self.post), textAndTagAndImage) { post, textAndTagAndImage -> PostDomain in
+        let post = Observable.combineLatest(
+            Observable.just(self.post),
+            textAndTagAndImage
+        ) { post, textAndTagAndImage -> PostDomain in
             return PostDomain(
                 id: post.id,
                 comments: textAndTagAndImage.0,
@@ -99,8 +102,7 @@ final class RegisterViewModel: ViewModel {
             )
         }
             .startWith(self.post)
-            .debug("발행 글 :: post")
-//            .share()
+            .debug("발행 글")
         
         // '뒤로가기' 눌렀을 때, 글씨, 이미지 등록, 태그 등록 중 1가지라도 되어있을 경우
         // "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?" 팝업 노출
@@ -177,7 +179,7 @@ final class RegisterViewModel: ViewModel {
             }
             .share()
             .debug("게시글 등록")
-            .delay(.seconds(3), scheduler: MainScheduler.instance)
+            .delay(.seconds(3), scheduler: MainScheduler.instance) // 딜레이
             .do(onNext: { _ in
                 showLoadingView.onNext(false)
             })
@@ -185,7 +187,6 @@ final class RegisterViewModel: ViewModel {
         let success = result.elements()
             .map { $0?.postId }
             
-        
         let showFullImageViewController = input.imageViewTapped.withLatestFrom(image)
             .asObservable()
         

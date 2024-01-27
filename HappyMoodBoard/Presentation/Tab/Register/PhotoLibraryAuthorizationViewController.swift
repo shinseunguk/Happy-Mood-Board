@@ -29,15 +29,21 @@ final class PhotoLibraryAuthorizationViewController: UIViewController {
     
     private let descriptionLabel: UILabel = .init().then {
         $0.text = "*기기 설정 > Bee Happy > 사진에서 변경 가능해요."
-        $0.font = UIFont(name: "Pretendard-Bold", size: 12)
-        $0.textColor = .gray600
+        $0.font = UIFont(name: "Pretendard-Regular", size: 14)
+        $0.textColor = .gray400
     }
     
     private let settingButton: UIButton = .init(type: .system).then {
-        $0.setTitle("설정 변경하기", for: .normal)
-        $0.setTitleColor(.gray900, for: .normal)
-        $0.titleLabel?.font = UIFont(name: "Pretendard-Bold", size: 14)
-        // TODO: 밑줄
+        $0.configurationUpdateHandler = { button in
+            var container = AttributeContainer()
+            container.font = UIFont(name: "Pretendard-Medium", size: 18)
+            container.foregroundColor = button.isEnabled ? .gray900 : .gray400
+            var configuration = UIButton.Configuration.filled()
+            configuration.cornerStyle = .capsule
+            configuration.background.backgroundColor = button.isEnabled ? .primary500 : .gray200
+            configuration.attributedTitle = AttributedString("설정 변경하기", attributes: container)
+            button.configuration = configuration
+        }
     }
     
     private let viewModel: PhotoLibraryAuthorizationViewModel = .init()
@@ -85,7 +91,8 @@ extension PhotoLibraryAuthorizationViewController: ViewAttributes {
         }
         
         settingButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.height.equalTo(52)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-22)
         }
     }
