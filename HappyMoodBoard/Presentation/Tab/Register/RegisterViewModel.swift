@@ -57,6 +57,7 @@ final class RegisterViewModel: ViewModel {
         let showFullImageViewController: Observable<UIImage?>
         let post: Observable<PostDomain>
         let keyboard: Observable<Void>
+        let showLoadingView: Observable<Bool>
         let navigateToDetail: Observable<Int?>
         let navigateToBack: Observable<Void>
     }
@@ -99,7 +100,7 @@ final class RegisterViewModel: ViewModel {
         }
             .startWith(self.post)
             .debug("발행 글 :: post")
-            .share()
+//            .share()
         
         // '뒤로가기' 눌렀을 때, 글씨, 이미지 등록, 태그 등록 중 1가지라도 되어있을 경우
         // "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?" 팝업 노출
@@ -126,8 +127,14 @@ final class RegisterViewModel: ViewModel {
         // 발행 버튼 활성화
         let canRegister = Observable.combineLatest(textValid, imageValid) { $0 || $1 }
         
+        // 발행 버튼 클릭시 애니메이션
+        let showLoadingView: BehaviorSubject<Bool> = .init(value: false)
+        
         // 발행 버튼 클릭시 이미지 업로드
         let uploadImage = input.registerButtonTapped.withLatestFrom(post)
+            .do(onNext: { _ in
+                showLoadingView.onNext(true)
+            })
             .flatMapLatest { post -> Observable<UpdatePostParameters> in
                 if let image = post.image {
                     let path = "\(PreferencesService.shared.memberId ?? .init())/\(Date().timeIntervalSince1970.description)"
@@ -170,9 +177,14 @@ final class RegisterViewModel: ViewModel {
             }
             .share()
             .debug("게시글 등록")
+            .delay(.seconds(3), scheduler: MainScheduler.instance)
+            .do(onNext: { _ in
+                showLoadingView.onNext(false)
+            })
         
         let success = result.elements()
             .map { $0?.postId }
+            
         
         let showFullImageViewController = input.imageViewTapped.withLatestFrom(image)
             .asObservable()
@@ -187,6 +199,7 @@ final class RegisterViewModel: ViewModel {
             showFullImageViewController: showFullImageViewController,
             post: post,
             keyboard: input.keyboardButtonTapped,
+            showLoadingView: showLoadingView,
             navigateToDetail: success,
             navigateToBack: input.navigatToBackOkActionTapped
         )

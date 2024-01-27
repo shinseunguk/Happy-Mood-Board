@@ -10,6 +10,7 @@ import Photos
 
 import Then
 import SnapKit
+import Lottie
 
 import RxSwift
 import RxCocoa
@@ -145,6 +146,25 @@ final class RegisterViewController: UIViewController {
             keyboardToggleButton
         ]
         $0.barTintColor = .primary100
+        $0.backgroundColor = .primary100
+    }
+    
+    private let loadingDimView: UIView = .init().then {
+        $0.backgroundColor = .black
+        $0.alpha = 0.7
+    }
+    
+    private let loadingLabel: UILabel = .init().then {
+        $0.text = "나의 꿀단지에 행복을 담는 중"
+        $0.textAlignment = .center
+        $0.textColor = .white
+        $0.font = UIFont(name: "Pretendard-Bold", size: 24)
+    }
+    
+    private let animationView: LottieAnimationView = .init(name: "beewrite").then {
+        $0.contentMode = .scaleAspectFit
+        $0.loopMode = .loop
+        $0.play()
     }
     
     private let viewModel: RegisterViewModel
@@ -196,7 +216,10 @@ extension RegisterViewController: ViewAttributes {
             imageView,
             contentStackView,
             deleteImageButton,
-            toolbar
+            toolbar,
+            loadingDimView,
+            animationView,
+            loadingLabel
         ].forEach { view.addSubview($0) }
         
         [
@@ -238,6 +261,21 @@ extension RegisterViewController: ViewAttributes {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.height.equalTo(48)
+        }
+        
+        loadingDimView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        animationView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(245)
+            make.height.equalTo(362)
+        }
+        
+        loadingLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(animationView).offset(74)
         }
     }
     
@@ -372,6 +410,14 @@ extension RegisterViewController: ViewAttributes {
                 
                 // comments
                 owner.textView.text = post.comments
+            }
+            .disposed(by: disposeBag)
+        
+        output.showLoadingView.asDriver(onErrorJustReturn: false)
+            .drive(with: self) { owner, isHidden in
+                owner.loadingDimView.isHidden = !isHidden
+                owner.animationView.isHidden = !isHidden
+                owner.loadingLabel.isHidden = !isHidden
             }
             .disposed(by: disposeBag)
         

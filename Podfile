@@ -13,6 +13,7 @@ target 'HappyMoodBoard' do
   # UI
   pod 'Then'
   pod 'SnapKit'
+  pod 'lottie-ios'
   
   # Toast
   pod 'Toast-Swift', '~> 5.1.0'

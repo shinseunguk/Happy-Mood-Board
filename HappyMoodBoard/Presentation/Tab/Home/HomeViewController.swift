@@ -9,6 +9,7 @@ import UIKit
 
 import Then
 import SnapKit
+import Lottie
 
 import RxSwift
 import RxCocoa
@@ -21,7 +22,6 @@ final class HomeViewController: UIViewController {
     }
     
     private let headerLabel = HeaderLabel(labelText: Constants.headerLabelText).then {
-//        $0.text = " 님,\n오늘의 행복 아이템을 남겨주세요."
         $0.textColor = .gray900
         $0.font = UIFont(name: "Pretendard-Bold", size: 24)
         $0.numberOfLines = 0
@@ -29,6 +29,11 @@ final class HomeViewController: UIViewController {
     }
     
     private let mainImageView: UIImageView = .init(image: .init(named: "main"))
+    private let animationView: LottieAnimationView = .init(name: "beehome").then {
+        $0.contentMode = .scaleAspectFit
+        $0.loopMode = .loop
+        $0.play()
+    }
     
     private let viewModel: HomeViewModel = .init()
     private let disposeBag: DisposeBag = .init()
@@ -69,7 +74,7 @@ extension HomeViewController: ViewAttributes {
     func setupSubviews() {
         [
             headerLabel,
-            mainImageView
+            animationView
         ].forEach { view.addSubview($0) }
     }
     
@@ -79,7 +84,7 @@ extension HomeViewController: ViewAttributes {
             make.leading.trailing.equalToSuperview().offset(24)
         }
         
-        mainImageView.snp.makeConstraints { make in
+        animationView.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
     }

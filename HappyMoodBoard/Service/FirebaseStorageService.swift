@@ -14,7 +14,7 @@ import RxSwift
 fileprivate enum Constants {
     static let compressionQuality: CGFloat = 0.5
     static let contentType: String = "image/jpeg"
-    static let maxSize: Int64 = 100 * 1024 * 1024
+    static let maxSize: Int64 = 1 * 1024 * 1024
 }
 
 final class FirebaseStorageService {

@@ -11,6 +11,8 @@
 		5D26C15C2B5F9F3B009570EB /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26C15B2B5F9F3B009570EB /* FullImageViewController.swift */; };
 		5D26C19E2B5FAF34009570EB /* AutoSizeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26C19D2B5FAF34009570EB /* AutoSizeImageView.swift */; };
 		5D26C1A42B60E2EA009570EB /* TagListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26C1A32B60E2E9009570EB /* TagListSection.swift */; };
+		5D2BEDD62B6509A7004E5D4C /* beehome.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D2BEDD52B6509A7004E5D4C /* beehome.json */; };
+		5D2BEDD92B650D5D004E5D4C /* beewrite.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D2BEDD82B650D5D004E5D4C /* beewrite.json */; };
 		5D4977B32B327E4D00059120 /* UIViewController+backgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */; };
 		5D4978812B32F26700059120 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4978802B32F26600059120 /* TabBarController.swift */; };
 		5D4978832B32F27300059120 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4978822B32F27300059120 /* HomeViewController.swift */; };
@@ -260,6 +262,8 @@
 		5D26C15B2B5F9F3B009570EB /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
 		5D26C19D2B5FAF34009570EB /* AutoSizeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizeImageView.swift; sourceTree = "<group>"; };
 		5D26C1A32B60E2E9009570EB /* TagListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListSection.swift; sourceTree = "<group>"; };
+		5D2BEDD52B6509A7004E5D4C /* beehome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beehome.json; sourceTree = "<group>"; };
+		5D2BEDD82B650D5D004E5D4C /* beewrite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beewrite.json; sourceTree = "<group>"; };
 		5D4977B22B327E4D00059120 /* UIViewController+backgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+backgroundColor.swift"; sourceTree = "<group>"; };
 		5D4978802B32F26600059120 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5D4978822B32F27300059120 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -427,6 +431,15 @@
 				5D26C19D2B5FAF34009570EB /* AutoSizeImageView.swift */,
 			);
 			path = UIImageView;
+			sourceTree = "<group>";
+		};
+		5D2BEDD72B6509AA004E5D4C /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				5D2BEDD82B650D5D004E5D4C /* beewrite.json */,
+				5D2BEDD52B6509A7004E5D4C /* beehome.json */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		5D49787F2B32F23300059120 /* Tab */ = {
@@ -656,6 +669,7 @@
 			children = (
 				AC3A3BC82B049FBA0081BF32 /* Assets.xcassets */,
 				5D7252792B21AE2000CF6688 /* Fonts */,
+				5D2BEDD72B6509AA004E5D4C /* Animations */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1127,6 +1141,8 @@
 				5D7252812B21AE2F00CF6688 /* Pretendard-Medium.otf in Resources */,
 				5D72527F2B21AE2F00CF6688 /* Pretendard-Bold.otf in Resources */,
 				5D72527D2B21AE2F00CF6688 /* Pretendard-Regular.otf in Resources */,
+				5D2BEDD92B650D5D004E5D4C /* beewrite.json in Resources */,
+				5D2BEDD62B6509A7004E5D4C /* beehome.json in Resources */,
 				AC3A3BC92B049FBA0081BF32 /* Assets.xcassets in Resources */,
 				AC39C67E2B60D53A00165386 /* GoogleService-Info.plist in Resources */,
 			);
