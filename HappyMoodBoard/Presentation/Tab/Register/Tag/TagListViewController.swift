@@ -18,6 +18,7 @@ final class TagListViewController: UIViewController {
     
     enum Constants {
         static let cellHeight: CGFloat = 30
+        static let lineHeight: CGFloat = 24
     }
     
     private let editButton: UIBarButtonItem = .init(title: "편집", style: .plain, target: nil, action: nil).then {
@@ -58,10 +59,20 @@ final class TagListViewController: UIViewController {
     }()
     
     private let closeButton: UIButton = .init(type: .system).then {
-        $0.setTitle("닫기", for: .normal)
-        $0.setTitleColor(.gray900, for: .normal)
-        $0.titleLabel?.font = UIFont(name: "Pretendard-Medium", size: 16)
-        // TODO: 밑줄
+        let text = "닫기"
+        let attributedString = NSMutableAttributedString(string: text)
+        var paragraphStyle = NSMutableParagraphStyle()
+        let font = UIFont(name: "Pretendard-Medium", size: 16)
+        paragraphStyle.maximumLineHeight = Constants.lineHeight
+        paragraphStyle.minimumLineHeight = Constants.lineHeight
+        attributedString.addAttributes([
+            .baselineOffset: (Constants.lineHeight - (font?.lineHeight ?? .zero)) / 2,
+            .paragraphStyle: paragraphStyle,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .font: font,
+            .foregroundColor: UIColor.gray900
+        ], range: NSRange(location: 0, length: text.count))
+        $0.setAttributedTitle(attributedString, for: .init())
     }
     
     private let disposeBag: DisposeBag = .init()

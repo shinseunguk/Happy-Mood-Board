@@ -200,7 +200,6 @@ extension AddTagViewController: ViewAttributes {
             .disposed(by: disposeBag)
         
         output.tag.asDriver(onErrorJustReturn: .init())
-            .debug()
             .drive(with: self) { owner, tag in
                 owner.nameTextField.text = tag.tagName
                 for (index, colorButton) in colorButtons.enumerated() {

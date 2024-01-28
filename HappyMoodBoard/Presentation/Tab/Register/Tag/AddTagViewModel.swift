@@ -49,14 +49,14 @@ final class AddTagViewModel: ViewModel {
     func transform(input: Input) -> Output {
         let nameAndColor = Observable.combineLatest(
             input.name,
-            input.colorButtonTapped
+            input.colorButtonTapped.startWith(self.tag.tagColorId)
         )
         
         let tag = Observable.combineLatest(Observable.just(self.tag), nameAndColor) { (tag, nameAndColor) -> Tag in
             return Tag(id: tag.id, tagName: nameAndColor.0, tagColorId: nameAndColor.1)
         }
             .startWith(self.tag)
-            .share()
+//            .share()
         
         let result = input.completeButtonTapped.withLatestFrom(tag)
             .map { UpdatePostTagParameters(tagId: $0.id, tagName: $0.tagName ?? "", tagColorId: $0.tagColorId) }
@@ -65,11 +65,13 @@ final class AddTagViewModel: ViewModel {
                     // 태그 생성
                     return ApiService()
                         .request(type: PostTagResponse.self, target: TagTarget.create(parameter))
+                        .debug("태그 생성")
                         .materialize()
                 } else {
                     // 태그 편집
                     return ApiService()
                         .request(type: PostTagResponse.self, target: TagTarget.update(parameter))
+                        .debug("태그 편집")
                         .materialize()
                 }
             }
@@ -77,9 +79,11 @@ final class AddTagViewModel: ViewModel {
         
         let success = result.elements()
             .map { _ in Void() }
+            .debug("성공")
         
         let failure = result.errors()
             .map { $0.localizedDescription }
+            .debug("실패")
         
         return .init(
             title: Observable.just(self.mode.title),

@@ -16,6 +16,7 @@ final class EditTagViewModel: ViewModel {
         let itemDeleted: Observable<Tag>
         let editButtonTapped: Observable<Tag>
         let deleteOkActionTapped: Observable<Tag>
+        let completeButtonTapped: Observable<Void>
     }
     
     struct Output {
@@ -23,6 +24,7 @@ final class EditTagViewModel: ViewModel {
         let errorMessage: Observable<String>
         let showDeleteAlert: Observable<Tag>
         let navigateToEdit: Observable<Tag>
+        let navigateToBack: Observable<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -59,7 +61,8 @@ final class EditTagViewModel: ViewModel {
             items: success,
             errorMessage: failure,
             showDeleteAlert: itemDeleted,
-            navigateToEdit: input.editButtonTapped
+            navigateToEdit: input.editButtonTapped,
+            navigateToBack: input.completeButtonTapped
         )
     }
     

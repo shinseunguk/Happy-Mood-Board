@@ -114,7 +114,8 @@ extension EditTagViewController: ViewAttributes {
             viewWillAppear: rx.viewWillAppear.asObservable(),
             itemDeleted: tableView.rx.modelDeleted(Tag.self).asObservable(),
             editButtonTapped: editButtonTapped,
-            deleteOkActionTapped: deleteOkActionTapped
+            deleteOkActionTapped: deleteOkActionTapped,
+            completeButtonTapped: completeButton.rx.tap.asObservable()
         )
         let output = viewModel.transform(input: input)
         output.items
@@ -151,9 +152,14 @@ extension EditTagViewController: ViewAttributes {
             .filter { $0 != nil }
             .map { $0! }
             .drive(with: self) { owner, tag in
-                // TODO: viewModel 수정
                 let viewController = AddTagViewController(viewModel: .init(tag: tag))
                 owner.show(viewController, sender: nil)
+            }
+            .disposed(by: disposeBag)
+        
+        output.navigateToBack.asDriver(onErrorJustReturn: ())
+            .drive(with: self) { owner, _ in
+                owner.navigationController?.popViewController(animated: true)
             }
             .disposed(by: disposeBag)
     }

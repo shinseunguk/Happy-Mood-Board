@@ -287,7 +287,7 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
             self?.showPopUp(
                 title: "로그아웃",
                 message: "로그아웃 하시겠습니까?",
-                leftActionTitle: "취소",
+                leftActionTitle: "아니오",
                 rightActionTitle: "네",
                 rightActionCompletion: {
                     logoutAction.onNext(())

@@ -20,6 +20,7 @@
 		5D4978872B32F36D00059120 /* MyTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4978862B32F36D00059120 /* MyTabViewController.swift */; };
 		5D54D3F12B19CCD40008A5D7 /* ViewAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D54D3F02B19CCD40008A5D7 /* ViewAttributes.swift */; };
 		5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D54D3F22B19CD4F0008A5D7 /* ViewModel.swift */; };
+		5D610E412B66337F00678C0D /* UITextView+lineHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D610E402B66337F00678C0D /* UITextView+lineHeight.swift */; };
 		5D7252762B21ADD100CF6688 /* AgreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7252752B21ADD100CF6688 /* AgreeViewModel.swift */; };
 		5D7252782B21ADE000CF6688 /* AgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7252772B21ADE000CF6688 /* AgreeViewController.swift */; };
 		5D72527D2B21AE2F00CF6688 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D72527A2B21AE2E00CF6688 /* Pretendard-Regular.otf */; };
@@ -280,6 +281,7 @@
 		5D4978862B32F36D00059120 /* MyTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabViewController.swift; sourceTree = "<group>"; };
 		5D54D3F02B19CCD40008A5D7 /* ViewAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAttributes.swift; sourceTree = "<group>"; };
 		5D54D3F22B19CD4F0008A5D7 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		5D610E402B66337F00678C0D /* UITextView+lineHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+lineHeight.swift"; sourceTree = "<group>"; };
 		5D7252752B21ADD100CF6688 /* AgreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeViewModel.swift; sourceTree = "<group>"; };
 		5D7252772B21ADE000CF6688 /* AgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeViewController.swift; sourceTree = "<group>"; };
 		5D72527A2B21AE2E00CF6688 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
@@ -986,6 +988,7 @@
 				5DF0A1542B57C56E00D4C15C /* UIImage+Utils.swift */,
 				5DFBC9C12B5E37D4006C0EF8 /* Optional+Rx.swift */,
 				5DF0A1562B58A9B200D4C15C /* materialized+elements.swift */,
+				5D610E402B66337F00678C0D /* UITextView+lineHeight.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1393,6 +1396,7 @@
 				A2D4CBC22B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */,
 				5D4978852B32F36500059120 /* RegisterViewController.swift in Sources */,
 				A2B58B782B528E1D003FCFA9 /* TraceLog.swift in Sources */,
+				5D610E412B66337F00678C0D /* UITextView+lineHeight.swift in Sources */,
 				5D4977B32B327E4D00059120 /* UIViewController+backgroundColor.swift in Sources */,
 				A26285192B5CF4D00016C4C6 /* FetchResponse.swift in Sources */,
 				5D8F09D92B43F3E100B7BE3E /* Tag.swift in Sources */,
