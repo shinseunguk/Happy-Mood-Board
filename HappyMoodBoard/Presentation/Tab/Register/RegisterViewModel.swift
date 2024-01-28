@@ -103,7 +103,6 @@ final class RegisterViewModel: ViewModel {
             )
         }
             .startWith(self.post)
-            .debug("발행 글")
         
         // '뒤로가기' 눌렀을 때, 글씨, 이미지 등록, 태그 등록 중 1가지라도 되어있을 경우
         // "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?" 팝업 노출

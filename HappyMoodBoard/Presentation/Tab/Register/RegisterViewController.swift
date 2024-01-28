@@ -37,7 +37,9 @@ final class RegisterViewController: UIViewController {
     }
     
     private let backButton: UIBarButtonItem = .init(
-        image: .init(named: "navigation.back"),
+        image: .init(named: "navigation.back")?
+            .withRenderingMode(.alwaysTemplate)
+            .withTintColor(.primary900!),
         style: .plain,
         target: nil,
         action: nil
@@ -427,10 +429,14 @@ extension RegisterViewController: ViewAttributes {
             .disposed(by: disposeBag)
         
         output.showLoadingView.asDriver(onErrorJustReturn: false)
-            .drive(with: self) { owner, isHidden in
-                owner.loadingDimView.isHidden = !isHidden
-                owner.animationView.isHidden = !isHidden
-                owner.loadingLabel.isHidden = !isHidden
+            .drive(with: self) { owner, isShow in
+                owner.loadingDimView.isHidden = !isShow
+                owner.animationView.isHidden = !isShow
+                owner.loadingLabel.isHidden = !isShow
+                owner.view.isUserInteractionEnabled = !isShow
+                owner.backButton.isEnabled = !isShow
+                owner.backButton.tintColor = !isShow ? .primary900 : .gray200
+                owner.registerButton.isEnabled =  !isShow
             }
             .disposed(by: disposeBag)
         
@@ -448,7 +454,6 @@ extension RegisterViewController: ViewAttributes {
         .disposed(by: disposeBag)
         
         output.navigateToBack.asDriver(onErrorJustReturn: ())
-            .debug()
             .drive(with: self) { owner, _ in
                 owner.navigationController?.popViewController(animated: true)
             }
