@@ -12,6 +12,10 @@ import SnapKit
 
 final class PostDetailModalViewController: UIViewController {
 
+    enum Constants {
+        static let lineHeight: CGFloat = 24
+    }
+    
     private let buttonStackView: UIStackView = UIStackView().then {
         $0.axis = .vertical
         $0.distribution = .fill
