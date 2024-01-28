@@ -24,6 +24,20 @@ enum MemberStatus: String {
 
 final class LoginViewController: UIViewController, ViewAttributes {
     
+    private let logoLabel = UILabel().then {
+        $0.text = "BEE HAPPY"
+        $0.textColor = .primary900
+        $0.font = UIFont(name: "Pretendard-Bold", size: 24)
+        $0.textAlignment = .center
+    }
+    
+    private let imageView = UIImageView().then {
+        $0.image = UIImage(named: "BEEHAPPY.home.illustration")
+        $0.contentMode = .scaleAspectFit
+        $0.clipsToBounds = true
+        $0.backgroundColor = .clear
+    }
+    
     private let kakaoLoginButton = SocialLoginButton(type: .kakao)
     private let appleLoginButton = SocialLoginButton(type: .apple)
     
@@ -31,6 +45,7 @@ final class LoginViewController: UIViewController, ViewAttributes {
     private let disposeBag: DisposeBag = .init()
     
     override func viewDidLoad() {
+        setCommonBackgroundColor()
         setupSubviews()
         setupLayouts()
         setupBindings()
@@ -40,12 +55,25 @@ final class LoginViewController: UIViewController, ViewAttributes {
 extension LoginViewController {
     func setupSubviews() {
         [
+            logoLabel,
+            imageView,
             kakaoLoginButton,
             appleLoginButton
         ].forEach { self.view.addSubview($0) }
     }
     
     func setupLayouts() {
+        imageView.snp.makeConstraints {
+            $0.centerY.leading.trailing.equalToSuperview()
+            $0.height.equalTo(380)
+        }
+        
+        logoLabel.snp.makeConstraints {
+            $0.centerY.equalTo(imageView.snp.top).multipliedBy(0.5)  // imageView의 top 중간에 위치
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(36)
+        }
+        
         appleLoginButton.snp.makeConstraints {
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-26)
             $0.leading.equalTo(24)
@@ -82,6 +110,8 @@ extension LoginViewController {
                     self?.show(viewController, sender: nil)
                     
                 case MemberStatus.ACTIVE.rawValue: // 회원
+                    UserDefaults.standard.set(true, forKey: "autoLogin")
+                    
                     let imageInsets: UIEdgeInsets = .init(top: 13, left: 0, bottom: 0, right: 0)
                     
                     // home
@@ -111,7 +141,6 @@ extension LoginViewController {
                         listNavigationController
                     ]
                     
-                    UserDefaults.standard.set(true, forKey: "autoLogin")
                     self?.show(tabBarController, sender: nil)
                     
                 case MemberStatus.SUSPEND.rawValue: // 차단된 회원

@@ -185,6 +185,15 @@
 		A2F0FA3F2B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
 		A2F0FA402B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
 		A2F0FA412B06599E00ADA84C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */; };
+		A2F1140D2B65ECB4003F869C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1140C2B65ECB4003F869C /* OnboardingViewController.swift */; };
+		A2F1140E2B65ECB4003F869C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1140C2B65ECB4003F869C /* OnboardingViewController.swift */; };
+		A2F1140F2B65ECB4003F869C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1140C2B65ECB4003F869C /* OnboardingViewController.swift */; };
+		A2F114122B65F0F9003F869C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F114112B65F0F9003F869C /* OnboardingViewModel.swift */; };
+		A2F114132B65F0F9003F869C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F114112B65F0F9003F869C /* OnboardingViewModel.swift */; };
+		A2F114142B65F0F9003F869C /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F114112B65F0F9003F869C /* OnboardingViewModel.swift */; };
+		A2F114182B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F114172B65F54D003F869C /* OnboardingCollectionViewCell.swift */; };
+		A2F114192B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F114172B65F54D003F869C /* OnboardingCollectionViewCell.swift */; };
+		A2F1141A2B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F114172B65F54D003F869C /* OnboardingCollectionViewCell.swift */; };
 		AC185D002B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
 		AC185D012B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
 		AC185D022B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
@@ -353,10 +362,10 @@
 		A2C886892B497D14008E5437 /* PushNotificationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationButton.swift; sourceTree = "<group>"; };
 		A2C8868D2B497D93008E5437 /* DayOfTheWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfTheWeek.swift; sourceTree = "<group>"; };
 		A2D0F9222B500B8C003BE282 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
-		A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = HappyMoodBoard/Presentation/Setting/SettingOpenSourceLicense/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
-		A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginType.swift; path = HappyMoodBoard/Presentation/Setting/SettingOpenSourceLicense/LoginType.swift; sourceTree = SOURCE_ROOT; };
+		A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = HappyMoodBoard/Presentation/Login/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginType.swift; path = HappyMoodBoard/Presentation/Login/LoginType.swift; sourceTree = SOURCE_ROOT; };
 		A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
-		A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = HappyMoodBoard/Presentation/Common/UI/UIButton/LoginViewModel.swift; sourceTree = SOURCE_ROOT; };
+		A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = HappyMoodBoard/Presentation/Login/LoginViewModel.swift; sourceTree = SOURCE_ROOT; };
 		A2DFB7D92B37C37C008B95AC /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		A2DFB7DE2B383150008B95AC /* SettingIndexButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIndexButton.swift; sourceTree = "<group>"; };
 		A2DFB7E32B392A71008B95AC /* VersionInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoButton.swift; sourceTree = "<group>"; };
@@ -368,6 +377,9 @@
 		A2DFB7FF2B39C4C1008B95AC /* UIViewController+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		A2DFB8042B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOpenSourceLicenseViewController.swift; sourceTree = "<group>"; };
 		A2F0FA3E2B06599E00ADA84C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A2F1140C2B65ECB4003F869C /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		A2F114112B65F0F9003F869C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		A2F114172B65F54D003F869C /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationViewModel.swift; sourceTree = "<group>"; };
 		AC185D032B479581007304CE /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
 		AC185D072B4795E3007304CE /* NotificationModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModalViewController.swift; sourceTree = "<group>"; };
@@ -457,6 +469,8 @@
 		5D54D3E82B19B0C90008A5D7 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				A2F1140C2B65ECB4003F869C /* OnboardingViewController.swift */,
+				A2F114112B65F0F9003F869C /* OnboardingViewModel.swift */,
 				5D7252832B21BE8300CF6688 /* AgreeType.swift */,
 				5D7252772B21ADE000CF6688 /* AgreeViewController.swift */,
 				5D7252752B21ADD100CF6688 /* AgreeViewModel.swift */,
@@ -576,16 +590,6 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		5DB686B22B50F2BD0027ABAB /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */,
-				A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */,
-				A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		5DB687242B54BE520027ABAB /* Tag */ = {
 			isa = PBXGroup;
 			children = (
@@ -688,6 +692,7 @@
 			children = (
 				5D54D3EF2B19CCC60008A5D7 /* Common */,
 				5D54D3E82B19B0C90008A5D7 /* Onboarding */,
+				A2F114102B65F0D7003F869C /* Login */,
 				AC9E33BD2B35483700B0D9AE /* Setting */,
 				5D49787F2B32F23300059120 /* Tab */,
 			);
@@ -805,6 +810,24 @@
 			path = SettingOpenSourceLicense;
 			sourceTree = "<group>";
 		};
+		A2F114102B65F0D7003F869C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A2D4CBBD2B3D8E0D0066E89D /* LoginType.swift */,
+				A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */,
+				A2D4CBB92B3D8C730066E89D /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A2F114162B65F53D003F869C /* UICollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A2F114172B65F54D003F869C /* OnboardingCollectionViewCell.swift */,
+			);
+			path = UICollectionViewCell;
+			sourceTree = "<group>";
+		};
 		AC185D0B2B47AD1D007304CE /* Modal */ = {
 			isa = PBXGroup;
 			children = (
@@ -839,7 +862,6 @@
 				AC3A3BDF2B049FBA0081BF32 /* HappyMoodBoardUITests */,
 				AC3A3BBD2B049FB90081BF32 /* Products */,
 				B7095465C023B9A3BA4A747D /* Pods */,
-				5DB686B22B50F2BD0027ABAB /* Recovered References */,
 				6B35E265C45BA64371C447F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -973,6 +995,7 @@
 			children = (
 				AC854BA42B5DFC93004A607E /* UITableView */,
 				A26285202B5D5C430016C4C6 /* UITableViewCell */,
+				A2F114162B65F53D003F869C /* UICollectionViewCell */,
 				5D26C19C2B5FAF2B009570EB /* UIImageView */,
 				A2D0F9212B500B7F003BE282 /* UIViewController */,
 				AC185D0C2B47AD2E007304CE /* UIPresentationController */,
@@ -1306,6 +1329,7 @@
 				5D8F09D52B3E8BFB00B7BE3E /* PhotoLibraryAuthorizationViewModel.swift in Sources */,
 				5DD1B6C82B59033400DEBD07 /* PostTarget.swift in Sources */,
 				AC27433C2B5F94B1006E1DC3 /* ToastMessage.swift in Sources */,
+				A2F114122B65F0F9003F869C /* OnboardingViewModel.swift in Sources */,
 				5DB28DEC2B2AD0CD00C4E594 /* EnterNicknameViewController.swift in Sources */,
 				5DF0A1512B56797800D4C15C /* AddTagViewController.swift in Sources */,
 				5DB686702B4E68EA0027ABAB /* UIViewController+Rx.swift in Sources */,
@@ -1324,7 +1348,9 @@
 				5DFBC9C02B5DF350006C0EF8 /* FirebaseStorageService.swift in Sources */,
 				A2C886862B497C70008E5437 /* TitleDayOfWeekView.swift in Sources */,
 				ACD6D0FF2B55195D0039E5AE /* NotificationTarget.swift in Sources */,
+				A2F114182B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */,
 				5D7252872B21BEC100CF6688 /* CheckboxButton.swift in Sources */,
+				A2F1140D2B65ECB4003F869C /* OnboardingViewController.swift in Sources */,
 				A2DFB8002B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
 				A2DFB8052B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
 				A2DFB7E42B392A71008B95AC /* VersionInfoButton.swift in Sources */,
@@ -1443,6 +1469,7 @@
 				AC9E33C02B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */,
 				A2DFB7EA2B392E4B008B95AC /* Version.swift in Sources */,
 				A2DFB7F82B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
+				A2F1140E2B65ECB4003F869C /* OnboardingViewController.swift in Sources */,
 				AC27433D2B5F94B1006E1DC3 /* ToastMessage.swift in Sources */,
 				A28402D32B4589B0007C0A0D /* MyAccount.swift in Sources */,
 				A262851A2B5CF4D00016C4C6 /* FetchResponse.swift in Sources */,
@@ -1458,10 +1485,12 @@
 				A2D4CBC72B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				AC185D092B4795E3007304CE /* NotificationModalViewController.swift in Sources */,
 				A2C8867B2B496ED1008E5437 /* TitleToggleView.swift in Sources */,
+				A2F114192B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */,
 				A2DFB8012B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
 				AC7FDD632B57656900E6F7FC /* UpdateNotification.swift in Sources */,
 				AC854BA72B5DFCA0004A607E /* CustomTableView.swift in Sources */,
 				A28402E52B45A4A0007C0A0D /* ModifyNickNameViewController.swift in Sources */,
+				A2F114132B65F0F9003F869C /* OnboardingViewModel.swift in Sources */,
 				A28402D72B458AB3007C0A0D /* AccountView.swift in Sources */,
 				A2D4CBBF2B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				A28402E02B459DBE007C0A0D /* SettingMyAccountViewModel.swift in Sources */,
@@ -1497,6 +1526,7 @@
 				A2DFB7E62B392A71008B95AC /* VersionInfoButton.swift in Sources */,
 				A2D4CBC02B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				A2DFB7EB2B392E4B008B95AC /* Version.swift in Sources */,
+				A2F114142B65F0F9003F869C /* OnboardingViewModel.swift in Sources */,
 				A26285302B6137C30016C4C6 /* HeaderLabel.swift in Sources */,
 				A2DFB7DC2B37C37C008B95AC /* SettingType.swift in Sources */,
 				A2C8868C2B497D14008E5437 /* PushNotificationButton.swift in Sources */,
@@ -1519,6 +1549,7 @@
 				A2B58B802B529418003FCFA9 /* UUID.swift in Sources */,
 				ACD6D1012B55195D0039E5AE /* NotificationTarget.swift in Sources */,
 				A2DFB7EF2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
+				A2F1140F2B65ECB4003F869C /* OnboardingViewController.swift in Sources */,
 				A2DFB8072B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
 				AC185D062B479581007304CE /* HalfModalPresentationController.swift in Sources */,
 				5D7252852B21BE8300CF6688 /* AgreeType.swift in Sources */,
@@ -1544,6 +1575,7 @@
 				A2C886842B4977E1008E5437 /* TitleTimeView.swift in Sources */,
 				AC185D102B47AD58007304CE /* NotificationModalViewModel.swift in Sources */,
 				A28402D82B458AB3007C0A0D /* AccountView.swift in Sources */,
+				A2F1141A2B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */,
 				AC27433E2B5F94B1006E1DC3 /* ToastMessage.swift in Sources */,
 				A2D4CBC82B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				AC854BA82B5DFCA0004A607E /* CustomTableView.swift in Sources */,
@@ -1703,7 +1735,7 @@
 				CODE_SIGN_ENTITLEMENTS = HappyMoodBoard/HappyMoodBoardDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2024012701;
+				CURRENT_PROJECT_VERSION = 2024012703;
 				DEVELOPMENT_TEAM = XQ24HP64B3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1744,7 +1776,7 @@
 				CODE_SIGN_ENTITLEMENTS = HappyMoodBoard/HappyMoodBoard.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2024012701;
+				CURRENT_PROJECT_VERSION = 2024012703;
 				DEVELOPMENT_TEAM = XQ24HP64B3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

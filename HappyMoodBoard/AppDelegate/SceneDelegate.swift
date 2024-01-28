@@ -15,8 +15,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        let handler = UserDefaults.standard.bool(forKey: "autoLogin")
-        autoLogin(handler)
+        let onboardingHandler = UserDefaults.standard.bool(forKey: "firstOnboarding")
+        
+        // 첫 온보딩시에 가이드 화면으로 이동
+        if !onboardingHandler {
+            let rootViewController = OnboardingViewController()
+            let navigationController = UINavigationController(rootViewController: rootViewController)
+            navigationController.isNavigationBarHidden = true
+            window?.rootViewController = navigationController
+            window?.backgroundColor = .primary100
+            window?.makeKeyAndVisible()
+        } else {
+            let handler = UserDefaults.standard.bool(forKey: "autoLogin")
+            autoLogin(handler)
+        }
 
         /*
         만료된 액세스 토큰 갱신 테스트용
