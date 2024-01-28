@@ -28,7 +28,6 @@ final class HomeViewController: UIViewController {
         $0.lineBreakMode = .byWordWrapping
     }
     
-    private let mainImageView: UIImageView = .init(image: .init(named: "main"))
     private let animationView: LottieAnimationView = .init(name: "beehome").then {
         $0.contentMode = .scaleAspectFit
         $0.loopMode = .loop
@@ -84,8 +83,10 @@ extension HomeViewController: ViewAttributes {
             make.leading.trailing.equalToSuperview().offset(24)
         }
         
-        animationView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+        animationView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview().offset(10)
+            $0.width.height.equalTo(1080)
         }
     }
     

@@ -59,4 +59,12 @@ func convertDateString(_ inputDateString: String) -> String? {
     return resultString
 }
 
+/// 오늘 날짜 가져오기
+/// - Returns: 오늘 날짜 가져오기
+func getCurrentDateFormatted() -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy.MM.dd"
+    return dateFormatter.string(from: Date())
+}
+
 

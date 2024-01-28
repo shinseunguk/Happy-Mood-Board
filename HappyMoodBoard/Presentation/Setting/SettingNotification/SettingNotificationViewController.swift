@@ -119,7 +119,7 @@ extension SettingNotificationViewController {
             view.snp.makeConstraints {
                 if index == 1 {
 //                    view.layer.borderColor = UIColor.red.cgColor
-                    $0.height.equalTo(75)
+                    $0.height.equalTo(80)
                 } else {
                     $0.height.equalTo(40)
                 }
@@ -173,8 +173,24 @@ extension SettingNotificationViewController {
         .disposed(by: disposeBag)
         
         // MARK: - 행복아이템 기록 알림 받기
-        output.recordPush.asDriver(onErrorJustReturn: false)
-            .drive(recordPushOnOffView.togglePublishSubject)
+        output.recordPush
+            .bind { [weak self] handler in
+                self?.recordPushOnOffView.togglePublishSubject.onNext(handler)
+                
+                if handler {
+                    self?.titleDayOfWeekView.isUserInteractionEnabled = true
+                    self?.titleTimeView.isUserInteractionEnabled = true
+                    
+                    self?.titleDayOfWeekView.backgroundColor = .primary100
+                    self?.titleTimeView.backgroundColor = .primary100
+                } else {
+                    self?.titleDayOfWeekView.isUserInteractionEnabled = false
+                    self?.titleTimeView.isUserInteractionEnabled = false
+                    
+                    self?.titleDayOfWeekView.backgroundColor = .black.withAlphaComponent(0.3)
+                    self?.titleTimeView.backgroundColor = .black.withAlphaComponent(0.3)
+                }
+            }
             .disposed(by: disposeBag)
         
         // MARK: - 요일
@@ -223,9 +239,15 @@ extension SettingNotificationViewController {
         .disposed(by: disposeBag)
         
         // MARK: - 이벤트·혜택 알림 받기
-        output.marketingPush.asDriver(onErrorJustReturn: false)
-            .drive(marketingPushOnOffView.togglePublishSubject)
-            .disposed(by: disposeBag)
+        output.marketingPush
+            .skip(1)
+            .bind { [weak self] in
+            self?.marketingPushOnOffView.togglePublishSubject.onNext($0)
+            
+            let currentDate = getCurrentDateFormatted()
+            makeToast("\(currentDate)에 Bee Happy의 마케팅 정보 수신을 \($0 ? "동의" : "철회")했어요.")
+        }
+        .disposed(by: disposeBag)
         
         output.viewWillAppearErrorMessage.bind {
             makeToast($0)

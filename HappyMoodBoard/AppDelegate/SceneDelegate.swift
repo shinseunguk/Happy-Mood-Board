@@ -71,7 +71,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func autoLogin(_ handler: Bool) {
         
         if handler {
-            let imageInsets: UIEdgeInsets = .init(top: 13, left: 0, bottom: 0, right: 0)
+            let imageInsets: UIEdgeInsets = .init(top: 6, left: 0, bottom: -8, right: 0)
             
             // home
             let homeViewController = HomeViewController()

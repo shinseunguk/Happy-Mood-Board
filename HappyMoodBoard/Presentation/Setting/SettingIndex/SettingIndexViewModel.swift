@@ -14,7 +14,6 @@ final class SettingIndexViewModel: ViewModel {
     
     struct Input {
         let viewWillAppear: Observable<Void>
-        let checkNotification: Observable<Void>
         let navigationBack: ControlEvent<Void>
         let mySettings: Observable<Void>
         let notificationSettings: Observable<Void>
@@ -31,7 +30,6 @@ final class SettingIndexViewModel: ViewModel {
     
     struct Output {
         let checkVersion: Observable<String>
-        let checkNotification: Observable<Bool>
         let navigationBack: Observable<Void>
         let mySettings: Observable<Void>
         let notificationSettings: Observable<Void>
@@ -51,13 +49,6 @@ final class SettingIndexViewModel: ViewModel {
     let disposeBag: DisposeBag = .init()
     
     func transform(input: Input) -> Output {
-        
-        // MARK: - 시스템 알림설정 확인 로직
-        let pushNotification = input.checkNotification
-            .flatMap { _ in
-                return self.isSystemNotificationEnabled()
-            }
-        
         // MARK: - 현재 앱버전과 서버에 올라가있는 버전을 체크하는 로직
         let compareVersion = input.viewWillAppear
             .flatMap { _ in
@@ -148,7 +139,6 @@ final class SettingIndexViewModel: ViewModel {
         
         return Output(
             checkVersion: compareVersion,
-            checkNotification: pushNotification,
             navigationBack: input.navigationBack.asObservable(),
             mySettings: input.mySettings,
             notificationSettings: input.notificationSettings,

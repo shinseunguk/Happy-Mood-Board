@@ -169,7 +169,7 @@ final class EnterNicknameViewController: UIViewController, ViewAttributes {
         
         output.navigateTohome.asDriver(onErrorRecover: { _ in .empty() })
             .drive(with: self) { owner, _ in
-                let imageInsets: UIEdgeInsets = .init(top: 13, left: 0, bottom: 0, right: 0)
+                let imageInsets: UIEdgeInsets = .init(top: 6, left: 0, bottom: -8, right: 0)
                 
                 // home
                 let homeViewController = HomeViewController()

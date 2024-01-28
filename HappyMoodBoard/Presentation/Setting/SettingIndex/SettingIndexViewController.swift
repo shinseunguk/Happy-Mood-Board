@@ -182,7 +182,6 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
         
         let input = SettingIndexViewModel.Input(
             viewWillAppear: rx.viewWillAppear.asObservable(),
-            checkNotification: Observable.just(()),
             navigationBack: navigationItemBack.rxTap,
             mySettings: accountSettingButton.rx.tap.asObservable(),
             notificationSettings: notificationSettingButton.rx.tap.asObservable(),
@@ -198,24 +197,6 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
         )
         
         let output = viewModel.transform(input: input)
-        output.checkNotification
-            .bind { [weak self] handler in
-                
-                if handler {
-                    self?.dimView.alpha = 0.0
-                } else {
-                    self?.dimView.alpha = 0.5
-                    
-                    let VC = NotificationModalViewController()
-                    VC.modalPresentationStyle = .custom
-                    VC.transitioningDelegate = self
-                    VC.delegate = self
-                    
-                    self?.present(VC, animated: true, completion: nil)
-                }
-            }
-            .disposed(by: disposeBag)
-        
         // MARK: - 네비게이션 뒤로가기
         output.navigationBack.bind { [weak self] in
             print("네비게이션 뒤로가기")
@@ -232,9 +213,25 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
         .disposed(by: disposeBag)
         
         // MARK: - 알림 설정
-        output.notificationSettings.bind { [weak self] in
-            let viewController = SettingNotificationViewController()
-            self?.navigationController?.pushViewController(viewController, animated: true)
+        output.notificationSettings
+            .withLatestFrom(viewModel.isSystemNotificationEnabled())
+            .bind { [weak self] handler in
+                
+                if handler {
+                    self?.dimView.alpha = 0.0
+                    
+                    let viewController = SettingNotificationViewController()
+                    self?.navigationController?.pushViewController(viewController, animated: true)
+                } else {
+                    self?.dimView.alpha = 0.5
+                    
+                    let VC = NotificationModalViewController()
+                    VC.modalPresentationStyle = .custom
+                    VC.transitioningDelegate = self
+                    VC.delegate = self
+                    
+                    self?.present(VC, animated: true, completion: nil)
+                }
         }
         .disposed(by: disposeBag)
         

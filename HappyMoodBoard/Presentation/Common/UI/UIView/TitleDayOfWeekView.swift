@@ -135,6 +135,7 @@ extension TitleDayOfWeekView {
     
     func setupLayouts() {
         titleLabel.snp.makeConstraints {
+            $0.top.equalTo(8)
             $0.leading.equalToSuperview().inset(24)
         }
         

@@ -112,7 +112,7 @@ extension LoginViewController {
                 case MemberStatus.ACTIVE.rawValue: // 회원
                     UserDefaults.standard.set(true, forKey: "autoLogin")
                     
-                    let imageInsets: UIEdgeInsets = .init(top: 13, left: 0, bottom: 0, right: 0)
+                    let imageInsets: UIEdgeInsets = .init(top: 6, left: 0, bottom: -8, right: 0)
                     
                     // home
                     let homeViewController = HomeViewController()

@@ -35,12 +35,6 @@ final class ModifyNickNameViewController: UIViewController, ViewAttributes, UIGe
         $0.backgroundColor = .primary500
     }
     
-    private let infoLabel = UILabel().then {
-        $0.textColor = .gray400
-        $0.font = UIFont(name: "Pretendard-Regular", size: 14)
-        $0.text = "* 특수문자는 쓸 수 없어요"
-    }
-    
     private let nextButton = UIButton(type: .system).then {
         $0.configurationUpdateHandler = { button in
             var container = AttributeContainer()
@@ -78,7 +72,6 @@ final class ModifyNickNameViewController: UIViewController, ViewAttributes, UIGe
         [
             nicknameTextField,
             divider,
-            infoLabel,
             nextButton
         ].forEach { view.addSubview($0) }
     }
@@ -94,11 +87,6 @@ final class ModifyNickNameViewController: UIViewController, ViewAttributes, UIGe
         divider.snp.makeConstraints {
             $0.top.equalTo(nicknameTextField.snp.bottom).offset(7)
             $0.height.equalTo(2)
-            $0.leading.trailing.equalToSuperview().inset(24)
-        }
-        
-        infoLabel.snp.makeConstraints {
-            $0.top.equalTo(divider.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(24)
         }
         
