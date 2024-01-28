@@ -20,7 +20,7 @@ class PopUpViewController: UIViewController {
     
     private lazy var containerView: UIView = UIView().then {
         $0.backgroundColor = .primary100
-        $0.layer.cornerRadius = 10
+        $0.layer.cornerRadius = 30
         $0.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
     }
     
@@ -137,7 +137,7 @@ class PopUpViewController: UIViewController {
         button.layer.borderColor = UIColor.primary500?.cgColor
         
         // layer
-        button.layer.cornerRadius = 20.0
+        button.layer.cornerRadius = 26.0
         button.layer.masksToBounds = true
         
         button.addAction(for: .touchUpInside) { _ in
@@ -150,7 +150,7 @@ class PopUpViewController: UIViewController {
     private func setupViews() {
         view.addSubview(containerView)
         containerView.addSubview(containerStackView)
-        view.backgroundColor = .black.withAlphaComponent(0.2)
+        view.backgroundColor = .black.withAlphaComponent(0.5)
     }
     
     private func addSubviews() {

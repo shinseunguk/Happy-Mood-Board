@@ -68,3 +68,24 @@ func getCurrentDateFormatted() -> String {
 }
 
 
+/// ex) 22:05 string를 (22,5)로 변환
+/// - Parameter timeString: String값
+/// - Returns: (hour, minute)
+func parseTimeString(_ timeString: String) -> (hour: Int, minute: Int)? {
+    let components = timeString.components(separatedBy: ":")
+    
+    // 유효한 컴포넌트가 두 개 있는지 확인
+    guard components.count == 2,
+          let hour = Int(components[0]),
+          let minute = Int(components[1]) else {
+        return nil
+    }
+    
+    // 유효한 시간과 분 범위인지 확인
+    guard (0...23).contains(hour),
+          (0...59).contains(minute) else {
+        return nil
+    }
+    
+    return (hour, minute)
+}

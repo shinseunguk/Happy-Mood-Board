@@ -61,6 +61,22 @@ final class SettingNotificationViewModel: ViewModel {
         
         let notificationSettingsFailure = notificationSettings.errors().map { $0.localizedDescription }
         
+        notificationSettings.elements()
+            .subscribe(onNext: { value in
+                if let active = value?.happyItem.active,
+                   let dayOfWeek = value?.happyItem.dayOfWeek,
+                   let time = value?.happyItem.time {
+                    
+                    let parsingTime = parseTimeString(time) ?? (20, 0)
+                    scheduleNotificationAtSpecificTime(
+                        handler: active,
+                        hourMinute: parsingTime,
+                        dayOfWeek: dayOfWeek
+                    )
+                }
+            })
+            .disposed(by: disposeBag)
+        
         // MARK: - 행복아이템 기록 알림 받기
         notificationSettings.elements()
             .filter {
@@ -146,6 +162,19 @@ final class SettingNotificationViewModel: ViewModel {
             }
         
         recordPushEvent.elements()
+            .do(onNext: {
+                if let active = $0?.active,
+                   let time = $0?.time,
+                   let dayOfWeek = $0?.dayOfWeek,
+                   let parsingTime = parseTimeString(time) {
+                    
+                    scheduleNotificationAtSpecificTime(
+                        handler: active,
+                        hourMinute: parsingTime,
+                        dayOfWeek: dayOfWeek
+                    )
+                }
+            })
             .compactMap {
                 $0?.active
             }
@@ -176,6 +205,19 @@ final class SettingNotificationViewModel: ViewModel {
             }
         
         dayOfWeekEvent.elements()
+            .do(onNext: {
+                if let active = $0?.active,
+                   let time = $0?.time,
+                   let dayOfWeek = $0?.dayOfWeek,
+                   let parsingTime = parseTimeString(time) {
+                    
+                    scheduleNotificationAtSpecificTime(
+                        handler: active,
+                        hourMinute: parsingTime,
+                        dayOfWeek: dayOfWeek
+                    )
+                }
+            })
             .compactMap {
                 $0?.dayOfWeek
             }
@@ -183,7 +225,6 @@ final class SettingNotificationViewModel: ViewModel {
             .disposed(by: disposeBag)
         
         let dayOfWeekEventError = dayOfWeekEvent.errors().map { $0.localizedDescription }
-            
         
         // MARK: - /api/notification/v1/member/happy-item, 행복 아이템 알림 설정 변경
         let timeEvent = timeSaveString
@@ -206,6 +247,19 @@ final class SettingNotificationViewModel: ViewModel {
             }
         
         timeEvent.elements()
+            .do(onNext: {
+                if let active = $0?.active,
+                   let time = $0?.time,
+                   let dayOfWeek = $0?.dayOfWeek,
+                   let parsingTime = parseTimeString(time) {
+                    
+                    scheduleNotificationAtSpecificTime(
+                        handler: active,
+                        hourMinute: parsingTime,
+                        dayOfWeek: dayOfWeek
+                    )
+                }
+            })
             .compactMap {
                 $0?.time
             }
@@ -236,7 +290,6 @@ final class SettingNotificationViewModel: ViewModel {
             .disposed(by: disposeBag)
         
         let marketingPushEventError = marketingPushEvent.errors().map { $0.localizedDescription }
-            
             
         return Output(
             viewWillAppearErrorMessage: notificationSettingsFailure,

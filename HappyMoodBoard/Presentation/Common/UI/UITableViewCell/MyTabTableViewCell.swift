@@ -36,6 +36,7 @@ class MyTabTableViewCell: UITableViewCell {
     }
     
     let postImageView = UIImageView().then {
+        $0.layer.cornerRadius = 12
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
@@ -128,7 +129,7 @@ class MyTabTableViewCell: UITableViewCell {
             postImageView.snp.makeConstraints {
                 $0.top.equalTo(titleLabel.snp.bottom).offset(10)
                 $0.leading.trailing.equalToSuperview().inset(24)
-                $0.height.equalTo(postImageView.snp.width)
+                $0.height.equalTo(120)
                 $0.bottom.equalTo(-24)
             }
         } else {

@@ -195,6 +195,9 @@
 		A2F114182B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F114172B65F54D003F869C /* OnboardingCollectionViewCell.swift */; };
 		A2F114192B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F114172B65F54D003F869C /* OnboardingCollectionViewCell.swift */; };
 		A2F1141A2B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F114172B65F54D003F869C /* OnboardingCollectionViewCell.swift */; };
+		A2F1141D2B668BA1003F869C /* LocalPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1141C2B668BA1003F869C /* LocalPushNotification.swift */; };
+		A2F1141E2B668BA1003F869C /* LocalPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1141C2B668BA1003F869C /* LocalPushNotification.swift */; };
+		A2F1141F2B668BA1003F869C /* LocalPushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F1141C2B668BA1003F869C /* LocalPushNotification.swift */; };
 		AC185D002B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
 		AC185D012B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
 		AC185D022B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
@@ -382,6 +385,7 @@
 		A2F1140C2B65ECB4003F869C /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		A2F114112B65F0F9003F869C /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		A2F114172B65F54D003F869C /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		A2F1141C2B668BA1003F869C /* LocalPushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPushNotification.swift; sourceTree = "<group>"; };
 		AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationViewModel.swift; sourceTree = "<group>"; };
 		AC185D032B479581007304CE /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
 		AC185D072B4795E3007304CE /* NotificationModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModalViewController.swift; sourceTree = "<group>"; };
@@ -738,6 +742,7 @@
 		A2B58B7B2B5293E0003FCFA9 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				A2F1141B2B668B94003F869C /* LocalPushNotification */,
 				AC27433A2B5F94A5006E1DC3 /* ToastMessage */,
 				AC7B6B282B5907B300C32F0D /* TokenParsing */,
 				AC7FDD652B57ADFB00E6F7FC /* Date */,
@@ -828,6 +833,14 @@
 				A2F114172B65F54D003F869C /* OnboardingCollectionViewCell.swift */,
 			);
 			path = UICollectionViewCell;
+			sourceTree = "<group>";
+		};
+		A2F1141B2B668B94003F869C /* LocalPushNotification */ = {
+			isa = PBXGroup;
+			children = (
+				A2F1141C2B668BA1003F869C /* LocalPushNotification.swift */,
+			);
+			path = LocalPushNotification;
 			sourceTree = "<group>";
 		};
 		AC185D0B2B47AD1D007304CE /* Modal */ = {
@@ -1408,6 +1421,7 @@
 				5D7252762B21ADD100CF6688 /* AgreeViewModel.swift in Sources */,
 				5D8F09CE2B3C242100B7BE3E /* RegisterViewModel.swift in Sources */,
 				5DB6866E2B4E62C00027ABAB /* MyInformationResponse.swift in Sources */,
+				A2F1141D2B668BA1003F869C /* LocalPushNotification.swift in Sources */,
 				5DF0A1552B57C56E00D4C15C /* UIImage+Utils.swift in Sources */,
 				5D8F09D72B43A97600B7BE3E /* UIImagePickerController+Rx.swift in Sources */,
 				5DD1B6D22B5912C200DEBD07 /* PostDetailViewController.swift in Sources */,
@@ -1478,6 +1492,7 @@
 				A28402D32B4589B0007C0A0D /* MyAccount.swift in Sources */,
 				A262851A2B5CF4D00016C4C6 /* FetchResponse.swift in Sources */,
 				A2C886832B4977E1008E5437 /* TitleTimeView.swift in Sources */,
+				A2F1141E2B668BA1003F869C /* LocalPushNotification.swift in Sources */,
 				A2DFB7F32B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
 				A28402DC2B45952F007C0A0D /* CustomLabel.swift in Sources */,
 				ACD6D1002B55195D0039E5AE /* NotificationTarget.swift in Sources */,
@@ -1579,6 +1594,7 @@
 				A2C886842B4977E1008E5437 /* TitleTimeView.swift in Sources */,
 				AC185D102B47AD58007304CE /* NotificationModalViewModel.swift in Sources */,
 				A28402D82B458AB3007C0A0D /* AccountView.swift in Sources */,
+				A2F1141F2B668BA1003F869C /* LocalPushNotification.swift in Sources */,
 				A2F1141A2B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */,
 				AC27433E2B5F94B1006E1DC3 /* ToastMessage.swift in Sources */,
 				A2D4CBC82B3D9A200066E89D /* LoginViewModel.swift in Sources */,
@@ -1739,7 +1755,7 @@
 				CODE_SIGN_ENTITLEMENTS = HappyMoodBoard/HappyMoodBoardDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2024012703;
+				CURRENT_PROJECT_VERSION = 202401282126;
 				DEVELOPMENT_TEAM = XQ24HP64B3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1780,7 +1796,7 @@
 				CODE_SIGN_ENTITLEMENTS = HappyMoodBoard/HappyMoodBoard.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2024012703;
+				CURRENT_PROJECT_VERSION = 202401282126;
 				DEVELOPMENT_TEAM = XQ24HP64B3;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

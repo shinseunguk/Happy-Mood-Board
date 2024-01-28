@@ -122,6 +122,7 @@ extension TagListViewController: ViewAttributes {
     }
     
     func setupSubviews() {
+        view.layer.cornerRadius = 30
         view.addSubview(contentStackView)
         
         [

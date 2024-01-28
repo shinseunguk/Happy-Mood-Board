@@ -259,8 +259,13 @@ extension SettingNotificationViewController {
         }
         .disposed(by: disposeBag)
         
+        // TODO: 하드코딩
         output.dayOfWeekErrorMessage.bind {
-            makeToast($0)
+            if $0 == "행복 아이템이 활성화 시 요일을 선택해야 합니다." {
+                makeToast("최소 1개 이상의 요일을 선택해 주세요.")
+            } else {
+                makeToast($0)
+            }
         }
         .disposed(by: disposeBag)
         

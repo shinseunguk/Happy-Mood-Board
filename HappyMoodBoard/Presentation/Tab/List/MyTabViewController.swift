@@ -200,7 +200,7 @@ extension MyTabViewController: ViewAttributes {
         tableView.snp.makeConstraints {
             $0.top.equalTo(tagScrollView.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(24)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(30)
         }
     }
     

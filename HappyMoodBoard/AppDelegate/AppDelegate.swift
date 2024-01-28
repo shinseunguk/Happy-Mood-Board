@@ -100,12 +100,27 @@ extension AppDelegate {
         userNotificationCenter.delegate = self
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         
-        userNotificationCenter.requestAuthorization(options: authOptions) { (granted, error) in
-            DispatchQueue.main.async {
-                if granted {
-                    UIApplication.shared.registerForRemoteNotifications()
-                } else {
-                    // Fail case. 수락을 안하는 케이스
+        if !UserDefaults.standard.bool(forKey: "NotificationAuthorizationRequested") {
+            // First time the app runs, request notification authorization
+            userNotificationCenter.requestAuthorization(options: authOptions) { (granted, error) in
+                DispatchQueue.main.async {
+                    if granted {
+                        UIApplication.shared.registerForRemoteNotifications()
+
+                        scheduleNotificationAtSpecificTime(
+                            handler: true,
+                            hourMinute: (20, 00),
+                            dayOfWeek: [1, 2, 3, 4, 5, 6, 7]
+                        )
+                    } else {
+                        // Fail case. 수락을 안하는 케이스
+                        scheduleNotificationAtSpecificTime(
+                            handler: false,
+                            hourMinute: (20, 0),
+                            dayOfWeek: [1, 2, 3, 4, 5, 6, 7]
+                        )
+                    }
+                    UserDefaults.standard.set(true, forKey: "NotificationAuthorizationRequested")
                 }
             }
         }
