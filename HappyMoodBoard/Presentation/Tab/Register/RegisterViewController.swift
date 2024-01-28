@@ -25,11 +25,11 @@ final class RegisterViewController: UIViewController {
         static let textViewPlaceholderColor: UIColor? = .gray400
         static let textViewTextColor: UIColor? = .gray900
         
+        static let header = "어떤 행복을 담아볼까요?"
         static let deleteImageAlertTitle = "사진을 삭제하시겠어요?"
         static let navigateToBackAlertMessage = "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?"
         static let alertNoAction = "아니오"
         static let alertYesActon = "네"
-        
         
         // 최소 높이와 최대 높이를 정의합니다.
         static let minHeight: CGFloat = 200.0
@@ -53,7 +53,7 @@ final class RegisterViewController: UIViewController {
     )
     
     private let headerLabel: UILabel = .init().then {
-        $0.text = "오늘의 행복은 어떤건가요?"
+        $0.text = Constants.header
         $0.textColor = .gray900
         $0.font = UIFont(name: "Pretendard-Bold", size: 24)
         $0.numberOfLines = 0
@@ -118,7 +118,6 @@ final class RegisterViewController: UIViewController {
     private let addImageButton: UIButton = .init().then {
         $0.tintColor = .primary900
         $0.setImage(UIImage(named: "toolbar.camera"), for: .normal)
-        $0.setImage(UIImage(named: "toolbar.camera.disabled"), for: .disabled)
     }
     
     private let addTagButton: UIBarButtonItem = .init(
@@ -137,6 +136,10 @@ final class RegisterViewController: UIViewController {
     
     private let imagePicker: UIImagePickerController = .init().then {
         $0.navigationBar.tintColor = .primary100
+    }
+    
+    private let toastGuideView = UIView().then {
+        $0.isUserInteractionEnabled = false
     }
     
     private lazy var toolbar: UIToolbar = .init(
@@ -223,7 +226,8 @@ extension RegisterViewController: ViewAttributes {
             toolbar,
             loadingDimView,
             animationView,
-            loadingLabel
+            loadingLabel,
+            toastGuideView
         ].forEach { view.addSubview($0) }
         
         [
@@ -273,6 +277,12 @@ extension RegisterViewController: ViewAttributes {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.height.equalTo(48)
+        }
+        
+        toastGuideView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.bottom.equalTo(toolbar.snp.top).offset(-24)
+            make.width.equalToSuperview()
         }
         
         loadingDimView.snp.makeConstraints { make in
@@ -358,9 +368,13 @@ extension RegisterViewController: ViewAttributes {
             }
             .disposed(by: disposeBag)
         
-        output.showImagePicker.asDriver(onErrorJustReturn: ())
-            .drive(with: self) { owner, _ in
-                owner.requestPhotoLibraryAuthorization()
+        output.showImagePicker.asDriver(onErrorJustReturn: true)
+            .drive(with: self) { owner, isShow in
+                if isShow {
+                    owner.requestPhotoLibraryAuthorization()
+                } else {
+                    owner.toastGuideView.makeToast("사진은 최대 1개만 등록할 수 있어요.", position: .bottom)
+                }
             }
             .disposed(by: disposeBag)
         
@@ -404,7 +418,7 @@ extension RegisterViewController: ViewAttributes {
                 owner.imageContainerView.isHidden = (post.image == nil)
                 owner.imageView.isHidden = (post.image == nil)
                 owner.frameImageView.isHidden = (post.image == nil)
-                owner.addImageButton.isEnabled = (post.image == nil)
+                owner.addImageButton.tintColor = (post.image == nil) ? .primary900 : .gray200
                 owner.deleteImageButton.isHidden = (post.image == nil)
                 owner.imagePicker.dismiss(animated: true)
                 

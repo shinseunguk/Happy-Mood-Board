@@ -51,7 +51,7 @@ final class RegisterViewModel: ViewModel {
         let textDidChanged: Observable<Void>
         let canRegister: Observable<Bool>
         let showNavigateToBackAlert: Observable<Bool>
-        let showImagePicker: Observable<Void>
+        let showImagePicker: Observable<Bool>
         let shwoDeleteImageAlert: Observable<Void>
         let showTagListViewController: Observable<Void>
         let showFullImageViewController: Observable<UIImage?>
@@ -103,6 +103,10 @@ final class RegisterViewModel: ViewModel {
             )
         }
             .startWith(self.post)
+        
+        let showImagePicker = input.addImageButtonTapped
+            .withLatestFrom(image)
+            .map { $0 == nil ? true : false }
         
         // '뒤로가기' 눌렀을 때, 글씨, 이미지 등록, 태그 등록 중 1가지라도 되어있을 경우
         // "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?" 팝업 노출
@@ -196,7 +200,7 @@ final class RegisterViewModel: ViewModel {
             textDidChanged: input.textDidChanged,
             canRegister: canRegister,
             showNavigateToBackAlert: showNavigateToBackAlert,
-            showImagePicker: input.addImageButtonTapped,
+            showImagePicker: showImagePicker,
             shwoDeleteImageAlert: input.deleteImageButtonTapped,
             showTagListViewController: input.addTagButtonTapped,
             showFullImageViewController: showFullImageViewController,

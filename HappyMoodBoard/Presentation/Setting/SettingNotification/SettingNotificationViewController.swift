@@ -258,5 +258,3 @@ extension SettingNotificationViewController {
         self.accessoryView.isHidden = handler
     }
 }
-
-    
