@@ -106,8 +106,8 @@ class MyTabTableViewCell: UITableViewCell {
             
             Observable.just(imagePath)
                 .flatMapLatest { FirebaseStorageService.shared.rx.download(forPath: $0) }
-                .filterNil()
-                .bind(to: postImageView.rx.image)
+                .asDriver(onErrorJustReturn: nil)
+                .drive(postImageView.rx.image)
                 .disposed(by: disposeBag)
         } else {
             setupImageView(handelr: false)

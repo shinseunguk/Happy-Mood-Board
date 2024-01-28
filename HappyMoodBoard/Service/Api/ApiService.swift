@@ -15,47 +15,23 @@ final class ApiService {
     func request<T: Decodable>(type: T.Type, target: TargetType) -> Observable<T?> {
         return RxAlamofire
             .request(target, interceptor: AuthInterceptor())
-            .validate(statusCode: 200..<500)
-            .observe(on: MainScheduler.instance)
+            .validate()
             .responseData()
-            .map { response, data -> T? in
-                switch response.statusCode {
-                case 200...299:
-                    do {
-                        let result = try JSONDecoder().decode(BaseResponse<T>.self, from: data)
-//                        traceLog(String(data: data, encoding: .utf8))
-                        return result.responseData
-                    } catch {
-                        // TODO: 성공시 디코딩 에러 처리
-                        print(
-                            target.path,
-                            "💥💥💥",
-                            error.localizedDescription,
-                            response.statusCode,
-                            String(data: data, encoding: .utf8) ?? ""
-                        )
-                        throw ApiError.decodingError
-                    }
-                // TODO: case 400
-                // TODO: default 케이스 ApiError에 추가
-                default:
-                    do {
-                        let apiError = try JSONDecoder().decode(ErrorResponse.self, from: data)
-                        throw ApiError.failed(apiError)
-                    } catch let decodingError as DecodingError {
-                        print(
-                            target.path,
-                            "💥💥💥",
-                            decodingError.localizedDescription,
-                            response.statusCode,
-                            String(data: data, encoding: .utf8) ?? ""
-                        )
-                        throw decodingError
-                    } catch {
-                        throw error
-                    }
+            .map { _, data -> T? in
+                do {
+                    let result = try JSONDecoder().decode(BaseResponse<T>.self, from: data)
+                    return result.responseData
+                } catch {
+                    throw ApiError.decodingError
                 }
             }
+            .catch { error in
+                if case let .requestRetryFailed(retryError, _) = error.asAFError {
+                    throw retryError
+                }
+                throw error
+            }
+            .observe(on: MainScheduler.instance)
     }
     
 }
