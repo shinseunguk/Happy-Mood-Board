@@ -158,6 +158,9 @@
 		A2D843AF2B67EFCA00FE1EDB /* FirebasePathParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843AE2B67EFCA00FE1EDB /* FirebasePathParsing.swift */; };
 		A2D843B02B67EFCA00FE1EDB /* FirebasePathParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843AE2B67EFCA00FE1EDB /* FirebasePathParsing.swift */; };
 		A2D843B12B67EFCA00FE1EDB /* FirebasePathParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843AE2B67EFCA00FE1EDB /* FirebasePathParsing.swift */; };
+		A2D843B32B67F5F100FE1EDB /* UIView+Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843B22B67F5F100FE1EDB /* UIView+Radius.swift */; };
+		A2D843B42B67F5F100FE1EDB /* UIView+Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843B22B67F5F100FE1EDB /* UIView+Radius.swift */; };
+		A2D843B52B67F5F100FE1EDB /* UIView+Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843B22B67F5F100FE1EDB /* UIView+Radius.swift */; };
 		A2DFB7DA2B37C37C008B95AC /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB7D92B37C37C008B95AC /* SettingType.swift */; };
 		A2DFB7DB2B37C37C008B95AC /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB7D92B37C37C008B95AC /* SettingType.swift */; };
 		A2DFB7DC2B37C37C008B95AC /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB7D92B37C37C008B95AC /* SettingType.swift */; };
@@ -369,6 +372,7 @@
 		A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
 		A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = HappyMoodBoard/Presentation/Login/LoginViewModel.swift; sourceTree = SOURCE_ROOT; };
 		A2D843AE2B67EFCA00FE1EDB /* FirebasePathParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePathParsing.swift; sourceTree = "<group>"; };
+		A2D843B22B67F5F100FE1EDB /* UIView+Radius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Radius.swift"; sourceTree = "<group>"; };
 		A2DFB7D92B37C37C008B95AC /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		A2DFB7DE2B383150008B95AC /* SettingIndexButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIndexButton.swift; sourceTree = "<group>"; };
 		A2DFB7E32B392A71008B95AC /* VersionInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoButton.swift; sourceTree = "<group>"; };
@@ -1015,6 +1019,7 @@
 				5DFBC9C12B5E37D4006C0EF8 /* Optional+Rx.swift */,
 				5DF0A1562B58A9B200D4C15C /* materialized+elements.swift */,
 				5D610E402B66337F00678C0D /* UITextView+lineHeight.swift */,
+				A2D843B22B67F5F100FE1EDB /* UIView+Radius.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1394,6 +1399,7 @@
 				A262851D2B5D02120016C4C6 /* TagButton.swift in Sources */,
 				A2D4CBBE2B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */,
+				A2D843B32B67F5F100FE1EDB /* UIView+Radius.swift in Sources */,
 				5DFBC9C62B5F58C0006C0EF8 /* FirebaseStorage+Rx.swift in Sources */,
 				A2DFB7DF2B383150008B95AC /* SettingIndexButton.swift in Sources */,
 				5DFBC9C22B5E37D4006C0EF8 /* Optional+Rx.swift in Sources */,
@@ -1511,6 +1517,7 @@
 				A2DFB7F32B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
 				A28402DC2B45952F007C0A0D /* CustomLabel.swift in Sources */,
 				ACD6D1002B55195D0039E5AE /* NotificationTarget.swift in Sources */,
+				A2D843B42B67F5F100FE1EDB /* UIView+Radius.swift in Sources */,
 				A2C8867F2B49700F008E5437 /* SettingNotificationType.swift in Sources */,
 				AC7FDD682B57AE0200E6F7FC /* Date.swift in Sources */,
 				A2B58B792B528E1D003FCFA9 /* TraceLog.swift in Sources */,
@@ -1611,6 +1618,7 @@
 				A28402D82B458AB3007C0A0D /* AccountView.swift in Sources */,
 				A2F1141F2B668BA1003F869C /* LocalPushNotification.swift in Sources */,
 				A2F1141A2B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */,
+				A2D843B52B67F5F100FE1EDB /* UIView+Radius.swift in Sources */,
 				AC27433E2B5F94B1006E1DC3 /* ToastMessage.swift in Sources */,
 				A2D4CBC82B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				AC854BA82B5DFCA0004A607E /* CustomTableView.swift in Sources */,
