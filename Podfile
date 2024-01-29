@@ -40,6 +40,8 @@ target 'HappyMoodBoard' do
   # Token Parsing
   pod 'JWTDecode'
   
+  # Kingfisher
+  pod 'Kingfisher'
   
   pod 'RxGesture'
 

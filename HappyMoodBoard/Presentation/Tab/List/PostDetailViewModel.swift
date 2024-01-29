@@ -29,7 +29,7 @@ final class PostDetailViewModel: ViewModel {
         let post: Observable<FetchPostResponse?>
         let postError: Observable<String>
         let date: Observable<String>
-        let image: Observable<UIImage?>
+        let imagePath: Observable<String?>
         let comment: Observable<String?>
         let tag: Observable<Tag?>
         let showActionSheet: Observable<Void>
@@ -74,10 +74,10 @@ final class PostDetailViewModel: ViewModel {
             }
         let comment = postSuccess.map { $0?.comments }
         let tag = postSuccess.map { $0?.postTag }
-        let image = postSuccess.map { $0?.imagePath }
-            .filterNil()
-            .flatMapLatest { FirebaseStorageService.shared.rx.download(forPath: $0) }
-            .debug()
+        let imagePath = postSuccess.map { $0?.imagePath }
+//            .filterNil()
+//            .flatMapLatest { FirebaseStorageService.shared.rx.download(forPath: $0) }
+//            .debug()
 
         // 수정하기 버튼 클릭시
         let navigateToEdit = input.editActionTapped.withLatestFrom(postSuccess.filterNil())
@@ -123,7 +123,7 @@ final class PostDetailViewModel: ViewModel {
             post: postSuccess,
             postError: postfailure,
             date: date,
-            image: image,
+            imagePath: imagePath,
             comment: comment,
             tag: tag,
             showActionSheet: input.moreButtonTapped,

@@ -11,6 +11,8 @@ import Then
 
 import RxSwift
 
+import Kingfisher
+
 class MyTabTableViewCell: UITableViewCell {
     
     let disposeBag: DisposeBag = .init()
@@ -105,11 +107,8 @@ class MyTabTableViewCell: UITableViewCell {
         if let imagePath = post.imagePath {
             setupImageView(handelr: true)
             
-//            Observable.just(imagePath)
-//                .flatMapLatest { FirebaseStorageService.shared.rx.download(forPath: $0) }
-//                .asDriver(onErrorJustReturn: nil)
-//                .drive(postImageView.rx.image)
-//                .disposed(by: disposeBag)
+            let URL = URL(string: getFirebaseURL(imagePath))
+            postImageView.kf.setImage(with: URL)
         } else {
             setupImageView(handelr: false)
         }

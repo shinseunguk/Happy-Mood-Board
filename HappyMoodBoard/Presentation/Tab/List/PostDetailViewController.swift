@@ -177,14 +177,16 @@ extension PostDetailViewController: ViewAttributes {
             .drive(dateLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output.image.asDriver(onErrorJustReturn: nil)
-            .drive(with: self) { owner, image in
-                guard let image = image else {
-                    owner.imageView.isHidden = true
+        output.imagePath.asDriver(onErrorJustReturn: nil)
+            .drive(with: self) { owner, imagePath in
+                guard let imagePath = imagePath else {
+                    self.imageView.isHidden = true
                     return
                 }
-                owner.imageView.isHidden = false
-                owner.imageView.image = image
+                self.imageView.isHidden = false
+                
+                let URL = URL(string: getFirebaseURL(imagePath))
+                self.imageView.kf.setImage(with: URL)
             }
             .disposed(by: disposeBag)
         

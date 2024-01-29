@@ -118,6 +118,7 @@ PODS:
     - KakaoSDKCommon/Common (= 2.20.0)
   - KakaoSDKUser (2.20.0):
     - KakaoSDKAuth (= 2.20.0)
+  - Kingfisher (7.10.2)
   - lottie-ios (4.4.0)
   - nanopb (2.30909.1):
     - nanopb/decode (= 2.30909.1)
@@ -176,6 +177,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - JWTDecode
+  - Kingfisher
   - lottie-ios
   - RxAlamofire
   - RxCocoa
@@ -214,6 +216,7 @@ SPEC REPOS:
     - KakaoSDKAuth
     - KakaoSDKCommon
     - KakaoSDKUser
+    - Kingfisher
     - lottie-ios
     - nanopb
     - PromisesObjC
@@ -254,6 +257,7 @@ SPEC CHECKSUMS:
   KakaoSDKAuth: 02742f4681af6da8c4aa7b0f71df98ca9e7df834
   KakaoSDKCommon: 060a8085733a215a048f9bf9b39a846d1be1daee
   KakaoSDKUser: 0594b37675fb634304da3ecc83830c0ec84ceef5
+  Kingfisher: 99edc495d3b7607e6425f0d6f6847b2abd6d716d
   lottie-ios: ef1be1f90d54255f08e09d767950e43714661178
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
@@ -273,6 +277,6 @@ SPEC CHECKSUMS:
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   Toast-Swift: dd369e68ee529f542c65bd0d0c6c50cd743cf6f2
 
-PODFILE CHECKSUM: e562756553a0ddfc12baf4c543666c8cd505e203
+PODFILE CHECKSUM: cad82ab669b1cd2ec26ef2181699a884a1cad9fd
 
 COCOAPODS: 1.14.3
