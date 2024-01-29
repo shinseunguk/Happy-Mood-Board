@@ -43,7 +43,7 @@ final class ModifyNickNameViewController: UIViewController, ViewAttributes, UIGe
             var configuration = UIButton.Configuration.filled()
             configuration.cornerStyle = .capsule
             configuration.background.backgroundColor = button.isEnabled ? .primary500 : .gray200
-            configuration.attributedTitle = AttributedString("다음", attributes: container)
+            configuration.attributedTitle = AttributedString("완료", attributes: container)
             button.configuration = configuration
         }
         $0.isEnabled = false
