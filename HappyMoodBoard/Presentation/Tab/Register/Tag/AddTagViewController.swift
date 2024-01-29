@@ -50,6 +50,22 @@ final class AddTagViewController: UIViewController {
         $0.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
     }
     
+    private let doneButton = UIBarButtonItem(
+                title: "완료",
+                style: .plain,
+                target: nil,
+                action: nil
+            )
+    
+    private lazy var toolbar = UIToolbar().then {
+        $0.sizeToFit()
+        $0.items = [UIBarButtonItem(
+                   barButtonSystemItem: .flexibleSpace,
+                   target: nil,
+                   action: nil
+               ), doneButton]
+    }
+    
     private let nameTextField = UITextField().then {
         $0.textColor = .gray900
         $0.font = UIFont(name: "Pretendard-Regular", size: 14)
@@ -170,7 +186,8 @@ extension AddTagViewController: ViewAttributes {
             colorStackView,
             errorLabel
         ].forEach { contentStackView.addArrangedSubview($0) }
-    
+        
+        nameTextField.inputAccessoryView = toolbar
     }
     
     func setupLayouts() {
@@ -187,14 +204,21 @@ extension AddTagViewController: ViewAttributes {
     }
     
     func setupBindings() {
-        RxKeyboard.instance.visibleHeight
-            .drive(with: self) { owner, keyboardVisibleHeight in
-                owner.completeButton.snp.updateConstraints {
-                    $0.bottom.equalTo(owner.view.safeAreaLayoutGuide.snp.bottom).offset(-keyboardVisibleHeight)
-                }
-                owner.view.setNeedsLayout()
-            }
+        doneButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.nameTextField.resignFirstResponder()
+                // 추가로 필요한 동작을 수행할 수 있습니다.
+            })
             .disposed(by: disposeBag)
+        
+//        RxKeyboard.instance.visibleHeight
+//            .drive(with: self) { owner, keyboardVisibleHeight in
+//                owner.completeButton.snp.updateConstraints {
+//                    $0.bottom.equalTo(owner.view.safeAreaLayoutGuide.snp.bottom).offset(-keyboardVisibleHeight)
+//                }
+//                owner.view.setNeedsLayout()
+//            }
+//            .disposed(by: disposeBag)
         
         let colorButtons = colorButtonStackView.arrangedSubviews.compactMap { $0 as? UIButton }
         let colorButtonTapped = Observable.from(colorButtons.map { button in
