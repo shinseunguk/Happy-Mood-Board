@@ -21,6 +21,20 @@ final class TagListViewController: UIViewController {
         static let lineHeight: CGFloat = 24
     }
     
+    private let titleLabel: UILabel = .init().then {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.17
+        $0.attributedText = NSMutableAttributedString(
+            string: "태그 선택",
+            attributes: [
+                NSAttributedString.Key.kern: -0.36,
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                .font: UIFont(name: "Pretendard-Bold", size: 18),
+                .foregroundColor: UIColor.gray900
+            ]
+        )
+    }
+    
     private let editButton: UIBarButtonItem = .init(title: "편집", style: .plain, target: nil, action: nil).then {
         $0.tintColor = .gray500
         $0.setTitleTextAttributes(
@@ -116,9 +130,17 @@ final class TagListViewController: UIViewController {
 extension TagListViewController: ViewAttributes {
     
     func setupNavigationBar() {
-        navigationItem.title = "태그 선택"
-        navigationItem.rightBarButtonItems = [editButton, .fixedSpace(20)]
+        navigationItem.leftBarButtonItems = [.fixedSpace(20), .init(customView: titleLabel)]
+        navigationItem.rightBarButtonItem = editButton
         navigationItem.backButtonDisplayMode = .minimal
+        
+        // shadow
+        navigationController?.navigationBar.backgroundColor = .primary100
+        navigationController?.navigationBar.layer.masksToBounds = false
+        navigationController?.navigationBar.layer.shadowColor = UIColor.gray200?.cgColor
+        navigationController?.navigationBar.layer.shadowOpacity = 1
+        navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 0)
+        navigationController?.navigationBar.layer.shadowRadius = 1
     }
     
     func setupSubviews() {
@@ -162,9 +184,9 @@ extension TagListViewController: ViewAttributes {
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        output.navigateToAdd.asDriver(onErrorJustReturn: ())
-            .drive(with: self) { owner, _ in
-                owner.navigateToAdd()
+        output.navigateToAdd.asDriver(onErrorJustReturn: false)
+            .drive(with: self) { owner, hidesBackButton in
+                owner.navigateToAdd(hidesBackButton: hidesBackButton)
             }
             .disposed(by: disposeBag)
         
@@ -181,9 +203,16 @@ extension TagListViewController: ViewAttributes {
         }
     }
     
-    func navigateToAdd() {
-        let viewController = AddTagViewController()
-        show(viewController, sender: nil)
+    func navigateToAdd(hidesBackButton: Bool) {
+        if hidesBackButton {
+            let viewController = AddTagViewController()
+            viewController.navigationItem.hidesBackButton = true
+            navigationController?.popViewController(animated: false)
+            navigationController?.pushViewController(viewController, animated: false)
+        } else {
+            let viewController = AddTagViewController()
+            show(viewController, sender: nil)
+        }
     }
 }
 
@@ -207,3 +236,4 @@ extension TagListViewController: UICollectionViewDelegateFlowLayout {
     }
     
 }
+

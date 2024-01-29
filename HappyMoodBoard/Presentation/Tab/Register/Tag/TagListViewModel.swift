@@ -21,7 +21,7 @@ final class TagListViewModel: ViewModel {
     struct Output {
         let navigateToEdit: Observable<Void>
         let items: Observable<[TagListSection]>
-        let navigateToAdd: Observable<Void>
+        let navigateToAdd: Observable<Bool>
         let dismiss: Observable<Tag?>
     }
     
@@ -76,6 +76,11 @@ final class TagListViewModel: ViewModel {
             }
             .map { _ in () }
         
+        let navigateToAddWithHidesBackButton = Observable.merge(
+            addSelected.map { _ in false },
+            items.filter { $0.first?.items.count == 1 }.map { _ in true }
+        )
+        
         let dismiss = Observable<Tag?>.merge(
             tagSelected,
             input.closeButtonTapped.map { _ -> Tag? in return nil }
@@ -84,7 +89,7 @@ final class TagListViewModel: ViewModel {
         return .init(
             navigateToEdit: input.editButtonTapped,
             items: items,
-            navigateToAdd: addSelected,
+            navigateToAdd: navigateToAddWithHidesBackButton,
             dismiss: dismiss
         )
     }

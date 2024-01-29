@@ -60,6 +60,10 @@ final class AgreeViewController: UIViewController {
     private let privacyPolicyButton = AgreeCheckboxButton(type: .privacyPolicy)
     private let marketingEmailButton = AgreeCheckboxButton(type: .marketingEmail)
     
+    private let toastGuideView: UIView = .init().then {
+        $0.isUserInteractionEnabled = false
+    }
+    
     private let nextButton = UIButton(type: .system).then {
         $0.configurationUpdateHandler = { button in
             var container = AttributeContainer()
@@ -91,9 +95,8 @@ final class AgreeViewController: UIViewController {
     }
     
     /// 웹뷰로 이동하고 해당 페이지로 재진입시 네비바가 보이기 때문에 해당 코드 삽입
-    /// - Parameter animated: <#animated description#>
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
     }
 }
 
@@ -107,7 +110,8 @@ extension AgreeViewController: ViewAttributes {
             pageTwoLabel,
             titleLabel,
             contentStackView,
-            nextButton
+            nextButton,
+            toastGuideView
         ].forEach { view.addSubview($0) }
         
         [
@@ -152,6 +156,12 @@ extension AgreeViewController: ViewAttributes {
             make.leading.trailing.equalToSuperview().inset(24)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-26)
             make.height.equalTo(52)
+        }
+        
+        toastGuideView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(nextButton.snp.top)
         }
     }
     
@@ -210,6 +220,15 @@ extension AgreeViewController: ViewAttributes {
             self?.show(viewController, sender: nil)
         }
         .disposed(by: disposeBag)
+        
+        output.showMarketingEmailToast.asDriver(onErrorJustReturn: false)
+            .drive(with: self) { owner, isAgree in
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yy.MM.dd"
+                let date = formatter.string(from: .now)
+                owner.toastGuideView.makeToast("\(date)에 Bee Happy의 마케팅 정보 수신을 \(isAgree ? "동의" : "철회")했어요.")
+            }
+            .disposed(by: disposeBag)
         
         output.navigateToNextStep
             .bind { [weak self] in

@@ -8,11 +8,17 @@
 import UIKit
 
 extension UITextView {
-    func setTextWithLineHeight(text: String?, lineHeight: CGFloat) {
+    func setTextWithLineHeight(text: String?, font: UIFont?, lineHeight: CGFloat) {
         if let text = text {
             let style = NSMutableParagraphStyle()
-            style.lineHeightMultiple = lineHeight
-            let attrString = NSAttributedString(string: text, attributes: [.paragraphStyle: style])
+            style.lineSpacing = lineHeight - (font?.lineHeight ?? .zero)
+            let attrString = NSAttributedString(
+                string: text,
+                attributes: [
+                    .paragraphStyle: style,
+                    .font: font
+                ]
+            )
             self.attributedText = attrString
         }
     }

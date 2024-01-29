@@ -17,10 +17,25 @@ import RxDataSources
 final class EditTagViewController: UIViewController {
     
     enum Constants {
+        static let navigationTitle = "태그 편집"
         static let deleteAlertTitle = "태그를 삭제 하시겠어요?"
         static let deleteAlertMessage = "동일한 태그를 사용한 모든 글에서 태그가 삭제돼요."
         static let deleteAlertNoAction = "아니오"
         static let deleteAlertYesActon = "네"
+    }
+    
+    private let titleLabel = UILabel().then {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.17
+        $0.attributedText = NSMutableAttributedString(
+            string: Constants.navigationTitle,
+            attributes: [
+                NSAttributedString.Key.kern: -0.36,
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                .font: UIFont(name: "Pretendard-Bold", size: 18),
+                .foregroundColor: UIColor.gray900
+            ]
+        )
     }
     
     private let tableView: UITableView = .init().then {
@@ -62,8 +77,9 @@ override func viewDidLoad() {
 
 extension EditTagViewController: ViewAttributes {
     func setupNavigationBar() {
-        navigationItem.title = "태그 편집"
+        navigationItem.leftItemsSupplementBackButton = true
         navigationItem.backButtonDisplayMode = .minimal
+        navigationItem.leftBarButtonItem = .init(customView: titleLabel)
     }
     
     func setupSubviews() {

@@ -92,8 +92,8 @@ extension PhotoLibraryAuthorizationViewController: ViewAttributes {
         
         settingButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-26)
             make.height.equalTo(52)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-22)
         }
     }
     

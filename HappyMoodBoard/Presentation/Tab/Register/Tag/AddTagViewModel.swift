@@ -59,7 +59,13 @@ final class AddTagViewModel: ViewModel {
 //            .share()
         
         let result = input.completeButtonTapped.withLatestFrom(tag)
-            .map { UpdatePostTagParameters(tagId: $0.id, tagName: $0.tagName ?? "", tagColorId: $0.tagColorId) }
+            .map {
+                UpdatePostTagParameters(
+                    tagId: $0.id,
+                    tagName: $0.tagName?.trimmingCharacters(in: .whitespacesAndNewlines) ?? .init(),
+                    tagColorId: $0.tagColorId
+                )
+            }
             .flatMapLatest { parameter -> Observable<Event<PostTagResponse?>> in
                 if parameter.tagId == nil {
                     // 태그 생성

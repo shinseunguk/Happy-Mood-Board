@@ -24,7 +24,7 @@ final class RegisterViewController: UIViewController {
         static let textViewPlaceholder: String = "최대 1000자까지 작성 가능해요."
         static let textViewPlaceholderColor: UIColor? = .gray400
         static let textViewTextColor: UIColor? = .gray900
-        static let textViewLineHeight: CGFloat = 1.26
+        static let textViewLineHeight: CGFloat = 24
         
         static let header = "어떤 행복을 담아볼까요?"
         static let deleteImageAlertTitle = "사진을 삭제하시겠어요?"
@@ -106,9 +106,12 @@ final class RegisterViewController: UIViewController {
     }
     
     private let textView: UITextView = .init().then {
-        $0.setTextWithLineHeight(text: Constants.textViewPlaceholder, lineHeight: Constants.textViewLineHeight)
+        $0.setTextWithLineHeight(
+            text: Constants.textViewPlaceholder,
+            font: UIFont(name: "Pretendard-Regular", size: 16),
+            lineHeight: Constants.textViewLineHeight
+        )
         $0.textColor = Constants.textViewPlaceholderColor
-        $0.font = UIFont(name: "Pretendard-Regular", size: 16)
         $0.backgroundColor = .clear
         $0.layer.cornerRadius = 16
         $0.layer.borderWidth = 1
@@ -324,6 +327,7 @@ extension RegisterViewController: ViewAttributes {
             imageSelected: imagePicker.rx.didFinishPickingMediaWithInfo.asObservable()
         )
         let output = viewModel.transform(input: input)
+        
         // MARK: - TextView가 자동으로 줄어들고 늘어나는 로직, minHeight / maxHeight 으로 최소 높이, 최대 높이 설정
         output.textDidChanged
             .bind { [weak self] in
@@ -397,8 +401,8 @@ extension RegisterViewController: ViewAttributes {
                 let viewModel = TagListViewModel(tagSelected: tagSelected)
                 let viewController = TagListViewController(viewModel: viewModel)
                 let navigationController = UINavigationController(rootViewController: viewController)
-                navigationController.sheetPresentationController?.detents = [.medium()]
-                navigationController.sheetPresentationController?.prefersGrabberVisible = false
+                navigationController.modalPresentationStyle = .custom
+                navigationController.transitioningDelegate = self
                 owner.show(navigationController, sender: nil)
             }
             .disposed(by: disposeBag)
@@ -438,7 +442,11 @@ extension RegisterViewController: ViewAttributes {
                 
                 // comments
                 let text = post.comments ?? Constants.textViewPlaceholder
-                owner.textView.setTextWithLineHeight(text: text, lineHeight: Constants.textViewLineHeight)
+                owner.textView.setTextWithLineHeight(
+                    text: text,
+                    font: UIFont(name: "Pretendard-Regular", size: 16),
+                    lineHeight: Constants.textViewLineHeight
+                )
                 owner.textView.textColor = (post.comments?.isEmpty ?? true) ? Constants.textViewPlaceholderColor : Constants.textViewTextColor
             }
             .disposed(by: disposeBag)
@@ -463,10 +471,9 @@ extension RegisterViewController: ViewAttributes {
             }
             .disposed(by: disposeBag)
         
-        output.error.bind {
-            makeToast($0)
-        }
-        .disposed(by: disposeBag)
+        output.error.asDriver(onErrorJustReturn: .init())
+            .drive { makeToast($0) }
+            .disposed(by: disposeBag)
         
         output.navigateToBack.asDriver(onErrorJustReturn: ())
             .drive(with: self) { owner, _ in
@@ -477,10 +484,8 @@ extension RegisterViewController: ViewAttributes {
         keyboardToggleButton.rx.tap.asDriver()
             .drive(with: self) { owner, _ in
                 if owner.textView.isFirstResponder {
-                    owner.keyboardToggleButton.image = .init(named: "toolbar.keyboard.up")
                     owner.textView.resignFirstResponder()
                 } else {
-                    owner.keyboardToggleButton.image = .init(named: "toolbar.keyboard.down")
                     owner.textView.becomeFirstResponder()
                 }
             }
@@ -488,6 +493,7 @@ extension RegisterViewController: ViewAttributes {
         
         RxKeyboard.instance.visibleHeight
             .drive(with: self) { owner, keyboardVisibleHeight in
+                // 툴바 위치조정
                 var bottomPadding: CGFloat
                 if #available(iOS 15.0, *) {
                     let scenes = UIApplication.shared.connectedScenes
@@ -509,6 +515,11 @@ extension RegisterViewController: ViewAttributes {
                     make.bottom.equalTo(owner.view.safeAreaLayoutGuide.snp.bottom).offset(offset)
                 }
                 owner.view.setNeedsLayout()
+                
+                // 키보드 토글버튼
+                owner.keyboardToggleButton.image = keyboardVisibleHeight > 0 ?
+                    .init(named: "toolbar.keyboard.down") :
+                    .init(named: "toolbar.keyboard.up")
             }
             .disposed(by: disposeBag)
         
@@ -593,12 +604,24 @@ extension RegisterViewController {
     
 }
 
+
 // MARK: - UIViewControllerTransitioningDelegate
 
 extension RegisterViewController: UIViewControllerTransitioningDelegate {
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return CustomPresentationController(presentedViewController: presented, presenting: presenting, height: 465)
+        var height: CGFloat
+        
+        if presented is UINavigationController { // 태그 목록
+            height = 396
+        } else {
+            height = 465 // 사진 권한
+        }
+        return CustomPresentationController(
+            presentedViewController: presented,
+            presenting: presenting,
+            height: height
+        )
     }
     
 }

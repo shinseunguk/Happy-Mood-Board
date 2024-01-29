@@ -36,6 +36,7 @@ final class AgreeViewModel: ViewModel {
         let navigateToTerms: Observable<Void>
         let navigateToMarketingEmail: Observable<Void>
         
+        let showMarketingEmailToast: Observable<Bool>
         let navigateToNextStep: Observable<Void>
         let error: Observable<String>
     }
@@ -55,7 +56,6 @@ final class AgreeViewModel: ViewModel {
             var terms: Bool = false
             var marketingEmail: Bool = false
             var allOptions: Bool = false
-//            var navigateToURL: String? = ""
         }
         
         let action = Observable.merge(
@@ -111,11 +111,12 @@ final class AgreeViewModel: ViewModel {
             }
             .share()
         
-        let success = result
-            .elements()
+        let showMarketingEmailToast = state.map { $0.marketingEmail }
+        
+        let success = result.elements()
             .map { _ in Void() }
         
-        let failrue = result.errors()
+        let failure = result.errors()
             .map { $0.localizedDescription }
         
         return Output(
@@ -128,8 +129,9 @@ final class AgreeViewModel: ViewModel {
             navigateToPrivacyPolicy: input.navigateToPrivacyPolicy,
             navigateToTerms: input.navigateToTerms,
             navigateToMarketingEmail: input.navigateToMarketingEmail,
+            showMarketingEmailToast: showMarketingEmailToast,
             navigateToNextStep: success,
-            error: failrue
+            error: failure
         )
     }
     

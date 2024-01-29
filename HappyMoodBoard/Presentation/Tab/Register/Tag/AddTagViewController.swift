@@ -112,6 +112,20 @@ final class AddTagViewController: UIViewController {
         }
     }
     
+    private let titleLabel: UILabel = .init().then {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.17
+        $0.attributedText = NSMutableAttributedString(
+            string: "태그 생성",
+            attributes: [
+                NSAttributedString.Key.kern: -0.36,
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                .font: UIFont(name: "Pretendard-Bold", size: 18),
+                .foregroundColor: UIColor.gray900
+            ]
+        )
+    }
+    
     private let viewModel: AddTagViewModel
     private let disposeBag: DisposeBag = .init()
     
@@ -140,6 +154,7 @@ extension AddTagViewController: ViewAttributes {
     
     func setupNavigationBar() {
         navigationItem.leftItemsSupplementBackButton = true
+        navigationItem.leftBarButtonItems = [.init(customView: titleLabel)]
     }
     
     func setupSubviews() {
@@ -198,7 +213,7 @@ extension AddTagViewController: ViewAttributes {
         
         let output = viewModel.transform(input: input)
         output.title.asDriver(onErrorJustReturn: "")
-            .drive(navigationItem.rx.title)
+            .drive(titleLabel.rx.text)
             .disposed(by: disposeBag)
         
         output.tag.asDriver(onErrorJustReturn: .init())
