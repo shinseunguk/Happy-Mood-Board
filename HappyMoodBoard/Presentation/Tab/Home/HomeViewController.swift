@@ -113,8 +113,8 @@ extension HomeViewController: ViewAttributes {
             .disposed(by: disposeBag)
         
         output.error.asDriver(onErrorJustReturn: "")
-            .drive(with: self) { owner, error in
-                owner.headerLabel.text = error
+            .drive(with: self) { _, error in
+                makeToast(error)
             }
             .disposed(by: disposeBag)
     }
