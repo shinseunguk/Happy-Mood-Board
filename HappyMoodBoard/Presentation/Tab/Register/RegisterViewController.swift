@@ -292,7 +292,7 @@ extension RegisterViewController: ViewAttributes {
         loadingDimView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-
+        
         animationView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.edges.equalToSuperview()
@@ -353,7 +353,7 @@ extension RegisterViewController: ViewAttributes {
                 owner.registerButton.tintColor = isEnabled ? .primary900 : .gray200
             }
             .disposed(by: disposeBag)
-                
+        
         output.showNavigateToBackAlert.asDriver(onErrorJustReturn: false)
             .drive(with: self) { owner, isShow in
                 if isShow {
@@ -493,17 +493,13 @@ extension RegisterViewController: ViewAttributes {
         
         RxKeyboard.instance.visibleHeight
             .drive(with: self) { owner, keyboardVisibleHeight in
+                guard owner.textView.isFirstResponder else { return }
+                
                 // 툴바 위치조정
                 var bottomPadding: CGFloat
-                if #available(iOS 15.0, *) {
-                    let scenes = UIApplication.shared.connectedScenes
-                    let windowScene = scenes.first as? UIWindowScene
-                    let window = windowScene?.windows.first
-                    bottomPadding = window?.safeAreaInsets.bottom ?? .zero
-                } else {
-                    let window = UIApplication.shared.windows.first
-                    bottomPadding = window?.safeAreaInsets.bottom ?? .zero
-                }
+                let scenes = UIApplication.shared.connectedScenes
+                let window = (scenes.first as? UIWindowScene)?.windows.first
+                bottomPadding = window?.safeAreaInsets.bottom ?? .zero
                 
                 var offset: CGFloat
                 if keyboardVisibleHeight > 0 {
