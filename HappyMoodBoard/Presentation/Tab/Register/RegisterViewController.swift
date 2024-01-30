@@ -51,7 +51,9 @@ final class RegisterViewController: UIViewController {
         style: .done,
         target: nil,
         action: nil
-    )
+    ).then {
+        $0.isEnabled = false
+    }
     
     private let headerLabel: UILabel = .init().then {
         $0.text = Constants.header
@@ -452,14 +454,13 @@ extension RegisterViewController: ViewAttributes {
             .disposed(by: disposeBag)
         
         output.showLoadingView.asDriver(onErrorJustReturn: false)
-            .drive(with: self) { owner, isShow in
-                owner.loadingDimView.isHidden = !isShow
-                owner.animationView.isHidden = !isShow
-                owner.loadingLabel.isHidden = !isShow
-                owner.view.isUserInteractionEnabled = !isShow
-                owner.backButton.isEnabled = !isShow
-                owner.backButton.tintColor = !isShow ? .primary900 : .gray200
-                owner.registerButton.isEnabled =  !isShow
+            .drive(with: self) { owner, isLoading in
+                owner.loadingDimView.isHidden = !isLoading
+                owner.animationView.isHidden = !isLoading
+                owner.loadingLabel.isHidden = !isLoading
+                owner.view.isUserInteractionEnabled = !isLoading
+                owner.backButton.isEnabled = !isLoading
+                owner.backButton.tintColor = !isLoading ? .primary900 : .gray200
             }
             .disposed(by: disposeBag)
         

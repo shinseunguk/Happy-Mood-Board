@@ -137,17 +137,18 @@ final class RegisterViewModel: ViewModel {
             .startWith(false)
             .distinctUntilChanged()
         
-        // 본문이 1글자 이상 존재하거나 사진이 1개 등록인 상태일 경우
-        // 발행 버튼 활성화
-        let canRegister = Observable.combineLatest(textValid, imageValid) { $0 || $1 }
-        
         // 발행 버튼 클릭시 애니메이션
-        let showLoadingView: BehaviorSubject<Bool> = .init(value: false)
+        let isLoading: BehaviorSubject<Bool> = .init(value: false)
+        
+        // 본문이 1글자 이상 존재하거나 사진이 1개 등록인 상태일 경우
+        // 로딩 중이 아니라면
+        // 발행 버튼 활성화
+        let canRegister = Observable.combineLatest(textValid, imageValid, isLoading) { $0 || $1 && !$2 }
         
         // 발행 버튼 클릭시 이미지 업로드
         let uploadImage = input.registerButtonTapped.withLatestFrom(post)
             .do(onNext: { _ in
-                showLoadingView.onNext(true)
+                isLoading.onNext(true)
             })
             .flatMapLatest { post -> Observable<UpdatePostParameters> in
                 if let image = post.image {
@@ -193,7 +194,7 @@ final class RegisterViewModel: ViewModel {
             .debug("게시글 등록")
             .delay(.seconds(3), scheduler: MainScheduler.instance) // 딜레이
             .do(onNext: { _ in
-                showLoadingView.onNext(false)
+                isLoading.onNext(false)
             })
         
         let apiSuccess = result.elements()
@@ -220,9 +221,9 @@ final class RegisterViewModel: ViewModel {
             showFullImageViewController: showFullImageViewController,
             post: post,
             keyboard: input.keyboardButtonTapped,
-            showLoadingView: showLoadingView,
+            showLoadingView: isLoading,
             navigateToDetail: apiSuccess,
-            errorMessage: errorMessage,
+            error: errorMessage,
             navigateToBack: input.navigatToBackOkActionTapped
         )
     }
