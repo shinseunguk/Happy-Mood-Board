@@ -140,6 +140,7 @@ final class AddTagViewController: UIViewController {
         $0.distribution = .fill
         $0.spacing = 16
     }
+    
     private let completeButton: UIButton = .init(type: .system).then {
         $0.configurationUpdateHandler = { button in
             var container = AttributeContainer()
@@ -205,12 +206,11 @@ extension AddTagViewController: ViewAttributes {
         [
             nameStackView,
             colorStackView,
-            errorLabel,
+            errorLabel
             
         ].forEach { contentStackView.addArrangedSubview($0) }
         
-//
-//        nameTextField.inputAccessoryView = toolbar
+        nameTextField.inputAccessoryView = toolbar
     }
     
     func setupLayouts() {
@@ -235,21 +235,11 @@ extension AddTagViewController: ViewAttributes {
     }
     
     func setupBindings() {
-        doneButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.nameTextField.resignFirstResponder()
-                // 추가로 필요한 동작을 수행할 수 있습니다.
-            })
+        doneButton.rx.tap.asDriver()
+            .drive(with: self) { owner, _ in
+                owner.nameTextField.resignFirstResponder()
+            }
             .disposed(by: disposeBag)
-        
-//        RxKeyboard.instance.visibleHeight
-//            .drive(with: self) { owner, keyboardVisibleHeight in
-//                owner.completeButton.snp.updateConstraints {
-//                    $0.bottom.equalTo(owner.view.safeAreaLayoutGuide.snp.bottom).offset(-keyboardVisibleHeight)
-//                }
-//                owner.view.setNeedsLayout()
-//            }
-//            .disposed(by: disposeBag)
         
         let colorButtons = colorButtonStackView.arrangedSubviews.compactMap { $0 as? UIButton }
         let colorButtonTapped = Observable.from(colorButtons.map { button in
