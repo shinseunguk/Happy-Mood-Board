@@ -76,9 +76,10 @@ final class TagListViewModel: ViewModel {
             }
             .map { _ in () }
         
-        let navigateToAddWithHidesBackButton = Observable.merge(
-            addSelected.map { _ in false },
-            items.filter { $0.first?.items.count == 1 }.map { _ in true }
+        // 등록한 태그 존재 여부에 따라 태그 생성 뷰에서 노출되는 UI가 달라야함
+        let navigateToAddWithHasExistingTag = Observable.merge(
+            addSelected.map { _ in true },                                 // with existing tag
+            items.filter { $0.first?.items.count == 1 }.map { _ in false }   // without existing tag
         )
         
         let dismiss = Observable<Tag?>.merge(
@@ -89,7 +90,7 @@ final class TagListViewModel: ViewModel {
         return .init(
             navigateToEdit: input.editButtonTapped,
             items: items,
-            navigateToAdd: navigateToAddWithHidesBackButton,
+            navigateToAdd: navigateToAddWithHasExistingTag,
             dismiss: dismiss
         )
     }

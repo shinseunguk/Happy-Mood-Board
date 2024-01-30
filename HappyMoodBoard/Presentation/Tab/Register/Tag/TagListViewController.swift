@@ -185,8 +185,8 @@ extension TagListViewController: ViewAttributes {
             .disposed(by: disposeBag)
         
         output.navigateToAdd.asDriver(onErrorJustReturn: false)
-            .drive(with: self) { owner, hidesBackButton in
-                owner.navigateToAdd(hidesBackButton: hidesBackButton)
+            .drive(with: self) { owner, hasExistingTag in
+                owner.navigateToAdd(hasExistingTag: hasExistingTag)
             }
             .disposed(by: disposeBag)
         
@@ -203,15 +203,14 @@ extension TagListViewController: ViewAttributes {
         }
     }
     
-    func navigateToAdd(hidesBackButton: Bool) {
-        if hidesBackButton {
-            let viewController = AddTagViewController()
+    func navigateToAdd(hasExistingTag: Bool) {
+        let viewController = AddTagViewController(viewModel: .init(hasExistingTag: hasExistingTag))
+        if hasExistingTag {
+            show(viewController, sender: nil)
+        } else {
             viewController.navigationItem.hidesBackButton = true
             navigationController?.popViewController(animated: false)
             navigationController?.pushViewController(viewController, animated: false)
-        } else {
-            let viewController = AddTagViewController()
-            show(viewController, sender: nil)
         }
     }
 }

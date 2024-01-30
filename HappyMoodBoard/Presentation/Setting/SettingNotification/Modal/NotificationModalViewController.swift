@@ -67,7 +67,7 @@ final class NotificationModalViewController: UIViewController, ViewAttributes {
         let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont(name: "Pretendard-Medium", size: 16),
             .underlineStyle: NSUnderlineStyle.single.rawValue,
-            .foregroundColor: UIColor.black // 원하는 색상으로 설정
+            .foregroundColor: UIColor.gray900
         ]
         let attributedTitle = NSAttributedString(string: Constants.dismissButton, attributes: attributes)
         $0.setAttributedTitle(attributedTitle, for: .normal)

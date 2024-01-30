@@ -80,7 +80,16 @@ final class AuthInterceptor: RequestInterceptor {
                             completion(.doNotRetryWithError(error))
                         }
                     case .failure(let error):
-                        // TODO: 리프레쉬 토큰이 만료된 경우 다시 로그인을 통해 엑세스 토큰과 리프레쉬 토큰을 재발급
+                        // FIXME: 리프레쉬 토큰이 만료된 경우 다시 로그인을 통해 엑세스 토큰과 리프레쉬 토큰을 재발급
+                        // - (AS-IS) 로그인 화면으로 이동
+                        let autoLogin = false
+                        UserDefaults.standard.set(autoLogin, forKey: "autoLogin")
+                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                              let sceneDelegate = windowScene.delegate as? SceneDelegate else {
+                            completion(.doNotRetryWithError(error))
+                            return
+                        }
+                        sceneDelegate.autoLogin(autoLogin)
                         completion(.doNotRetryWithError(error))
                     }
                 }

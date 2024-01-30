@@ -69,7 +69,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func autoLogin(_ handler: Bool) {
-        
         if handler {
             let imageInsets: UIEdgeInsets = .init(top: 6, left: 0, bottom: -8, right: 0)
             

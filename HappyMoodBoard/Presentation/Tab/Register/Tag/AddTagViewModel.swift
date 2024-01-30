@@ -27,22 +27,27 @@ final class AddTagViewModel: ViewModel {
     
     struct Input {
         let name: Observable<String>
-        let completeButtonTapped: Observable<Void>
         let colorButtonTapped: Observable<Int>
+        let completeButtonTapped: Observable<Void>
+        let dismissButtonTapped: Observable<Void>
     }
     
     struct Output {
         let title: Observable<String>
+        let hasExistingTag: Observable<Bool>
         let tag: Observable<Tag>
         let dismiss: Observable<Void>
+        let navigateToBack: Observable<Void>
         let errorMessage: Observable<String>
     }
     
     private let tag: Tag
+    private let hasExistingTag: Bool
     private let mode: UpdatePostTagMode
     
-    init(tag: Tag = .init()) {
+    init(tag: Tag = .init(), hasExistingTag: Bool = true) {
         self.tag = tag
+        self.hasExistingTag = hasExistingTag
         self.mode = (tag.id == nil) ? .add : .edit
     }
     
@@ -93,8 +98,10 @@ final class AddTagViewModel: ViewModel {
         
         return .init(
             title: Observable.just(self.mode.title),
+            hasExistingTag: Observable.just(self.hasExistingTag),
             tag: tag,
-            dismiss: success,
+            dismiss: input.dismissButtonTapped,
+            navigateToBack: success,
             errorMessage: failure
         )
     }

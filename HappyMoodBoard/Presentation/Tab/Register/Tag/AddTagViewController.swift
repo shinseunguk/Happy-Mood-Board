@@ -17,6 +17,20 @@ import RxKeyboard
 
 final class AddTagViewController: UIViewController {
     
+    private let titleLabel: UILabel = .init().then {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.17
+        $0.attributedText = NSMutableAttributedString(
+            string: "태그 생성",
+            attributes: [
+                NSAttributedString.Key.kern: -0.36,
+                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                .font: UIFont(name: "Pretendard-Bold", size: 18),
+                .foregroundColor: UIColor.gray900
+            ]
+        )
+    }
+    
     private let editButton: UIBarButtonItem = .init(systemItem: .edit)
     
     private let contentStackView = UIStackView().then {
@@ -35,7 +49,11 @@ final class AddTagViewController: UIViewController {
         $0.isLayoutMarginsRelativeArrangement = true
     }
     
-    private lazy var nameStackView = UIStackView(arrangedSubviews: [nameLabel, nameTextField]).then {
+    private lazy var nameStackView = UIStackView(
+        arrangedSubviews: [
+            nameLabel,
+            nameTextField
+        ]).then {
         $0.axis = .horizontal
         $0.alignment = .fill
         $0.distribution = .fill
@@ -48,22 +66,6 @@ final class AddTagViewController: UIViewController {
         $0.text = "태그"
         $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         $0.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-    }
-    
-    private let doneButton = UIBarButtonItem(
-                title: "완료",
-                style: .plain,
-                target: nil,
-                action: nil
-            )
-    
-    private lazy var toolbar = UIToolbar().then {
-        $0.sizeToFit()
-        $0.items = [UIBarButtonItem(
-                   barButtonSystemItem: .flexibleSpace,
-                   target: nil,
-                   action: nil
-               ), doneButton]
     }
     
     private let nameTextField = UITextField().then {
@@ -115,7 +117,30 @@ final class AddTagViewController: UIViewController {
         $0.textAlignment = .center
     }
     
-    private let completeButton = UIButton(type: .system).then {
+    private let doneButton: UIBarButtonItem = .init(
+                title: "완료",
+                style: .plain,
+                target: nil,
+                action: nil
+            )
+    
+    private lazy var toolbar = UIToolbar().then {
+        $0.sizeToFit()
+        $0.items = [.flexibleSpace(), doneButton]
+    }
+    
+    private lazy var buttonStackView: UIStackView = .init(
+        arrangedSubviews: [
+            completeButton,
+            dismissButton
+    ]
+    ).then {
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = 16
+    }
+    private let completeButton: UIButton = .init(type: .system).then {
         $0.configurationUpdateHandler = { button in
             var container = AttributeContainer()
             container.font = UIFont(name: "Pretendard-Medium", size: 18)
@@ -128,18 +153,14 @@ final class AddTagViewController: UIViewController {
         }
     }
     
-    private let titleLabel: UILabel = .init().then {
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.17
-        $0.attributedText = NSMutableAttributedString(
-            string: "태그 생성",
-            attributes: [
-                NSAttributedString.Key.kern: -0.36,
-                NSAttributedString.Key.paragraphStyle: paragraphStyle,
-                .font: UIFont(name: "Pretendard-Bold", size: 18),
-                .foregroundColor: UIColor.gray900
-            ]
-        )
+    private let dismissButton: UIButton = .init(type: .system).then {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: "Pretendard-Medium", size: 16),
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .foregroundColor: UIColor.gray900 // 원하는 색상으로 설정
+        ]
+        let attributedTitle = NSAttributedString(string: "닫기", attributes: attributes)
+        $0.setAttributedTitle(attributedTitle, for: .normal)
     }
     
     private let viewModel: AddTagViewModel
@@ -178,16 +199,18 @@ extension AddTagViewController: ViewAttributes {
         
         [
             contentStackView,
-            completeButton
+            buttonStackView
         ].forEach { view.addSubview($0) }
         
         [
             nameStackView,
             colorStackView,
-            errorLabel
+            errorLabel,
+            
         ].forEach { contentStackView.addArrangedSubview($0) }
         
-        nameTextField.inputAccessoryView = toolbar
+//
+//        nameTextField.inputAccessoryView = toolbar
     }
     
     func setupLayouts() {
@@ -196,10 +219,18 @@ extension AddTagViewController: ViewAttributes {
             make.leading.trailing.equalToSuperview()
         }
         
+        buttonStackView.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-26)
+            make.leading.trailing.equalToSuperview()
+        }
+        
         completeButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-26)
             make.height.equalTo(52)
+        }
+        
+        dismissButton.snp.makeConstraints { make in
+            make.height.equalTo(41)
         }
     }
     
@@ -231,13 +262,24 @@ extension AddTagViewController: ViewAttributes {
         
         let input = AddTagViewModel.Input(
             name: nameTextField.rx.text.orEmpty.asObservable(),
+            colorButtonTapped: colorButtonSelected,
             completeButtonTapped: completeButton.rx.tap.asObservable(),
-            colorButtonTapped: colorButtonSelected
+            dismissButtonTapped: dismissButton.rx.tap.asObservable()
         )
         
         let output = viewModel.transform(input: input)
         output.title.asDriver(onErrorJustReturn: "")
             .drive(titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.hasExistingTag.asDriver(onErrorJustReturn: true)
+            .drive(with: self) { owner, hasExistingTag in
+                owner.dismissButton.isHidden = hasExistingTag
+                let offset: CGFloat = hasExistingTag ? -26 : 0
+                owner.buttonStackView.snp.updateConstraints { make in
+                    make.bottom.equalTo(owner.view.safeAreaLayoutGuide.snp.bottom).offset(offset)
+                }
+            }
             .disposed(by: disposeBag)
         
         output.tag.asDriver(onErrorJustReturn: .init())
@@ -247,15 +289,21 @@ extension AddTagViewController: ViewAttributes {
                     colorButton.isSelected = (index == tag.tagColorId)
                 }
             }.disposed(by: disposeBag)
-        
-        output.errorMessage.asDriver(onErrorJustReturn: "")
-            .drive(errorLabel.rx.text)
+
+        output.dismiss.asDriver(onErrorJustReturn: ())
+            .drive(with: self) { owner, _ in
+                owner.dismiss(animated: true)
+            }
             .disposed(by: disposeBag)
         
-        output.dismiss.asDriver(onErrorJustReturn: ())
+        output.navigateToBack.asDriver(onErrorJustReturn: ())
             .drive(with: self) { owner, _ in
                 owner.navigationController?.popViewController(animated: true)
             }
+            .disposed(by: disposeBag)
+        
+        output.errorMessage.asDriver(onErrorJustReturn: "")
+            .drive(errorLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
