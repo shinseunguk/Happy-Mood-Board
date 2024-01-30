@@ -472,7 +472,9 @@ extension RegisterViewController: ViewAttributes {
             .disposed(by: disposeBag)
         
         output.error.asDriver(onErrorJustReturn: .init())
-            .drive { makeToast($0) }
+            .drive(with: self) { owner, message in
+                owner.toastGuideView.makeToast(message, position: .bottom)
+            }
             .disposed(by: disposeBag)
         
         output.navigateToBack.asDriver(onErrorJustReturn: ())
