@@ -14,4 +14,9 @@ enum APIEnvironment: String {
     var url: URL? { .init(string: rawValue) }
 }
 
+#if DEBUG
 let environment: APIEnvironment = .dev
+#else
+let environment: APIEnvironment = .production
+#endif
+
