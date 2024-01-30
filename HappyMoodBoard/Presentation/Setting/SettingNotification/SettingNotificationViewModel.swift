@@ -70,7 +70,8 @@ final class SettingNotificationViewModel: ViewModel {
                     let parsingTime = parseTimeString(time) ?? (20, 0)
                     scheduleNotificationAtSpecificTime(
                         handler: active,
-                        hourMinute: parsingTime
+                        hourMinute: parsingTime,
+                        dayOfWeek: dayOfWeek
                     )
                 }
             })
@@ -169,7 +170,8 @@ final class SettingNotificationViewModel: ViewModel {
                     
                     scheduleNotificationAtSpecificTime(
                         handler: active,
-                        hourMinute: parsingTime
+                        hourMinute: parsingTime,
+                        dayOfWeek: dayOfWeek
                     )
                 }
             })
@@ -211,7 +213,8 @@ final class SettingNotificationViewModel: ViewModel {
                     
                     scheduleNotificationAtSpecificTime(
                         handler: active,
-                        hourMinute: parsingTime
+                        hourMinute: parsingTime,
+                        dayOfWeek: dayOfWeek
                     )
                 }
             })
@@ -252,7 +255,8 @@ final class SettingNotificationViewModel: ViewModel {
                     
                     scheduleNotificationAtSpecificTime(
                         handler: active,
-                        hourMinute: parsingTime
+                        hourMinute: parsingTime,
+                        dayOfWeek: dayOfWeek
                     )
                 }
             })

@@ -109,13 +109,15 @@ extension AppDelegate {
 
                         scheduleNotificationAtSpecificTime(
                             handler: true,
-                            hourMinute: (20, 00)
+                            hourMinute: (20, 00),
+                            dayOfWeek: [1,2,3,4,5,6,7]
                         )
                     } else {
                         // Fail case. 수락을 안하는 케이스
                         scheduleNotificationAtSpecificTime(
                             handler: false,
-                            hourMinute: (20, 0)
+                            hourMinute: (20, 0),
+                            dayOfWeek: [1,2,3,4,5,6,7]
                         )
                     }
                     UserDefaults.standard.set(true, forKey: "NotificationAuthorizationRequested")

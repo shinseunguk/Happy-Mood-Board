@@ -102,7 +102,7 @@ extension SettingNotificationViewController {
         
         [
             recordPushOnOffView,
-//            titleDayOfWeekView,
+            titleDayOfWeekView,
             titleTimeView,
             marketingPushOnOffView
         ].forEach { self.contentStackView.addArrangedSubview($0) }
@@ -111,18 +111,18 @@ extension SettingNotificationViewController {
     func setupLayouts() {
         [
             recordPushOnOffView,
-//            titleDayOfWeekView,
+            titleDayOfWeekView,
             titleTimeView,
             marketingPushOnOffView,
         ].enumerated().forEach { index, view in
 //            view.layer.borderWidth = 1
             view.snp.makeConstraints {
-//                if index == 1 {
+                if index == 1 {
 //                    view.layer.borderColor = UIColor.red.cgColor
-//                    $0.height.equalTo(80)
-//                } else {
+                    $0.height.equalTo(80)
+                } else {
                     $0.height.equalTo(40)
-//                }
+                }
             }
         }
         
