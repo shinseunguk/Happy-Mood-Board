@@ -8,7 +8,6 @@
 import Foundation
 
 import RxSwift
-import FirebaseStorage
 
 struct PostDomain {
     let id: Int?
@@ -82,6 +81,15 @@ final class RegisterViewModel: ViewModel {
             .filter { $0 != RegisterViewController.Constants.textViewPlaceholder }
             .startWith(self.post.comments)
             .distinctUntilChanged()
+            .scan(String()) { previous, new -> String? in
+                // 최대 글자수 초과시 초과된 부분은 입력되지 않음
+                guard new?.count ?? 0 <= Constants.maxLength else { return previous }
+                return new
+            }
+        
+        let showTextMaxLengthAlert = text
+            .filter { ($0?.count ?? 0) == Constants.maxLength }
+            .map { _ in "최대 1,000자까지 등록이 가능합니다." }
         
         let tag = Observable.merge(
             input.tagSelected,
@@ -188,13 +196,19 @@ final class RegisterViewModel: ViewModel {
                 showLoadingView.onNext(false)
             })
         
-        let success = result.elements()
+        let apiSuccess = result.elements()
             .map { $0?.postId }
         
-        let failure = result.errors().map { $0.localizedDescription }
+        let apiFailure = result.errors()
+            .map { $0.localizedDescription }
             
         let showFullImageViewController = input.imageViewTapped.withLatestFrom(image)
             .asObservable()
+        
+        let errorMessage = Observable.merge(
+            apiFailure,
+            showTextMaxLengthAlert
+        )
         
         return .init(
             textDidChanged: input.textDidChanged,
@@ -207,8 +221,8 @@ final class RegisterViewModel: ViewModel {
             post: post,
             keyboard: input.keyboardButtonTapped,
             showLoadingView: showLoadingView,
-            navigateToDetail: success,
-            error: failure,
+            navigateToDetail: apiSuccess,
+            errorMessage: errorMessage,
             navigateToBack: input.navigatToBackOkActionTapped
         )
     }
