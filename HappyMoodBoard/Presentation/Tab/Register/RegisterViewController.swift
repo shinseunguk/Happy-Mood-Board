@@ -409,6 +409,7 @@ extension RegisterViewController: ViewAttributes {
                 let viewController = TagListViewController(viewModel: viewModel)
                 let navigationController = UINavigationController(rootViewController: viewController)
                 navigationController.modalPresentationStyle = .custom
+                navigationController.modalTransitionStyle = .crossDissolve
                 navigationController.transitioningDelegate = self
                 owner.show(navigationController, sender: nil)
             }
@@ -584,9 +585,10 @@ extension RegisterViewController {
     }
     
     func showPhotoLibraryAuthorizationAlert() {
-        let viewController = PhotoLibraryAuthorizationViewController()
-        viewController.modalPresentationStyle = .custom
-        viewController.transitioningDelegate = self
+        let viewController = PhotoLibraryAuthorizationViewController(
+            direction: .bottom,
+            viewSize: (.full, .fit)
+        )
         present(viewController, animated: true, completion: nil)
     }
     
@@ -601,17 +603,12 @@ extension RegisterViewController: UIViewControllerTransitioningDelegate {
         presenting: UIViewController?,
         source: UIViewController
     ) -> UIPresentationController? {
-        var height: CGFloat
-        
-        if presented is UINavigationController {
-            height = 396 // 태그 목록
-        } else {
-            height = 465 // 사진 권한
-        }
-        return CustomPresentationController(
+        return PartialPresentationController(
+            direction: .bottom,
+//            viewSize: (.full, .fit),
+            viewSize: (.full, .absolute(430)),
             presentedViewController: presented,
-            presenting: presenting,
-            height: height
+            presenting: presenting
         )
     }
     

@@ -13,14 +13,34 @@ import Then
 import RxSwift
 import RxCocoa
 
-final class PhotoLibraryAuthorizationViewController: UIViewController {
+final class PhotoLibraryAuthorizationViewController: PartialViewController {
+    
+    enum Constants {
+        static let titleLabelText = "사진 등록을 원하신다면,\n전체 사진에 대한 접근을 허용해주세요."
+        static let descriptionLabelText = "*기기 설정 > Bee Happy > 사진에서 변경 가능해요."
+        static let settingButtonTitle = "설정 변경하기"
+    }
+    
+    private lazy var stackView: UIStackView = .init(arrangedSubviews: [
+        titleLabel,
+        imageView,
+        descriptionLabel,
+        settingButton
+    ]
+    ).then {
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = 32
+        $0.setCustomSpacing(16, after: imageView)
+    }
     
     private let titleLabel: UILabel = .init().then {
-        $0.text = "사진 등록을 원하신다면,\n전체 사진에 대한 접근을 허용해주세요."
+        $0.text = Constants.titleLabelText
         $0.font = UIFont(name: "Pretendard-Bold", size: 18)
         $0.textColor = .black
         $0.textAlignment = .center
-        $0.numberOfLines = 0
+        $0.numberOfLines = 2
     }
     
     private let imageView: UIImageView = .init().then {
@@ -28,9 +48,11 @@ final class PhotoLibraryAuthorizationViewController: UIViewController {
     }
     
     private let descriptionLabel: UILabel = .init().then {
-        $0.text = "*기기 설정 > Bee Happy > 사진에서 변경 가능해요."
+        $0.text = Constants.descriptionLabelText
         $0.font = UIFont(name: "Pretendard-Regular", size: 14)
         $0.textColor = .gray400
+        $0.textAlignment = .center
+        $0.numberOfLines = 1
     }
     
     private let settingButton: UIButton = .init(type: .system).then {
@@ -41,7 +63,7 @@ final class PhotoLibraryAuthorizationViewController: UIViewController {
             var configuration = UIButton.Configuration.filled()
             configuration.cornerStyle = .capsule
             configuration.background.backgroundColor = button.isEnabled ? .primary500 : .gray200
-            configuration.attributedTitle = AttributedString("설정 변경하기", attributes: container)
+            configuration.attributedTitle = AttributedString(Constants.settingButtonTitle, attributes: container)
             button.configuration = configuration
         }
     }
@@ -63,36 +85,23 @@ final class PhotoLibraryAuthorizationViewController: UIViewController {
 extension PhotoLibraryAuthorizationViewController: ViewAttributes {
     
     func setupSubviews() {
-        [
-            titleLabel,
-            imageView,
-            descriptionLabel,
-            settingButton
-        ].forEach { view.addSubview($0) }
+        view.addSubview(stackView)
     }
     
     func setupLayouts() {
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(40.5)
-            make.leading.trailing.equalToSuperview().inset(60)
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.top).inset(32)
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalTo(view.snp.bottom).inset(26)
         }
         
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(28)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(322)
-            make.height.equalTo(172)
-        }
-        
-        descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(25)
-            make.leading.equalTo(imageView.snp.leading).offset(8)
-            make.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(223.88)
         }
         
         settingButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-26)
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(52)
         }
     }
@@ -102,16 +111,16 @@ extension PhotoLibraryAuthorizationViewController: ViewAttributes {
             settingTrigger: settingButton.rx.tap.asObservable()
         )
         let output = viewModel.transform(input: input)
-        output.openSettingApp
-            .subscribe(onNext: {
+        output.openSettingApp.asDriver(onErrorJustReturn: ())
+            .drive(with: self) { owner, _ in
                 guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
                 
                 if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url) { [weak self] _ in
-                        self?.dismiss(animated: true)
+                    UIApplication.shared.open(url) { _ in
+                        owner.dismiss(animated: true)
                     }
                 }
-            })
+            }
             .disposed(by: disposeBag)
     }
     

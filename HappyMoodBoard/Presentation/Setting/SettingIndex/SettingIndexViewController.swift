@@ -83,7 +83,7 @@ final class SettingIndexViewController: UIViewController, UIGestureRecognizerDel
     private let disposeBag: DisposeBag = .init()
 }
 
-extension SettingIndexViewController: ViewAttributes, UIViewControllerTransitioningDelegate, NotificationModalDelegate {
+extension SettingIndexViewController: ViewAttributes, NotificationModalDelegate {
     func didDismissModal() {
         self.dimView.alpha = 0.0
     }
@@ -225,9 +225,7 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
                 } else {
                     self?.dimView.alpha = 0.5
                     
-                    let VC = NotificationModalViewController()
-                    VC.modalPresentationStyle = .custom
-                    VC.transitioningDelegate = self
+                    let VC = NotificationModalViewController(direction: .bottom, viewSize: (.full, .fit))
                     VC.delegate = self
                     
                     self?.present(VC, animated: true, completion: nil)
@@ -328,10 +326,6 @@ extension SettingIndexViewController: ViewAttributes, UIViewControllerTransition
             makeToast($0)
         }
         .disposed(by: disposeBag)
-    }
-    
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return HalfModalPresentationController(presentedViewController: presented, presenting: presenting)
     }
     
     // 루트 뷰 컨트롤러를 설정하는 함수

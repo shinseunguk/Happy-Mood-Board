@@ -10,7 +10,7 @@ import UIKit
 import Then
 import SnapKit
 
-final class PostDetailModalViewController: UIViewController {
+final class PostDetailModalViewController: PartialViewController {
 
     enum Constants {
         static let lineHeight: CGFloat = 24

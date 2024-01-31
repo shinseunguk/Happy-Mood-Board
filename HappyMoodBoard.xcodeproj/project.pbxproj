@@ -78,6 +78,9 @@
 		5DF0A1552B57C56E00D4C15C /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1542B57C56E00D4C15C /* UIImage+Utils.swift */; };
 		5DF0A1572B58A9B200D4C15C /* materialized+elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0A1562B58A9B200D4C15C /* materialized+elements.swift */; };
 		5DF686032B35151700479D54 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF686022B35151700479D54 /* HomeViewModel.swift */; };
+		5DF9ED9B2B69FF1D00C95356 /* PartialPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9ED9A2B69FF1D00C95356 /* PartialPresentationController.swift */; };
+		5DF9ED9C2B6A0F1D00C95356 /* PartialPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9ED9A2B69FF1D00C95356 /* PartialPresentationController.swift */; };
+		5DF9ED9D2B6A0F1D00C95356 /* PartialPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9ED9A2B69FF1D00C95356 /* PartialPresentationController.swift */; };
 		5DFBC9C02B5DF350006C0EF8 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9BF2B5DF350006C0EF8 /* FirebaseStorageService.swift */; };
 		5DFBC9C22B5E37D4006C0EF8 /* Optional+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9C12B5E37D4006C0EF8 /* Optional+Rx.swift */; };
 		5DFBC9C42B5E44C1006C0EF8 /* PostDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9C32B5E44C1006C0EF8 /* PostDetailModalViewController.swift */; };
@@ -158,9 +161,6 @@
 		A2D843AF2B67EFCA00FE1EDB /* FirebasePathParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843AE2B67EFCA00FE1EDB /* FirebasePathParsing.swift */; };
 		A2D843B02B67EFCA00FE1EDB /* FirebasePathParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843AE2B67EFCA00FE1EDB /* FirebasePathParsing.swift */; };
 		A2D843B12B67EFCA00FE1EDB /* FirebasePathParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843AE2B67EFCA00FE1EDB /* FirebasePathParsing.swift */; };
-		A2D843B32B67F5F100FE1EDB /* UIView+Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843B22B67F5F100FE1EDB /* UIView+Radius.swift */; };
-		A2D843B42B67F5F100FE1EDB /* UIView+Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843B22B67F5F100FE1EDB /* UIView+Radius.swift */; };
-		A2D843B52B67F5F100FE1EDB /* UIView+Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D843B22B67F5F100FE1EDB /* UIView+Radius.swift */; };
 		A2DFB7DA2B37C37C008B95AC /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB7D92B37C37C008B95AC /* SettingType.swift */; };
 		A2DFB7DB2B37C37C008B95AC /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB7D92B37C37C008B95AC /* SettingType.swift */; };
 		A2DFB7DC2B37C37C008B95AC /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFB7D92B37C37C008B95AC /* SettingType.swift */; };
@@ -207,9 +207,6 @@
 		AC185D002B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
 		AC185D012B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
 		AC185D022B478BFF007304CE /* SettingNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */; };
-		AC185D042B479581007304CE /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D032B479581007304CE /* HalfModalPresentationController.swift */; };
-		AC185D052B479581007304CE /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D032B479581007304CE /* HalfModalPresentationController.swift */; };
-		AC185D062B479581007304CE /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D032B479581007304CE /* HalfModalPresentationController.swift */; };
 		AC185D082B4795E3007304CE /* NotificationModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D072B4795E3007304CE /* NotificationModalViewController.swift */; };
 		AC185D092B4795E3007304CE /* NotificationModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D072B4795E3007304CE /* NotificationModalViewController.swift */; };
 		AC185D0A2B4795E3007304CE /* NotificationModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC185D072B4795E3007304CE /* NotificationModalViewController.swift */; };
@@ -341,6 +338,7 @@
 		5DF0A1542B57C56E00D4C15C /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		5DF0A1562B58A9B200D4C15C /* materialized+elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "materialized+elements.swift"; sourceTree = "<group>"; };
 		5DF686022B35151700479D54 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5DF9ED9A2B69FF1D00C95356 /* PartialPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialPresentationController.swift; sourceTree = "<group>"; };
 		5DFBC9BF2B5DF350006C0EF8 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
 		5DFBC9C12B5E37D4006C0EF8 /* Optional+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Rx.swift"; sourceTree = "<group>"; };
 		5DFBC9C32B5E44C1006C0EF8 /* PostDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailModalViewController.swift; sourceTree = "<group>"; };
@@ -372,7 +370,6 @@
 		A2D4CBC12B3D8F1C0066E89D /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
 		A2D4CBC52B3D9A200066E89D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = HappyMoodBoard/Presentation/Login/LoginViewModel.swift; sourceTree = SOURCE_ROOT; };
 		A2D843AE2B67EFCA00FE1EDB /* FirebasePathParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePathParsing.swift; sourceTree = "<group>"; };
-		A2D843B22B67F5F100FE1EDB /* UIView+Radius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Radius.swift"; sourceTree = "<group>"; };
 		A2DFB7D92B37C37C008B95AC /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		A2DFB7DE2B383150008B95AC /* SettingIndexButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIndexButton.swift; sourceTree = "<group>"; };
 		A2DFB7E32B392A71008B95AC /* VersionInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoButton.swift; sourceTree = "<group>"; };
@@ -390,7 +387,6 @@
 		A2F1141C2B668BA1003F869C /* LocalPushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPushNotification.swift; sourceTree = "<group>"; };
 		A90A98711ABFBEAF56F86EF5 /* Pods-HappyMoodBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyMoodBoard.release.xcconfig"; path = "Target Support Files/Pods-HappyMoodBoard/Pods-HappyMoodBoard.release.xcconfig"; sourceTree = "<group>"; };
 		AC185CFF2B478BFF007304CE /* SettingNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationViewModel.swift; sourceTree = "<group>"; };
-		AC185D032B479581007304CE /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
 		AC185D072B4795E3007304CE /* NotificationModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModalViewController.swift; sourceTree = "<group>"; };
 		AC185D0D2B47AD58007304CE /* NotificationModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModalViewModel.swift; sourceTree = "<group>"; };
 		AC27433B2B5F94B1006E1DC3 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
@@ -872,7 +868,7 @@
 		AC185D0C2B47AD2E007304CE /* UIPresentationController */ = {
 			isa = PBXGroup;
 			children = (
-				AC185D032B479581007304CE /* HalfModalPresentationController.swift */,
+				5DF9ED9A2B69FF1D00C95356 /* PartialPresentationController.swift */,
 			);
 			path = UIPresentationController;
 			sourceTree = "<group>";
@@ -1019,7 +1015,6 @@
 				5DFBC9C12B5E37D4006C0EF8 /* Optional+Rx.swift */,
 				5DF0A1562B58A9B200D4C15C /* materialized+elements.swift */,
 				5D610E402B66337F00678C0D /* UITextView+lineHeight.swift */,
-				A2D843B22B67F5F100FE1EDB /* UIView+Radius.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1375,6 +1370,7 @@
 				A2D0F9232B500B8C003BE282 /* PopUpViewController.swift in Sources */,
 				5D7252782B21ADE000CF6688 /* AgreeViewController.swift in Sources */,
 				5D26C1A42B60E2EA009570EB /* TagListSection.swift in Sources */,
+				5DF9ED9B2B69FF1D00C95356 /* PartialPresentationController.swift in Sources */,
 				A28402D22B4589B0007C0A0D /* MyAccount.swift in Sources */,
 				AC9E33BF2B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */,
 				A2D4CBC62B3D9A200066E89D /* LoginViewModel.swift in Sources */,
@@ -1390,7 +1386,6 @@
 				A2DFB7E42B392A71008B95AC /* VersionInfoButton.swift in Sources */,
 				A28402E82B45A79F007C0A0D /* ModifyNickNameViewModel.swift in Sources */,
 				A28402DF2B459DBE007C0A0D /* SettingMyAccountViewModel.swift in Sources */,
-				AC185D042B479581007304CE /* HalfModalPresentationController.swift in Sources */,
 				A2C886822B4977E1008E5437 /* TitleTimeView.swift in Sources */,
 				A2B58B7E2B529418003FCFA9 /* UUID.swift in Sources */,
 				5D751F8C2B4D21A6003BAC2C /* UpdateNickname.swift in Sources */,
@@ -1399,7 +1394,6 @@
 				A262851D2B5D02120016C4C6 /* TagButton.swift in Sources */,
 				A2D4CBBE2B3D8E0D0066E89D /* LoginType.swift in Sources */,
 				5D54D3F32B19CD4F0008A5D7 /* ViewModel.swift in Sources */,
-				A2D843B32B67F5F100FE1EDB /* UIView+Radius.swift in Sources */,
 				5DFBC9C62B5F58C0006C0EF8 /* FirebaseStorage+Rx.swift in Sources */,
 				A2DFB7DF2B383150008B95AC /* SettingIndexButton.swift in Sources */,
 				5DFBC9C22B5E37D4006C0EF8 /* Optional+Rx.swift in Sources */,
@@ -1517,12 +1511,11 @@
 				A2DFB7F32B3935E1008B95AC /* SettingMyAccountViewController.swift in Sources */,
 				A28402DC2B45952F007C0A0D /* CustomLabel.swift in Sources */,
 				ACD6D1002B55195D0039E5AE /* NotificationTarget.swift in Sources */,
-				A2D843B42B67F5F100FE1EDB /* UIView+Radius.swift in Sources */,
 				A2C8867F2B49700F008E5437 /* SettingNotificationType.swift in Sources */,
+				5DF9ED9C2B6A0F1D00C95356 /* PartialPresentationController.swift in Sources */,
 				AC7FDD682B57AE0200E6F7FC /* Date.swift in Sources */,
 				A2B58B792B528E1D003FCFA9 /* TraceLog.swift in Sources */,
 				AC7B6B2B2B5907C400C32F0D /* TokenParsing.swift in Sources */,
-				AC185D052B479581007304CE /* HalfModalPresentationController.swift in Sources */,
 				A2D4CBC72B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				AC185D092B4795E3007304CE /* NotificationModalViewController.swift in Sources */,
 				A2C8867B2B496ED1008E5437 /* TitleToggleView.swift in Sources */,
@@ -1592,7 +1585,6 @@
 				A2DFB7EF2B3930DB008B95AC /* SettingIndexViewModel.swift in Sources */,
 				A2F1140F2B65ECB4003F869C /* OnboardingViewController.swift in Sources */,
 				A2DFB8072B39C647008B95AC /* SettingOpenSourceLicenseViewController.swift in Sources */,
-				AC185D062B479581007304CE /* HalfModalPresentationController.swift in Sources */,
 				5D7252852B21BE8300CF6688 /* AgreeType.swift in Sources */,
 				A2DFB8022B39C4C1008B95AC /* UIViewController+alert.swift in Sources */,
 				AC9E33CE2B35614000B0D9AE /* NavigationTitle.swift in Sources */,
@@ -1618,7 +1610,6 @@
 				A28402D82B458AB3007C0A0D /* AccountView.swift in Sources */,
 				A2F1141F2B668BA1003F869C /* LocalPushNotification.swift in Sources */,
 				A2F1141A2B65F54D003F869C /* OnboardingCollectionViewCell.swift in Sources */,
-				A2D843B52B67F5F100FE1EDB /* UIView+Radius.swift in Sources */,
 				AC27433E2B5F94B1006E1DC3 /* ToastMessage.swift in Sources */,
 				A2D4CBC82B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				AC854BA82B5DFCA0004A607E /* CustomTableView.swift in Sources */,
@@ -1630,6 +1621,7 @@
 				A2D843B12B67EFCA00FE1EDB /* FirebasePathParsing.swift in Sources */,
 				A2DFB7F92B393873008B95AC /* SettingNotificationViewController.swift in Sources */,
 				A2D4CBC42B3D8F1C0066E89D /* SocialLoginButton.swift in Sources */,
+				5DF9ED9D2B6A0F1D00C95356 /* PartialPresentationController.swift in Sources */,
 				A2D4CBC82B3D9A200066E89D /* LoginViewModel.swift in Sources */,
 				AC9E33C12B35486E00B0D9AE /* SettingIndexViewController.swift in Sources */,
 			);

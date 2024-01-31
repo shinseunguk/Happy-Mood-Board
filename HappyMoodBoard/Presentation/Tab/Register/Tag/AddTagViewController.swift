@@ -196,8 +196,6 @@ extension AddTagViewController: ViewAttributes {
     }
     
     func setupSubviews() {
-        view.setCornerRadiusForTopCorners(radius: 30)
-        
         [
             contentStackView,
             buttonStackView

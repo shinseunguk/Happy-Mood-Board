@@ -17,7 +17,7 @@ protocol NotificationModalDelegate: AnyObject {
     func didDismissModal()
 }
 
-final class NotificationModalViewController: UIViewController, ViewAttributes {
+final class NotificationModalViewController: PartialViewController, ViewAttributes {
     weak var delegate: NotificationModalDelegate?
     
     enum Constants {
@@ -28,10 +28,18 @@ final class NotificationModalViewController: UIViewController, ViewAttributes {
         static let prefURL = "App-prefs:root=NOTIFICATIONS_ID"
     }
     
-    private let stackView = UIStackView().then {
+    private lazy var stackView = UIStackView(
+        arrangedSubviews: [
+            guideLabel,
+            descriptionLabel,
+            goToSettingButton,
+            dismissButton
+        ]
+    ).then {
         $0.axis = .vertical
-        $0.spacing = 12.0
+        $0.spacing = 16.0
         $0.alignment = .center
+        $0.setCustomSpacing(24, after: descriptionLabel)
     }
     
     private let guideLabel = UILabel().then {
@@ -39,15 +47,13 @@ final class NotificationModalViewController: UIViewController, ViewAttributes {
         $0.textColor = .black
         $0.text = Constants.guideLabelText
         $0.textAlignment = .center
-        $0.sizeToFit()
     }
     
     private let descriptionLabel = HeaderLabel(labelText: Constants.descriptionLabelText).then {
         $0.font = UIFont(name: "Pretendard-Regular", size: 16)
         $0.textColor = .black
-        $0.numberOfLines = 0
+        $0.numberOfLines = 2
         $0.textAlignment = .center
-        $0.sizeToFit()
     }
     
     private let goToSettingButton = UIButton(type: .system).then {
@@ -85,48 +91,29 @@ final class NotificationModalViewController: UIViewController, ViewAttributes {
 }
 
 extension NotificationModalViewController {
+    
     func setupSubviews() {
-        [
-            stackView
-        ].forEach { self.view.addSubview($0) }
-        
-        [
-            guideLabel,
-            descriptionLabel,
-            goToSettingButton,
-            dismissButton
-        ].forEach { self.stackView.addArrangedSubview($0) }
-        
-        self.view.layer.cornerRadius = 15
+        view.addSubview(stackView)
     }
     
     func setupLayouts() {
         stackView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(10)
-            $0.leading.trailing.equalToSuperview()
+            $0.top.equalToSuperview().inset(40)
+            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.bottom.equalToSuperview().inset(21)
         }
         
         guideLabel.snp.makeConstraints {
-            $0.top.equalTo(20)
-            $0.centerX.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(24)
             $0.height.equalTo(40)
         }
         
-        descriptionLabel.snp.makeConstraints {
-            $0.top.equalTo(guideLabel.snp.bottom).offset(10)
-            $0.centerX.equalToSuperview()
-        }
-        
         goToSettingButton.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(20)
-            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(52)
         }
         
         dismissButton.snp.makeConstraints {
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(10)
-            $0.centerX.equalToSuperview()
+            $0.height.equalTo(41)
         }
     }
     
@@ -149,7 +136,6 @@ extension NotificationModalViewController {
         
         output.dismiss
             .bind { [weak self] in
-                
                 self?.delegate?.didDismissModal()
                 self?.dismiss(animated: true)
             }

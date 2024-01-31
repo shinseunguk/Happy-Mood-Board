@@ -43,9 +43,14 @@ final class TagListViewController: UIViewController {
         )
     }
     
-    private let contentStackView = UIStackView().then {
+    private lazy var contentStackView: UIStackView = .init(
+        arrangedSubviews: [
+            collectionView,
+            closeButton
+        ]
+    ).then {
         $0.axis = .vertical
-        $0.alignment = .fill
+        $0.alignment = .center
         $0.distribution = .fill
         $0.spacing = 0
     }
@@ -144,19 +149,20 @@ extension TagListViewController: ViewAttributes {
     }
     
     func setupSubviews() {
-        view.setCornerRadiusForTopCorners(radius: 30)
         view.addSubview(contentStackView)
-        
-        [
-            collectionView,
-            closeButton
-        ].forEach { contentStackView.addArrangedSubview($0) }
     }
     
     func setupLayouts() {
         contentStackView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
+        
+        collectionView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+        }
+        
         closeButton.snp.makeConstraints { make in
             make.height.equalTo(41)
         }
@@ -235,4 +241,3 @@ extension TagListViewController: UICollectionViewDelegateFlowLayout {
     }
     
 }
-

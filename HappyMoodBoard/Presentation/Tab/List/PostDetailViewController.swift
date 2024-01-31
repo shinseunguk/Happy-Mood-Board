@@ -213,7 +213,10 @@ extension PostDetailViewController: ViewAttributes {
         
         output.showActionSheet.asDriver(onErrorJustReturn: ())
             .drive(with: self) { owner, _ in
-                let viewController = PostDetailModalViewController()
+                let viewController = PostDetailModalViewController(
+                    direction: .bottom,
+                    viewSize: (.full, .absolute(245))
+                )
                 viewController.addAction(title: "수정하기") {
                     viewController.dismiss(animated: true) {
                         editActionTapped.onNext(())
@@ -224,8 +227,6 @@ extension PostDetailViewController: ViewAttributes {
                         deleteActionTapped.onNext(())
                     }
                 }
-                viewController.modalPresentationStyle = .custom
-                viewController.transitioningDelegate = owner
                 owner.present(viewController, animated: true)
             }
             .disposed(by: disposeBag)
@@ -267,16 +268,6 @@ extension PostDetailViewController: ViewAttributes {
             makeToast($0)
         }
         .disposed(by: disposeBag)
-    }
-    
-}
-
-// MARK: - UIViewControllerTransitioningDelegate
-
-extension PostDetailViewController: UIViewControllerTransitioningDelegate {
-    
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return CustomPresentationController(presentedViewController: presented, presenting: presenting, height: 245)
     }
     
 }
