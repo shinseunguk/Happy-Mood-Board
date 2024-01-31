@@ -31,6 +31,11 @@ final class RegisterViewController: UIViewController {
         static let navigateToBackAlertMessage = "작성한 내용이 저장되지 않아요.\n정말 뒤로 가시겠어요?"
         static let alertNoAction = "아니오"
         static let alertYesActon = "네"
+        static let addImageAlertMessage = "사진은 최대 1개만 등록할 수 있어요."
+        static let loadingLabelText = "나의 꿀단지에 행복을 담는 중"
+        
+        static let keyboardDownImage: UIImage = .init(named: "toolbar.keyboard.down") ?? .init()
+        static let keyboardUpImage: UIImage = .init(named: "toolbar.keyboard.up") ?? .init()
         
         // 최소 높이와 최대 높이를 정의합니다.
         static let minHeight: CGFloat = 200.0
@@ -134,7 +139,7 @@ final class RegisterViewController: UIViewController {
     )
     
     private let keyboardToggleButton: UIBarButtonItem = .init(
-        image: .init(named: "toolbar.keyboard.up"),
+        image: Constants.keyboardUpImage,
         style: .plain,
         target: nil,
         action: nil
@@ -168,7 +173,7 @@ final class RegisterViewController: UIViewController {
     }
     
     private let loadingLabel: UILabel = .init().then {
-        $0.text = "나의 꿀단지에 행복을 담는 중"
+        $0.text = Constants.loadingLabelText
         $0.textAlignment = .center
         $0.textColor = .white
         $0.font = UIFont(name: "Pretendard-Bold", size: 24)
@@ -379,7 +384,7 @@ extension RegisterViewController: ViewAttributes {
                 if isShow {
                     owner.requestPhotoLibraryAuthorization()
                 } else {
-                    owner.toastGuideView.makeToast("사진은 최대 1개만 등록할 수 있어요.", position: .bottom)
+                    owner.toastGuideView.makeToast(Constants.addImageAlertMessage, position: .bottom)
                 }
             }
             .disposed(by: disposeBag)
@@ -449,7 +454,9 @@ extension RegisterViewController: ViewAttributes {
                     font: UIFont(name: "Pretendard-Regular", size: 16),
                     lineHeight: Constants.textViewLineHeight
                 )
-                owner.textView.textColor = (post.comments?.isEmpty ?? true) ? Constants.textViewPlaceholderColor : Constants.textViewTextColor
+                owner.textView.textColor = (post.comments?.isEmpty ?? true) ?
+                Constants.textViewPlaceholderColor :
+                Constants.textViewTextColor
             }
             .disposed(by: disposeBag)
         
@@ -516,9 +523,7 @@ extension RegisterViewController: ViewAttributes {
                 owner.view.setNeedsLayout()
                 
                 // 키보드 토글버튼
-                owner.keyboardToggleButton.image = keyboardVisibleHeight > 0 ?
-                    .init(named: "toolbar.keyboard.down") :
-                    .init(named: "toolbar.keyboard.up")
+                owner.keyboardToggleButton.image = keyboardVisibleHeight > 0 ? Constants.keyboardDownImage : Constants.keyboardUpImage
             }
             .disposed(by: disposeBag)
         
@@ -548,18 +553,6 @@ extension RegisterViewController: ViewAttributes {
 
 extension RegisterViewController {
     
-    func showImagePickerSourceTypeSelectionAlert() {
-        let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-            self.showImagePickerController(for: .camera)
-        }))
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-            self.requestPhotoLibraryAuthorization()
-        }))
-        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
     func requestPhotoLibraryAuthorization() {
         switch PHPhotoLibrary.authorizationStatus(for: .readWrite) {
         case .notDetermined, .restricted:
@@ -587,10 +580,6 @@ extension RegisterViewController {
             imagePicker.sourceType = sourceType
             imagePicker.allowsEditing = true
             present(imagePicker, animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController(title: nil, message: "\(sourceType)에 접근할 수 없습니다", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -603,16 +592,19 @@ extension RegisterViewController {
     
 }
 
-
 // MARK: - UIViewControllerTransitioningDelegate
 
 extension RegisterViewController: UIViewControllerTransitioningDelegate {
     
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    func presentationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController?,
+        source: UIViewController
+    ) -> UIPresentationController? {
         var height: CGFloat
         
-        if presented is UINavigationController { // 태그 목록
-            height = 396
+        if presented is UINavigationController {
+            height = 396 // 태그 목록
         } else {
             height = 465 // 사진 권한
         }

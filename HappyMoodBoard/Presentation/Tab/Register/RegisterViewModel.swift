@@ -26,6 +26,7 @@ final class RegisterViewModel: ViewModel {
     
     enum Constants {
         static let maxLength = 1000
+        static let maxLengthAlertMessage = "최대 1,000자까지만 작성할 수 있어요."
     }
     
     struct Input {
@@ -89,7 +90,7 @@ final class RegisterViewModel: ViewModel {
         
         let showTextMaxLengthAlert = text
             .filter { ($0?.count ?? 0) == Constants.maxLength }
-            .map { _ in "최대 1,000자까지 등록이 가능합니다." }
+            .map { _ in "최대 1,000자까지만 작성할 수 있어요." }
         
         let tag = Observable.merge(
             input.tagSelected,
