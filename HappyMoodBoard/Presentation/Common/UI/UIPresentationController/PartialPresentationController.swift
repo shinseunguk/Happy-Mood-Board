@@ -79,11 +79,12 @@ public final class PartialPresentationController: UIPresentationController {
         presenting presentingViewController: UIViewController?
     ) {
         presentedViewController.modalPresentationStyle = .custom
-        //        presentedViewController.modalTransitionStyle = .crossDissolve
+        presentedViewController.modalTransitionStyle = .crossDissolve
         self.direction = direction
         self.viewSize = viewSize
         self.isSwipeEnabled = isSwipeEnabled
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+        registerForKeyboardNotifications()
     }
     
     /// present 애니메이션
@@ -94,7 +95,7 @@ public final class PartialPresentationController: UIPresentationController {
         dimmingView.frame.size = containerView?.bounds.size ?? .zero
         
         // container(UITransitionView) 관련 애니메이션
-        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { [weak self] context in
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { [weak self] _ in
             self?.dimmingView.alpha = 1
             
             let transform: CGAffineTransform
@@ -204,6 +205,7 @@ public final class PartialPresentationController: UIPresentationController {
     
     public override func containerViewWillLayoutSubviews() {
         super.containerViewWillLayoutSubviews()
+        print(presentedViewController)
         presentedView?.layer.cornerRadius = 30
         
         switch direction {
@@ -216,63 +218,73 @@ public final class PartialPresentationController: UIPresentationController {
         }
     }
     
-    // tap background to dismiss
+    public override func size(
+        forChildContentContainer container: UIContentContainer,
+        withParentContainerSize parentSize: CGSize
+    ) -> CGSize {
+        .init(width: parentSize.width, height: parentSize.height)
+    }
+    
     @objc private func onTapBackground() {
         presentedViewController.dismiss(animated: true, completion: nil)
     }
     
-    // swipe to dismiss
     @objc private func onSwiped() {
         presentedViewController.dismiss(animated: true, completion: nil)
     }
     
-}
-
-open class PartialViewController: UIViewController {
+    // MARK: 키보드 핸들링
     
-    private let direction: PartialPresentationController.Direction
-    private let viewSize: PartialPresentationController.SizePair
-    private let isSwipeEnabled: Bool
-    
-    public init(
-        direction: PartialPresentationController.Direction,
-        viewSize: PartialPresentationController.SizePair,
-        isSwipeEnabled: Bool = true
-    ) {
-        self.direction = direction
-        self.viewSize = viewSize
-        self.isSwipeEnabled = isSwipeEnabled
-        
-        super.init(nibName: nil, bundle: nil)
-        
-        // Custom PresentationController를 사용하기 위함
-        modalPresentationStyle = .custom
-        modalTransitionStyle = .crossDissolve
-        transitioningDelegate = self
-        
-        // statusBar를 presentedViewController 기준으로 설정할지
-        modalPresentationCapturesStatusBarAppearance = true
-    }
-    
-    required public init?(coder: NSCoder) {
-        fatalError("All UIs are code based, not nib.")
-    }
-    
-}
-
-extension PartialViewController: UIViewControllerTransitioningDelegate {
-    public func presentationController(
-        forPresented presented: UIViewController,
-        presenting: UIViewController?,
-        source: UIViewController
-    ) -> UIPresentationController? {
-        return PartialPresentationController(
-            direction: direction,
-            viewSize: viewSize,
-            isSwipeEnabled: isSwipeEnabled,
-            presentedViewController: presented,
-            presenting: presenting
+    private func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardToggled(notification:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardToggled(notification:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
         )
     }
+    
+    @objc private func keyboardToggled(notification: NSNotification) {
+        guard let containerHeight = containerView?.bounds.height,
+              let presentedView = presentedView,
+              let textInput = presentedView.findFirstResponder(),
+              let textInputFrame = textInput.superview?.convert(textInput.frame, to: presentedView.superview)
+        else {
+            return assertionFailure()
+        }
+        
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return assertionFailure() }
+            
+            let keyboardOverlap = textInputFrame.maxY - keyboardFrame.minY + 20
+            if keyboardOverlap > 0 {
+                presentedView.frame.origin.y = max(presentedView.frame.minY - keyboardOverlap, 0)
+            }
+        } else if notification.name == UIResponder.keyboardWillHideNotification {
+            presentedView.frame.origin.y = containerHeight - presentedView.frame.size.height
+        }
+    }
 }
 
+extension UIView {
+    func findFirstResponder() -> UIView? {
+            for subview in subviews {
+                if subview.isFirstResponder {
+                    return subview
+                }
+                
+                if let recursiveSubView = subview.findFirstResponder() {
+                    return recursiveSubView
+                }
+            }
+
+            return nil
+        }
+        
+}
