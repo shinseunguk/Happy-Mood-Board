@@ -20,6 +20,9 @@ final class PostDetailViewController: UIViewController, UIGestureRecognizerDeleg
         static let deleteAlertMessage = "삭제된 행복 아이템은 복구할 수 없어요!"
         static let deleteAlertNoAction = "아니오"
         static let deleteAlertYesActon = "네"
+        
+        static let editActionTitle = "수정하기"
+        static let deleteActionTitle = "삭제하기"
     }
     
     private let backButton: UIBarButtonItem = .init(
@@ -36,11 +39,21 @@ final class PostDetailViewController: UIViewController, UIGestureRecognizerDeleg
         action: nil
     )
     
-    private let contentStackView = UIStackView().then {
+    private let contentScrollView: UIScrollView = .init()
+    
+    private let contentView: UIView = .init()
+    
+    private lazy var contentStackView = UIStackView(arrangedSubviews: [
+        dateLabel,
+        imageView,
+        commentLabel,
+        tagButton
+    ]).then {
         $0.axis = .vertical
         $0.alignment = .leading
         $0.distribution = .fill
         $0.spacing = 24
+        $0.setCustomSpacing(8, after: dateLabel)
     }
     
     private let dateLabel: UILabel = .init().then {
@@ -123,39 +136,45 @@ final class PostDetailViewController: UIViewController, UIGestureRecognizerDeleg
 extension PostDetailViewController: ViewAttributes {
     
     func setupNavigationBar() {
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         navigationItem.leftBarButtonItem = backButton
         navigationItem.rightBarButtonItem = moreButton
     }
     
     func setupSubviews() {
-        [
-            dateLabel,
-            contentStackView
-        ].forEach { view.addSubview($0) }
-        
-        [
-            imageView,
-            commentLabel,
-            tagButton
-        ].forEach { contentStackView.addArrangedSubview($0) }
+        view.addSubview(contentScrollView)
+        contentScrollView.addSubview(contentView)
+        contentView.addSubview(contentStackView)
     }
     
     func setupLayouts() {
-        dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(8)
-            make.leading.trailing.equalToSuperview().inset(24)
+        contentScrollView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalTo(contentScrollView.snp.width)
         }
         
         contentStackView.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(16)
+            make.top.bottom.equalToSuperview().inset(8)
             make.leading.trailing.equalToSuperview().inset(24)
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.height.equalTo(40)
+            make.leading.trailing.equalToSuperview()
         }
         
         imageView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(imageView.snp.width)
+        }
+        
+        commentLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
         }
     }
     
@@ -180,13 +199,13 @@ extension PostDetailViewController: ViewAttributes {
         output.imagePath.asDriver(onErrorJustReturn: nil)
             .drive(with: self) { owner, imagePath in
                 guard let imagePath = imagePath else {
-                    self.imageView.isHidden = true
+                    owner.imageView.isHidden = true
                     return
                 }
-                self.imageView.isHidden = false
+                owner.imageView.isHidden = false
                 
                 let URL = URL(string: getFirebaseURL(imagePath))
-                self.imageView.kf.setImage(with: URL)
+                owner.imageView.kf.setImage(with: URL)
             }
             .disposed(by: disposeBag)
         
@@ -217,12 +236,12 @@ extension PostDetailViewController: ViewAttributes {
                     direction: .bottom,
                     viewSize: (.full, .absolute(245))
                 )
-                viewController.addAction(title: "수정하기") {
+                viewController.addAction(title: Constants.editActionTitle) {
                     viewController.dismiss(animated: true) {
                         editActionTapped.onNext(())
                     }
                 }
-                viewController.addAction(title: "삭제하기") {
+                viewController.addAction(title: Constants.deleteActionTitle) {
                     viewController.dismiss(animated: true) {
                         deleteActionTapped.onNext(())
                     }

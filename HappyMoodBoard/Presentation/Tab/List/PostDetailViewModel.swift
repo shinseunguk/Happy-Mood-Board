@@ -61,7 +61,6 @@ final class PostDetailViewModel: ViewModel {
             .share()
         
         let postfailure = postResult.errors().map { $0.localizedDescription }
-            
         
         let date = postSuccess.map { $0?.createdAt }
             .filterNil()
