@@ -5,27 +5,35 @@
 //  Created by ukBook on 1/24/24.
 //
 
-import Foundation
 import UIKit
 
-final class HeaderLabel: UILabel {
+final class HeaderLabel: PaddingLabel {
+    
+    enum Constants {
+        static let verticalInset: CGFloat = 8
+        static let horizontalInset: CGFloat = 0
+        static let lineHeightMultiple: CGFloat = 1.26
+    }
     
     init(labelText: String) {
-        super.init(frame: .zero)
+        super.init(
+            inset: .init(
+                top: Constants.verticalInset,
+                left: Constants.horizontalInset,
+                bottom: Constants.verticalInset,
+                right: Constants.horizontalInset
+            )
+        )
         
-        // 줄 간격 설정
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.26
-        
-        // NSAttributedString을 사용하여 속성 설정
-        let attributedString = NSMutableAttributedString(string: labelText)
-        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
-        
-        // UILabel에 속성 적용
-        attributedText = attributedString
+        paragraphStyle.lineHeightMultiple = Constants.lineHeightMultiple
+        attributedText = .init(string: labelText, attributes: [
+            .paragraphStyle: paragraphStyle
+        ])
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }

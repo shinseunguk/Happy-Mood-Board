@@ -182,7 +182,7 @@ extension MyTabViewController: ViewAttributes {
         }
         
         headerLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(16)
+            $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(24)
         }
         

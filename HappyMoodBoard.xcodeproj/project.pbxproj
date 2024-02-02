@@ -82,6 +82,7 @@
 		5DF9ED9C2B6A0F1D00C95356 /* PartialPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9ED9A2B69FF1D00C95356 /* PartialPresentationController.swift */; };
 		5DF9ED9D2B6A0F1D00C95356 /* PartialPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9ED9A2B69FF1D00C95356 /* PartialPresentationController.swift */; };
 		5DF9ED9F2B6A3E3F00C95356 /* PartialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9ED9E2B6A3E3F00C95356 /* PartialViewController.swift */; };
+		5DF9EDA62B6CA03B00C95356 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9EDA52B6CA03B00C95356 /* PaddingLabel.swift */; };
 		5DFBC9C02B5DF350006C0EF8 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9BF2B5DF350006C0EF8 /* FirebaseStorageService.swift */; };
 		5DFBC9C22B5E37D4006C0EF8 /* Optional+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9C12B5E37D4006C0EF8 /* Optional+Rx.swift */; };
 		5DFBC9C42B5E44C1006C0EF8 /* PostDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFBC9C32B5E44C1006C0EF8 /* PostDetailModalViewController.swift */; };
@@ -341,6 +342,7 @@
 		5DF686022B35151700479D54 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5DF9ED9A2B69FF1D00C95356 /* PartialPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialPresentationController.swift; sourceTree = "<group>"; };
 		5DF9ED9E2B6A3E3F00C95356 /* PartialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialViewController.swift; sourceTree = "<group>"; };
+		5DF9EDA52B6CA03B00C95356 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		5DFBC9BF2B5DF350006C0EF8 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
 		5DFBC9C12B5E37D4006C0EF8 /* Optional+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Rx.swift"; sourceTree = "<group>"; };
 		5DFBC9C32B5E44C1006C0EF8 /* PostDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailModalViewController.swift; sourceTree = "<group>"; };
@@ -724,6 +726,7 @@
 			children = (
 				A28402DA2B45952F007C0A0D /* CustomLabel.swift */,
 				A262852D2B6137C30016C4C6 /* HeaderLabel.swift */,
+				5DF9EDA52B6CA03B00C95356 /* PaddingLabel.swift */,
 			);
 			path = UILabel;
 			sourceTree = "<group>";
@@ -1431,6 +1434,7 @@
 				5D8F09D92B43F3E100B7BE3E /* Tag.swift in Sources */,
 				AC7FDD622B57656900E6F7FC /* UpdateNotification.swift in Sources */,
 				5DB687282B54BF3F0027ABAB /* TagTarget.swift in Sources */,
+				5DF9EDA62B6CA03B00C95356 /* PaddingLabel.swift in Sources */,
 				5DF9ED9F2B6A3E3F00C95356 /* PartialViewController.swift in Sources */,
 				5DB28DF02B2AF9DD00C4E594 /* EnterNicknameViewModel.swift in Sources */,
 				5DB687232B51333B0027ABAB /* TagListViewModel.swift in Sources */,
