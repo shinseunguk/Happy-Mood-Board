@@ -60,31 +60,39 @@ final class RegisterViewController: UIViewController {
         $0.isEnabled = false
     }
     
-    private let headerLabel: UILabel = .init().then {
-        $0.text = Constants.header
-        $0.textColor = .gray900
-        $0.font = UIFont(name: "Pretendard-Bold", size: 24)
-        $0.numberOfLines = 0
-        $0.lineBreakMode = .byWordWrapping
+    private let scrollView: UIScrollView = .init().then {
+        $0.keyboardDismissMode = .onDrag
     }
     
-    private let contentStackView: UIStackView = .init().then {
+    private let containerView: UIView = .init()
+    
+    private lazy var contentStackView: UIStackView = .init(arrangedSubviews: [
+        headerLabel,
+        imageContainerView,
+        textView,
+        tagButton
+    ]).then {
         $0.axis = .vertical
         $0.distribution = .fill
         $0.alignment = .leading
         $0.spacing = 24
     }
     
+    private let headerLabel: HeaderLabel = .init(labelText: Constants.header).then {
+        $0.textColor = .gray900
+        $0.font = UIFont(name: "Pretendard-Bold", size: 24)
+        $0.numberOfLines = 0
+        $0.lineBreakMode = .byWordWrapping
+    }
+    
     private let imageContainerView: UIView = .init()
     
     private let imageView: UIImageView = .init().then {
-        $0.isHidden = true
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
     
     private let frameImageView: UIImageView = .init().then {
-        $0.isHidden = true
         $0.image = UIImage(named: "frame")
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.primary500?.cgColor
@@ -92,6 +100,20 @@ final class RegisterViewController: UIViewController {
     
     private let deleteImageButton: UIButton = .init().then {
         $0.setImage(UIImage(named: "delete"), for: .normal)
+    }
+    
+    private let textView: UITextView = .init().then {
+        $0.setTextWithLineHeight(
+            text: Constants.textViewPlaceholder,
+            font: UIFont(name: "Pretendard-Regular", size: 16),
+            lineHeight: Constants.textViewLineHeight
+        )
+        $0.textColor = Constants.textViewPlaceholderColor
+        $0.backgroundColor = .clear
+        $0.layer.cornerRadius = 16
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.primary900?.cgColor
+        $0.textContainerInset = .init(top: 24, left: 24, bottom: 24, right: 24)
     }
     
     private let tagButton: UIButton = .init(type: .system).then {
@@ -112,18 +134,18 @@ final class RegisterViewController: UIViewController {
         $0.isHidden = true
     }
     
-    private let textView: UITextView = .init().then {
-        $0.setTextWithLineHeight(
-            text: Constants.textViewPlaceholder,
-            font: UIFont(name: "Pretendard-Regular", size: 16),
-            lineHeight: Constants.textViewLineHeight
-        )
-        $0.textColor = Constants.textViewPlaceholderColor
-        $0.backgroundColor = .clear
-        $0.layer.cornerRadius = 16
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.primary900?.cgColor
-        $0.textContainerInset = .init(top: 24, left: 24, bottom: 24, right: 24)
+    private lazy var toolbar: UIToolbar = .init(
+        frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 48)
+    ).then {
+        $0.items = [
+            .init(customView: addImageButton),
+            .fixedSpace(20),
+            addTagButton,
+            .flexibleSpace(),
+            keyboardToggleButton
+        ]
+        $0.barTintColor = .primary100
+        $0.backgroundColor = .primary100
     }
     
     private let addImageButton: UIButton = .init().then {
@@ -153,20 +175,6 @@ final class RegisterViewController: UIViewController {
         $0.isUserInteractionEnabled = false
     }
     
-    private lazy var toolbar: UIToolbar = .init(
-        frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 48)
-    ).then {
-        $0.items = [
-            .init(customView: addImageButton),
-            .fixedSpace(20),
-            addTagButton,
-            .flexibleSpace(),
-            keyboardToggleButton
-        ]
-        $0.barTintColor = .primary100
-        $0.backgroundColor = .primary100
-    }
-    
     private let loadingDimView: UIView = .init().then {
         $0.backgroundColor = .black
         $0.alpha = 0.7
@@ -179,7 +187,7 @@ final class RegisterViewController: UIViewController {
         $0.font = UIFont(name: "Pretendard-Bold", size: 24)
     }
     
-    private let animationView: LottieAnimationView = .init(name: "beewrite").then {
+    private let loadingAnimationView: LottieAnimationView = .init(name: "beewrite").then {
         $0.contentMode = .scaleAspectFit
         $0.loopMode = .loop
         $0.play()
@@ -229,41 +237,42 @@ extension RegisterViewController: ViewAttributes {
     }
     
     func setupSubviews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(containerView)
+        containerView.addSubview(contentStackView)
+        
         [
-            headerLabel,
-            imageView,
-            contentStackView,
-            deleteImageButton,
             toolbar,
             loadingDimView,
-            animationView,
+            loadingAnimationView,
             loadingLabel,
             toastGuideView
         ].forEach { view.addSubview($0) }
         
         [
-            imageContainerView,
-            textView,
-            tagButton
-        ].forEach { contentStackView.addArrangedSubview($0) }
-        
-        imageContainerView.addSubview(frameImageView)
+            imageView,
+            frameImageView,
+            deleteImageButton
+        ].forEach { imageContainerView.addSubview($0) }
     }
     
     func setupLayouts() {
-        headerLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
-            make.leading.trailing.equalToSuperview().inset(24)
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        containerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalTo(scrollView)
         }
         
         contentStackView.snp.makeConstraints { make in
-            make.top.equalTo(headerLabel.snp.bottom).offset(24)
+            make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(24)
         }
         
-        textView.snp.makeConstraints { make in
+        headerLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(200)
         }
         
         imageContainerView.snp.makeConstraints { make in
@@ -284,9 +293,14 @@ extension RegisterViewController: ViewAttributes {
             make.top.trailing.equalTo(frameImageView)
         }
         
+        textView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(200)
+        }
+        
         toolbar.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
             make.height.equalTo(48)
         }
         
@@ -300,7 +314,7 @@ extension RegisterViewController: ViewAttributes {
             make.edges.equalToSuperview()
         }
         
-        animationView.snp.makeConstraints { make in
+        loadingAnimationView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.edges.equalToSuperview()
         }
@@ -334,25 +348,6 @@ extension RegisterViewController: ViewAttributes {
             imageSelected: imagePicker.rx.didFinishPickingMediaWithInfo.asObservable()
         )
         let output = viewModel.transform(input: input)
-        
-        // MARK: - TextView가 자동으로 줄어들고 늘어나는 로직, minHeight / maxHeight 으로 최소 높이, 최대 높이 설정
-        output.textDidChanged
-            .bind { [weak self] in
-                guard let self = self else { return }
-                
-                let size = CGSize(width: self.view.frame.width, height: .infinity)
-                let estimatedSize = self.textView.sizeThatFits(size)
-                
-                // 최소 높이와 최대 높이를 적용하여 높이를 제한합니다.
-                let constrainedHeight = max(Constants.minHeight, min(estimatedSize.height, Constants.maxHeight))
-                
-                self.textView.constraints.forEach { (constraint) in
-                    if constraint.firstAttribute == .height {
-                        constraint.constant = constrainedHeight
-                    }
-                }
-            }
-            .disposed(by: disposeBag)
         
         output.canRegister.asDriver(onErrorJustReturn: false)
             .drive(with: self) { owner, isEnabled in
@@ -428,10 +423,7 @@ extension RegisterViewController: ViewAttributes {
                 // image
                 owner.imageView.image = post.image
                 owner.imageContainerView.isHidden = (post.image == nil)
-                owner.imageView.isHidden = (post.image == nil)
-                owner.frameImageView.isHidden = (post.image == nil)
                 owner.addImageButton.tintColor = (post.image == nil) ? .primary900 : .gray200
-                owner.deleteImageButton.isHidden = (post.image == nil)
                 owner.imagePicker.dismiss(animated: true)
                 
                 // tag
@@ -464,7 +456,7 @@ extension RegisterViewController: ViewAttributes {
         output.showLoadingView.asDriver(onErrorJustReturn: false)
             .drive(with: self) { owner, isLoading in
                 owner.loadingDimView.isHidden = !isLoading
-                owner.animationView.isHidden = !isLoading
+                owner.loadingAnimationView.isHidden = !isLoading
                 owner.loadingLabel.isHidden = !isLoading
                 owner.view.isUserInteractionEnabled = !isLoading
                 owner.backButton.isEnabled = !isLoading
@@ -504,27 +496,19 @@ extension RegisterViewController: ViewAttributes {
         
         RxKeyboard.instance.visibleHeight
             .drive(with: self) { owner, keyboardVisibleHeight in
-                guard owner.textView.isFirstResponder else { return }
-                
-                // 툴바 위치조정
-                var bottomPadding: CGFloat
-                let scenes = UIApplication.shared.connectedScenes
-                let window = (scenes.first as? UIWindowScene)?.windows.first
-                bottomPadding = window?.safeAreaInsets.bottom ?? .zero
-                
-                var offset: CGFloat
-                if keyboardVisibleHeight > 0 {
-                    offset = -keyboardVisibleHeight + bottomPadding
-                } else {
-                    offset = -keyboardVisibleHeight
-                }
-                owner.toolbar.snp.updateConstraints { make in
-                    make.bottom.equalTo(owner.view.safeAreaLayoutGuide.snp.bottom).offset(offset)
-                }
-                owner.view.setNeedsLayout()
-                
-                // 키보드 토글버튼
-                owner.keyboardToggleButton.image = keyboardVisibleHeight > 0 ? Constants.keyboardDownImage : Constants.keyboardUpImage
+                let contentInset: UIEdgeInsets = .init(
+                    top: 0,
+                    left: 0,
+                    bottom: keyboardVisibleHeight,
+                    right: 0
+                )
+                owner.scrollView.contentInset = contentInset
+                owner.scrollView.scrollIndicatorInsets = contentInset
+                let activeRect = owner.textView.convert(owner.textView.bounds, to: owner.scrollView)
+                owner.scrollView.scrollRectToVisible(activeRect, animated: true)
+                owner.keyboardToggleButton.image = keyboardVisibleHeight > 0 ?
+                Constants.keyboardDownImage :
+                Constants.keyboardUpImage
             }
             .disposed(by: disposeBag)
         
